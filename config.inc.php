@@ -45,9 +45,9 @@ $db_host = "localhost";
 // Database name:
 $db_database = "5401_1401_g2";
 // Database login user name:
-$db_login = "cc5401g2";
+$db_login = "root";
 // Database login password:
-$db_password = 'Mor%desI^mpQuiDur';
+$db_password = '';
 // Prefix for table names.  This will allow multiple installations where only
 // one database is available
 $db_tbl_prefix = "mrbs_";
