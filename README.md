@@ -15,4 +15,4 @@ SAR 2014
 <p>Para que el proyecto funcione debes crear la base de datos. Para esto dirígete a http://localhost/phpmyadmin, y selecciona la pestaña "Databases". En esa pestaña crea una base de datos de nombre "5401_1401_g2", y luego selecciónala. Con la base de datos seleccionada, ve a la pestaña "Import" y selecciona el archivo "dump.sql" que se encuentra en la raíz del proyecto, luego haz click en "Ok". Ahora podrás acceder al SAR en http://localhost/sar2014, pero sin privilegios...</p>
 
 <h4>4. Obtener acceso de administrador</h4>
-<p>Todavía no sé cómo :(<p/>
+<p>En la esquina superior derecha del sistema clickea en "Entrar", luego usa user: "admin"; pass: "admin", o algún otro usuario hardcodeado en el archivo config.inc.php<p/>

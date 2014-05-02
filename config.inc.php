@@ -76,11 +76,16 @@ $confirmation_enabled = FALSE;
 unset($periods);
 $periods[] = "Period&nbsp;1";
 
-$auth["type"] = "dcc";
-$auth["session"] = "dcc";
+$auth["type"] = "config";
+$auth["session"] = "php";
 
+$auth["user"]["fcifuentes"] = "asdfqwerty";
+$auth["user"]["ralonso"] = "asdfqwerty";
+$auth["user"]["bromero"] = "asdf";
 $auth["user"]["admin"] = "admin";
 
+$auth["admin"][] = "fcifuentes";
+$auth["admin"][] = "ralonso";
 $auth["admin"][] = "admin";
 
 $hidden_days = array(0);
