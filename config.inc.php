@@ -45,9 +45,9 @@ $db_host = "localhost";
 // Database name:
 $db_database = "5401_1401_g2";
 // Database login user name:
-$db_login = "cc5401g2";
+$db_login = "root";
 // Database login password:
-$db_password = 'Mor%desI^mpQuiDur';
+$db_password = '';
 // Prefix for table names.  This will allow multiple installations where only
 // one database is available
 $db_tbl_prefix = "mrbs_";
@@ -76,11 +76,16 @@ $confirmation_enabled = FALSE;
 unset($periods);
 $periods[] = "Period&nbsp;1";
 
-$auth["type"] = "dcc";
-$auth["session"] = "dcc";
+$auth["type"] = "config";
+$auth["session"] = "php";
 
+$auth["user"]["fcifuentes"] = "asdfqwerty";
+$auth["user"]["ralonso"] = "asdfqwerty";
+$auth["user"]["bromero"] = "asdf";
 $auth["user"]["admin"] = "admin";
 
+$auth["admin"][] = "fcifuentes";
+$auth["admin"][] = "ralonso";
 $auth["admin"][] = "admin";
 
 $hidden_days = array(0);
