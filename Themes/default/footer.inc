@@ -4,6 +4,7 @@
 function print_theme_footer()
 {
 ?>
+  <div class="Footer"></div>
   </body>
 </html>
 <?php

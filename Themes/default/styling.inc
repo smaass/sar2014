@@ -7,7 +7,7 @@
 // ***** COLOURS ************************
 // Colours used in MRBS.    All the colours are defined here as PHP variables
 
-$body_background_color          = "#e7ebee";    // background colour for the main body
+$body_background_color          = "#ffffff";    // background colour for the main body
 $standard_font_color            = "#0B263B";    // default font color
 $header_font_color              = "#ffffff";    // font color for text in headers
 $highlight_font_color           = "#ff0066";    // used for highlighting text (eg links, errors)
@@ -28,7 +28,7 @@ $main_table_border_color        = $body_background_color; // border colour for d
 $main_table_header_border_color = $body_background_color; // border colour for day/week/month tables - header
 $main_table_body_h_border_color = "#ffffff";              // border colour for day/week/month tables - body, horizontal
 $main_table_body_v_border_color = $body_background_color; // border colour for day/week/month tables - body, vertical
-$main_table_month_color         = "#ffffff";    // background colour for days in the month view
+$main_table_month_color         = "beige";    // background colour for days in the month view
 $main_table_month_invalid_color = "#d1d9de";    // background colour for invalid days in the month view
 $main_table_labels_back_color   = $header_back_color;     // background colour for the row labels column
 

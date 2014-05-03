@@ -78,8 +78,6 @@ for ($j = 1; $j<=$days_in_month; $j++)
   }
 }
 
-// Section with areas, rooms, minicals.
-echo "<div id=\"dwm_header\" class=\"screenonly\">\n";
 // Get the area and room names (we will need them later for the heading)
 $this_area_name = "";
 $this_room_name = "";
@@ -110,79 +108,23 @@ elseif (isset($grouped_view))
 }
 
 // Show all available areas
-echo make_area_select_html('week.php', $area, $year, $month, $day);
-// Show all available rooms in the current area:
-echo make_room_select_html('week.php', $area, $room, $year, $month, $day);
-    
-// Draw the three month calendars
-if (!$display_calendar_bottom)
-{
-  minicals($year, $month, $day, $area, $room, 'month');
-}
+echo make_menu_html('week.php', $area, $year, $month, $day);
 
-echo "</div>\n";
 
 
 // Show Month, Year, Area, Room header:
+/* ------------ Cell Right ----------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
+echo "<div class=\"Cell Right\">";
+echo "<div class=\"Calendar\">";
 echo "<div id=\"dwm\">\n";
 echo "<h2>" . utf8_strftime($strftime_format['monthyear'], $month_start)
   . " - " . htmlspecialchars("$this_area_name - $this_room_name") . "</h2>\n";
 echo "</div>\n";
 
-// Show Go to month before and after links
-//y? are year and month and day of the previous month.
-//t? are year and month and day of the next month.
-//c? are year and month of this month.   But $cd is the day that was passed to us.
-
-$i= mktime(12,0,0,$month-1,1,$year);
-$yy = date("Y",$i);
-$ym = date("n",$i);
-$yd = $day;
-while (!checkdate($ym, $yd, $yy) && ($yd > 1))
-{
-  $yd--;
-}
-
-$i= mktime(12,0,0,$month+1,1,$year);
-$ty = date("Y",$i);
-$tm = date("n",$i);
-$td = $day;
-while (!checkdate($tm, $td, $ty) && ($td > 1))
-{
-  $td--;
-}
-
-$cy = date("Y");
-$cm = date("m");
-$cd = $day;    // preserve the day information
-while (!checkdate($cm, $cd, $cy) && ($cd > 1))
-{
-  $cd--;
-}
-
-
-$before_after_links_html = "<div class=\"screenonly\">
-  <div class=\"date_nav\">
-    <div class=\"date_before\">
-      <a href=\"month.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-          &lt;&lt;&nbsp;".get_vocab("monthbefore")."
-        </a>
-    </div>
-    <div class=\"date_now\">
-      <a href=\"month.php?year=$cy&amp;month=$cm&amp;day=$cd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-          ".get_vocab("gotothismonth")."
-        </a>
-    </div>
-    <div class=\"date_after\">
-       <a href=\"month.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-          ".get_vocab("monthafter")."&nbsp;&gt;&gt;
-        </a>
-    </div>
-  </div>
-</div>
-";
-
-print $before_after_links_html;
 
 if ($debug_flag)
 {
@@ -707,7 +649,7 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
           }
           else
           {
-            $booking_link = "view_entry.php?id=" . $d[$cday]["id"][$i] . "&amp;day=$cday&amp;month=$month&amp;year=$year";
+          	$booking_link = "view_entry.php?id=" . $d[$cday]["id"][$i] . "&amp;area=$area&amp;day=$cday&amp;month=$month&amp;year=$year";            
           }
           $slot_text = $d[$cday]["data"][$i];
           $description_text = utf8_substr($d[$cday]["shortdescrip"][$i], 0, 255);
@@ -777,15 +719,170 @@ if ($weekcol > 0)
   }
 }
 echo "</tr></tbody></table>\n";
+// end calendar
+echo "</div>";
+/* ------------ Calendar ----------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------*/
 
-print $before_after_links_html;
+// Show Go to month before and after links
+//y? are year and month and day of the previous month.
+//t? are year and month and day of the next month.
+//c? are year and month of this month.   But $cd is the day that was passed to us.
+
+$i= mktime(12,0,0,$month-1,1,$year);
+$yy = date("Y",$i);
+$ym = date("n",$i);
+$yd = $day;
+while (!checkdate($ym, $yd, $yy) && ($yd > 1))
+{
+  $yd--;
+}
+
+$i= mktime(12,0,0,$month+1,1,$year);
+$ty = date("Y",$i);
+$tm = date("n",$i);
+$td = $day;
+while (!checkdate($tm, $td, $ty) && ($td > 1))
+{
+  $td--;
+}
+
+$cy = date("Y");
+$cm = date("m");
+$cd = $day;    // preserve the day information
+while (!checkdate($cm, $cd, $cy) && ($cd > 1))
+{
+  $cd--;
+}
+//Nav
+//Month
+echo "<div class=\"Nav\">";
+echo "<div class=\"NavTitle\"> Calendario </div>";
+echo "<div class=\"Now\">
+      <a href=\"month.php?year=$cy&amp;month=$cm&amp;day=$cd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
+          "."Actual"."
+        </a>
+    </div>";
+echo "<div class=\"NavSubtitle\"> Mes </div>";
+$before_after_links_month_html = "
+	<div class=\"NavLorP\">  
+    <span class=\"NavLess\">
+      <a href=\"month.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
+          "."-"."</a>
+    </span>    
+    <span class=\"NavPlus\">
+       <a href=\"month.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
+          "."+"."</a>
+    </span>
+  </div>
+  
+";
+print $before_after_links_month_html;
+//Year
+$i= mktime(12,0,0,$month,1,$year-1);
+$yy = date("Y",$i);
+$ym = date("n",$i);
+$yd = $day;
+while (!checkdate($ym, $yd, $yy) && ($yd > 1))
+{
+  $yd--;
+}
+
+$i= mktime(12,0,0,$month,1,$year+1);
+$ty = date("Y",$i);
+$tm = date("n",$i);
+$td = $day;
+while (!checkdate($tm, $td, $ty) && ($td > 1))
+{
+  $td--;
+}
+echo "<div class=\"NavSubtitle\"> A&#241;o </div>";
+$before_after_links_year_html = "
+	<div class=\"NavLorP\">  
+    <span class=\"NavLess\">
+      <a href=\"month.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
+          "."-"."</a>
+    </span>    
+    <span class=\"NavPlus\">
+       <a href=\"month.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
+          "."+"."</a>
+    </span>
+  </div>
+  
+";
+print $before_after_links_year_html;
+//Calendar
+echo	"<div class=\"NavCalendar\">
+        <form action=\"day.php\" method=\"get\" id=\"Form1\">
+          <div>";
+            
+// Give the form id as the optional fifth parameter because we want
+// the form to be automatically submitted when the datepicker is closed
+genDateSelector("", $day, $month, $year, "Form1");
+if (!empty($area))
+	{
+    echo "<input type=\"hidden\" name=\"area\" value=\"$area\">\n";
+    }
+    if (!empty($room))
+    {
+    echo "<input type=\"hidden\" name=\"room\" value=\"$room\">\n";
+    }
+// Although the datepicker will automatically go to the new date when
+// the date is changed, we still need a submit button because there
+// are occasions when you want to go to the date without changing it -
+// for example when you've been on a Search or Report page
+echo "<p>";
+echo "<input type=\"submit\" value=\"" . get_vocab("goto") . "\">\n";            
+echo "</div> </form>";        
+// Provide a link to the list of bookings awaiting approval
+// (if there are any enabled areas where we require bookings to be approved)
+$approval_somewhere = some_area('approval_enabled', TRUE);
+if ($approval_somewhere && (authGetUserLevel($user) >= 1)){
+	$sql_approval_enabled = some_area_predicate('approval_enabled');
+    // Find out how many bookings are awaiting approval
+    // (but only for areas where approval is required)
+          $sql = "SELECT COUNT(*)
+                    FROM $tbl_entry E, $tbl_room R, $tbl_area A
+                   WHERE (status&" . STATUS_AWAITING_APPROVAL . " != 0)
+                     AND E.room_id = R.id
+                     AND R.area_id = A.id
+                     AND R.disabled = 0
+                     AND A.disabled = 0
+                     AND $sql_approval_enabled";
+	if (!$is_admin){
+		// Ordinary users can only see their own
+        $sql .= " AND create_by='" . sql_escape($user) . "'";
+        }
+    $n_outstanding = sql_query1($sql);
+    if ($n_outstanding < 0){
+    	trigger_error(sql_error(), E_USER_WARNING);
+        fatal_error(FALSE, get_vocab("fatal_db_error"));
+        }
+        echo "<div id=\"n_outstanding\"" .
+        (($n_outstanding > 0) ? " class=\"outstanding\"" : '') . ">\n";
+        echo "<a href=\"pending.php?day=$day&amp;month=$month&amp;year=$year&amp;area=$area" . 
+        ((!empty($room)) ? "&amp;room=$room" : "") . 
+        "\">$n_outstanding " . get_vocab("outstanding") . "</a>\n";
+        echo "</div>\n";
+        }
+echo "</div>";
+
+
+echo "</div>";
+echo "</div class=\"Clear\"> </div>";
+//end Right Cell
+echo "</div>";
+//print $before_after_links_html;
 if (isset($general_view))
 {
-	show_availability_colour_key();
+	//show_availability_colour_key();
 }
 elseif (isset($grouped_view))
 {
-	//show_periods_colour_key();
+//	show_periods_colour_key();
 	;
 }
 else
@@ -794,11 +891,7 @@ else
 	;
 }
 
-// Draw the three month calendars
-if ($display_calendar_bottom)
-{
-  minicals($year, $month, $day, $area, $room, 'month');
-}
+
 
 output_trailer();
 ?>

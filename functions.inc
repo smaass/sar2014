@@ -1279,8 +1279,8 @@ function make_area_select_html($link, $current, $year, $month, $day)
   // there's no point
   if ($res  && (sql_count($res) > 1))
   {
-    $out_html .= "<div id=\"dwm_areas\">\n";
-    $out_html .= "<h3>" . get_vocab("areas") . "</h3>\n";
+    //$out_html .= "<div id=\"dwm_areas\">\n";
+    //$out_html .= "<h3>" . get_vocab("areas") . "</h3>\n";
     if ($area_list_format == "select")
     {
       $out_html .= "<form id=\"areaChangeForm\" method=\"get\" action=\"$link\">\n" .
@@ -1311,7 +1311,7 @@ function make_area_select_html($link, $current, $year, $month, $day)
       }
       $out_html .= "</ul>\n";
     }
-    $out_html .= "</div>\n";
+    //$out_html .= "</div>\n";
   }
   return $out_html;
 } // end make_area_select_html
@@ -1343,8 +1343,8 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
 			"<table><tr><td>".
 			"<div id=\"fotoTest\"><img></img></div></td>" .
 			"<td><div id=\"descriptionTest\"></div></td></tr></table></div>";
-    $out_html .= "<div id=\"dwm_rooms\">\n";
-    $out_html .= "<h3>" . get_vocab("rooms") . "</h3>";
+    //$out_html .= "<div id=\"dwm_rooms\">\n";
+    //$out_html .= "<h3>" . get_vocab("rooms") . "</h3>";
     if ($area_list_format == "select")
     {
       $out_html .= "<form id=\"roomChangeForm\" method=\"get\" action=\"$link\">\n" .
@@ -1388,15 +1388,17 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
     }
     else  // list format
     {
-      $out_html .= "<ul>\n";
+      $out_html .= "<ul class=\"sub-menu\" >\n";
       if ($area == $area_of_trabajo){
       	$offices_id = get_work_offices($res);
   	    foreach ($offices_id as $key => $value)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$value[0]."\">";
-          $out_html .= "<span onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"". (in_array($current, $value) ? ' class="current"' : ''." ");
+          $out_html .= "<span onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= "id=".$value[0] .">";
           $out_html .= htmlspecialchars($key) . "</span></a></li>\n";
+          
+          
         }
   	  }
   	  else
@@ -1404,18 +1406,75 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
         for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\">";
-          $out_html .= "<span onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"". (($row['id'] == $current) ? ' class="current"' : ''." ");
+          $out_html .= "<span onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= "id=".$row['id'] .">";
           $out_html .= htmlspecialchars($row['room_name']) . "</span></a></li>\n";
         }
   	  }
       $out_html .= "</ul>\n";
     }
-    $out_html .= "</div>\n";
+    //$out_html .= "</div>\n";
   }
   return $out_html;
 } // end make_room_select_html
 
+
+//menu
+
+function make_menu_html($link, $current, $year, $month, $day)
+{
+  global $tbl_area, $area_list_format;
+  
+  $out_html = '';
+  $sql = "SELECT id, area_name 
+            FROM $tbl_area
+           WHERE disabled=0
+        ORDER BY area_name";
+  $res = sql_query($sql);
+  // Only show the areas if there's more than one of them, otherwise
+  // there's no point
+  if ($res  && (sql_count($res) > 1))
+  {
+    $out_html .= "<div id=\"dwm_menu\" class=\"Cell Left\">\n";          
+    if ($area_list_format == "select")
+    {
+      $out_html .= "<form id=\"areaChangeForm\" method=\"get\" action=\"$link\">\n" .
+                   "<div>\n" .
+                   "<select class=\"room_area_select\" id=\"area_select\" name=\"area\" onchange=\"this.form.submit()\">";
+      for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
+      {
+        $selected = ($row['id'] == $current) ? "selected=\"selected\"" : "";
+        $out_html .= "<option $selected value=\"". $row['id']. "\">" . htmlspecialchars($row['area_name']) . "</option>\n";
+      }
+      // Note:  the submit button will not be displayed if JavaScript is enabled
+      $out_html .= "</select>\n" .
+                   "<input type=\"hidden\" name=\"day\"   value=\"$day\">\n" .
+                   "<input type=\"hidden\" name=\"month\" value=\"$month\">\n" .
+                   "<input type=\"hidden\" name=\"year\"  value=\"$year\">\n" .
+                   "<input type=\"submit\" class=\"js_none\" value=\"".get_vocab("change")."\">\n" .
+                   "</div>\n" .
+                   "</form>\n";
+    }
+    else // list format
+    {
+      
+      $out_html .= "<ul class=\"accordion\">\n";
+      for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
+      {
+      	$li_id = "M".$row['id'];
+        $out_html .= "<li id=\"" .$li_id. "\" >";
+        $out_html .= "<a href=\"#" .$li_id. "\" \>";
+        $out_html .= "<span>";       
+        $out_html .= htmlspecialchars($row['area_name']) . "</span></a>";
+        $out_html .= make_room_select_html ($link, $row['id'], "21", $year, $month, $day);
+        $out_html .= "</li>\n";
+      }
+      $out_html .= "</ul>\n";      
+    }
+    $out_html .= "</div>\n";
+  }
+  return $out_html;
+}
 
 // returns the numeric day of the week (0-6) in terms of the MRBS week as defined by 
 // $weekstarts.   For example if $weekstarts is set to 2 (Tuesday) and a $time for
