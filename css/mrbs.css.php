@@ -118,7 +118,8 @@ expires_header(60*30); // 30 minute expiry
 		font-weight: bold;
 	}
 	.NavSubtitle{		
-		padding-left: 20px;		
+		padding-left: 20px;	
+		padding-bottom: 5px;	
 		color: black;
 		font-size: medium;
 		font-weight: bold;
@@ -153,6 +154,7 @@ expires_header(60*30); // 30 minute expiry
 	}
 	.Now{
 		text-align:center;
+		padding-bottom: 10px;
 	}
 /* ------------ Footer -----------------------------*/
 .Footer{

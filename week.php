@@ -25,22 +25,7 @@ if ($ajax)
 // print the page header
 print_header($day, $month, $year, $area, isset($room) ? $room : "");
 
-// Section with areas, rooms, minicals.
-
-echo "<div id=\"dwm_header\" class=\"screenonly\">\n";
-
-// Show all available areas
-echo make_area_select_html('week.php', $area, $year, $month, $day);   
-// Show all available rooms in the current area:
-echo make_room_select_html('week.php', $area, $room, $year, $month, $day);
-
-// Draw the three month calendars
-if (!$display_calendar_bottom)
-{
-  minicals($year, $month, $day, $area, $room, 'week');
-}
-
-echo "</div>\n";
+echo make_menu_html('week.php', $area, $year, $month, $day);
 
 // Show area and room:
 // Get the area and room names
@@ -56,60 +41,23 @@ if ($this_room_name === -1)
 {
   $this_room_name = '';
 }
+echo "<div class=\"Cell Right\">";
+echo "<div class=\"Calendar\">";
 echo "<div id=\"dwm\">\n";
 echo "<h2>" . htmlspecialchars("$this_area_name - $this_room_name") . "</h2>\n";
 echo "</div>\n";
-
-//y? are year, month and day of the previous week.
-//t? are year, month and day of the next week.
-
-$i= mktime(12,0,0,$month,$day-7,$year);
-$yy = date("Y",$i);
-$ym = date("m",$i);
-$yd = date("d",$i);
-
-$i= mktime(12,0,0,$month,$day+7,$year);
-$ty = date("Y",$i);
-$tm = date("m",$i);
-$td = date("d",$i);
-
-// Show Go to week before and after links
-$before_after_links_html = "
-<div class=\"screenonly\">
-  <div class=\"date_nav\">
-    <div class=\"date_before\">
-      <a href=\"week.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;room=$room\">
-          &lt;&lt;&nbsp;".get_vocab("weekbefore")."
-      </a>
-    </div>
-    <div class=\"date_now\">
-      <a href=\"week.php?area=$area&amp;room=$room\">
-          ".get_vocab("gotothisweek")."
-      </a>
-    </div>
-    <div class=\"date_after\">
-      <a href=\"week.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;room=$room\">
-          ".get_vocab("weekafter")."&nbsp;&gt;&gt;
-      </a>
-    </div>
-  </div>
-</div>
-";
-
-print $before_after_links_html;
 
 echo "<table class=\"dwm_main\" id=\"week_main\" data-resolution=\"$resolution\">";
 echo $inner_html;
 echo "</table>\n";
 
-print $before_after_links_html;
+// End week-calendar
+echo '</div>';
 
-//show_colour_key();
-// Draw the three month calendars
-if ($display_calendar_bottom)
-{
-  minicals($year, $month, $day, $area, $room, 'week');
-}
+make_navbar_html($day, $month, $year, $area, $room, 'week');
+
+// End Right Cell
+echo '</div>';
 
 output_trailer(); 
 ?>
