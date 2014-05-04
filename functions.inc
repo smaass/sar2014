@@ -1436,41 +1436,19 @@ function make_menu_html($link, $current, $year, $month, $day)
   if ($res  && (sql_count($res) > 1))
   {
     $out_html .= "<div id=\"dwm_menu\" class=\"Cell Left\">\n";          
-    if ($area_list_format == "select")
+    $out_html .= "<ul class=\"m-bellows\">\n";
+    for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
     {
-      $out_html .= "<form id=\"areaChangeForm\" method=\"get\" action=\"$link\">\n" .
-                   "<div>\n" .
-                   "<select class=\"room_area_select\" id=\"area_select\" name=\"area\" onchange=\"this.form.submit()\">";
-      for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
-      {
-        $selected = ($row['id'] == $current) ? "selected=\"selected\"" : "";
-        $out_html .= "<option $selected value=\"". $row['id']. "\">" . htmlspecialchars($row['area_name']) . "</option>\n";
-      }
-      // Note:  the submit button will not be displayed if JavaScript is enabled
-      $out_html .= "</select>\n" .
-                   "<input type=\"hidden\" name=\"day\"   value=\"$day\">\n" .
-                   "<input type=\"hidden\" name=\"month\" value=\"$month\">\n" .
-                   "<input type=\"hidden\" name=\"year\"  value=\"$year\">\n" .
-                   "<input type=\"submit\" class=\"js_none\" value=\"".get_vocab("change")."\">\n" .
-                   "</div>\n" .
-                   "</form>\n";
+      $li_id = "M".$row['id'];
+      $out_html .= "<li class=\"m-item\" id=\"" .$li_id. "\" >";
+      $out_html .= "<h3 class=\"m-header\">"; 
+      $out_html .= "<a href=\"#" .$li_id. "\" \>";      
+      $out_html .= htmlspecialchars($row['area_name']) . "</a></h3>";
+      $out_html .= "<div class=\"m-content\"><div class=\"m-inner-content\">";
+      $out_html .= make_room_select_html ($link, $row['id'], "21", $year, $month, $day);
+      $out_html .= "</div></div></li>\n";
     }
-    else // list format
-    {
-      
-      $out_html .= "<ul class=\"accordion\">\n";
-      for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
-      {
-      	$li_id = "M".$row['id'];
-        $out_html .= "<li id=\"" .$li_id. "\" >";
-        $out_html .= "<a href=\"#" .$li_id. "\" \>";
-        $out_html .= "<span>";       
-        $out_html .= htmlspecialchars($row['area_name']) . "</span></a>";
-        $out_html .= make_room_select_html ($link, $row['id'], "21", $year, $month, $day);
-        $out_html .= "</li>\n";
-      }
-      $out_html .= "</ul>\n";      
-    }
+    $out_html .= "</ul>\n";      
     $out_html .= "</div>\n";
   }
   return $out_html;

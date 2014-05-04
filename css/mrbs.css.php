@@ -57,105 +57,6 @@ expires_header(60*30); // 30 minute expiry
 		vertical-align: middle;
 	}
 
-
-/* ------------ Menu -----------------------------*/
-	.accordion,
-	.accordion ul,
-	.accordion li,
-	.accordion a,
-	.accordion span {
-	    margin: 0;
-	    padding: 0;
-	    border: none;
-	    outline: none;
-	}	 
-	.accordion li {
-	    list-style: none;
-	}
-	.accordion li > a {
-	    display: block;
-	    position: relative;
-	    min-width: 110px;
-	    padding: 0 10px 0 40px;
-	 
-	    color: #fdfdfd;
-	    font: bold 12px/32px Arial, sans-serif;
-	    text-decoration: none;
-	    text-shadow: 0px 1px 0px rgba(0,0,0, .35);
-	 
-	    background: #6c6e74;
-	    background: -moz-linear-gradient(top,  #6c6e74 0%, #4b4d51 100%);
-	    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6c6e74), color-stop(100%,#4b4d51));
-	    background: -webkit-linear-gradient(top,  #6c6e74 0%,#4b4d51 100%);
-	    background: -o-linear-gradient(top,  #6c6e74 0%,#4b4d51 100%);
-	    background: -ms-linear-gradient(top,  #6c6e74 0%,#4b4d51 100%);
-	    background: linear-gradient(top,  #6c6e74 0%,#4b4d51 100%);
-	 
-	    -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
-	    -moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
-	    box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
-	}
-	.sub-menu li a {
-	    color: #797979;
-	    text-shadow: 1px 1px 0px rgba(255,255,255, .2);
-	 
-	    background: #e5e5e5;	    
-	    -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
-	    -moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
-	    box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
-	}	 
-	.sub-menu li:last-child a { border: none; 
-	}	 
-	.sub-menu li > a span {
-	    color: #797979;
-	    text-shadow: 1px 1px 0px rgba(255,255,255, .2);
-	    background: transparent;  
-	    -webkit-box-shadow: none;
-	    -moz-box-shadow: none;
-	    box-shadow: none;
-	}	 
-	.sub-menu em {
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    margin-left: 14px;
-	    color: #a6a6a6;
-	    font: normal 10px/32px Arial, sans-serif;
-	}
-	.accordion > li:hover > a,
-	.accordion > li:target > a {
-	    color: #3e5706;
-	    text-shadow: 1px 1px 1px rgba(255,255,255, .2);
-	 
-	    /*background: url(../img/active.png) repeat-x;*/
-	    background: #a5cd4e;
-	    background: -moz-linear-gradient(top,  #a5cd4e 0%, #6b8f1a 100%);
-	    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a5cd4e), color-stop(100%,#6b8f1a));
-	    background: -webkit-linear-gradient(top,  #a5cd4e 0%,#6b8f1a 100%);
-	    background: -o-linear-gradient(top,  #a5cd4e 0%,#6b8f1a 100%);
-	    background: -ms-linear-gradient(top,  #a5cd4e 0%,#6b8f1a 100%);
-	    background: linear-gradient(top,  #a5cd4e 0%,#6b8f1a 100%);
-	}	 
-	.accordion > li:hover > a span,
-	.accordion > li:target > a span {
-	    color: #fdfdfd;
-	    text-shadow: 0px 1px 0px rgba(0,0,0, .35);	   
-	}	 
-	.sub-menu li:hover a { background: #efefef; }
-	.accordion li > .sub-menu {
-	    height: 0;
-	    overflow: hidden;
-	 
-	    -webkit-transition: all .2s ease-in-out;
-	    -moz-transition: all .2s ease-in-out;
-	    -o-transition: all .2s ease-in-out;
-	    -ms-transition: all .2s ease-in-out;
-	    transition: all .2s ease-in-out;
-	}
-	 
-	.accordion li:target > .sub-menu {
-	    height: 100%;
-	}
 /* ------------ Head -----------------------------*/
 	.Links{
 		text-align:right;
@@ -175,7 +76,7 @@ expires_header(60*30); // 30 minute expiry
 	.Logout{
 		text-align: right;
 		padding-right: 10px;
-		padding-bottom: 10px;
+		padding-bottom: 0px;
 	}
 	.Top{
 		border-style: solid;
@@ -185,6 +86,11 @@ expires_header(60*30); // 30 minute expiry
 	.Search{
 	padding-left: 30px;
 	}
+	
+	#logo {
+	    margin-left: 20px;
+	}
+	
 /* ------------ calendar and nav -----------------------------*/
 	.Calendar{
 		width:75%;

@@ -5,6 +5,7 @@ function print_theme_footer()
 {
 ?>
   <div class="Footer"></div>
+  <script>$('.m-bellows').bellows()</script>
   </body>
 </html>
 <?php
