@@ -190,7 +190,6 @@ function print_simple_header()
   $done_header = TRUE; 
 }
 
-
 // Print the page header
 function print_header($day, $month, $year, $area, $room)
 {
@@ -1394,9 +1393,10 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
   	    foreach ($offices_id as $key => $value)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$value[0]."\">";
-          $out_html .= "<span onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
+          $out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= "id=".$value[0] .">";
-          $out_html .= htmlspecialchars($key) . "</span></a></li>\n";
+          $out_html .= htmlspecialchars($key) . "</span>";
+          $out_html .= "</a></li>\n";
           
           
         }
@@ -1406,9 +1406,10 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
         for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\">";
-          $out_html .= "<span onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
+          $out_html .= "<span";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= "id=".$row['id'] .">";
-          $out_html .= htmlspecialchars($row['room_name']) . "</span></a></li>\n";
+          $out_html .= htmlspecialchars($row['room_name']) . "</span>";
+          $out_html .= "</a></li>\n";
         }
   	  }
       $out_html .= "</ul>\n";
