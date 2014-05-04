@@ -270,7 +270,7 @@ if (isset($action) && ($action == "export"))
 // ------------------------
 
 print_header($day, $month, $year, $area, isset($room) ? $room : "");
-
+echo make_menu_html('week.php', $area, $year, $month, $day);
 
 // Need to tell all the links where to go back to after an edit or delete
 if (!isset($returl))

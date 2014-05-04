@@ -22,7 +22,7 @@ if ($ajax)
   exit;
 }
 
-// print the page header
+// print the page header and menu
 print_header($day, $month, $year, $area, isset($room) ? $room : "");
 
 echo make_menu_html('week.php', $area, $year, $month, $day);

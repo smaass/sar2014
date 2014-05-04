@@ -1227,7 +1227,11 @@ if (!getWritable($create_by, $user, $room_id))
 }
 
 if(! $ajax) {
+  //header
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
+  // Show all available areas
+  echo make_menu_html('week.php', $area, $year, $month, $day);
+  
 } 
 
 // Get the details of all the enabled rooms
@@ -1390,6 +1394,13 @@ else
     $token = "addentry";
   }
 }
+?>
+<?php
+
+if(!$ajax){
+echo "<div class=\"Cell Right\">" ;
+}
+
 ?>
 
 
@@ -1680,8 +1691,10 @@ foreach ($edit_entry_field_order as $key)
 </form>
 
 <?php 
-if (! $ajax) 
+if (! $ajax){ 
+  echo "</div>";	
   output_trailer();
+	}
 else {
 ?>
 <script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>

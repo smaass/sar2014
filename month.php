@@ -33,6 +33,7 @@ print_header($day, $month, $year, $area, isset($room) ? $room : "");
 
 
 
+
 // Note $room will be 0 if there are no rooms; this is checked for below.
 
 // Month view start time. This ignores morningstarts/eveningends because it

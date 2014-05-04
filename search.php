@@ -147,10 +147,12 @@ if (!isset($search_str))
 if (!$ajax)
 {
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
-
+  echo make_menu_html('week.php', $area, $year, $month, $day);
+  echo "<div class=\"Cell Right\">";
   if (!empty($advanced))
   {
     ?>
+    
     <form class="form_general" id="search_form" method="get" action="search.php">
       <fieldset>
       <legend><?php echo get_vocab("advanced_search") ?></legend>
@@ -168,8 +170,9 @@ if (!$ajax)
           <input class="submit" type="submit" value="<?php echo get_vocab("search_button") ?>">
         </div>
       </fieldset>
-    </form>
+    </form>    
     <?php
+    echo "</div>";
     output_trailer();
     exit;
   }
