@@ -29,19 +29,7 @@ $timestamp = mktime(12, 0, 0, $month, $day, $year);
 // print the page header
 print_header($day, $month, $year, $area, isset($room) ? $room : "");
 
-echo "<div id=\"dwm_header\" class=\"screenonly\">\n";
-
-// Show all available areas
-echo make_area_select_html('day.php', $area, $year, $month, $day);
-
-// Draw the three month calendars
-if (!$display_calendar_bottom)
-{
-  minicals($year, $month, $day, $area, $room, 'day');
-}
-
-echo "</div>\n";
-
+echo make_menu_html('week.php', $area, $year, $month, $day);
 
 //y? are year, month and day of yesterday
 //t? are year, month and day of tomorrow
@@ -70,9 +58,9 @@ $ty = date("Y",$i);
 $tm = date("m",$i);
 $td = date("d",$i);
 
-
-
 // Show current date and timezone
+echo "<div class=\"Cell Right\">";
+echo "<div class=\"Calendar\">";
 echo "<div id=\"dwm\">\n";
 echo "<h2>" . utf8_strftime($strftime_format['date'], $timestamp) . "</h2>\n";
 if ($display_timezone)
@@ -82,41 +70,19 @@ if ($display_timezone)
   echo "</div>\n";
 }
 echo "</div>\n";
-  
-// Generate Go to day before and after links
-$before_after_links_html = "
-<div class=\"screenonly\">
-  <div class=\"date_nav\">
-    <div class=\"date_before\">
-      <a href=\"day.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area$room_param\">&lt;&lt;&nbsp;". get_vocab("daybefore") ."
-      </a>
-    </div>
-    <div class=\"date_now\">
-      <a href=\"day.php?area=$area$room_param\">" . get_vocab("gototoday") . "</a>
-    </div>
-    <div class=\"date_after\">
-      <a href=\"day.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area$room_param\">". get_vocab("dayafter") . "&nbsp;&gt;&gt;
-      </a>
-    </div>
-  </div>
-</div>\n";
 
-// and output them
-echo $before_after_links_html;
 
 echo "<table class=\"dwm_main\" id=\"day_main\" data-resolution=\"$resolution\">\n";
 echo $inner_html;
 echo "</table>\n";
-  
-echo $before_after_links_html;
 
-//show_colour_key();
-// Draw the three month calendars
-if ($display_calendar_bottom)
-{
-  minicals($year, $month, $day, $area, $room, 'day');
-}
+// End day-calendar
+echo '</div>';
 
+make_navbar_html($day, $month, $year, $area, $room, 'day');
+
+// End Right Cell
+echo '</div>';
 
 output_trailer();
 

@@ -118,8 +118,9 @@ expires_header(60*30); // 30 minute expiry
 		font-weight: bold;
 	}
 	.NavSubtitle{		
-		padding-left: 20px;	
-		padding-bottom: 5px;	
+		padding-left: 20px;
+		padding-top: 20px;
+		padding-bottom: 10px;
 		color: black;
 		font-size: medium;
 		font-weight: bold;
@@ -149,12 +150,11 @@ expires_header(60*30); // 30 minute expiry
 		text-decoration :none;
 	}
 	.NavCalendar{
-		padding-top:15px;
+		padding-top:25px;
 		text-align:center;
 	}
 	.Now{
 		text-align:center;
-		padding-bottom: 10px;
 	}
 /* ------------ Footer -----------------------------*/
 .Footer{
@@ -909,7 +909,9 @@ form#add_new_user {margin-left: 1em}
 
 
 /* ------------ FUNCTIONS.INC -------------------*/
-#logon_box a {display: block; width: 100%; padding-top: 0.3em; padding-bottom: 0.3em}
+#logon_box {display: block; width: 250px; float: right;}
+#logon_box a {width: 65%; margin-right: 5%; margin-top: 5px; float: left; text-align: right;}
+#logon_box form {width: 30%; float: right;}
 table#banner {width: 100%; border-spacing: 0; border-collapse: collapse;
     border-color: <?php echo $banner_border_color ?>;
     border-width: <?php echo $banner_border_width ?>px;

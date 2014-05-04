@@ -178,21 +178,18 @@ function print_theme_header($day, $month, $year, $area, $room)
             ?>
           </div>
         </form>
-        <div class="Logout">
-        <a>LOGOUT</a>
-        </div>
+        <?php
+          // For session protocols that define their own logon box...
+          if (function_exists('PrintLogonBox')) {
+            echo "<div id=\"logon_box\">\n";
+            PrintLogonBox(); 
+            echo "</div>\n";
+          }
+          else {
+            echo "<div class=\"Logout\"><a>LOGOUT</a></div>";
+          }
+        ?>
       </div>
-      <?php
-      // For session protocols that define their own logon box...
-      if (function_exists('PrintLogonBox'))
-      {
-        echo "<div>\n";
-        echo "<div id=\"logon_box\">\n";
-        PrintLogonBox(); 
-        echo "</div>\n";
-        echo "</div>\n";
-      }
-      ?>
     </div>
 <div id="contents" class="Row">
 <?php

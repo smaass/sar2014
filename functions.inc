@@ -1458,7 +1458,7 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
     // Show Go to month before and after links
     //y? are year and month and day of the previous month.
     //t? are year and month and day of the next month.
-    //c? are year and month of this month.   But $cd is the day that was passed to us.
+    //c? are current year, month and day.
 
     $i= mktime(12,0,0,$month-1,1,$year);
     $yy = date("Y",$i);
@@ -1480,7 +1480,7 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
 
     $cy = date("Y");
     $cm = date("m");
-    $cd = $day;    // preserve the day information
+    $cd = date("d");
     while (!checkdate($cm, $cd, $cy) && ($cd > 1))
     {
       $cd--;
@@ -1491,11 +1491,14 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
     echo "<div class=\"NavTitle\"> Calendario </div>";
     echo "<div class=\"Now\">
           <a href=\"".$type.".php?year=$cy&amp;month=$cm&amp;day=$cd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-              "."Actual"."
+              "."Fecha actual"."
             </a>
         </div>";
-    if ($type == 'week') {
-        echo make_weeknav_html($day, $month, $year, $area, $room);
+    if ($type == 'day') {
+        echo make_daynav_html($day, $month, $year, $area, $room);
+    }
+    if ($type == 'week' || $type == 'day') {
+        echo make_weeknav_html($day, $month, $year, $area, $room, $type);
     }    
     echo "<div class=\"NavSubtitle\"> Mes </div>";
     $before_after_links_month_html = "
@@ -1603,7 +1606,7 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
     echo "</div class=\"Clear\"></div>";
 }
 
-function make_weeknav_html($day, $month, $year, $area, $room) {
+function make_weeknav_html($day, $month, $year, $area, $room, $type) {
     //y? are year, month and day of the previous week.
     //t? are year, month and day of the next week.
 
@@ -1620,11 +1623,41 @@ function make_weeknav_html($day, $month, $year, $area, $room) {
     $output = "<div class=\"NavSubtitle\"> Semana </div>
 	    <div class=\"NavLorP\">  
         <span class=\"NavLess\">
-          <a href=\"week.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;room=$room\">
+          <a href=\"".$type.".php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;room=$room\">
               "."-"."</a>
         </span>    
         <span class=\"NavPlus\">
-           <a href=\"week.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;room=$room\">
+           <a href=\"".$type.".php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;room=$room\">
+              "."+"."</a>
+        </span>
+      </div>
+      
+    ";
+    return $output;
+}
+
+function make_daynav_html($day, $month, $year, $area, $room) {
+    //y? are year, month and day of the next day.
+    //t? are year, month and day of the next day.
+
+    $i= mktime(12,0,0,$month,$day-1,$year);
+    $yy = date("Y",$i);
+    $ym = date("m",$i);
+    $yd = date("d",$i);
+
+    $i= mktime(12,0,0,$month,$day+1,$year);
+    $ty = date("Y",$i);
+    $tm = date("m",$i);
+    $td = date("d",$i);
+
+    $output = "<div class=\"NavSubtitle\"> Día </div>
+	    <div class=\"NavLorP\">  
+        <span class=\"NavLess\">
+          <a href=\"day.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;room=$room\">
+              "."-"."</a>
+        </span>    
+        <span class=\"NavPlus\">
+           <a href=\"day.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;room=$room\">
               "."+"."</a>
         </span>
       </div>
