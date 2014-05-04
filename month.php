@@ -94,7 +94,7 @@ if ($room_invalid && $area == $area_of_trabajo)
 
 elseif ($area == $area_of_trabajo)
 {
-  $grouped_view = true;
+  //$grouped_view = false;
 }
 
 if (isset($general_view))
@@ -360,7 +360,7 @@ else
         {
           echo "<br>DEBUG: result $i, id ".$row['id'].", starts ".$row['start_time'].", ends ".$row['end_time']."\n";
         }
-  
+  		
         if ($debug_flag)
         {
           echo "<br>DEBUG: Entry ".$row['id']." day $day_num\n";

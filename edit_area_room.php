@@ -358,6 +358,9 @@ if ($phase == 2)
                             case 'custom_html':
                                 $assign_array[] = "custom_html='" . sql_escape($custom_html) . "'";
                                 break;
+                            case 'capacity_for_multientry':
+                                $assign_array[] = "capacity_for_multientry='" . sql_escape($slots) . "'";
+                                break;
                             // then look at any user defined fields
                             default:
                                 break;
@@ -371,12 +374,11 @@ if ($phase == 2)
                     trigger_error(sql_error(), E_USER_WARNING);
                     fatal_error(FALSE, get_vocab("fatal_db_error"));
                 }
-
                 // custom fields
-                $sql = "UPDATE ";
+                $sql = "";
                 $assign_array = array();
                 if($old_area == 3) {
-                    $sql .= "sala_publica SET ";
+                    $sql .= "UPDATE sala_publica SET ";
                     $fields = sql_field_info("sala_publica");
                     foreach ($fields as $field)
                     {
@@ -393,7 +395,7 @@ if ($phase == 2)
                     }
                 }
                 else if($old_area == 4) {
-                    $sql .= "recurso_computacional SET ";
+                    $sql .= "UPDATE recurso_computacional SET ";
                     $fields = sql_field_info("recurso_computacional");
                     foreach ($fields as $field)
                     {
@@ -413,30 +415,33 @@ if ($phase == 2)
                     }
                 }
                 else if($old_area == 5) {
-                    $sql .= "oficina_de_trabajo SET ";
-                    $fields = sql_field_info("oficina_de_trabajo");
-                    foreach ($fields as $field)
-                    {
-                        if ($field['name'] != 'id')  // don't do anything with the id field
-                        {
-                            switch ($field['name'])
-                            {
-                                // first of all deal with the standard MRBS fields
-                                case 'cupo_numero':
-                                    $assign_array[] = "cupo_numero=$slots";
-                                    break;
-                            }
-                        }
-                    }
+                	//Implementación grupo anterior
+//                     $sql .= "oficina_de_trabajo SET ";
+//                     $fields = sql_field_info("oficina_de_trabajo");
+//                     foreach ($fields as $field)
+//                     {
+//                         if ($field['name'] != 'id')  // don't do anything with the id field
+//                         {
+//                             switch ($field['name'])
+//                             {
+//                                 // first of all deal with the standard MRBS fields
+//                                 case 'cupo_numero':
+//                                     $assign_array[] = "cupo_numero=$slots";
+//                                     break;
+//                             }
+//                         }
+//                     }
                 }
-
-                $sql .= implode(",", $assign_array) . " WHERE id=$room";
-                if (sql_command($sql) < 0)
-                {
-                    echo get_vocab("update_room_failed: $sql") . "<br>\n";
-                    trigger_error(sql_error(), E_USER_WARNING);
-                    fatal_error(FALSE, get_vocab("fatal_db_error"));
-                }
+				if ($sql != "")
+				{
+	                $sql .= implode(",", $assign_array) . " WHERE id=$room";
+	                if (sql_command($sql) < 0)
+	                {
+	                    echo get_vocab("update_room_failed: $sql") . "<br>\n";
+	                    trigger_error(sql_error(), E_USER_WARNING);
+	                    fatal_error(FALSE, get_vocab("fatal_db_error"));
+	                }
+				}
 
                 // if everything is OK, release the mutex and go back to
                 // the admin page (for the new area)
@@ -783,7 +788,8 @@ if (isset($change_room) && !empty($room))
                     // Slots
                     echo "<div>\n";
                     echo "<label for=\"slots\">" . "Cupos" . ":</label>\n";
-                    echo "<input type=\"text\" id=\"slots\" name=\"slots\" value=\"" . htmlspecialchars($row2["cupo_numero"]) . "\" $disabled>\n";
+                    //echo "<input type=\"text\" id=\"slots\" name=\"slots\" value=\"" . htmlspecialchars($row2["cupo_numero"]) . "\" $disabled>\n";
+                    echo "<input type=\"text\" id=\"slots\" name=\"slots\" value=\"" . htmlspecialchars($row["capacity_for_multientry"]) . "\" $disabled>\n";
                     echo "</div>\n";
                 }
 
