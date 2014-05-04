@@ -100,6 +100,13 @@ expires_header(60*30); // 30 minute expiry
 		border-radius: 8px;
 		padding: 2px;
 	}
+	.MainCell {
+	    width: 94%;
+	    border-style: solid;
+		border-width: 2px;
+		border-radius: 8px;
+		padding: 0px 3%;
+	}
 	.Nav{
 		float:right;
 		border-style: solid;

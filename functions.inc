@@ -1422,7 +1422,21 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
 
 //menu
 
-function make_menu_html($link, $current, $year, $month, $day)
+function make_menu_html($link, $current, $year, $month, $day) {
+    $menu = "<div id=\"dwm_menu\" class=\"Cell Left\">\n";
+    if (authGetUserLevel(getUserName()) >= 2) {
+        $menu .= make_admin_menu();
+    }
+    $menu .= make_normal_menu($link, $current, $year, $month, $day);
+    $menu .= $out_html .= "</div>\n";
+    return $menu;
+}
+
+function make_admin_menu() {
+    return '<a href="admin.php">Holi, soy el menu de administrador :3</a>';
+}
+
+function make_normal_menu($link, $current, $year, $month, $day)
 {
   global $tbl_area, $area_list_format;
   
@@ -1435,8 +1449,7 @@ function make_menu_html($link, $current, $year, $month, $day)
   // Only show the areas if there's more than one of them, otherwise
   // there's no point
   if ($res  && (sql_count($res) > 1))
-  {
-    $out_html .= "<div id=\"dwm_menu\" class=\"Cell Left\">\n";          
+  {        
     $out_html .= "<ul class=\"m-bellows\">\n";
     for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
     {
@@ -1449,8 +1462,7 @@ function make_menu_html($link, $current, $year, $month, $day)
       $out_html .= make_room_select_html ($link, $row['id'], "21", $year, $month, $day);
       $out_html .= "</div></div></li>\n";
     }
-    $out_html .= "</ul>\n";      
-    $out_html .= "</div>\n";
+    $out_html .= "</ul>\n";
   }
   return $out_html;
 }

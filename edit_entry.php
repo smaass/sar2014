@@ -1398,7 +1398,7 @@ else
 <?php
 
 if(!$ajax){
-echo "<div class=\"Cell Right\">" ;
+echo "<div class=\"Cell Right\"><div class=\"MainCell\">" ;
 }
 
 ?>
