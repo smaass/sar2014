@@ -1342,7 +1342,6 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
              AND T.id=$id";
   
   }
-  echo($sql);
   
   $res = sql_query($sql);
   if (! $res)
