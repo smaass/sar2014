@@ -687,7 +687,6 @@ function mrbsCreateEntry($table, $data)
     $sql_col2[] = 'correo';
     $sql_val2[] = "'" . sql_escape($data['correo']) . "'";  	
     //$return_id = sql_insert_id($table, "id");
-    echo "\$table = $table   \$return_id = $return_id";
     $sql2 = "INSERT INTO " . $table . "_opt (entry_id, " . implode(', ',$sql_col2) . ") VALUES (" . $return_id .",". implode(', ',$sql_val2) . ")";
 
     if (sql_command($sql2) < 0)
@@ -1343,7 +1342,7 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
              AND T.id=$id";
   
   }
-  //echo($sql);
+  echo($sql);
   
   $res = sql_query($sql);
   if (! $res)

@@ -637,7 +637,7 @@ if ($ajax && function_exists('json_encode'))
 // Everything was OK.   Go back to where we came from
 if ($result['valid_booking'])
 {
-  //header("Location: $returl");
+  header("Location: $returl");
   exit;
 }
 
