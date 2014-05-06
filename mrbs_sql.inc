@@ -1775,6 +1775,22 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, $
     }
     $new_details[] = array('id' => $new_id, 'room_id' => $booking['room_id']);
     $booking['id'] = $new_id;  // Add in the id now we know it
+
+    // We need to create a new notification in the DB
+    if (!empty($new_id)){
+      $sql = "INSERT INTO $tbl_notifications_registry
+              SET sent = 1
+              WHERE {$tbl_notifications_registry}.id IN (0";
+      foreach ($notifications as $notification) {
+        $sql .= ", ".$notification['id'];
+      }
+      $sql .= ");";
+
+      $result = sql_query($sql); 
+      if(!$result){
+        echo("Hubo un problema al insertar las notificaciones");
+      }
+    }
     
     // Send an email if neccessary, provided that the entry creation was successful
     if ($send_mail && !empty($new_id))
