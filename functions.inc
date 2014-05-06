@@ -2,6 +2,18 @@
 
 // $Id: functions.inc 2341 2012-07-19 08:13:23Z cimorrison $
 
+// Retorna la cantidad máxima de reservas que se pueden hacer a un recurso
+// simultáneamente.
+function get_multientry_capacity($room) {
+	global $tbl_room;
+	$cap_for_multientry = sql_query1("SELECT capacity_for_multientry FROM $tbl_room WHERE id=$room LIMIT 1");
+	if($cap_for_multientry <= 0) {
+		return 1;
+	} else {
+		return $cap_for_multientry;
+	}
+}
+
 // Recibe un valor y retorna el class asociado al color correspondiente.
 function get_semaphore_class($i)
 {
@@ -1941,5 +1953,6 @@ function is_cli()
   {
     return FALSE;
   }
+  
 }
 ?>

@@ -95,7 +95,7 @@ if ($room_invalid && $area == $area_of_trabajo)
 
 elseif ($area == $area_of_trabajo)
 {
-  $grouped_view = true;
+  //$grouped_view = false;
 }
 
 if (isset($general_view))

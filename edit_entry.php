@@ -1502,7 +1502,8 @@ foreach ($edit_entry_field_order as $key)
         <label><?php echo get_vocab("rep_type")?>:</label>
         <div class="group">
           <?php
-          for ($i = 0; isset($vocab["rep_type_$i"]); $i++)
+          //for ($i = 0; isset($vocab["rep_type_$i"]); $i++)
+          for ($i = 0; $i<3; $i++)
           {
             echo "      <label><input class=\"radio\" name=\"rep_type\" type=\"radio\" value=\"" . $i . "\"";
             if ($i == $rep_type)
@@ -1515,14 +1516,14 @@ foreach ($edit_entry_field_order as $key)
         </div>
       </div>
 
-      <div id="rep_end_date">
+      <div id="rep_end_date" class="rep_type_details">
         <?php
         echo "<label>" . get_vocab("rep_end_date") . ":</label>\n";
         genDateSelector("rep_end_", $rep_end_day, $rep_end_month, $rep_end_year);
         ?>
       </div>
 
-      <div id="rep_day">
+      <div id="rep_day" class="rep_type_details">
         <label><?php echo get_vocab("rep_rep_day")?>:<br><?php echo get_vocab("rep_for_weekly")?></label>
         <div class="group">
           <?php
@@ -1542,7 +1543,7 @@ foreach ($edit_entry_field_order as $key)
       </div>
 
       <?php
-      echo "<div>\n";
+      echo "<div id=\"rep_nweeks\" class=\"rep_type_details\">\n";
       $label_text = get_vocab("rep_num_weeks") . ":<br>" . get_vocab("rep_for_nweekly");
       $attributes = 'type="number" min="' . REP_NUM_WEEKS_MIN . '" step="1"';
       generate_input($label_text, 'rep_num_weeks', $rep_num_weeks, FALSE, NULL, $attributes);

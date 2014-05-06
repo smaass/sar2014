@@ -240,6 +240,8 @@ if ($is_admin || ($n_displayable_areas > 0))
           {
             switch ($field['name'])
             {
+              case 'capacity_for_multientry':
+              	break;
               // the standard MRBS fields
               case 'description':
               case 'capacity':

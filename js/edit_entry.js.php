@@ -15,7 +15,25 @@ if ($use_strict)
 $user = getUserName();
 $is_admin = (authGetUserLevel($user) >= $max_level);
 
-
+?>
+var changeRepTypeDetails = function changeRepTypeDetails() {
+	var repType = parseInt($('input[name="rep_type"]:checked').val(), 10);
+	$('.rep_type_details').hide();
+	if(repType != 0) {
+		$('#rep_end_date').show();
+	}
+	switch (repType)
+	{
+		case 6:
+			$('#rep_nweeks').show();
+		case 2:
+			$('#rep_day').show();
+			break;
+		default:
+			break;
+	}
+};
+<?php
 // Set the error messages to be used for the various fields.     We do this twice:
 // once to redefine the HTML5 error message and once for JavaScript alerts, for those
 // browsers not supporting HTML5 field validation.
@@ -874,6 +892,8 @@ init = function() {
   //  a booking parameter is changed MRBS checks to see whether there would
   //  be any conflicts
   ?>
+  $('input[name="rep_type"]').change(changeRepTypeDetails);
+  changeRepTypeDetails();
   var form = document.getElementById('main');
   if (form)
   {

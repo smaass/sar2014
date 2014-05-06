@@ -29,7 +29,7 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
   get_area_settings(get_area($room_id));
 
   // Select any meetings which overlap for this room:
-  $sql = "SELECT id, name, start_time, create_by, status
+  $sql = "SELECT id, name, start_time, end_time, create_by, status
             FROM $tbl_entry
            WHERE start_time < ${booking['end_time']}
              AND end_time > ${booking['start_time']}
@@ -59,15 +59,88 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
   }
   // Get the room's area ID for linking to day, week, and month views:
   $area = mrbsGetRoomArea($room_id);
-
-  // Build an listing all the conflicts:
-  $err = array();
+  
+  // Get multientry info to know how many entries can be booked at the same time.
+  $multientry_cap = get_multientry_capacity($room_id);
+  
+  $rows = array();
   for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
+  {
+  	$rows[] = $row;
+  }
+  
+  
+  
+  // Check for conflicts.
+  // Gonzalo Infante:
+  // Manera rudimentaria para chequear conflictos: Agregamos a una
+  // lista todos los límites de los intervalos de los bookings encontrados. Los
+  // ordenamos para luego unirlos de a pares consecutivos. Luego, para cada booking
+  // vemos todos los intervalos a los que pertenece y sumamos 1 a cada intervalo
+  // encontrado. Esto dará cuenta de si hay un intervalo de tiempo en que el recurso
+  // se encuentra en su máxima capacidad, en cuyo caso no es posible hacer la reserva.
+  $conflict_block_timestamps = array();
+  foreach ($rows as $row)
+  {
+  	$conflict_block_timestamps[] = $row['start_time'];
+  	$conflict_block_timestamps[] = $row['end_time'];
+  }
+  
+  $conflict_block_timestamps = array_unique($conflict_block_timestamps);
+  sort($conflict_block_timestamps);
+  
+  $conflict_blocks = array();
+  for ( $i = 0 ; $i < count($conflict_block_timestamps)-1; $i++)
+  {
+  	$interval = array($conflict_block_timestamps[$i],$conflict_block_timestamps[$i+1]);
+  	$conflict_blocks[] = array("interval"=>$interval, "bookings"=>array());
+  }
+  
+  $conflicting_bookings = array();
+  
+  foreach ($rows as $row)
+  {
+	  $inside = false;
+	  foreach($conflict_blocks as &$conflict_block)
+	  {
+	  	if($conflict_block["interval"][0] == $row['start_time'])
+	  	{
+	  		$inside = true;
+	  	}
+	  	if($inside)
+	  	{
+	  		$conflict_block["bookings"][] = $row;
+	  		
+	  		if(count($conflict_block["bookings"]) >= $multientry_cap)
+	  		{
+	  			$conflicting_bookings = array_merge($conflicting_bookings,
+	  					$conflict_block["bookings"]);
+	  		}
+	  	}
+	  	if($conflict_block["interval"][1] == $row['end_time'])
+	  	{
+	  		break;
+	  	}
+	  }
+  }
+  
+  $tmp  = array();
+  // Like array_unique, but allows for object comparison.
+  foreach ($conflicting_bookings as $current) {
+  	if ( ! in_array($current, $tmp)) {
+  		$tmp[] = $current;
+  	}
+  }
+  $conflicting_bookings = $tmp;
+  
+  $err = array();
+  // Build an listing all the conflicts:
+  foreach ($conflicting_bookings as $row)
   {
     $starts = getdate($row['start_time']);
     $param_ym = "area=$area&amp;year=$starts[year]&amp;month=".$starts['mon'];
     $param_ymd = $param_ym . "&amp;day=" . $starts['mday'];
-
+  
     if ($enable_periods)
     {
       $p_num =$starts['minutes'];
@@ -79,7 +152,6 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
       $startstr = utf8_strftime(($twentyfourhour_format) ? $strftime_format['datetime24'] : $strftime_format['datetime12'],
                                 $row['start_time']);
     }
-
     if (is_private_event($row['status'] & STATUS_PRIVATE) && $is_private_field['entry.name'] &&
          !getWritable($row['create_by'], $user, $room_id))
     {
@@ -92,8 +164,8 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
       . "<span>(<a href=\"day.php?$param_ymd\">".get_vocab("viewday")."</a>"
       . " | <a href=\"week.php?room=$room_id&amp;$param_ymd\">".get_vocab("viewweek")."</a>"
       . " | <a href=\"month.php?room=$room_id&amp;$param_ym\">".get_vocab("viewmonth")."</a>)</span>";
+  		
   }
-
   return $err;
 }
 
@@ -491,7 +563,7 @@ function mrbsCreateEntry($table, $data)
 {
   global $standard_fields, $db_tbl_prefix, $area_of_trabajo, $area_salas;
   
-  error_log("INSERTING INTO" . json_encode($table) . "\n\n", 3, "/u/a/cursos/cc5401g4/error_log");  
+  //error_log("INSERTING INTO" . json_encode($table) . "\n\n", 3, "/u/a/cursos/cc5401g4/error_log");  
 
   $sql_col = array();
   $sql_val = array();
@@ -595,19 +667,18 @@ function mrbsCreateEntry($table, $data)
   // Note that we don't have to escape or quote the fieldname
   // thanks to the restriction on custom field names
   $sql = "INSERT INTO $table (" . implode(', ',$sql_col) . ") VALUES (" . implode(', ',$sql_val) . ")";
-
   if (sql_command($sql) < 0)
   {
     // probably because the table hasn't been created properly
     trigger_error(sql_error(), E_USER_WARNING);
     fatal_error(TRUE, get_vocab("fatal_db_error"));
   }
+  $return_id = sql_insert_id($table, "id");
   
   $res = sql_query("SELECT area_id FROM mrbs_room WHERE id = " . $data['room_id']);
   
   $row = sql_row_keyed($res, 0);
   sql_free($res);
-  $return_id = 0;
   if ($row['area_id'] == $area_of_trabajo){
     $sql_col2[] = 'universidad';
     $sql_val2[] = "'" . sql_escape($data['universidad']) . "'";  	
@@ -615,7 +686,7 @@ function mrbsCreateEntry($table, $data)
     $sql_val2[] = "'" . sql_escape($data['pais']) . "'";  	
     $sql_col2[] = 'correo';
     $sql_val2[] = "'" . sql_escape($data['correo']) . "'";  	
-    $return_id = sql_insert_id($table, "id");
+    //$return_id = sql_insert_id($table, "id");
     $sql2 = "INSERT INTO " . $table . "_opt (entry_id, " . implode(', ',$sql_col2) . ") VALUES (" . $return_id .",". implode(', ',$sql_val2) . ")";
 
     if (sql_command($sql2) < 0)
@@ -643,7 +714,7 @@ function mrbsCreateEntry($table, $data)
   	}
 	$sql_col2[] = 'tipo_evento';
 	$sql_val2[] = "'" . sql_escape($data['tipo_evento']) . "'";  	
-    $return_id = sql_insert_id($table, "id");
+    //$return_id = sql_insert_id($table, "id");
     $sql2 = "INSERT INTO " . $table . "_salas (entry_id, " . implode(', ',$sql_col2) . ") VALUES (" . $return_id .",". implode(', ',$sql_val2) . ")";
 
     if (sql_command($sql2) < 0)
@@ -1271,7 +1342,6 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
              AND T.id=$id";
   
   }
-  //echo($sql);
   
   $res = sql_query($sql);
   if (! $res)
