@@ -650,12 +650,13 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
           }
           else
           {
-
           	$booking_link = "view_entry.php?id=" . $d[$cday]["id"][$i] . "&amp;area=$area&amp;day=$cday&amp;month=$month&amp;year=$year";           
-
-
           }
-          $slot_text = $d[$cday]["data"][$i];
+          $slot_text = "";
+          if ($area != $area_of_trabajo)
+          {
+          	$slot_text = $d[$cday]["data"][$i];
+          }
           $description_text = utf8_substr($d[$cday]["shortdescrip"][$i], 0, 255);
           $full_text = isset($grouped_view) ? $description_text : ($slot_text . " " . $description_text);
           switch ($monthly_view_entries_details)
