@@ -35,6 +35,8 @@ if ($type == "room")
   else
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
+    echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo '<div class="MainCell">';
    
     // We tell them how bad what they're about to do is
     // Find out how many appointments would be deleted
@@ -70,7 +72,7 @@ if ($type == "room")
     echo "<a href=\"del.php?type=room&amp;area=$area&amp;room=$room&amp;confirm=Y\"><span id=\"del_yes\">" . get_vocab("YES") . "!</span></a>\n";
     echo "<a href=\"admin.php\"><span id=\"del_no\">" . get_vocab("NO") . "!</span></a>\n";
     echo "</div>\n";
-    echo "</div>\n";
+    echo "</div>\n</div>";
     output_trailer();
   }
 }
@@ -92,10 +94,12 @@ if ($type == "area")
   {
     // There are rooms left in the area
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
+    echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo '<div class="MainCell">';
     echo "<p>\n";
     echo get_vocab("delarea");
     echo "<a href=\"admin.php\">" . get_vocab("backadmin") . "</a>";
-    echo "</p>\n";
+    echo "</p>\n</div>";
     output_trailer();
   }
 }
