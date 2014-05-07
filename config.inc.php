@@ -60,7 +60,8 @@ $db_tbl_prefix = "mrbs_";
    or areadefaults.inc.php.  */
 //$mrbs_company = "DCC";
 //$mrbs_company_more_info = "SAR";
-$mrbs_company_logo = "images/logo.png";
+$mrbs_company_logo = "images/SAR.png";
+$calendar_views_refresh_milliseconds = 60000; // 1 minuto
 $weekstarts = 1;
 $year_range['back'] = 1;
 $year_range['ahead'] = 2;

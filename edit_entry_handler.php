@@ -367,6 +367,7 @@ if (!$ajax)
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
     echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo '<div class="MainCell">';
   ?>
          <h1><?php echo get_vocab('invalid_booking'); ?></h1>
          <p>
@@ -382,6 +383,7 @@ if (!$ajax)
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
     echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo '<div class="MainCell">';
   ?>
          <h1><?php echo get_vocab('invalid_booking'); ?></h1>
          <p>
@@ -401,6 +403,7 @@ if (!$ajax)
       {
         print_header($day, $month, $year, $area, isset($room) ? $room : "");        
         echo make_menu_html('week.php', $area, $year, $month, $day);
+        echo '<div class="MainCell">';
         ?>
         <h1><?php echo get_vocab('invalid_booking'); ?></h1>
         <p>
@@ -648,7 +651,7 @@ else
 {
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
   echo make_menu_html('week.php', $area, $year, $month, $day);
-  echo "<div class=\"Cell Right\">";
+  echo '<div class="MainCell">';
   echo "<h2>" . get_vocab("sched_conflict") . "</h2>\n";
   if (!empty($result['rules_broken']))
   {
