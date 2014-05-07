@@ -689,7 +689,7 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
                                                        <?php
                                                        if (!empty($form_id))
                                                        {
-                                                         echo ", onClose: function(dateText, inst) {datepicker_close(dateText, inst, '$form_id');}";
+                                                         echo ", onSelect: function(dateText, inst) {datepicker_close(dateText, inst, '$form_id');}";
                                                        }
                                                        if ($disabled)
                                                        {
@@ -706,7 +706,7 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_day'" ?>).value = <?php echo $day ?>;
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_month'" ?>).value = <?php echo $month ?>;
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_year'" ?>).value = <?php echo $year ?>;
-    $(".ui-datepicker").draggable();
+    //$(".ui-datepicker").draggable();
   });
  
   

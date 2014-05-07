@@ -333,6 +333,9 @@ elseif (isset($grouped_view))
 }
 else
 {
+  if($area == $area_of_trabajo) {
+	$max_capacity = get_multientry_capacity($room);
+  }
   for ($day_num = 1; $day_num<=$days_in_month; $day_num++)
   {
     $sql = "SELECT start_time, end_time, id, name, type,
@@ -463,6 +466,7 @@ else
           }
         }
       }
+      $d[$day_num]["available_capacity"] = $max_capacity - count($d[$day_num]['id']);
     }
   }
 }
@@ -521,6 +525,8 @@ for ($weekcol = 0; $weekcol < $weekday_start; $weekcol++)
     echo "<td class=\"invalid\"><div class=\"cell_container\">&nbsp;</div></td>\n";
   }
 }
+
+//var_dump($d);
 
 // Draw the days of the month:
 for ($cday = 1; $cday <= $days_in_month; $cday++)
@@ -583,17 +589,26 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
     if (isset($general_view) || isset($grouped_view))
       echo "<a class=\"new_booking\">\n";
     else
-      echo "<a class=\"new_booking\" href=\"edit_entry.php?$query_string\">\n";
+    {
+      if($d[$cday]["available_capacity"] > 0)
+      {
+      	echo "<a class=\"new_booking\" href=\"edit_entry.php?$query_string\">\n";
+      }
+      else
+      {
+      	echo "<a class=\"new_booking\">\n";
+      }
+    }
     if ($show_plus_link)
     {
       echo "<img src=\"images/new.gif\" alt=\"New\" width=\"10\" height=\"10\">\n";
     }
     echo "</a>\n";
     
+    echo "<div class=\"booking_list\">\n";
     // then any bookings for the day
     if (isset($d[$cday]["id"][0]))
     {
-      echo "<div class=\"booking_list\">\n";
       $n = count($d[$cday]["id"]);
       // Show the start/stop times, 1 or 2 per line, linked to view_entry.
       for ($i = 0; $i < $n; $i++)
@@ -694,8 +709,15 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
         }
         echo "</div>\n";
       }
-      echo "</div>\n";
     }
+    for($i=0;$i<$d[$cday]["available_capacity"];$i++)
+    {
+    echo "<div class=\"" . "A" . "\"" .
+    " style=\"width: " . (($monthly_view_entries_details == "both") ? '100%' : '49.9%') . "\">\n";
+    //echo "<i>{$d[$cday][available_capacity]} cupos libres<i>";
+    echo "<a href=\"edit_entry.php?$query_string\"></a></div>";
+    }
+    echo "</div>\n";
     echo "</div>\n";
     echo "</td>\n";
   }
