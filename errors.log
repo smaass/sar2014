@@ -1,0 +1,55 @@
+Guardadasend_mail: 
+new_id: 1
+send_mail: 1
+new_id: 1
+enviar mailenviando mailINSERTING INTO"mrbs_entry"
+
+send_mail: 1
+new_id: 1
+enviar mailenviando mailINSERTING INTO"mrbs_entry"
+
+send_mail: 1
+new_id: 1
+enviar mailenviando mailEntramos a admin bookingINSERTING INTO"mrbs_entry"
+
+Bookings
+Bookings
+Bookings
+Bookings
+INSERTING INTO"mrbs_entry"
+
+BookingsArray
+(
+    [create_by] => admin
+    [name] => ño
+    [type] => I
+    [description] => i0oi
+    [room_id] => 29
+    [start_time] => 1399557600
+    [end_time] => 1399559400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5369a0e81c37c-fa3fda24@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => 009
+    [curso] => 0
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 143
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+BookingsArray
+(
+)
+
+Bookings1
+Bookings

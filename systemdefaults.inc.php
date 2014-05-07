@@ -811,7 +811,7 @@ $allow_cli = FALSE;
 // Set to TRUE or FALSE as required
 // (Note:  the email addresses for the room and area administrators are set from the
 // edit_area_room.php page in MRBS)
-$mail_settings['admin_on_bookings']      = FALSE;  // the addresses defined by $mail_settings['recipients'] below
+$mail_settings['admin_on_bookings']      = TRUE;  // the addresses defined by $mail_settings['recipients'] below
 $mail_settings['area_admin_on_bookings'] = FALSE;  // the area administrator
 $mail_settings['room_admin_on_bookings'] = FALSE;  // the room administrator
 $mail_settings['booker']                 = FALSE;  // the person making the booking
