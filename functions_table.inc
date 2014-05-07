@@ -1448,8 +1448,9 @@ function table_popup_innerhtml()
         popupContent.innerHTML = this.responseText;
         var scripts = popupContent.getElementsByTagName('script');
         // Tecnica para evaluar globalmente :)
+        setSelectListener();
         forEach.call(scripts, function(s) { eval.call(this, s.innerText); }); 
-		setSelectListener();
+		
       }
     };
     xhr.open('GET', url, true);
