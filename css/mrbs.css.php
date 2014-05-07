@@ -132,7 +132,7 @@ expires_header(60*30); // 30 minute expiry
 	.NavSubtitle{		
 		padding-left: 20px;
 		padding-top: 20px;
-		padding-bottom: 10px;
+		padding-bottom: 5px;
 		color: black;
 		font-size: medium;
 		font-weight: bold;
@@ -142,24 +142,29 @@ expires_header(60*30); // 30 minute expiry
 	}
 	.NavLorP{
 		text-align:center;				
-		}
+	}
 	.NavPlus , .NavLess {
+	    background: white;
+	    border-color: black;
 		border-style:solid !important;
-		border-width:3px ;
-		padding-left: 10px;
-		padding-right: 10px;		
+		border-width:3px ;		
 		font-size:x-large !important;
 		text-align:center !imporant;
-		}
+	}
+	.NavPlus:hover, .NavLess:hover {
+	    background: #ddf;
+	}
 	.NavPlus {
+	    margin-left: -2px;
 		border-left-width:1px;
-		}
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 	.NavLess {
+	    margin-right: -2px;
 		border-right-width:1px;
-		}
-	.NavPlus > a, .NavLess > a {}
-	.NavPlus > a:hover , .NavLess > a:hover {
-		text-decoration :none;
+		padding-left: 12px;
+		padding-right: 12px;
 	}
 	.NavCalendar{
 		padding-top:25px;
