@@ -644,6 +644,8 @@ if ($phase == 2)
 // ----------------------------
 
 print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $room : "");
+echo make_menu_html('week.php', $area, $year, $month, $day);
+echo '<div class="MainCell">';
 
 if ($is_admin)
 {
@@ -1228,6 +1230,6 @@ if (isset($change_area) &&!empty($area))
     </form>
 <?php
 }
-
+echo '</div>';
 output_trailer();
 ?>
