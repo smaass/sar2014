@@ -1564,15 +1564,16 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $spec
     return FALSE;
   }
   // If so, insert the room into the database
-  $sql = "INSERT INTO $tbl_room (room_name, sort_key, area_id, description, capacity)
-          VALUES ('$room_name_q', '$room_name_q', $area, '$description_q',$capacity)";
+  $sql = "INSERT INTO $tbl_room (room_name, sort_key, area_id, description, capacity, capacity_for_multientry)
+          VALUES ('$room_name_q', '$room_name_q', $area, '$description_q',$capacity, $slots)";
+  echo $sql;
   if (sql_command($sql) < 0)
   {
     trigger_error(sql_error(), E_USER_WARNING);
     fatal_error(TRUE, get_vocab("fatal_db_error"));
   }
   $room = sql_insert_id($tbl_room, 'id');
-
+  $sql = "";
   if($area == 3) {
       $sql = "INSERT INTO sala_publica (id, capacidad) VALUES ($room, $capacity)";
   }
@@ -1581,10 +1582,11 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $spec
       $photo_q = sql_escape($photo);
       $sql = "INSERT INTO recurso_computacional (id, especificaciones, foto) VALUES ($room, '$specifications_q', '$photo_q')";
   }
-  else if($area == 5) {
-      $sql = "INSERT INTO oficina_de_trabajo (id, cupo_numero) VALUES ($room, $slots)";
-  }
-  if (sql_command($sql) < 0)
+//   else if($area == 5) {
+//       $sql = "INSERT INTO oficina_de_trabajo (id, cupo_numero) VALUES ($room, $slots)";
+//   }
+
+  if ($sql !== "" && sql_command($sql) < 0)
   {
     trigger_error(sql_error(), E_USER_WARNING);
     fatal_error(TRUE, get_vocab("fatal_db_error"));
