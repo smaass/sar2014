@@ -92,8 +92,8 @@ expires_header(60*30); // 30 minute expiry
 	}
 	.Top {
 		border-radius: 8px;
-		box-shadow: 0 0 8px #444;
-		background-color: #8be;
+		box-shadow: 0 0 8px #666;
+		background-color:rgba(136, 187, 238, 0.8);
 	}
 	.Search{
 	    padding-left: 30px;
@@ -118,7 +118,7 @@ expires_header(60*30); // 30 minute expiry
 		box-shadow: 0 0 8px #777;
 		border-radius: 8px;	
 		width:18%;
-		height:100%;					
+		padding-bottom: 15px;			
 		}
 	.NavTitle{
 		text-align:center;
@@ -143,6 +143,7 @@ expires_header(60*30); // 30 minute expiry
 		text-align:center;				
 	}
 	.NavPlus , .NavLess {
+		cursor:pointer;
 	    background: white;
 	    border-color: black;
 		border-style:solid !important;
