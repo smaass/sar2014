@@ -15,6 +15,7 @@ $tbl_users     = $db_tbl_prefix . "users";
 $tbl_variables = $db_tbl_prefix . "variables";
 $tbl_zoneinfo  = $db_tbl_prefix . "zoneinfo";
 
+// New tables
 $tbl_notifications_registry = "notifications_registry";
 $tbl_notifications_info     = "notifications_info";
 

@@ -73,3 +73,631 @@ BookingsArray
 
 Bookings1
 Bookings
+Bookings
+INSERTING INTO"mrbs_entry"
+
+BookingsArray
+(
+    [create_by] => admin
+    [name] => Makes me laugh2
+    [type] => I
+    [description] => pok
+    [room_id] => 29
+    [start_time] => 1403033400
+    [end_time] => 1403035200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a2c3526d29-e948afc1@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Defensa
+    [expositor] => asdf
+    [tipo_charla] => Charla alumno
+    [resumen_expositor] => wefw
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 148
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+BookingsArray
+(
+)
+
+Bookings1
+Bookings
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+BookingsArray
+(
+    [create_by] => admin
+    [name] => JOJOJOJO2
+    [type] => I
+    [description] => kjon
+    [room_id] => 29
+    [start_time] => 1403186400
+    [end_time] => 1403188200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a2dc7d7324-78c9019f@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oin
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 150
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+BookingsArray
+(
+)
+
+Bookings1
+Bookings
+INSERTING INTO"mrbs_entry"
+
+BookingsArray
+(
+    [create_by] => admin
+    [name] => JOJOJOJO3
+    [type] => I
+    [description] => kjon
+    [room_id] => 29
+    [start_time] => 1403188200
+    [end_time] => 1403190000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a2e175f213-c09e3c27@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oin
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 151
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+BookingsArray
+(
+)
+
+Bookings1
+Bookings
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+BookingsArray
+(
+    [create_by] => admin
+    [name] => JOJOJOJO5
+    [type] => I
+    [description] => kjon
+    [room_id] => 29
+    [start_time] => 1403191800
+    [end_time] => 1403193600
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a2f947ad1a-fafb02fd@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oin
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 153
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+BookingsArray
+(
+)
+
+Bookings1
+Bookings
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JOJOJOJO7
+    [type] => I
+    [description] => kjon
+    [room_id] => 29
+    [start_time] => 1403195400
+    [end_time] => 1403197200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a32809a44e-2622569f@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oin
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 155
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+table 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JOJOJOJO8
+    [type] => I
+    [description] => kjon
+    [room_id] => 29
+    [start_time] => 1403197200
+    [end_time] => 1403199000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a32f6d8ba2-4b7a50f0@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oin
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 156
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+table 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JOJOJOJO9
+    [type] => I
+    [description] => kjon
+    [room_id] => 29
+    [start_time] => 1403199000
+    [end_time] => 1403200800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a350a1a224-da921d70@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oin
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 157
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+table 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => HOla2
+    [type] => I
+    [description] => kip
+    [room_id] => 28
+    [start_time] => 1399550400
+    [end_time] => 1399564800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a35331ec90-fa0da228@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => poi
+    [curso] => po
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 4
+    [dur_units] => hours
+    [id] => 158
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+table 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => HOla3
+    [type] => I
+    [description] => kip
+    [room_id] => 28
+    [start_time] => 1399564800
+    [end_time] => 1399566600
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a356501849-4d0bbbc1@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => poi
+    [curso] => po
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 159
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+table notifications_info
+Hubo un problema al insertar las notificaciones You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(text_id, mail_list, notification_datetime, event_id, event_datetime) 
+         ' at line 2
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JAJAJA
+    [type] => I
+    [description] => kjo
+    [room_id] => 28
+    [start_time] => 1399568400
+    [end_time] => 1399572000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a35f5ac1a5-8d80381d@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => ñoi
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 160
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+Hubo un problema al insertar las notificaciones INSERT INTO 
+            (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+          VALUES (1, 'ian.alonyon@gmail.com', 'Array', '160', '1399568400'); + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(text_id, mail_list, notification_datetime, event_id, event_datetime) 
+         ' at line 2
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JOJAJO
+    [type] => I
+    [description] => klj
+    [room_id] => 28
+    [start_time] => 1399573800
+    [end_time] => 1399577400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a364fcd1e9-84f6ac23@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => ñj
+    [curso] => kjn
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 161
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JOJAJO1
+    [type] => I
+    [description] => klj
+    [room_id] => 28
+    [start_time] => 1399577400
+    [end_time] => 1399581000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a36ab5c1f5-ec50bd81@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => ñj
+    [curso] => kjn
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 162
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+Hubo un problema al insertar las notificaciones INSERT INTO 
+            (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+          VALUES (1, 'ian.alonyon@gmail.com', '2014-05-08 15:25:00', '162', '1399577400'); + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(text_id, mail_list, notification_datetime, event_id, event_datetime) 
+         ' at line 2
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JEJEJ
+    [type] => I
+    [description] => oj
+    [room_id] => 28
+    [start_time] => 1399638600
+    [end_time] => 1399651200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a36ecf246b-a6027cbb@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oij
+    [curso] => oi
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 3,5
+    [dur_units] => hours
+    [id] => 163
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+Hubo un problema al insertar las notificaciones INSERT INTO 
+            (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+          VALUES (1, 'ian.alonyon@gmail.com', '2014-05-09 08:25:00', '163', '2014-05-09 08:30:00'); + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(text_id, mail_list, notification_datetime, event_id, event_datetime) 
+         ' at line 2
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JUJU
+    [type] => I
+    [description] => pk
+    [room_id] => 28
+    [start_time] => 1399653000
+    [end_time] => 1399656600
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a376792bce-6c45bdc8@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => plk
+    [curso] => p
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 164
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+Hubo un problema al insertar las notificaciones INSERT INTO 
+            ('text_id', 'mail_list', 'notification_datetime', 'event_id', 'event_datetime') 
+          VALUES (1, 'ian.alonyon@gmail.com', '2014-05-09 12:25:00', '164', '2014-05-09 12:30:00'); + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('text_id', 'mail_list', 'notification_datetime', 'event_id', 'event_datetime') ' at line 2
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JIJI
+    [type] => I
+    [description] => lkn
+    [room_id] => 28
+    [start_time] => 1399656600
+    [end_time] => 1399660200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a3795b0504-c5609b5e@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => lk
+    [curso] => nlk
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 165
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+Hubo un problema al insertar las notificaciones INSERT INTO notifications_registry
+            ('text_id', 'mail_list', 'notification_datetime', 'event_id', 'event_datetime') 
+          VALUES (1, 'ian.alonyon@gmail.com', '2014-05-09 13:25:00', '165', '2014-05-09 13:30:00'); + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''text_id', 'mail_list', 'notification_datetime', 'event_id', 'event_datetime') 
+' at line 2
+
+INSERT INTO notifications_registry(text_id, mail_list, notification_datetime, event_id, event_datetime) VALUES (1, 'ian.alonyon@gmail.com', '2014-05-09 13:25:00', '165', '2014-05-09 13:30:00')
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => JEJI
+    [type] => I
+    [description] => kj
+    [room_id] => 28
+    [start_time] => 1399660200
+    [end_time] => 1399663800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a3976e7943-c2503344@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => lk
+    [curso] => jl
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 166
+    [room_name] => Sala B213
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 

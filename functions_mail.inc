@@ -16,8 +16,12 @@
 //
 // $Id: functions_mail.inc 2351 2012-07-23 14:44:55Z cimorrison $
 
+header('Content-Type: text/html; charset=UTF-8');
+
+require_once "defaultincludes.inc";  
 global $mail_settings;
  
+
 if ($mail_settings['icalendar'])
 {
   require_once "functions_ical.inc";
@@ -852,44 +856,46 @@ function create_addresses($data, $action)
  */
 function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $action="book", $note='')
 {
+  global $tbl_notifications_info;
+  global $tbl_notifications_registry;
+
   // We need to create a new notification in the DB
-  error_log("Bookings".print_r($data, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  error_log("Bookings".print_r($mail_previous, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  error_log("Bookings".print_r($new_entry, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  error_log("Bookings".print_r($series, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("Bookings ".print_r($data, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("Previous ".print_r($mail_previous, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("New Entry ".print_r($new_entry, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("Series ".print_r($series, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
   
-  $sql = "SELECT id, notification_time 
-          FROM $tbl_notifications_info 
+  $sql = "SELECT id, reminder_offset 
+          FROM $tbl_notifications_info
           WHERE type = '{$data['tipo_evento']}'";
 
   $result = sql_query($sql); 
 
   // Check result
   if (!$result) {
-      error_log('Consulta no válida: ' . mysql_error() . "\n",
-                3 , "/opt/lampp/htdocs/sar2014/errors.log");
+      die('Consulta no válida: ' . $sql . ' + '. mysql_error() . "\n");
   }
 
-  $notification_type = mysql_fetch_assoc($result);
+  $notification_info = mysql_fetch_assoc($result);
 
-  $text_id = $notification_type['id'];
-  $reminder_offset = $notification_type['notification_time']->getTimestamp();
-  $diff_time = $data['start_time']->getTimestamp() - $reminder_offset;
+  $text_id = $notification_info['id'];
 
-  $notification_time = getdate($diff_time);
-  $sql = "INSERT INTO $tbl_notifications_registry 
-            (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+  $diff_time = $data['start_time'] - $notification_info['reminder_offset'];
+
+  $notification_time = date('Y-m-d H:i:s', $diff_time);
+  $start_time = date('Y-m-d H:i:s', $data['start_time']);
+  $sql = "INSERT INTO $tbl_notifications_registry
+                      (text_id, mail_list, notification_datetime, event_id, event_datetime) 
           VALUES ({$text_id}";
 
   //TODO: pasar lista de correos
   $sql .= ", 'ian.alonyon@gmail.com'";
 
-  $sql .= ", '{$notification_time}', '{$data['id']}', '{$data['start_time']}'";
+  $sql .= ", '{$notification_time}', '{$data['id']}', '{$start_time}')";
             
-  $sql .= ");";
   $result = sql_query($sql); 
   if(!$result){
-       error_log("Hubo un problema al insertar las notificaciones " . mysql_error() . "\n",
+       error_log("Hubo un problema al insertar las notificaciones ".$sql." + ".mysql_error() . "\n",
                  3 , "/opt/lampp/htdocs/sar2014/errors.log");
   }
   /*

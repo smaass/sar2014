@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 
-require("PHPMailerAutoload.php"); 
+require("PHPMailerAutoload.php");
 require "defaultincludes.inc";
 
 function getPhpMailer(){
@@ -100,7 +100,7 @@ foreach ($notifications as $notification) {
   }
 }
 
-sql_mutex_lock("$tbl_notifications_registry");
+sql_mutex_lock($tbl_notifications_registry);
 
 // Finally we update the notification state to mark them as sent
 $sql = "UPDATE $tbl_notifications_registry
@@ -115,8 +115,7 @@ $result = sql_query($sql);
 if(!$result){
   die("Hubo un problema al actualizar las notificaciones");
 }
-
-sql_mutex_unlock("$tbl_notifications_info");
+sql_mutex_unlock($tbl_notifications_registry);
 
 echo("Terminado");
 ?>
