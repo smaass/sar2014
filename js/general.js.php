@@ -12,12 +12,24 @@ if ($use_strict)
   echo "'use strict';\n";
 }
 
-echo "$(document).ready(function() {
+echo "
+    var refresh = true;
+    
+    function activateTimeout() {
+        refresh = true;
         var path = $(location).attr('pathname');
         var page = path.substr(path.lastIndexOf('/') + 1);
         if (page == 'day.php' || page == 'week.php' || page == 'month.php') {
-            setTimeout('location.reload(true)', $calendar_views_refresh_milliseconds);
+            setTimeout('if (refresh) location.reload(true)', $calendar_views_refresh_milliseconds);
         }
+    }
+    
+    function deactivateTimeout() {
+        refresh = false;
+    }
+    
+    $(document).ready(function() {
+        activateTimeout();
     });";
 
 // =================================================================================

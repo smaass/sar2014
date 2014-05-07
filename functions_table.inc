@@ -1427,6 +1427,7 @@ function table_popup_innerhtml()
   var popup = {};
   popup.opened = false;
   popup.show = function(x,y,linkReservaDetallada) {
+    deactivateTimeout();
     var default_entry = document.getElementById('default_entry');
     default_entry.style.display = 'block';
     default_entry.style.left=(x+window.pageXOffset)+'px';
@@ -1460,6 +1461,7 @@ function table_popup_innerhtml()
     
   };
   popup.hide = function() {
+    activateTimeout();
     if(this.opened)
       document.getElementById('default_entry').style.display = 'none';
   }
