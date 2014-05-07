@@ -242,7 +242,7 @@ if ($is_admin || ($n_displayable_areas > 0))
             switch ($field['name'])
             {
               case 'capacity_for_multientry':
-              	$text = "Capacidad reserva simultánea";
+              	$text = "Capacidad reserva<br>\nsimultánea";
               	break;
               // the standard MRBS fields
               case 'description':
@@ -340,11 +340,11 @@ if ($is_admin || ($n_displayable_areas > 0))
             {
               // Delete link
               echo "<td><div>&nbsp;\n";
-              /*echo "<a href=\"del.php?type=room&amp;area=$area&amp;room=" . $r['id'] . "\">\n";
+              echo "<a href=\"del.php?type=room&amp;area=$area&amp;room=" . $r['id'] . "\">\n";
               echo "<img src=\"images/delete.png\" width=\"16\" height=\"16\" 
                          alt=\"" . get_vocab("delete") . "\"
                          title=\"" . get_vocab("delete") . "\">\n";
-              echo "</a>\n";*/
+              echo "</a>\n";
               echo "</div></td>\n";
             }
             

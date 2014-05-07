@@ -403,7 +403,7 @@ $clipped = TRUE;
 // accommodate the bookings.   (NOTE: (1) scrolling doesn't work in IE6 and so the table
 // cell will always expand in IE6.  (2) In IE8 Beta 2 scrolling doesn't work either and
 // the cell content is clipped when $month_cell_scrolling is set to TRUE.)
-$month_cell_scrolling = TRUE;
+$month_cell_scrolling = FALSE;
 
 // Define the maximum length of a string that can be displayed in an admin table cell
 // (eg the rooms and users lists) before it is truncated.  (This is necessary because 

@@ -809,6 +809,11 @@ if (isset($change_room) && !empty($room))
                     echo "<input type=\"hidden\" name=\"phase\" value=\"2\">";
                     echo "<input class=\"submit default_action\" type=\"submit\" name=\"change_room\" value=\"" . get_vocab("change") . "\">\n";
                     echo "</div>\n";
+                    
+                    echo "<div id=\"edit_area_room_submit_save\">\n";
+                    echo "<input type=\"hidden\" name=\"phase\" value=\"2\">";
+                    echo "<input class=\"submit default_action\" type=\"submit\" name=\"change_room\" value=\"" . get_vocab("delete") . "\">\n";
+                    echo "</div>\n";
                 }
                 echo "</fieldset>\n";
 

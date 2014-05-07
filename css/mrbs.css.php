@@ -144,6 +144,7 @@ expires_header(60*30); // 30 minute expiry
 		text-align:center;				
 	}
 	.NavPlus , .NavLess {
+		cursor:pointer;
 	    background: white;
 	    border-color: black;
 		border-style:solid !important;
