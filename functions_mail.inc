@@ -853,7 +853,10 @@ function create_addresses($data, $action)
 function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $action="book", $note='')
 {
   // We need to create a new notification in the DB
-  error_log("Entramos a admin booking", 3, "error_log");
+  error_log("Bookings".print_r($data, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("Bookings".print_r($mail_previous, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("Bookings".print_r($new_entry, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("Bookings".print_r($series, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
   /*
   $sql = "INSERT INTO $tbl_notifications_registry (text_id, mail_list,
               notification_datetime, sent, event_id, event_datetime)
@@ -892,7 +895,6 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
       echo "[DEBUG] Email abandoned:  no addresses.<br>";
     }
     return;
-    */
   }
   
   // Set up the subject
@@ -963,6 +965,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
                      $attachment,
                      get_mail_charset());
   return $result;
+    */
 }
 
 // }}}

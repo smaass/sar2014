@@ -563,7 +563,7 @@ function mrbsCreateEntry($table, $data)
 {
   global $standard_fields, $db_tbl_prefix, $area_of_trabajo, $area_salas;
   
-  error_log("INSERTING INTO" . json_encode($table) . "\n\n", 3, "error_log");  
+  error_log("INSERTING INTO" . json_encode($table) . "\n\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
 
   $sql_col = array();
   $sql_val = array();
@@ -726,7 +726,7 @@ function mrbsCreateEntry($table, $data)
 
     return $return_id;
   }
-  error_log("sql_insert_id " . json_encode($sql2) . "\n\n", 3, "error_log");      
+  error_log("sql_insert_id " . json_encode($sql2) . "\n\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
   return sql_insert_id($table, "id");
 }
 
@@ -1036,7 +1036,8 @@ function mrbsCreateRepeatingEntrys($data)
     $endtime = $data['end_time'];
     for ($i = 0; $i < count($reps); $i++)
     {
-      error_log("CreateRepeatingEntrys2 " . json_encode($data) . "\n\n", 3, "error_log");  
+      error_log("CreateRepeatingEntrys2 " . json_encode($data) . "\n\n", 
+                3, "/opt/lampp/htdocs/sar2014/errors.log");
       // Provided this isn't one of the entries to skip, go ahead
       // and make the booking
       if (!in_array($reps[$i], $data['skip_list']))
@@ -1598,7 +1599,8 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $spec
 // Makes bookings
 //    $bookings     an array of bookings
 //    $id           the id of the current booking when editing an existing entry
-function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, $original_room_id=NULL, $send_mail=TRUE, $edit_type='')
+function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, 
+                          $original_room_id=NULL, $send_mail=TRUE, $edit_type='')
 {
   global $max_rep_entrys, $enable_periods, $resolution, $mail_settings;
   global $tbl_entry, $tbl_room, $tbl_area;
