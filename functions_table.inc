@@ -988,8 +988,8 @@ function day_table_innerhtml($day, $month, $year, $room, $area, $timetohighlight
   }  // end standard view (for the body)
   
   $tbody .= "</tbody>\n";
-  
-  return $thead . $tfoot . $tbody;
+  $popup = table_popup_innerhtml();
+  return $popup . $thead . $tfoot . $tbody;
 }
 
 
@@ -1448,8 +1448,9 @@ function table_popup_innerhtml()
         popupContent.innerHTML = this.responseText;
         var scripts = popupContent.getElementsByTagName('script');
         // Tecnica para evaluar globalmente :)
+        setSelectListener();
         forEach.call(scripts, function(s) { eval.call(this, s.innerText); }); 
-		setSelectListener();
+		
       }
     };
     xhr.open('GET', url, true);

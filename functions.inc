@@ -1445,7 +1445,8 @@ function make_menu_html($link, $current, $year, $month, $day) {
 }
 
 function make_admin_menu() {
-    return '<a href="admin.php">Holi, soy el menu de administrador :3</a>';
+    return '<div id="admin_menu">
+    <button class="admin_button" onclick=\'window.location = "admin.php"\'>Opciones de administrador</button></div>';
 }
 
 function make_normal_menu($link, $current, $year, $month, $day)
@@ -1480,38 +1481,11 @@ function make_normal_menu($link, $current, $year, $month, $day)
 }
 
 function make_navbar_html($day, $month, $year, $area, $room, $type) {
-    // Show Go to month before and after links
-    //y? are year and month and day of the previous month.
-    //t? are year and month and day of the next month.
-    //c? are current year, month and day.
-
-    $i= mktime(12,0,0,$month-1,1,$year);
-    $yy = date("Y",$i);
-    $ym = date("n",$i);
-    $yd = $day;
-    while (!checkdate($ym, $yd, $yy) && ($yd > 1))
-    {
-      $yd--;
-    }
-
-    $i= mktime(12,0,0,$month+1,1,$year);
-    $ty = date("Y",$i);
-    $tm = date("n",$i);
-    $td = $day;
-    while (!checkdate($tm, $td, $ty) && ($td > 1))
-    {
-      $td--;
-    }
-
     $cy = date("Y");
     $cm = date("m");
     $cd = date("d");
-    while (!checkdate($cm, $cd, $cy) && ($cd > 1))
-    {
-      $cd--;
-    }
-    //Nav
-    //Month
+    while (!checkdate($cm, $cd, $cy) && ($cd > 1)) $cd--;
+    
     echo "<div class=\"Nav\">";
     echo "<div class=\"NavTitle\"> Calendario </div>";
     echo "<div class=\"Now\">
@@ -1520,58 +1494,14 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
             </a>
         </div>";
     if ($type == 'day') {
-        echo make_daynav_html($day, $month, $year, $area, $room);
+        echo make_daynav_html($day, $month, $year, $area, $room, $type);
     }
     if ($type == 'week' || $type == 'day') {
         echo make_weeknav_html($day, $month, $year, $area, $room, $type);
     }    
-    echo "<div class=\"NavSubtitle\"> Mes </div>";
-    $before_after_links_month_html = "
-	    <div class=\"NavLorP\">  
-        <span class=\"NavLess\">
-          <a href=\"".$type.".php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-              "."-"."</a>
-        </span>    
-        <span class=\"NavPlus\">
-           <a href=\"".$type.".php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-              "."+"."</a>
-        </span>
-      </div>
-    ";
-    print $before_after_links_month_html;
-    //Year
-    $i= mktime(12,0,0,$month,1,$year-1);
-    $yy = date("Y",$i);
-    $ym = date("n",$i);
-    $yd = $day;
-    while (!checkdate($ym, $yd, $yy) && ($yd > 1))
-    {
-      $yd--;
-    }
-
-    $i= mktime(12,0,0,$month,1,$year+1);
-    $ty = date("Y",$i);
-    $tm = date("n",$i);
-    $td = $day;
-    while (!checkdate($tm, $td, $ty) && ($td > 1))
-    {
-      $td--;
-    }
-    echo "<div class=\"NavSubtitle\"> A&#241;o </div>";
-    $before_after_links_year_html = "
-	    <div class=\"NavLorP\">  
-        <span class=\"NavLess\">
-          <a href=\"".$type.".php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-              "."-"."</a>
-        </span>    
-        <span class=\"NavPlus\">
-           <a href=\"".$type.".php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-              "."+"."</a>
-        </span>
-      </div>
+    echo make_monthnav_html($day, $month, $year, $area, $room, $type);
+    echo make_yearnav_html($day, $month, $year, $area, $room, $type);
       
-    ";
-    print $before_after_links_year_html;
     //Calendar
     echo	"<div class=\"NavCalendar\">
             <form action=\"day.php\" method=\"get\" id=\"Form1\">
@@ -1631,63 +1561,50 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
     echo "</div class=\"Clear\"></div>";
 }
 
-function make_weeknav_html($day, $month, $year, $area, $room, $type) {
-    //y? are year, month and day of the previous week.
-    //t? are year, month and day of the next week.
-
-    $i= mktime(12,0,0,$month,$day-7,$year);
-    $yy = date("Y",$i);
-    $ym = date("m",$i);
-    $yd = date("d",$i);
-
-    $i= mktime(12,0,0,$month,$day+7,$year);
-    $ty = date("Y",$i);
-    $tm = date("m",$i);
-    $td = date("d",$i);
-
-    $output = "<div class=\"NavSubtitle\"> Semana </div>
-	    <div class=\"NavLorP\">  
-        <span class=\"NavLess\">
-          <a href=\"".$type.".php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;room=$room\">
-              "."-"."</a>
-        </span>    
-        <span class=\"NavPlus\">
-           <a href=\"".$type.".php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;room=$room\">
-              "."+"."</a>
-        </span>
-      </div>
-      
-    ";
-    return $output;
+function get_navlink($day, $month, $year, $area, $room, $type) {
+    $i= mktime(12,0,0,$month,$day,$year);
+    $y = date("Y",$i);
+    $m = date("n",$i);
+    $d = date("d", $i);
+    while (!checkdate($m, $d, $y) && ($d > 1)) $d--;
+    
+    return "$type.php?year=$y&amp;month=$m&amp;day=$d&amp;area=$area&amp;".(isset($room)?"room=$room":"");
 }
 
-function make_daynav_html($day, $month, $year, $area, $room) {
-    //y? are year, month and day of the next day.
-    //t? are year, month and day of the next day.
+function make_yearnav_html($day, $month, $year, $area, $room, $type) {   
+    $prevLink = get_navlink($day, $month, $year-1, $area, $room, $type);
+    $nextLink = get_navlink($day, $month, $year+1, $area, $room, $type);
+    
+    return make_navbuttons('Año', $prevLink, $nextLink);
+}
 
-    $i= mktime(12,0,0,$month,$day-1,$year);
-    $yy = date("Y",$i);
-    $ym = date("m",$i);
-    $yd = date("d",$i);
+function make_monthnav_html($day, $month, $year, $area, $room, $type) {   
+    $prevLink = get_navlink($day, $month-1, $year, $area, $room, $type);
+    $nextLink = get_navlink($day, $month+1, $year, $area, $room, $type);
+    
+    return make_navbuttons('Mes', $prevLink, $nextLink);
+}
 
-    $i= mktime(12,0,0,$month,$day+1,$year);
-    $ty = date("Y",$i);
-    $tm = date("m",$i);
-    $td = date("d",$i);
-
-    $output = "<div class=\"NavSubtitle\"> Día </div>
-	    <div class=\"NavLorP\">  
-        <span class=\"NavLess\">
-          <a href=\"day.php?year=$yy&amp;month=$ym&amp;day=$yd&amp;area=$area&amp;room=$room\">
-              "."-"."</a>
-        </span>    
-        <span class=\"NavPlus\">
-           <a href=\"day.php?year=$ty&amp;month=$tm&amp;day=$td&amp;area=$area&amp;room=$room\">
-              "."+"."</a>
-        </span>
-      </div>
+function make_weeknav_html($day, $month, $year, $area, $room, $type) {
+    $prevLink = get_navlink($day-7, $month, $year, $area, $room, $type);
+    $nextLink = get_navlink($day+7, $month, $year, $area, $room, $type);
       
-    ";
+    return make_navbuttons('Semana', $prevLink, $nextLink);
+}
+
+function make_daynav_html($day, $month, $year, $area, $room, $type) {
+    $prevLink = get_navlink($day-1, $month, $year, $area, $room, $type);
+    $nextLink = get_navlink($day+1, $month, $year, $area, $room, $type);
+    
+    return make_navbuttons('Día', $prevLink, $nextLink);
+}
+
+function make_navbuttons($title, $prevLink, $nextLink) {
+    $output = "<div class=\"NavSubtitle\"> $title </div>
+	    <div class=\"NavLorP\">  
+        <button class=\"NavLess\" onclick=\"window.location = '$prevLink'\">-</button>  
+        <button class=\"NavPlus\" onclick=\"window.location = '$nextLink'\">+</button>
+      </div>";
     return $output;
 }
 

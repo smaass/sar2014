@@ -18,9 +18,6 @@ function print_theme_header($day, $month, $year, $area, $room)
   global $main_table_cell_border_width, $main_cell_height;
   global $timetohighlight;
   
-  // Hardcodeeeeeeeed!
-  $mrbs_company_logo = "images/SAR.png";
-
   $page = basename($PHP_SELF, ".php");
   $user = getUserName();
   $is_admin = (authGetUserLevel($user) >= $max_level);
