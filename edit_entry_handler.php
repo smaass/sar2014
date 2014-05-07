@@ -367,7 +367,6 @@ if (!$ajax)
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
     echo make_menu_html('week.php', $area, $year, $month, $day);
-    echo '<div class="MainCell">';
   ?>
          <h1><?php echo get_vocab('invalid_booking'); ?></h1>
          <p>
@@ -383,7 +382,6 @@ if (!$ajax)
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
     echo make_menu_html('week.php', $area, $year, $month, $day);
-    echo '<div class="MainCell">';
   ?>
          <h1><?php echo get_vocab('invalid_booking'); ?></h1>
          <p>
@@ -401,9 +399,8 @@ if (!$ajax)
       $field = preg_replace('/^entry\./', '', $field);
       if ($value && array_key_exists($field, $custom_fields) && ($custom_fields[$field] === ''))
       {
-        print_header($day, $month, $year, $area, isset($room) ? $room : "");
+        print_header($day, $month, $year, $area, isset($room) ? $room : "");        
         echo make_menu_html('week.php', $area, $year, $month, $day);
-        echo '<div class="MainCell">';
         ?>
         <h1><?php echo get_vocab('invalid_booking'); ?></h1>
         <p>
@@ -651,8 +648,7 @@ else
 {
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
   echo make_menu_html('week.php', $area, $year, $month, $day);
-  echo '<div class="MainCell">';
-    
+  echo "<div class=\"Cell Right\">";
   echo "<h2>" . get_vocab("sched_conflict") . "</h2>\n";
   if (!empty($result['rules_broken']))
   {
@@ -678,6 +674,7 @@ else
     }
     echo "</ul>\n";
   }
+  
 }
 
 echo "<div id=\"submit_buttons\">\n";
@@ -732,8 +729,8 @@ if (empty($result['rules_broken'])  &&
   echo "</fieldset>\n";
   echo "</form>\n";
 }
-
-echo "</div>\n</div>";
+  echo "</div>";
+  echo "</div>";
 
 output_trailer();
 ?>
