@@ -366,6 +366,8 @@ if (!$ajax)
   if ($name == '')
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
+    echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo '<div class="MainCell">';
   ?>
          <h1><?php echo get_vocab('invalid_booking'); ?></h1>
          <p>
@@ -380,6 +382,8 @@ if (!$ajax)
   if (($rep_type == REP_N_WEEKLY) && ($rep_num_weeks < 2))
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
+    echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo '<div class="MainCell">';
   ?>
          <h1><?php echo get_vocab('invalid_booking'); ?></h1>
          <p>
@@ -398,6 +402,8 @@ if (!$ajax)
       if ($value && array_key_exists($field, $custom_fields) && ($custom_fields[$field] === ''))
       {
         print_header($day, $month, $year, $area, isset($room) ? $room : "");
+        echo make_menu_html('week.php', $area, $year, $month, $day);
+        echo '<div class="MainCell">';
         ?>
         <h1><?php echo get_vocab('invalid_booking'); ?></h1>
         <p>
@@ -644,6 +650,8 @@ if ($result['valid_booking'])
 else
 {
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
+  echo make_menu_html('week.php', $area, $year, $month, $day);
+  echo '<div class="MainCell">';
     
   echo "<h2>" . get_vocab("sched_conflict") . "</h2>\n";
   if (!empty($result['rules_broken']))
@@ -725,7 +733,7 @@ if (empty($result['rules_broken'])  &&
   echo "</form>\n";
 }
 
-echo "</div>\n";
+echo "</div>\n</div>";
 
 output_trailer();
 ?>
