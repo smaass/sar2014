@@ -852,6 +852,23 @@ function create_addresses($data, $action)
  */
 function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $action="book", $note='')
 {
+  // We need to create a new notification in the DB
+  error_log("Entramos a admin booking", 3, "error_log");
+  /*
+  $sql = "INSERT INTO $tbl_notifications_registry (text_id, mail_list,
+              notification_datetime, sent, event_id, event_datetime)
+          VALUES (0)";
+  foreach ($notifications as $notification) {
+    $sql .= ", ".$notification['id'];
+  }
+  $sql .= ");";
+
+  $result = sql_query($sql); 
+  if(!$result){
+    echo("Hubo un problema al insertar las notificaciones");
+  }
+*/
+  /*
   global $mail_settings, $enable_periods;
   
   if ($mail_settings['debug'])
@@ -875,6 +892,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
       echo "[DEBUG] Email abandoned:  no addresses.<br>";
     }
     return;
+    */
   }
   
   // Set up the subject

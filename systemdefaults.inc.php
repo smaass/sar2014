@@ -833,15 +833,15 @@ $mail_settings['book_admin_on_approval'] = FALSE;  // the booking administrator 
 // for new bookings if there was somebody to send them to)
 
 $mail_settings['on_new']    = TRUE;   // when an entry is created
-$mail_settings['on_change'] = FALSE;  // when an entry is changed
-$mail_settings['on_delete'] = FALSE;  // when an entry is deleted
+$mail_settings['on_change'] = TRUE;  // when an entry is changed
+$mail_settings['on_delete'] = TRUE;  // when an entry is deleted
 
 
 // WHAT TO EMAIL
 // -------------
 // These settings determine what should be included in the email
 // Set to TRUE or FALSE as required
-$mail_settings['details']   = FALSE; // Set to TRUE if you want full booking details;
+$mail_settings['details']   = TRUE; // Set to TRUE if you want full booking details;
                                      // otherwise you just get a link to the entry
 $mail_settings['html']      = FALSE; // Set to true if you want HTML mail
 $mail_settings['icalendar'] = FALSE; // Set to TRUE to include iCalendar details

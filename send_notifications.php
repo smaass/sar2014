@@ -32,7 +32,6 @@ function createBody($text){
 }
 
 $today = Date('Y-m-d H:i:s');
-
 // We select the notifications that haven't been send and have expired
 $sql = "SELECT reg.id as id,
                reg.mail_list as mail_list,
@@ -85,6 +84,7 @@ foreach ($notifications as $notification) {
   $text = str_replace('$time', $time, $text);
   
   $mail_list = explode(";", $notification['mail_list']);
+
   foreach ($mail_list as $address) {
     $mail->addAddress($address);
   }
@@ -100,6 +100,8 @@ foreach ($notifications as $notification) {
   }
 }
 
+sql_mutex_lock("$tbl_notifications_registry");
+
 // Finally we update the notification state to mark them as sent
 $sql = "UPDATE $tbl_notifications_registry
         SET sent = 1
@@ -113,5 +115,8 @@ $result = sql_query($sql);
 if(!$result){
   die("Hubo un problema al actualizar las notificaciones");
 }
+
+sql_mutex_unlock("$tbl_notifications_info");
+
 echo("Terminado");
 ?>
