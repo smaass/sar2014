@@ -399,7 +399,7 @@ if (!$ajax)
       $field = preg_replace('/^entry\./', '', $field);
       if ($value && array_key_exists($field, $custom_fields) && ($custom_fields[$field] === ''))
       {
-        print_header($day, $month, $year, $area, isset($room) ? $room : "");
+        print_header($day, $month, $year, $area, isset($room) ? $room : "");        
         echo make_menu_html('week.php', $area, $year, $month, $day);
         ?>
         <h1><?php echo get_vocab('invalid_booking'); ?></h1>
@@ -729,8 +729,8 @@ if (empty($result['rules_broken'])  &&
   echo "</fieldset>\n";
   echo "</form>\n";
 }
+  echo "</div>";
+  echo "</div>";
 
-echo "</div>\n";
-echo "</div>";
 output_trailer();
 ?>
