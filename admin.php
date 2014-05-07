@@ -39,6 +39,7 @@ $is_admin = (authGetUserLevel($user) >= $required_level);
 
 print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $room : "");
 echo make_menu_html('week.php', $area, $year, $month, $day);
+echo '<div class="MainCell">';
 
 // Get the details we need for this area
 if (isset($area))
@@ -424,5 +425,6 @@ if ($is_admin || ($n_displayable_areas > 0))
   }
   echo "</div>\n";
 }
+echo '</div>';
 output_trailer();
 ?>

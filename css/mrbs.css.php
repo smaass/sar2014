@@ -46,15 +46,27 @@ expires_header(60*30); // 30 minute expiry
     {
         display: table-cell;        
         border-width: thin;
-        padding: 5px;       
+        padding-top: 5px;     
         height: 100%;
     }
 	.Left{
 		width:20%;
+		padding-right: 15px;
 	}
 	.Right{
 		width: 80%;
 		vertical-align: middle;
+	}
+	.MainCell {
+	    width: 95.5%;
+	    border-style: solid;
+		border-width: 2px;
+		border-radius: 8px;
+		padding-left: 2%;
+		padding-right: 2%;
+		margin-top: 5px;
+		padding-bottom: 10px;
+		overflow: hidden;
 	}
 
 /* ------------ Head -----------------------------*/
@@ -93,26 +105,19 @@ expires_header(60*30); // 30 minute expiry
 	
 /* ------------ calendar and nav -----------------------------*/
 	.Calendar{
-		width:75%;
+		width:77%;
 		float:left;
 		border-style: solid;
 		border-width: 2px;
 		border-radius: 8px;
 		padding: 2px;
 	}
-	.MainCell {
-	    width: 94%;
-	    border-style: solid;
-		border-width: 2px;
-		border-radius: 8px;
-		padding: 0px 3%;
-	}
 	.Nav{
 		float:right;
 		border-style: solid;
 		border-width: 2px;
 		border-radius: 8px;	
-		width:22%;
+		width:21%;
 		height:100%;			
 		padding-bottom:30px;			
 		}
@@ -163,6 +168,26 @@ expires_header(60*30); // 30 minute expiry
 	.Now{
 		text-align:center;
 	}
+	
+/* ------------ Admin menu -----------------------------*/
+#admin_menu {
+    padding-left: 15px;
+}
+.admin_button {
+    width: 100%;
+    height: 54px;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 20px;
+    border: 0;
+    border-radius: 9px;
+    background: linear-gradient(to bottom, #e55 0%, #c44 100%);
+}
+
+.admin_button:hover {
+    background: linear-gradient(to bottom, #c44 0%, #b33 100%);
+}
+	
 /* ------------ Footer -----------------------------*/
 .Footer{
 padding-bottom: 50px;}

@@ -1445,7 +1445,8 @@ function make_menu_html($link, $current, $year, $month, $day) {
 }
 
 function make_admin_menu() {
-    return '<a href="admin.php">Holi, soy el menu de administrador :3</a>';
+    return '<div id="admin_menu">
+    <input class="admin_button" type=\'button\' value=\'Opciones de administrador\' onclick=\'window.location = "admin.php"\'/></div>';
 }
 
 function make_normal_menu($link, $current, $year, $month, $day)
