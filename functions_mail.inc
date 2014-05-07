@@ -857,20 +857,41 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   error_log("Bookings".print_r($mail_previous, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
   error_log("Bookings".print_r($new_entry, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
   error_log("Bookings".print_r($series, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  /*
-  $sql = "INSERT INTO $tbl_notifications_registry (text_id, mail_list,
-              notification_datetime, sent, event_id, event_datetime)
-          VALUES (0)";
-  foreach ($notifications as $notification) {
-    $sql .= ", ".$notification['id'];
-  }
-  $sql .= ");";
+  
+  $sql = "SELECT id, notification_time 
+          FROM $tbl_notifications_info 
+          WHERE type = '{$data['tipo_evento']}'";
 
   $result = sql_query($sql); 
-  if(!$result){
-    echo("Hubo un problema al insertar las notificaciones");
+
+  // Check result
+  if (!$result) {
+      error_log('Consulta no válida: ' . mysql_error() . "\n",
+                3 , "/opt/lampp/htdocs/sar2014/errors.log");
   }
-*/
+
+  $notification_type = mysql_fetch_assoc($result);
+
+  $text_id = $notification_type['id'];
+  $reminder_offset = $notification_type['notification_time']->getTimestamp();
+  $diff_time = $data['start_time']->getTimestamp() - $reminder_offset;
+
+  $notification_time = getdate($diff_time);
+  $sql = "INSERT INTO $tbl_notifications_registry 
+            (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+          VALUES ({$text_id}";
+
+  //TODO: pasar lista de correos
+  $sql .= ", 'ian.alonyon@gmail.com'";
+
+  $sql .= ", '{$notification_time}', '{$data['id']}', '{$data['start_time']}'";
+            
+  $sql .= ");";
+  $result = sql_query($sql); 
+  if(!$result){
+       error_log("Hubo un problema al insertar las notificaciones " . mysql_error() . "\n",
+                 3 , "/opt/lampp/htdocs/sar2014/errors.log");
+  }
   /*
   global $mail_settings, $enable_periods;
   
