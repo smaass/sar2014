@@ -46,12 +46,12 @@ expires_header(60*30); // 30 minute expiry
     {
         display: table-cell;        
         border-width: thin;
-        padding-top: 5px;     
+        padding-top: 10px;     
         height: 100%;
     }
 	.Left{
-		width:20%;
-		padding-right: 15px;
+		width:17%;
+		padding-right: 10px;
 	}
 	.Right{
 		width: 80%;
@@ -59,8 +59,8 @@ expires_header(60*30); // 30 minute expiry
 	}
 	.MainCell {
 	    width: 95.5%;
-	    border-style: solid;
-		border-width: 2px;
+	    background-color: #fff;
+	    box-shadow: 0 0 8px #777;
 		border-radius: 8px;
 		padding-left: 2%;
 		padding-right: 2%;
@@ -90,36 +90,35 @@ expires_header(60*30); // 30 minute expiry
 		padding-right: 10px;
 		padding-bottom: 0px;
 	}
-	.Top{
-		border-style: solid;
-		border-width: 2px;
+	.Top {
 		border-radius: 8px;
+		box-shadow: 0 0 8px #444;
+		background-color: #8be;
 	}
 	.Search{
-	padding-left: 30px;
+	    padding-left: 30px;
 	}
 	
 	#logo {
-	    margin-left: 20px;
+	    margin-left: 10px;
 	}
 	
 /* ------------ calendar and nav -----------------------------*/
 	.Calendar{
-		width:77%;
+		width:80.3%;
 		float:left;
-		border-style: solid;
-		border-width: 2px;
 		border-radius: 8px;
 		padding: 2px;
+		box-shadow: 0 0 8px #777;
+		background-color: #fff;
 	}
 	.Nav{
 		float:right;
-		border-style: solid;
-		border-width: 2px;
+		background-color: #fff;
+		box-shadow: 0 0 8px #777;
 		border-radius: 8px;	
-		width:21%;
-		height:100%;			
-		padding-bottom:30px;			
+		width:18%;
+		height:100%;					
 		}
 	.NavTitle{
 		text-align:center;
@@ -176,7 +175,7 @@ expires_header(60*30); // 30 minute expiry
 	
 /* ------------ Admin menu -----------------------------*/
 #admin_menu {
-    padding-left: 15px;
+    margin-top: 10px;
 }
 .admin_button {
     width: 100%;
@@ -200,8 +199,10 @@ padding-bottom: 50px;}
 
 body {font-size: small;
     margin: 0;
-    padding: 0;
-    width: 95%;
+    padding-top: 5px;
+    padding-left: 0.5%;
+    padding-right: 1.5%;
+    width: 98%;
     color:            <?php echo $standard_font_color ?>;
     font-family:      <?php echo $standard_font_family ?>;
     background-color: <?php echo $body_background_color ?>}

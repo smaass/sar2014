@@ -7,7 +7,7 @@
 // ***** COLOURS ************************
 // Colours used in MRBS.    All the colours are defined here as PHP variables
 
-$body_background_color          = "#ffffff";    // background colour for the main body
+$body_background_color          = "#f5f5ff";    // background colour for the main body
 $standard_font_color            = "#0B263B";    // default font color
 $header_font_color              = "#ffffff";    // font color for text in headers
 $highlight_font_color           = "#ff0066";    // used for highlighting text (eg links, errors)
@@ -29,7 +29,7 @@ $main_table_header_border_color = $body_background_color; // border colour for d
 $main_table_body_h_border_color = "#ffffff";              // border colour for day/week/month tables - body, horizontal
 $main_table_body_v_border_color = $body_background_color; // border colour for day/week/month tables - body, vertical
 $main_table_month_color         = "beige";    // background colour for days in the month view
-$main_table_month_invalid_color = "#d1d9de";    // background colour for invalid days in the month view
+$main_table_month_invalid_color = "#e0e0e0";    // background colour for invalid days in the month view
 $main_table_labels_back_color   = $header_back_color;     // background colour for the row labels column
 
 // border colours for the main table when it is printed.     These are used by mrbs-print.css.php
@@ -77,7 +77,7 @@ $multiple_control_color         = "#ffff22";        // background colour for the
 // These are the colours used for distinguishing between the dfferent types of bookings in the main
 // displays in the day, week and month views
 $color_types = array(
-    'A' => "#ffff99",
+    'A' => "#F7F554",
     'B' => "#99cccc",
     'C' => "#ffffcd",
     'D' => "#cde6e6",
@@ -87,9 +87,9 @@ $color_types = array(
     'H' => "#d9d982",
     'I' => "#ffd400",
     'J' => "#e6ffe6",
-    'X' => "#ff6633",
+    'X' => "#ef7744",
     'Y' => "#ffcc66",
-    'Z' => "#33ff99", 
+    'Z' => "#77ee99", 
 // Custom colours, to distinguish bookings.
     'entry_color0'  => "#E67C73",
     'entry_color3'  => "#E6A973",
