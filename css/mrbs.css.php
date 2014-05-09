@@ -179,6 +179,7 @@ expires_header(60*30); // 30 minute expiry
     margin-top: 10px;
 }
 .admin_button {
+	cursor:pointer;
     width: 100%;
     height: 54px;
     text-align: left;
