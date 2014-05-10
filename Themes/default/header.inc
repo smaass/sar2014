@@ -155,8 +155,7 @@ function print_theme_header($day, $month, $year, $area, $room)
       	<a>FAQ</a>
       	<a>Desarrolladores</a>
       	</div>
-        <form id="header_search" method="get" action="search.php">
-          <div class="Search">
+        <form id="header_search" class="Search" method="get" action="search.php">
             <a href="search.php?advanced=1"><?php echo get_vocab("search") ?>:</a>
             <p>
             <input type="search" name="search_str" value="<?php echo htmlspecialchars($search_str) ?>" required>
@@ -173,7 +172,6 @@ function print_theme_header($day, $month, $year, $area, $room)
               echo "<input type=\"hidden\" name=\"room\" value=\"$room\">\n";
             }
             ?>
-          </div>
         </form>
         <?php
           // For session protocols that define their own logon box...

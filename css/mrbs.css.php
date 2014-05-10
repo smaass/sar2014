@@ -70,37 +70,50 @@ expires_header(60*30); // 30 minute expiry
 	}
 
 /* ------------ Head -----------------------------*/
+    #logo {
+	    margin-left: 10px;
+	    margin-top: 5px;
+	}
+    .Top {
+        padding: 15px;
+		border-radius: 8px;
+		box-shadow: 0 0 8px #666;
+		background-color:rgba(136, 187, 238, 0.8);
+	}
 	.Links{
 		text-align:right;
-		
-		}
+	}
 	.Links > a{
 		border-right: black;
 		border-right-style: solid;
 		border-width: 2px;
 		padding-left: 10px;
 		padding-right: 10px;
-		}
+	}
 	.Links > a:last-child{		
 		border-right-style: none;
-		
-		}	
+	}	
 	.Logout{
 		text-align: right;
 		padding-right: 10px;
 		padding-bottom: 0px;
 	}
-	.Top {
-		border-radius: 8px;
-		box-shadow: 0 0 8px #666;
-		background-color:rgba(136, 187, 238, 0.8);
-	}
-	.Search{
-	    padding-left: 30px;
-	}
-	
-	#logo {
+	.Search {
+	    width: 50%;
 	    margin-left: 10px;
+	    text-align: middle;
+	}
+	.Search a {
+	    height: 100%;
+	}
+	.Search p {
+	    margin: 0;
+	}
+	.Search input {
+	    margin-top: 5px;
+	    width: 100%;
+	    height: 100%;
+	    border-radius: 5px;
 	}
 	
 /* ------------ calendar and nav -----------------------------*/
@@ -972,7 +985,6 @@ table#colour_key {clear: both; float: left; border-spacing: 0; border-collapse: 
     color: <?php echo $colour_key_font_color ?>;
     border: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_body_h_border_color ?>}
 #colour_key td#row_padding {border-right: 0; border-bottom: 0}
-#header_search input {width: 20.0em; border-radius: 5px;}
 div#n_outstanding {margin-top: 0.5em}
 #banner .outstanding a {color: <?php echo $outstanding_color ?>}
 
