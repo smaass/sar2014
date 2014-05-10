@@ -864,7 +864,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   error_log("Previous ".print_r($mail_previous, true)."\n", 3, "errors.log");
   error_log("New Entry ".print_r($new_entry, true)."\n", 3, "errors.log");
   error_log("Series ".print_r($series, true)."\n", 3, "errors.log");
-  
+
   $sql = "SELECT id, reminder_offset 
           FROM $tbl_notifications_info
           WHERE type = '{$data['tipo_evento']}'";
@@ -884,21 +884,39 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
 
   $notification_time = date('Y-m-d H:i:s', $diff_time);
   $start_time = date('Y-m-d H:i:s', $data['start_time']);
-  $sql = "INSERT INTO $tbl_notifications_registry
-                      (text_id, mail_list, notification_datetime, event_id, event_datetime) 
-          VALUES ({$text_id}";
 
-  //TODO: pasar lista de correos
-  $sql .= ", 'ian.alonyon@gmail.com'";
+  // Check if we are editing a booking
+  if($mail_previous){
+    // We need to update all the notifications associated with this booking
+    $sql = "UPDATE $tbl_notifications_registry
+            SET mail_list = 'ian.alonyon@gmail.com', 
+                notification_datetime = '$notification_time',
+                event_datetime = '$start_time',
+                text_id = $text_id
+            WHERE event_id = $mail_previous[id]";
 
-  $sql .= ", '{$notification_time}', '{$data['id']}', '{$start_time}')";
-            
-  $result = sql_query($sql); 
-  if(!$result){
-       error_log("Hubo un problema al insertar las notificaciones ".$sql." + ".mysql_error() . "\n",
-                 3 , "errors.log");
+    $result = sql_query($sql); 
+    if(!$result){
+         error_log("Error al insertar las notificaciones ".$sql." + ".mysql_error() . "\n", 3 , "errors.log");
+    }
+  } else {
+    $sql = "INSERT INTO $tbl_notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES ($text_id";
+
+    //TODO: pasar lista de correos
+    $sql .= ", 'ian.alonyon@gmail.com'";
+
+    $sql .= ", '$notification_time', '$data[id]', '$start_time')";
+              
+    $result = sql_query($sql); 
+    if(!$result){
+         error_log("Error al insertar las notificaciones ".$sql." + ".mysql_error() . "\n", 3 , "errors.log");
+    }  
   }
-  /*
+
+  
+/* The old mailing functionality
   global $mail_settings, $enable_periods;
   
   if ($mail_settings['debug'])
@@ -991,8 +1009,8 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
                      $html_body,
                      $attachment,
                      get_mail_charset());
+*/
   return $result;
-    */
 }
 
 // }}}
@@ -1009,6 +1027,20 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
  */
 function notifyAdminOnDelete($data, $series=FALSE, $action="delete", $note="")
 {
+  global $tbl_notifications_info;
+  global $tbl_notifications_registry;
+
+  // We need to create a new notification in the DB
+  error_log("Bookings ".print_r($data, true)."\n", 3, "errors.log");
+
+  $sql = "DELETE FROM $tbl_notifications_registry
+          WHERE event_id = $data[id]";
+  $result = sql_query($sql); 
+  if(!$result){
+       error_log("Hubo un problema al borrar las notificaciones ".$sql." + ".mysql_error() . "\n", 3, "errors.log");
+  }
+
+/* The old Mailing functionality
   global $mail_settings, $enable_periods;
   
   if ($mail_settings['debug'])
@@ -1080,7 +1112,7 @@ function notifyAdminOnDelete($data, $series=FALSE, $action="delete", $note="")
                      $html_body,
                      $attachment,
                      get_mail_charset());
-
+*/
   return $result;
 }
 
