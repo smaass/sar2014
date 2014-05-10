@@ -99,7 +99,7 @@ expires_header(60*30); // 30 minute expiry
 		padding-bottom: 0px;
 	}
 	.Search {
-	    width: 50%;
+	    width: 40%;
 	    margin-left: 10px;
 	    text-align: middle;
 	}
@@ -192,6 +192,7 @@ expires_header(60*30); // 30 minute expiry
     margin-top: 10px;
 }
 .admin_button {
+	cursor:pointer;
     width: 100%;
     height: 54px;
     text-align: left;

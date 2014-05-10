@@ -1457,7 +1457,7 @@ function make_normal_menu($link, $current, $year, $month, $day)
   $sql = "SELECT id, area_name 
             FROM $tbl_area
            WHERE disabled=0
-        ORDER BY area_name";
+  		   ORDER BY FIELD(id,3,5,4)";
   $res = sql_query($sql);
   // Only show the areas if there's more than one of them, otherwise
   // there's no point
@@ -1467,7 +1467,13 @@ function make_normal_menu($link, $current, $year, $month, $day)
     for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
     {
       $li_id = "M".$row['id'];
-      $out_html .= "<li class=\"m-item\" id=\"" .$li_id. "\" >";
+      if ($row['id'] == $current) {
+		$out_html .= "<li class=\"m-item m-opened\" id=\"" .$li_id. "\" >";
+	  }
+	  else
+	  {
+      	$out_html .= "<li class=\"m-item\" id=\"" .$li_id. "\" >";
+	  }
       $out_html .= "<h3 class=\"m-header\">"; 
       $out_html .= "<a href=\"#" .$li_id. "\" \>";      
       $out_html .= htmlspecialchars($row['area_name']) . "</a></h3>";

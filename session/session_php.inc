@@ -78,8 +78,11 @@ if (isset($Action) && ($Action == "SetName"))
     if (!authValidateUser($NewUserName, $NewUserPassword))
     {
       print_header(0, 0, 0, 0, "");
+      echo make_menu_html('week.php', $area, $year, $month, $day);
+      echo '<div class="MainCell">';
       echo "<p>".get_vocab('unknown_user')."</p>\n";
       printLoginForm($TargetURL);
+      echo '</div>';
       exit();
     }
 
@@ -114,8 +117,11 @@ if (isset($Action) && ($Action == "SetName"))
     which allows to work around problems with DNS inconsistencies in the server name.
     Anyway, if the browser cannot redirect automatically, the manual link below will work. */
   print_header(0, 0, 0, 0, "");
+  echo make_menu_html('week.php', $area, $year, $month, $day);
+  echo '<div class="MainCell">';
   echo "<br>\n";
   echo "<p>Please click <a href=\"".htmlspecialchars($TargetURL)."\">here</a> if you're not redirected automatically to the page you requested.</p>\n";
+  echo '</div>';
 
   // Print footer and exit
   print_footer(TRUE);
@@ -171,7 +177,10 @@ function printLoginForm($TargetURL)
 if (isset($Action) && ($Action == "QueryName"))
 {
   print_header(0, 0, 0, 0, "");
+  echo make_menu_html('week.php', $area, $year, $month, $day);
+  echo '<div class="MainCell">';
   printLoginForm($TargetURL);
+  echo '</div>';
   exit();
 }
 
@@ -184,8 +193,9 @@ if (isset($Action) && ($Action == "QueryName"))
 function authGet()
 {
   global $PHP_SELF, $QUERY_STRING;
-
   print_header(0, 0, 0, 0, "");
+  echo make_menu_html('week.php', $area, $year, $month, $day);
+  echo '<div class="MainCell">';
 
   echo "<p>".get_vocab("norights")."</p>\n";
 
@@ -195,6 +205,7 @@ function authGet()
     $TargetURL = $TargetURL . "?" . $QUERY_STRING;
   }
   printLoginForm($TargetURL);
+  echo '</div>';
 
   exit();
 }
