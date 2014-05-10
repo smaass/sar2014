@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 07-05-2014 a las 01:28:31
--- Versión del servidor: 5.6.12-log
--- Versión de PHP: 5.4.12
+-- Host: localhost
+-- Generation Time: May 10, 2014 at 11:33 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `5401_1401_g2`
+-- Database: `5401_1401_g2`
 --
-CREATE DATABASE IF NOT EXISTS `5401_1401_g2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `5401_1401_g2`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_area`
+-- Table structure for table `mrbs_area`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_area` (
@@ -69,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_area` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `mrbs_area`
+-- Dumping data for table `mrbs_area`
 --
 
 INSERT INTO `mrbs_area` (`id`, `disabled`, `area_name`, `timezone`, `area_admin_email`, `resolution`, `default_duration`, `default_duration_all_day`, `morningstarts`, `morningstarts_minutes`, `eveningends`, `eveningends_minutes`, `private_enabled`, `private_default`, `private_mandatory`, `private_override`, `min_book_ahead_enabled`, `min_book_ahead_secs`, `max_book_ahead_enabled`, `max_book_ahead_secs`, `max_per_day_enabled`, `max_per_day`, `max_per_week_enabled`, `max_per_week`, `max_per_month_enabled`, `max_per_month`, `max_per_year_enabled`, `max_per_year`, `max_per_future_enabled`, `max_per_future`, `custom_html`, `approval_enabled`, `reminders_enabled`, `enable_periods`, `confirmation_enabled`, `confirmed_default`) VALUES
@@ -80,7 +78,7 @@ INSERT INTO `mrbs_area` (`id`, `disabled`, `area_name`, `timezone`, `area_admin_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_entry`
+-- Table structure for table `mrbs_entry`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_entry` (
@@ -106,10 +104,10 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=167 ;
 
 --
--- Volcado de datos para la tabla `mrbs_entry`
+-- Dumping data for table `mrbs_entry`
 --
 
 INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_id`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `ical_recur_id`) VALUES
@@ -131,12 +129,51 @@ INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_
 (114, 1399910400, 1399996860, 0, 0, 34, '2014-05-04 04:30:49', 'admin', 'asdf', 'I', 'asdf', 0, NULL, NULL, NULL, NULL, 'MRBS-5365c2797d62b-3774cfbd@localhost', 0, ''),
 (119, 1399392000, 1399392060, 0, 0, 34, '2014-05-06 17:47:52', 'admin', 'asdf', 'I', 'descripción completa', 0, NULL, NULL, NULL, NULL, 'MRBS-536920481db63-4036b062@localhost', 0, ''),
 (120, 1399305600, 1399478460, 0, 0, 34, '2014-05-06 17:50:53', 'admin', 'asdf', 'I', 'sdf', 0, NULL, NULL, NULL, NULL, 'MRBS-536920fd25fb0-81c5c451@localhost', 0, ''),
-(123, 1400083200, 1400083260, 1, 13, 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, '20140514T160000Z');
+(123, 1400083200, 1400083260, 1, 13, 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, '20140514T160000Z'),
+(128, 1399460400, 1399473000, 0, 0, 27, '2014-05-07 02:02:29', 'admin', 'lkug', 'I', 'kig', 0, NULL, NULL, NULL, NULL, 'MRBS-5369943506a23-b8445da5@localhost', 0, ''),
+(129, 1399473000, 1399480200, 0, 0, 27, '2014-05-07 02:12:25', 'admin', 'o8huo', 'I', 'i8ygo', 0, NULL, NULL, NULL, NULL, 'MRBS-536996893a785-dee9d7e0@localhost', 0, ''),
+(130, 1399460400, 1399467600, 0, 0, 29, '2014-05-07 02:19:21', 'admin', 'lk89', 'I', '9hp', 0, NULL, NULL, NULL, NULL, 'MRBS-5369982900663-ac8623ab@localhost', 0, ''),
+(131, 1399467600, 1399473000, 0, 0, 29, '2014-05-07 02:20:44', 'admin', 'li7ho87', 'I', 'o876g97u69', 0, NULL, NULL, NULL, NULL, 'MRBS-5369987c06e11-0325ff2d@localhost', 0, ''),
+(132, 1399473000, 1399478400, 0, 0, 29, '2014-05-07 02:25:13', 'admin', 'sad', 'I', 'iounp98', 0, NULL, NULL, NULL, NULL, 'MRBS-53699989ee9a2-9ce30c92@localhost', 0, ''),
+(133, 1399480200, 1399489200, 0, 0, 29, '2014-05-07 02:26:03', 'admin', 'ñoij', 'I', 'p9o8', 0, NULL, NULL, NULL, NULL, 'MRBS-536999bba1f42-26e8ab29@localhost', 0, ''),
+(134, 1399491000, 1399492800, 0, 0, 29, '2014-05-07 02:28:36', 'admin', 'oi', 'I', '8h', 0, NULL, NULL, NULL, NULL, 'MRBS-53699a5435bab-093bf036@localhost', 0, ''),
+(135, 1399480200, 1399487400, 0, 0, 27, '2014-05-07 02:35:10', 'admin', 'oñk', 'I', 'oim', 0, NULL, NULL, NULL, NULL, 'MRBS-53699bdee3cc0-64f2d010@localhost', 0, ''),
+(136, 1399487400, 1399492800, 0, 0, 27, '2014-05-07 02:38:08', 'admin', 'ñoi', 'I', 'ñoin', 0, NULL, NULL, NULL, NULL, 'MRBS-53699c90d52c4-3920feba@localhost', 0, ''),
+(137, 1399546800, 1399555800, 0, 0, 27, '2014-05-07 02:39:08', 'admin', 'ñliaoijaoim', 'I', 'oim', 0, NULL, NULL, NULL, NULL, 'MRBS-53699ccc48e0c-2934299b@localhost', 0, ''),
+(138, 1399563000, 1399568400, 0, 0, 27, '2014-05-07 02:40:27', 'admin', 'ñlk', 'I', 'olmk', 0, NULL, NULL, NULL, NULL, 'MRBS-53699d1b7962f-ba0ef09a@localhost', 0, ''),
+(139, 1399555800, 1399557600, 0, 0, 27, '2014-05-07 02:44:46', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699e1e8c0d7-c473b704@localhost', 0, ''),
+(140, 1399642200, 1399644000, 0, 0, 27, '2014-05-07 02:46:46', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699e9680e30-57cb09ae@localhost', 0, ''),
+(141, 1399654800, 1399656600, 0, 0, 27, '2014-05-07 02:48:01', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699ee1a3db2-a55246db@localhost', 0, ''),
+(142, 1399559400, 1399563000, 0, 0, 27, '2014-05-07 02:51:06', 'admin', 'sdasd', 'I', 'qwd', 0, NULL, NULL, NULL, NULL, 'MRBS-53699f9ab3b90-30ed3360@localhost', 0, ''),
+(143, 1399557600, 1399559400, 0, 0, 29, '2014-05-07 02:56:40', 'admin', 'ño', 'I', 'i0oi', 0, NULL, NULL, NULL, NULL, 'MRBS-5369a0e81c37c-fa3fda24@localhost', 0, ''),
+(144, 1399653000, 1399656600, 0, 0, 29, '2014-05-07 04:59:01', 'admin', 'sdño', 'I', 'opipi', 0, NULL, NULL, NULL, NULL, 'MRBS-5369bd95f03c0-1f5c8c3e@localhost', 0, ''),
+(145, 1399638600, 1399642200, 0, 0, 29, '2014-05-07 05:00:19', 'admin', 'Hola', 'I', 'oiko', 0, NULL, NULL, NULL, NULL, 'MRBS-5369bde39bd6f-8ec62c44@localhost', 0, ''),
+(146, 1402916400, 1402925400, 0, 0, 29, '2014-05-07 12:06:37', 'admin', 'Makes me laugh', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a21cd3041e-ec179d44@localhost', 0, ''),
+(147, 1402947000, 1402956000, 0, 0, 29, '2014-05-07 12:18:51', 'admin', 'Makes me laugh', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a24ab8d0ae-bffe79e2@localhost', 0, ''),
+(148, 1403033400, 1403035200, 0, 0, 29, '2014-05-07 12:51:01', 'admin', 'Makes me laugh2', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2c3526d29-e948afc1@localhost', 0, ''),
+(149, 1403181000, 1403186400, 0, 0, 29, '2014-05-07 12:56:45', 'admin', 'JOJOJOJO', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2d8d9098b-c837f4c6@localhost', 0, ''),
+(150, 1403186400, 1403188200, 0, 0, 29, '2014-05-07 12:57:43', 'admin', 'JOJOJOJO2', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2dc7d7324-78c9019f@localhost', 0, ''),
+(151, 1403188200, 1403190000, 0, 0, 29, '2014-05-07 12:59:03', 'admin', 'JOJOJOJO3', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2e175f213-c09e3c27@localhost', 0, ''),
+(152, 1403190000, 1403191800, 0, 0, 29, '2014-05-07 13:01:41', 'admin', 'JOJOJOJO4', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2eb567ae3-3549a23e@localhost', 0, ''),
+(153, 1403191800, 1403193600, 0, 0, 29, '2014-05-07 13:05:24', 'admin', 'JOJOJOJO5', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2f947ad1a-fafb02fd@localhost', 0, ''),
+(154, 1403193600, 1403195400, 0, 0, 29, '2014-05-07 13:08:21', 'admin', 'JOJOJOJO6', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3045316d3-3cf24777@localhost', 0, ''),
+(155, 1403195400, 1403197200, 0, 0, 29, '2014-05-07 13:17:52', 'admin', 'JOJOJOJO7', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a32809a44e-2622569f@localhost', 0, ''),
+(156, 1403197200, 1403199000, 0, 0, 29, '2014-05-07 13:19:50', 'admin', 'JOJOJOJO8', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a32f6d8ba2-4b7a50f0@localhost', 0, ''),
+(157, 1403199000, 1403200800, 0, 0, 29, '2014-05-07 13:28:42', 'admin', 'JOJOJOJO9', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a350a1a224-da921d70@localhost', 0, ''),
+(158, 1399550400, 1399564800, 0, 0, 28, '2014-05-07 13:29:23', 'admin', 'HOla2', 'I', 'kip', 0, NULL, NULL, NULL, NULL, 'MRBS-536a35331ec90-fa0da228@localhost', 0, ''),
+(159, 1399564800, 1399566600, 0, 0, 28, '2014-05-07 13:30:13', 'admin', 'HOla3', 'I', 'kip', 0, NULL, NULL, NULL, NULL, 'MRBS-536a356501849-4d0bbbc1@localhost', 0, ''),
+(160, 1399568400, 1399572000, 0, 0, 28, '2014-05-07 13:32:37', 'admin', 'JAJAJA', 'I', 'kjo', 0, NULL, NULL, NULL, NULL, 'MRBS-536a35f5ac1a5-8d80381d@localhost', 0, ''),
+(161, 1399573800, 1399577400, 0, 0, 28, '2014-05-07 13:34:07', 'admin', 'JOJAJO', 'I', 'klj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a364fcd1e9-84f6ac23@localhost', 0, ''),
+(162, 1399577400, 1399581000, 0, 0, 28, '2014-05-07 13:35:39', 'admin', 'JOJAJO1', 'I', 'klj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a36ab5c1f5-ec50bd81@localhost', 0, ''),
+(163, 1399638600, 1399651200, 0, 0, 28, '2014-05-07 13:36:44', 'admin', 'JEJEJ', 'I', 'oj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a36ecf246b-a6027cbb@localhost', 0, ''),
+(164, 1399653000, 1399656600, 0, 0, 28, '2014-05-07 13:38:47', 'admin', 'JUJU', 'I', 'pk', 0, NULL, NULL, NULL, NULL, 'MRBS-536a376792bce-6c45bdc8@localhost', 0, ''),
+(165, 1399656600, 1399660200, 0, 0, 28, '2014-05-07 13:39:33', 'admin', 'JIJI', 'I', 'lkn', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3795b0504-c5609b5e@localhost', 0, ''),
+(166, 1399660200, 1399663800, 0, 0, 28, '2014-05-07 13:47:34', 'admin', 'JEJI', 'I', 'kj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3976e7943-c2503344@localhost', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_entry_opt`
+-- Table structure for table `mrbs_entry_opt`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_entry_opt` (
@@ -148,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_opt` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `mrbs_entry_opt`
+-- Dumping data for table `mrbs_entry_opt`
 --
 
 INSERT INTO `mrbs_entry_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
@@ -172,7 +209,7 @@ INSERT INTO `mrbs_entry_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_entry_salas`
+-- Table structure for table `mrbs_entry_salas`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
@@ -187,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `mrbs_entry_salas`
+-- Dumping data for table `mrbs_entry_salas`
 --
 
 INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
@@ -197,12 +234,51 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (78, 'profe1', 'curso1', NULL, NULL, NULL, 'Clase'),
 (80, 'profe2', 'curso2', NULL, NULL, NULL, 'Clase'),
 (82, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
-(84, NULL, NULL, 'dnobmre', 'Charla alumno', 'expotr', 'Defensa');
+(84, NULL, NULL, 'dnobmre', 'Charla alumno', 'expotr', 'Defensa'),
+(128, 'ouyv', 'oiub09', NULL, NULL, NULL, 'Clase'),
+(129, 'o97', '0o9p', NULL, NULL, NULL, 'Clase'),
+(130, '9uhp98', 'p98', NULL, NULL, NULL, 'Clase'),
+(131, 'op897h', 'p9h', NULL, NULL, NULL, 'Clase'),
+(132, 'ñoin', '98h9', NULL, NULL, NULL, 'Clase'),
+(133, 'np9o8jh', '9', NULL, NULL, NULL, 'Clase'),
+(134, 'h98p7', '7', NULL, NULL, NULL, 'Clase'),
+(135, 'poi', 'po', NULL, NULL, NULL, 'Clase'),
+(136, 'iub', 'iu', NULL, NULL, NULL, 'Clase'),
+(137, 'oim', 'oi', NULL, NULL, NULL, 'Clase'),
+(138, '{oim', '{k', NULL, NULL, NULL, 'Clase'),
+(139, 'iun', 'o9', NULL, NULL, NULL, 'Clase'),
+(140, 'iun', 'o9', NULL, NULL, NULL, 'Clase'),
+(141, 'iun', 'o9', NULL, NULL, NULL, 'Clase'),
+(142, 'qw', 'wq', NULL, NULL, NULL, 'Clase'),
+(143, '009', '0', NULL, NULL, NULL, 'Clase'),
+(144, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
+(145, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
+(146, 'oin', 'f34', NULL, NULL, NULL, 'Clase'),
+(147, NULL, NULL, 'asdf', 'Charla alumno', 'wefw', 'Defensa'),
+(148, NULL, NULL, 'asdf', 'Charla alumno', 'wefw', 'Defensa'),
+(149, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(150, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(151, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(152, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(153, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(154, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(155, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(156, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(157, 'oin', 'oi', NULL, NULL, NULL, 'Clase'),
+(158, 'poi', 'po', NULL, NULL, NULL, 'Clase'),
+(159, 'poi', 'po', NULL, NULL, NULL, 'Clase'),
+(160, 'ñoi', 'oi', NULL, NULL, NULL, 'Clase'),
+(161, 'ñj', 'kjn', NULL, NULL, NULL, 'Clase'),
+(162, 'ñj', 'kjn', NULL, NULL, NULL, 'Clase'),
+(163, 'oij', 'oi', NULL, NULL, NULL, 'Clase'),
+(164, 'plk', 'p', NULL, NULL, NULL, 'Clase'),
+(165, 'lk', 'nlk', NULL, NULL, NULL, 'Clase'),
+(166, 'lk', 'jl', NULL, NULL, NULL, 'Clase');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_repeat`
+-- Table structure for table `mrbs_repeat`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
@@ -227,10 +303,10 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
   `ical_uid` varchar(255) NOT NULL DEFAULT '',
   `ical_sequence` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Volcado de datos para la tabla `mrbs_repeat`
+-- Dumping data for table `mrbs_repeat`
 --
 
 INSERT INTO `mrbs_repeat` (`id`, `start_time`, `end_time`, `rep_type`, `end_date`, `rep_opt`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `rep_num_weeks`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`) VALUES
@@ -241,7 +317,7 @@ INSERT INTO `mrbs_repeat` (`id`, `start_time`, `end_time`, `rep_type`, `end_date
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_repeat_opt`
+-- Table structure for table `mrbs_repeat_opt`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
@@ -253,7 +329,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `mrbs_repeat_opt`
+-- Dumping data for table `mrbs_repeat_opt`
 --
 
 INSERT INTO `mrbs_repeat_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
@@ -266,7 +342,7 @@ INSERT INTO `mrbs_repeat_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALU
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_repeat_salas`
+-- Table structure for table `mrbs_repeat_salas`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_repeat_salas` (
@@ -281,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_salas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `mrbs_repeat_salas`
+-- Dumping data for table `mrbs_repeat_salas`
 --
 
 INSERT INTO `mrbs_repeat_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
@@ -292,7 +368,7 @@ INSERT INTO `mrbs_repeat_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_room`
+-- Table structure for table `mrbs_room`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_room` (
@@ -315,7 +391,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
--- Volcado de datos para la tabla `mrbs_room`
+-- Dumping data for table `mrbs_room`
 --
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
@@ -337,7 +413,7 @@ INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_users`
+-- Table structure for table `mrbs_users`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_users` (
@@ -350,7 +426,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `mrbs_users`
+-- Dumping data for table `mrbs_users`
 --
 
 INSERT INTO `mrbs_users` (`id`, `level`, `name`, `password`, `email`) VALUES
@@ -359,7 +435,7 @@ INSERT INTO `mrbs_users` (`id`, `level`, `name`, `password`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_variables`
+-- Table structure for table `mrbs_variables`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_variables` (
@@ -370,7 +446,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_variables` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `mrbs_variables`
+-- Dumping data for table `mrbs_variables`
 --
 
 INSERT INTO `mrbs_variables` (`id`, `variable_name`, `variable_content`) VALUES
@@ -380,7 +456,7 @@ INSERT INTO `mrbs_variables` (`id`, `variable_name`, `variable_content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrbs_zoneinfo`
+-- Table structure for table `mrbs_zoneinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `mrbs_zoneinfo` (
@@ -393,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_zoneinfo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `mrbs_zoneinfo`
+-- Dumping data for table `mrbs_zoneinfo`
 --
 
 INSERT INTO `mrbs_zoneinfo` (`id`, `timezone`, `outlook_compatible`, `vtimezone`, `last_updated`) VALUES
@@ -402,27 +478,30 @@ INSERT INTO `mrbs_zoneinfo` (`id`, `timezone`, `outlook_compatible`, `vtimezone`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `notifications_info`
+-- Table structure for table `notifications_info`
 --
 
 CREATE TABLE IF NOT EXISTS `notifications_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(2500) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `reminder_offset` int(11) NOT NULL DEFAULT '300',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `notifications_info`
+-- Dumping data for table `notifications_info`
 --
 
-INSERT INTO `notifications_info` (`id`, `text`) VALUES
-(1, 'Estimado,\r\nSe le recuerda el evento <i>$event</i> a realizarse en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(2, 'Estimado,\r\nSe le recuerda que el día $day se realizará el evento <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado');
+INSERT INTO `notifications_info` (`id`, `text`, `type`, `reminder_offset`) VALUES
+(1, 'Estimado,\r\nSe le recuerda la clase <i>$event</i> a realizarse en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado', 'Clase', 300),
+(2, 'Estimado,\r\nSe le recuerda la reunión <i>$event</i> que se realizará en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado', 'Reunión', 900),
+(3, 'Estimado,\r\nSe le recuerda que el día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado', 'Defensa', 1800);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `notifications_registry`
+-- Table structure for table `notifications_registry`
 --
 
 CREATE TABLE IF NOT EXISTS `notifications_registry` (
@@ -434,20 +513,21 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   `event_id` int(11) NOT NULL,
   `event_datetime` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Volcado de datos para la tabla `notifications_registry`
+-- Dumping data for table `notifications_registry`
 --
 
 INSERT INTO `notifications_registry` (`id`, `text_id`, `mail_list`, `notification_datetime`, `sent`, `event_id`, `event_datetime`) VALUES
 (1, 1, 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl', '2014-05-22 10:00:00', 0, 85, '2014-05-22 11:00:00'),
-(2, 2, 'ian.alonyon@gmail.com;chalo.infante01@gmail.com;fernando@balboa.cl;sergio.maass@gmail.com;macguionbajo@gmail.com', '2014-05-01 11:50:00', 1, 85, '2014-05-01 11:00:00');
+(2, 2, 'ian.alonyon@gmail.com;chalo.infante01@gmail.com;fernando@balboa.cl;sergio.maass@gmail.com;macguionbajo@gmail.com', '2014-05-01 11:50:00', 1, 85, '2014-05-01 11:00:00'),
+(9, 1, 'ian.alonyon@gmail.com', '2014-05-09 14:25:00', 0, 166, '2014-05-09 14:30:00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `oficina_de_trabajo`
+-- Table structure for table `oficina_de_trabajo`
 --
 
 CREATE TABLE IF NOT EXISTS `oficina_de_trabajo` (
@@ -457,7 +537,7 @@ CREATE TABLE IF NOT EXISTS `oficina_de_trabajo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `oficina_de_trabajo`
+-- Dumping data for table `oficina_de_trabajo`
 --
 
 INSERT INTO `oficina_de_trabajo` (`id`, `cupo_numero`) VALUES
@@ -472,7 +552,7 @@ INSERT INTO `oficina_de_trabajo` (`id`, `cupo_numero`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `recurso_computacional`
+-- Table structure for table `recurso_computacional`
 --
 
 CREATE TABLE IF NOT EXISTS `recurso_computacional` (
@@ -483,7 +563,7 @@ CREATE TABLE IF NOT EXISTS `recurso_computacional` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `recurso_computacional`
+-- Dumping data for table `recurso_computacional`
 --
 
 INSERT INTO `recurso_computacional` (`id`, `especificaciones`, `foto`) VALUES
@@ -494,7 +574,7 @@ INSERT INTO `recurso_computacional` (`id`, `especificaciones`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sala_publica`
+-- Table structure for table `sala_publica`
 --
 
 CREATE TABLE IF NOT EXISTS `sala_publica` (
@@ -504,7 +584,7 @@ CREATE TABLE IF NOT EXISTS `sala_publica` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `sala_publica`
+-- Dumping data for table `sala_publica`
 --
 
 INSERT INTO `sala_publica` (`id`, `capacidad`) VALUES
@@ -513,23 +593,23 @@ INSERT INTO `sala_publica` (`id`, `capacidad`) VALUES
 (29, 10);
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `oficina_de_trabajo`
+-- Constraints for table `oficina_de_trabajo`
 --
 ALTER TABLE `oficina_de_trabajo`
   ADD CONSTRAINT `oficina_de_trabajo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
 
 --
--- Filtros para la tabla `recurso_computacional`
+-- Constraints for table `recurso_computacional`
 --
 ALTER TABLE `recurso_computacional`
   ADD CONSTRAINT `recurso_computacional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
 
 --
--- Filtros para la tabla `sala_publica`
+-- Constraints for table `sala_publica`
 --
 ALTER TABLE `sala_publica`
   ADD CONSTRAINT `sala_publica_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
