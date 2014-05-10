@@ -12,7 +12,7 @@ define('INTERVAL_DAY', 0);
  * $booking   - The booking in question - an associative array
  * $ignore    - An entry ID to ignore, 0 to ignore no entries
  * $repignore - A repeat ID to ignore everything in the series, 0 to ignore no series
- * 
+ * e
  * Returns:
  *   nothing   - The area is free
  *   something - An error occured, the return value is an array of conflicts
@@ -563,7 +563,7 @@ function mrbsCreateEntry($table, $data)
 {
   global $standard_fields, $db_tbl_prefix, $area_of_trabajo, $area_salas;
   
-  error_log("INSERTING INTO" . json_encode($table) . "\n\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("INSERTING INTO" . json_encode($table) . "\n\n", 3, "errors.log");
 
   $sql_col = array();
   $sql_val = array();

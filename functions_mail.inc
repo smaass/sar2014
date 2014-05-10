@@ -860,10 +860,10 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   global $tbl_notifications_registry;
 
   // We need to create a new notification in the DB
-  error_log("Bookings ".print_r($data, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  error_log("Previous ".print_r($mail_previous, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  error_log("New Entry ".print_r($new_entry, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  error_log("Series ".print_r($series, true)."\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
+  error_log("Bookings ".print_r($data, true)."\n", 3, "errors.log");
+  error_log("Previous ".print_r($mail_previous, true)."\n", 3, "errors.log");
+  error_log("New Entry ".print_r($new_entry, true)."\n", 3, "errors.log");
+  error_log("Series ".print_r($series, true)."\n", 3, "errors.log");
   
   $sql = "SELECT id, reminder_offset 
           FROM $tbl_notifications_info
@@ -896,7 +896,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   $result = sql_query($sql); 
   if(!$result){
        error_log("Hubo un problema al insertar las notificaciones ".$sql." + ".mysql_error() . "\n",
-                 3 , "/opt/lampp/htdocs/sar2014/errors.log");
+                 3 , "errors.log");
   }
   /*
   global $mail_settings, $enable_periods;

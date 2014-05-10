@@ -701,3 +701,114 @@ Previous Array
 
 New Entry 1
 Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Extra
+    [type] => I
+    [description] => 
+    [room_id] => 27
+    [start_time] => 1399746600
+    [end_time] => 1399750200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536e682baf6dd-c8d17e53@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => 
+    [curso] => 
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 129
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => okom
+    [type] => I
+    [description] => 
+    [room_id] => 27
+    [start_time] => 1399752000
+    [end_time] => 1399755600
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536e6c71c3315-3b757015@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => 
+    [curso] => 
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 130
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => fbf
+    [type] => I
+    [description] => 
+    [room_id] => 27
+    [start_time] => 1399473000
+    [end_time] => 1399476600
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536e6d6b82c86-19154b00@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => 
+    [curso] => 
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 131
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
