@@ -299,7 +299,14 @@ if ($is_admin || ($n_displayable_areas > 0))
                     echo "<td><div>" . htmlspecialchars($r[$field['name']]) . "</div></td>\n";
                     break;
                   case 'capacity_for_multientry':
-                  	echo "<td class=\"int\"><div>" . $r[$field['name']] . "</div></td>\n";
+                  	if ($r[$field['name']] < 1)
+                  	{
+                  		echo "<td class=\"int\"><div>1</div></td>\n";
+                  	}
+                  	else
+                  	{
+                  		echo "<td class=\"int\"><div>" . $r[$field['name']] . "</div></td>\n";
+                  	}
                     break;
                   case 'capacity':
                     echo "<td class=\"int\"><div>" . $r[$field['name']] . "</div></td>\n";

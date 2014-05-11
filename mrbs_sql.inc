@@ -1530,7 +1530,7 @@ function mrbsAddArea($name, &$error)
 
 // Adds a room, returning the new id, or FALSE on failute with the
 // error in $error
-function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $specifications='', $photo='', $slots='')
+function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $specifications='', $photo='', $slots='1')
 {
   global $maxlength, $tbl_room;
   

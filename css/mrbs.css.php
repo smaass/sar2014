@@ -23,6 +23,8 @@ expires_header(60*30); // 30 minute expiry
         display: table;
         width: 100%;
         height: 100%;
+        border-collapse:separate;
+    	border-spacing:1em;
     }
     .Title
     {
@@ -50,7 +52,7 @@ expires_header(60*30); // 30 minute expiry
         height: 100%;
     }
 	.Left{
-		width:17%;
+		width:19%;
 		padding-right: 10px;
 	}
 	.Right{
@@ -67,6 +69,7 @@ expires_header(60*30); // 30 minute expiry
 		margin-top: 5px;
 		padding-bottom: 10px;
 		overflow: hidden;
+		display:table-cell;
 	}
 
 /* ------------ Head -----------------------------*/
