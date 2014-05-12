@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 12, 2014 at 05:40 AM
+-- Generation Time: May 12, 2014 at 08:50 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.16
 
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=167 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=186 ;
 
 --
 -- Dumping data for table `mrbs_entry`
@@ -170,7 +170,14 @@ INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_
 (163, 1399638600, 1399651200, 0, 0, 28, '2014-05-07 13:36:44', 'admin', 'JEJEJ', 'I', 'oj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a36ecf246b-a6027cbb@localhost', 0, ''),
 (164, 1399653000, 1399656600, 0, 0, 28, '2014-05-07 13:38:47', 'admin', 'JUJU', 'I', 'pk', 0, NULL, NULL, NULL, NULL, 'MRBS-536a376792bce-6c45bdc8@localhost', 0, ''),
 (165, 1399656600, 1399660200, 0, 0, 28, '2014-05-07 13:39:33', 'admin', 'JIJI', 'I', 'lkn', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3795b0504-c5609b5e@localhost', 0, ''),
-(166, 1399660200, 1399663800, 0, 0, 28, '2014-05-07 13:47:34', 'admin', 'JEJI', 'I', 'kj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3976e7943-c2503344@localhost', 0, '');
+(166, 1399660200, 1399663800, 0, 0, 28, '2014-05-07 13:47:34', 'admin', 'JEJI', 'I', 'kj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3976e7943-c2503344@localhost', 0, ''),
+(167, 1399651200, 1399651260, 0, 0, 34, '2014-05-12 04:55:16', 'admin', 'sfdf', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537054348a34f-c11f68cb@localhost', 0, ''),
+(168, 1399651200, 1399651260, 0, 0, 34, '2014-05-12 04:55:26', 'admin', 'sdfsd', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-5370543e98959-0513bfec@localhost', 0, ''),
+(169, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 04:55:49', 'admin', 'asdas', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537054554bebc-5c828aa5@localhost', 0, ''),
+(170, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 04:56:04', 'admin', 'asdas', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-5370546421215-60b153a1@localhost', 0, ''),
+(171, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 05:05:49', 'admin', 'vxcv', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537056ad45b26-af9a6fb1@localhost', 0, ''),
+(172, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 05:06:00', 'admin', 'sdfgs', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537056b8e145f-8404a67c@localhost', 0, ''),
+(173, 1400083200, 1400083260, 0, 0, 34, '2014-05-12 05:06:58', 'admin', 'sasa', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537056f2d79bc-564502e9@localhost', 0, '');
 
 -- --------------------------------------------------------
 
@@ -206,7 +213,14 @@ INSERT INTO `mrbs_entry_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUE
 (118, 'asdf5', 'asdf5', 'asdf5'),
 (119, 'Stanford University', 'Chile', 'a@b.cl'),
 (120, 'Stanford University', 'asdf', 'a@b.cl'),
-(123, 'Stanford University', 'asdf', 'a@b.cl');
+(123, 'Stanford University', 'asdf', 'a@b.cl'),
+(167, 'sdfs', 'sss', 'fsdf'),
+(168, 'sdfs', 'aaa', 'fdfd'),
+(169, 'aaa', 'dsa', 'dsad'),
+(170, 'aaa', 'ddsd', 'gggg'),
+(171, 'fvdfv', 'dfvf', 'dffg'),
+(172, 'sfdg', 'sss', 'asd'),
+(173, 'sas', 'dfsdf', 'sdfdf');
 
 -- --------------------------------------------------------
 
@@ -398,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
 (21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 3, '', '', '', '', 0, ''),
-(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, NULL, NULL, '', '', 0, ''),
+(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, '', '', '', '', 0, ''),
 (25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (26, 0, 4, 'Notebook 2', 'Notebook 2', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', 30, 0, NULL, NULL, '', '', 0, ''),
@@ -509,8 +523,9 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   `sent` tinyint(1) NOT NULL DEFAULT '0',
   `event_id` int(11) NOT NULL,
   `event_datetime` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `notifications_registry`
@@ -519,7 +534,7 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
 INSERT INTO `notifications_registry` (`id`, `text_id`, `mail_list`, `notification_datetime`, `sent`, `event_id`, `event_datetime`) VALUES
 (1, 1, 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl', '2014-05-22 10:00:00', 0, 85, '2014-05-22 11:00:00'),
 (2, 2, 'ian.alonyon@gmail.com;chalo.infante01@gmail.com;fernando@balboa.cl;sergio.maass@gmail.com;macguionbajo@gmail.com', '2014-05-01 11:50:00', 1, 85, '2014-05-01 11:00:00'),
-(9, 1, 'ian.alonyon@gmail.com', '2014-05-09 14:25:00', 0, 166, '2014-05-09 14:30:00');
+(9, 1, 'ian.alonyon@gmail.com', '2014-05-09 14:25:00', 1, 166, '2014-05-09 14:30:00');
 
 -- --------------------------------------------------------
 
@@ -587,6 +602,12 @@ INSERT INTO `sala_publica` (`id`, `capacidad`) VALUES
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `notifications_registry`
+--
+ALTER TABLE `notifications_registry`
+  ADD CONSTRAINT `notifications_registry_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `mrbs_entry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `oficina_de_trabajo`
