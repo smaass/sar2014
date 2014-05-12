@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_opt` (
   `pais` varchar(50) DEFAULT NULL,
   `correo` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_entry_opt`
@@ -221,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
   `resumen_expositor` varchar(1000) DEFAULT NULL,
   `tipo_evento` varchar(8) NOT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_entry_salas`
@@ -326,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
   `pais` varchar(25) DEFAULT NULL,
   `correo` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_repeat_opt`
@@ -354,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_salas` (
   `resumen_expositor` varchar(1000) DEFAULT NULL,
   `tipo_evento` varchar(8) NOT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_repeat_salas`
@@ -600,19 +600,19 @@ INSERT INTO `sala_publica` (`id`, `capacidad`) VALUES
 -- Constraints for table `oficina_de_trabajo`
 --
 ALTER TABLE `oficina_de_trabajo`
-  ADD CONSTRAINT `oficina_de_trabajo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
+  ADD CONSTRAINT `oficina_de_trabajo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `recurso_computacional`
 --
 ALTER TABLE `recurso_computacional`
-  ADD CONSTRAINT `recurso_computacional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
+  ADD CONSTRAINT `recurso_computacional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `sala_publica`
 --
 ALTER TABLE `sala_publica`
-  ADD CONSTRAINT `sala_publica_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
+  ADD CONSTRAINT `sala_publica_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
