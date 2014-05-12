@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 10, 2014 at 11:33 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: May 12, 2014 at 05:40 AM
+-- Server version: 5.5.31
+-- PHP Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `5401_1401_g2`
 --
+CREATE DATABASE IF NOT EXISTS `5401_1401_g2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `5401_1401_g2`;
 
 -- --------------------------------------------------------
 
@@ -189,20 +191,20 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_opt` (
 --
 
 INSERT INTO `mrbs_entry_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
+(0, 'UdeChile', 'Chile', 'a@b.cl'),
 (47, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
 (48, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
 (49, 'Stanford University', 'EEUU', 'vint@acm.org'),
 (74, 'Universidad de Chile', 'Chile', 'fcifuent@dcc.uchile.cl'),
-(0, 'UdeChile', 'Chile', 'a@b.cl'),
 (109, 'asdf4', 'asdf4', 'asdf4'),
 (110, 'tf', 'tf', 'tf'),
 (111, 'df', 'df', 'df'),
 (112, 'as', 'as', 'as'),
 (113, 'asdf1', 'asdf1', 'asdf1'),
 (114, 'asdf', 'asdf', 'asdf'),
-(119, 'Stanford University', 'Chile', 'a@b.cl'),
 (117, 'asdf5', 'asdf5', 'asdf5'),
 (118, 'asdf5', 'asdf5', 'asdf5'),
+(119, 'Stanford University', 'Chile', 'a@b.cl'),
 (120, 'Stanford University', 'asdf', 'a@b.cl'),
 (123, 'Stanford University', 'asdf', 'a@b.cl');
 
@@ -228,8 +230,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
 --
 
 INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
-(39, 'asddkasj', 'hjsdkasd', NULL, NULL, NULL, 'Clase'),
 (38, 'asdasd', 'asdas', NULL, NULL, NULL, 'Clase'),
+(39, 'asddkasj', 'hjsdkasd', NULL, NULL, NULL, 'Clase'),
 (77, 'asddas', 'asdasd', NULL, NULL, NULL, 'Clase'),
 (78, 'profe1', 'curso1', NULL, NULL, NULL, 'Clase'),
 (80, 'profe2', 'curso2', NULL, NULL, NULL, 'Clase'),
@@ -334,8 +336,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
 
 INSERT INTO `mrbs_repeat_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
 (10, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
-(12, '13212', '132123', '1233132'),
 (11, 'Stanford University', 'asdf', 'a@b.cl'),
+(12, '13212', '132123', '1233132'),
 (13, 'Stanford University', 'asdf', 'a@b.cl'),
 (14, 'Stanford University', 'asdf', 'a@b.cl');
 
@@ -395,19 +397,14 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 --
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
-(21, 0, 5, 'Oficina 310, cupo 1', 'Oficina 310, cupo 1', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, '', '', '', '', 0, ''),
-(22, 0, 5, 'Oficina 310, cupo 2', 'Oficina 310, cupo 2', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, NULL, NULL, '', '', 0, ''),
-(23, 0, 5, 'Oficina 310, cupo 3', 'Oficina 310, cupo 3', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, NULL, NULL, '', '', 0, ''),
+(21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 3, '', '', '', '', 0, ''),
 (24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, NULL, NULL, '', '', 0, ''),
 (25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (26, 0, 4, 'Notebook 2', 'Notebook 2', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', 30, 0, NULL, NULL, '', '', 0, ''),
-(28, 0, 3, 'Sala B213', 'Sala B213', 'Sala segundo piso', 50, 0, '', '', '', '', 0, ''),
-(29, 0, 3, 'Sala B111', 'Sala B111', 'Sala primer piso', 10, 0, NULL, NULL, '', '', 0, ''),
-(30, 0, 5, 'Oficina 311, cupo 1', 'Oficina 311', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
-(31, 0, 5, 'Oficina 311, cupo 2', 'Oficina 311, cupo 2', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
-(32, 1, 5, 'Oficina 311, cupo 3', 'Oficina 311, cupo 3', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
-(33, 1, 5, 'Oficina 311, cupo 4', 'Oficina 311, cupo 4', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
+(28, 0, 3, 'Sala de Reuniones 4° piso', 'Sala de Reuniones 4° piso', '', 50, 0, '', '', '', '', 0, ''),
+(29, 0, 3, 'Sala de Reuniones 3° piso', 'Sala de Reuniones 3° piso', 'Sala primer piso', 10, 0, '', '', '', '', 0, ''),
+(30, 0, 5, 'Oficina 311', 'Oficina 311', 'Oficina dispuesta para profesores visitantes', 0, 4, '', '', '', '', 0, ''),
 (34, 0, 5, 'Oficina 999', 'Oficina 999', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 2, '', '', '', '', 0, '');
 
 -- --------------------------------------------------------
@@ -542,12 +539,7 @@ CREATE TABLE IF NOT EXISTS `oficina_de_trabajo` (
 
 INSERT INTO `oficina_de_trabajo` (`id`, `cupo_numero`) VALUES
 (21, 1),
-(22, 1),
-(23, 1),
-(30, 1),
-(31, 1),
-(32, 1),
-(33, 1);
+(30, 1);
 
 -- --------------------------------------------------------
 
