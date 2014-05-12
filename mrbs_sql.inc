@@ -1565,8 +1565,8 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $spec
   }
   // If so, insert the room into the database
   $slots = isset($slots) ? $slots : 1;
-  $sql = "INSERT INTO $tbl_room (room_name, area_id, description, capacity, capacity_for_multientry)
-          VALUES ('$room_name_q', $area, '$description_q', $capacity, $slots)";
+  $sql = "INSERT INTO $tbl_room (room_name, sort_key, area_id, description, capacity, capacity_for_multientry)
+          VALUES ('$room_name_q', '$room_name_q', $area, '$description_q', $capacity, $slots)";
   echo $sql;
   if (sql_command($sql) < 0)
   {

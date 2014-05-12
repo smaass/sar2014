@@ -137,7 +137,7 @@ $new_area = get_form_var('new_area', 'int');
 $old_area = get_form_var('old_area', 'int');
 $room_name = get_form_var('room_name', 'string');
 $room_disabled = get_form_var('room_disabled', 'string');
-$sort_key = get_form_var('sort_key', 'string');
+$sort_key = $room_name;
 $old_room_name = get_form_var('old_room_name', 'string');
 $area_name = get_form_var('area_name', 'string');
 $description = get_form_var('description', 'string');
@@ -647,12 +647,6 @@ print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $roo
 echo make_menu_html('week.php', $area, $year, $month, $day);
 echo '<div class="MainCell">';
 
-if ($is_admin)
-{
-    // Heading is confusing for non-admins
-    echo "<h2>" . get_vocab("editroomarea") . "</h2>\n";
-}
-
 // Non-admins will only be allowed to view room details, not change them
 // (We would use readonly instead of disabled, but it is not valid for some 
 // elements, eg <select>)
@@ -742,15 +736,6 @@ if (isset($change_room) && !empty($room))
                     echo "<input class=\"radio\" type=\"radio\" name=\"room_disabled\" value=\"1\"${checked}${disabled}>\n";
                     echo get_vocab("disabled") . "</label>\n";
                     echo "</div>\n";
-                    echo "</div>\n";
-                }
-
-                // Sort key
-                if ($is_admin)
-                {
-                    echo "<div>\n";
-                    echo "<label for=\"sort_key\" title=\"" . get_vocab("sort_key_note") . "\">" . get_vocab("sort_key") . ":</label>\n";
-                    echo "<input type=\"text\" id=\"sort_key\" name=\"sort_key\" value=\"" . htmlspecialchars($row["sort_key"]) . "\"$disabled>\n";
                     echo "</div>\n";
                 }
 
