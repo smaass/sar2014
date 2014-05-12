@@ -103,11 +103,6 @@ if (isset($general_view))
   $this_room_name = "Vista General";
 }
 
-elseif (isset($grouped_view))
-{
-  $this_room_name = get_off_name($this_room_name);
-}
-
 // Show all available areas
 echo make_menu_html('week.php', $area, $year, $month, $day);
 
@@ -144,7 +139,7 @@ $all_day = preg_replace("/ /", "&nbsp;", get_vocab("all_day"));
 // has no rooms, or else the room or area has been disabled
 if (isset($general_view))
 {
-  $sql = "SELECT R.id id, R.room_name room_name
+  $sql = "SELECT R.id id, R.room_name room_name, R.capacity_for_multientry capacity
             FROM $tbl_room R, $tbl_area A
            WHERE R.area_id=$area
              AND R.area_id=A.id
@@ -161,7 +156,7 @@ if (isset($general_view))
   $v_id = 0;
   foreach($offices_id as $key => $value)
   {
-    $offices_id[$key]['count'] = count($value);
+    $offices_id[$key]['count'] = $value[0];
     $offices_id[$key]['id'] = $v_id++;
   }
   for ($nRoom = 0; ($room_row = sql_row_keyed($rooms, $nRoom)); $nRoom++){
@@ -187,7 +182,7 @@ if (isset($general_view))
       else
       {
       	// Get office name, without slots.
-        $off_name = get_off_name($room_row['room_name']);
+        $off_name = $room_row['room_name'];
         if(!isset($d[$day_num]["id"][$offices_id[$off_name]['id']])){
           $d[$day_num]["id"][$offices_id[$off_name]['id']] = $room_row['id'];
           $d[$day_num]["name"][$offices_id[$off_name]['id']] = $off_name;
@@ -196,7 +191,6 @@ if (isset($general_view))
         for ($i = 0; ($row = sql_row_keyed($res[$nRoom], $i)); $i++)
         {
           $d[$day_num]["color"][$offices_id[$off_name]['id']]--;
-          break;
         }
       }
     }
@@ -436,6 +430,7 @@ else
               $d[$day_num]["data"][] = "&lt;====" . $all_day;
               break;
             case "< > ":         // Starts before today, continues tomorrow
+
               $d[$day_num]["data"][] = "&lt;====" . $all_day . "====&gt;";
               break;
           }

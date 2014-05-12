@@ -35,13 +35,8 @@ function get_work_offices($data)
   $room_ids = array();
   for ( $i = 0; ($room_row = sql_row_keyed($data, $i)); $i++)
   {
-    $of_name = get_off_name($room_row['room_name']);
-	if (isset($room_ids[$of_name]))
-	  $room_ids[$of_name][] = $room_row['id'];
-	else
-	  $room_ids[$of_name] = array($room_row['id']);
-	if (isset($room_row['description']) && !isset($room_ids[$of_name]['descr']))
-	  $room_ids[$of_name]['descr'] = $room_row['description'];
+    $of_name = $room_row['room_name'];
+	$room_ids[$of_name] = array($room_row['capacity']);
   }
   return $room_ids;
 }
@@ -72,16 +67,6 @@ function get_work_office($data, $of_id)
 	}
   }
   return $room_ids;
-}
-
-// A partir del nombre completo del recurso cupo, obtiene el
-// nombre de la oficina de trabajo de este cupo.
-function get_off_name($full_name)
-{
-  $end = strrpos($full_name, ",");
-  if (!$end)
-  	return $full_name;
-  return substr($full_name, 0, $end);
 }
 
 // Set the default timezone.   Caters for PHP servers that don't
