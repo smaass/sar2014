@@ -159,6 +159,7 @@ function makeDataTable(id, specificOptions, leftCol, rightCol)
             options.iLeftColumns = 1;
             options.sLeftWidth = "fixed";
             options.iLeftWidth = getFixedColWidth(table, leftCol);
+            options.iLeftWidth = 200;
           }
           if ((rightCol !== undefined) && (rightCol !== null))
           {
