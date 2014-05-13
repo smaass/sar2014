@@ -484,7 +484,7 @@ if ($debug_flag)
   echo "</pre>\n";
 }
 echo "<table class=\"dwm_main\" id=\"month_main\">\n";
-
+echo table_popup_innerhtml();
 // Weekday name header row:
 echo "<thead>\n";
 echo "<tr>\n";
@@ -587,7 +587,7 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
     {
       if($d[$cday]["available_capacity"] > 0)
       {
-      	echo "<a class=\"new_booking\" href=\"edit_entry.php?$query_string\">\n";
+      	//echo "<a class=\"new_booking\" href=\"edit_entry.php?$query_string\">\n";      	
       }
       else
       {
@@ -707,10 +707,15 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
     }
     for($i=0;$i<$d[$cday]["available_capacity"];$i++)
     {
-    echo "<div class=\"" . "A" . "\"" .
-    " style=\"width: " . (($monthly_view_entries_details == "both") ? '100%' : '49.9%') . "\">\n";
-    //echo "<i>{$d[$cday][available_capacity]} cupos libres<i>";
-    echo "<a href=\"edit_entry.php?$query_string\"></a></div>";
+	    echo "<div class=\"" . "A" . "\"" .
+	    " style=\"width: " . (($monthly_view_entries_details == "both") ? '100%' : '49.9%') . "\">\n";
+	    //echo "<i>{$d[$cday][available_capacity]} cupos libres<i>";
+	    //echo "<a href=\"edit_entry.php?$query_string\"></a></div>";
+	    $entry_link = "'edit_entry.php?";
+	    $entry_link .= $query_string;
+	    $entry_link .= "'";      	
+	    echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup(event.clientX,event.clientY,$entry_link);\" ></div>";
+	    echo "</div>";
     }
     echo "</div>\n";
     echo "</div>\n";
