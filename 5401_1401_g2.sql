@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 13, 2014 at 02:35 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: May 13, 2014 at 06:23 AM
+-- Server version: 5.5.31
+-- PHP Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -15,10 +15,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-
---
--- Database: `5401_1401_g2`
---
 
 -- --------------------------------------------------------
 
@@ -105,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=193 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=194 ;
 
 --
 -- Dumping data for table `mrbs_entry`
@@ -177,7 +173,8 @@ INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_
 (189, 1400072400, 1400076000, 0, 0, 27, '2014-05-12 23:25:22', 'admin', 'lñkj', 'I', 'lkj', 0, NULL, NULL, NULL, NULL, 'MRBS-5371586254d01-fa6ae82e@localhost', 0, '', 'qñwoq'),
 (190, 1400158800, 1400162400, 0, 0, 27, '2014-05-12 23:31:59', 'admin', 'Ahora si', 'I', 'la terrible', 0, NULL, NULL, NULL, NULL, 'MRBS-537159ef03fa4-b02fcca1@localhost', 0, '', 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl'),
 (191, 1399989600, 1399993200, 0, 0, 27, '2014-05-12 23:42:53', 'admin', 'Hola', 'I', 'muy bn', 0, NULL, NULL, NULL, NULL, 'MRBS-53715c7df34ca-ae82ea71@localhost', 0, '', 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl'),
-(192, 1399939200, 1399942800, 0, 0, 27, '2014-05-12 23:50:07', 'admin', 'Estamos probando señores', 'I', 'Una buena descripción', 0, NULL, NULL, NULL, NULL, 'MRBS-53715e2f0f002-437855ec@localhost', 0, '', 'ian.alonyon@gmail.com;chalo.infante01@gmail.com');
+(192, 1399939200, 1399942800, 0, 0, 27, '2014-05-12 23:50:07', 'admin', 'Estamos probando señores', 'I', 'Una buena descripción', 0, NULL, NULL, NULL, NULL, 'MRBS-53715e2f0f002-437855ec@localhost', 0, '', 'ian.alonyon@gmail.com;chalo.infante01@gmail.com'),
+(193, 1399944600, 1399946400, 0, 0, 27, '2014-05-13 04:14:52', 'admin', 'SADF', 'I', 'sdfsdf', 0, NULL, NULL, NULL, NULL, 'MRBS-53719c3c56a09-7c512ada@localhost', 0, '', 'sergio.maass@gmail.com, vfloegel@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -191,27 +188,17 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_opt` (
   `pais` varchar(50) DEFAULT NULL,
   `correo` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_entry_opt`
 --
 
 INSERT INTO `mrbs_entry_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
-(47, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
-(48, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
 (49, 'Stanford University', 'EEUU', 'vint@acm.org'),
-(74, 'Universidad de Chile', 'Chile', 'fcifuent@dcc.uchile.cl'),
-(0, 'UdeChile', 'Chile', 'a@b.cl'),
-(109, 'asdf4', 'asdf4', 'asdf4'),
-(110, 'tf', 'tf', 'tf'),
-(111, 'df', 'df', 'df'),
-(112, 'as', 'as', 'as'),
 (113, 'asdf1', 'asdf1', 'asdf1'),
 (114, 'asdf', 'asdf', 'asdf'),
 (119, 'Stanford University', 'Chile', 'a@b.cl'),
-(117, 'asdf5', 'asdf5', 'asdf5'),
-(118, 'asdf5', 'asdf5', 'asdf5'),
 (120, 'Stanford University', 'asdf', 'a@b.cl'),
 (123, 'Stanford University', 'asdf', 'a@b.cl');
 
@@ -230,15 +217,15 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
   `resumen_expositor` varchar(1000) DEFAULT NULL,
   `tipo_evento` varchar(8) NOT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_entry_salas`
 --
 
 INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
-(39, 'asddkasj', 'hjsdkasd', NULL, NULL, NULL, 'Clase'),
 (38, 'asdasd', 'asdas', NULL, NULL, NULL, 'Clase'),
+(39, 'asddkasj', 'hjsdkasd', NULL, NULL, NULL, 'Clase'),
 (77, 'asddas', 'asdasd', NULL, NULL, NULL, 'Clase'),
 (78, 'profe1', 'curso1', NULL, NULL, NULL, 'Clase'),
 (80, 'profe2', 'curso2', NULL, NULL, NULL, 'Clase'),
@@ -247,7 +234,6 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (128, 'ouyv', 'oiub09', NULL, NULL, NULL, 'Clase'),
 (129, 'o97', '0o9p', NULL, NULL, NULL, 'Clase'),
 (130, '9uhp98', 'p98', NULL, NULL, NULL, 'Clase'),
-(176, 'oñk', 'ñk', NULL, NULL, NULL, 'Clase'),
 (132, 'ñoin', '98h9', NULL, NULL, NULL, 'Clase'),
 (133, 'np9o8jh', '9', NULL, NULL, NULL, 'Clase'),
 (134, 'h98p7', '7', NULL, NULL, NULL, 'Clase'),
@@ -260,8 +246,6 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (141, 'iun', 'o9', NULL, NULL, NULL, 'Clase'),
 (142, 'qw', 'wq', NULL, NULL, NULL, 'Clase'),
 (143, '009', '0', NULL, NULL, NULL, 'Clase'),
-(178, 'lkj', 'lkj', NULL, NULL, NULL, 'Clase'),
-(174, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
 (146, 'oin', 'f34', NULL, NULL, NULL, 'Clase'),
 (147, NULL, NULL, 'asdf', 'Charla alumno', 'wefw', 'Defensa'),
 (148, NULL, NULL, 'asdf', 'Charla alumno', 'wefw', 'Defensa'),
@@ -279,12 +263,15 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (160, 'ñoi', 'oi', NULL, NULL, NULL, 'Clase'),
 (161, 'ñj', 'kjn', NULL, NULL, NULL, 'Clase'),
 (162, 'ñj', 'kjn', NULL, NULL, NULL, 'Clase'),
-(180, 'ñlkj', 'lkj', NULL, NULL, NULL, 'Clase'),
 (164, 'plk', 'p', NULL, NULL, NULL, 'Clase'),
 (165, 'lk', 'nlk', NULL, NULL, NULL, 'Clase'),
-(183, 'lorem ipsum', 'lorem ipsum', NULL, NULL, NULL, 'Clase'),
 (173, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
+(174, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
+(176, 'oñk', 'ñk', NULL, NULL, NULL, 'Clase'),
+(178, 'lkj', 'lkj', NULL, NULL, NULL, 'Clase'),
+(180, 'ñlkj', 'lkj', NULL, NULL, NULL, 'Clase'),
 (182, 'lkj', 'lkj', NULL, NULL, NULL, 'Clase'),
+(183, 'lorem ipsum', 'lorem ipsum', NULL, NULL, NULL, 'Clase'),
 (184, 'lorep ipsum', 'lorep ipsum', NULL, NULL, NULL, 'Clase'),
 (185, 'lkj', 'ñlkjlk', NULL, NULL, NULL, 'Clase'),
 (186, '9i8jh', '09ij', NULL, NULL, NULL, 'Clase'),
@@ -293,7 +280,8 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (189, 'lkj', 'lkj', NULL, NULL, NULL, 'Clase'),
 (190, 'profe', 'le curso', NULL, NULL, NULL, 'Clase'),
 (191, 'klj', 'lkj', NULL, NULL, NULL, 'Clase'),
-(192, 'El mejor profe', 'El mejor curso', NULL, NULL, NULL, 'Clase');
+(192, 'El mejor profe', 'El mejor curso', NULL, NULL, NULL, 'Clase'),
+(193, 'sd', 'aaa', NULL, NULL, NULL, 'Clase');
 
 -- --------------------------------------------------------
 
@@ -346,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
   `pais` varchar(25) DEFAULT NULL,
   `correo` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_repeat_opt`
@@ -354,8 +342,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
 
 INSERT INTO `mrbs_repeat_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
 (10, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
-(12, '13212', '132123', '1233132'),
 (11, 'Stanford University', 'asdf', 'a@b.cl'),
+(12, '13212', '132123', '1233132'),
 (13, 'Stanford University', 'asdf', 'a@b.cl'),
 (14, 'Stanford University', 'asdf', 'a@b.cl');
 
@@ -374,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_salas` (
   `resumen_expositor` varchar(1000) DEFAULT NULL,
   `tipo_evento` varchar(8) NOT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_repeat_salas`
@@ -415,19 +403,14 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 --
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
-(21, 0, 5, 'Oficina 310, cupo 1', 'Oficina 310, cupo 1', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, '', '', '', '', 0, ''),
-(22, 0, 5, 'Oficina 310, cupo 2', 'Oficina 310, cupo 2', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, '', '', '', '', 0, ''),
-(23, 0, 5, 'Oficina 310, cupo 3', 'Oficina 310, cupo 3', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, NULL, NULL, '', '', 0, ''),
-(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, NULL, NULL, '', '', 0, ''),
+(21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 3, '', '', '', '', 0, ''),
+(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, '', '', '', '', 0, ''),
 (25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (26, 0, 4, 'Notebook 2', 'Notebook 2', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', 30, 0, NULL, NULL, '', '', 0, ''),
-(28, 0, 3, 'Sala B213', 'Sala B213', 'Sala segundo piso', 50, 0, '', '', '', '', 0, ''),
-(29, 0, 3, 'Sala B111', 'Sala B111', 'Sala primer piso', 10, 0, NULL, NULL, '', '', 0, ''),
-(30, 0, 5, 'Oficina 311, cupo 1', 'Oficina 311', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
-(31, 0, 5, 'Oficina 311, cupo 2', 'Oficina 311, cupo 2', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
-(32, 1, 5, 'Oficina 311, cupo 3', 'Oficina 311, cupo 3', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
-(33, 1, 5, 'Oficina 311, cupo 4', 'Oficina 311, cupo 4', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
+(28, 0, 3, 'Sala de Reuniones 4° piso', 'Sala de Reuniones 4° piso', '', 50, 0, '', '', '', '', 0, ''),
+(29, 0, 3, 'Sala de Reuniones 3° piso', 'Sala de Reuniones 3° piso', 'Sala primer piso', 10, 0, '', '', '', '', 0, ''),
+(30, 0, 5, 'Oficina 311', 'Oficina 311', 'Oficina dispuesta para profesores visitantes', 0, 4, '', '', '', '', 0, ''),
 (34, 0, 5, 'Oficina 999', 'Oficina 999', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 2, '', '', '', '', 0, '');
 
 -- --------------------------------------------------------
@@ -532,31 +515,16 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   `sent` tinyint(1) NOT NULL DEFAULT '0',
   `event_id` int(11) NOT NULL,
   `event_datetime` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `notifications_registry`
 --
 
 INSERT INTO `notifications_registry` (`id`, `text_id`, `mail_list`, `notification_datetime`, `sent`, `event_id`, `event_datetime`) VALUES
-(1, 1, 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl', '2014-05-22 10:00:00', 0, 85, '2014-05-22 11:00:00'),
-(2, 2, 'ian.alonyon@gmail.com;chalo.infante01@gmail.com;fernando@balboa.cl;sergio.maass@gmail.com;macguionbajo@gmail.com', '2014-05-01 11:50:00', 1, 85, '2014-05-01 11:00:00'),
-(16, 2, 'ian.alonyon@gmail.com', '2014-05-09 08:15:00', 1, 173, '2014-05-09 08:30:00'),
-(17, 1, 'ian.alonyon@gmail.com', '2014-05-09 10:25:00', 0, 175, '2014-05-09 10:30:00'),
-(18, 1, 'ian.alonyon@gmail.com', '2014-05-09 09:55:00', 0, 177, '2014-05-09 10:00:00'),
-(19, 1, 'ian.alonyon@gmail.com', '2014-05-09 09:25:00', 0, 179, '2014-05-09 09:30:00'),
-(20, 1, 'ian.alonyon@gmail.com', '2014-05-09 10:55:00', 0, 181, '2014-05-09 11:00:00'),
-(21, 1, 'ian.alonyon@gmail.com', '2014-05-13 07:55:00', 0, 183, '2014-05-13 08:00:00'),
-(22, 1, 'ian.alonyon@gmail.com', '2014-05-14 07:55:00', 0, 184, '2014-05-14 08:00:00'),
-(23, 1, 'ian.alonyon@gmail.com', '2014-05-15 07:55:00', 0, 185, '2014-05-15 08:00:00'),
-(24, 1, 'ian.alonyon@gmail.com', '2014-05-16 07:55:00', 0, 186, '2014-05-16 08:00:00'),
-(25, 1, 'ian.alonyon@gmail.com', '2014-05-13 08:55:00', 0, 187, '2014-05-13 09:00:00'),
-(26, 1, 'ian.alonyon@gmail.com', '2014-05-14 16:25:00', 0, 188, '2014-05-14 16:30:00'),
-(27, 1, 'ian.alonyon@gmail.com', '2014-05-14 08:55:00', 0, 189, '2014-05-14 09:00:00'),
-(28, 1, 'ian.alonyon@gmail.com', '2014-05-15 08:55:00', 0, 190, '2014-05-15 09:00:00'),
-(29, 1, 'ian.alonyon@gmail.com', '2014-05-13 09:55:00', 0, 191, '2014-05-13 10:00:00'),
-(30, 1, 'ian.alonyon@gmail.com;chalo.infante01@gmail.com', '2014-05-12 19:55:00', 1, 192, '2014-05-12 20:00:00');
+(31, 1, 'sergio.maass@gmail.com;vfloegel@gmail.com', '2014-05-12 21:25:00', 1, 193, '2014-05-12 21:30:00');
 
 -- --------------------------------------------------------
 
@@ -576,12 +544,7 @@ CREATE TABLE IF NOT EXISTS `oficina_de_trabajo` (
 
 INSERT INTO `oficina_de_trabajo` (`id`, `cupo_numero`) VALUES
 (21, 1),
-(22, 1),
-(23, 1),
-(30, 1),
-(31, 1),
-(32, 1),
-(33, 1);
+(30, 1);
 
 -- --------------------------------------------------------
 
@@ -631,22 +594,40 @@ INSERT INTO `sala_publica` (`id`, `capacidad`) VALUES
 --
 
 --
+-- Constraints for table `mrbs_entry_opt`
+--
+ALTER TABLE `mrbs_entry_opt`
+  ADD CONSTRAINT `mrbs_entry_opt_ibfk_1` FOREIGN KEY (`entry_id`) REFERENCES `mrbs_entry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mrbs_entry_salas`
+--
+ALTER TABLE `mrbs_entry_salas`
+  ADD CONSTRAINT `mrbs_entry_salas_ibfk_1` FOREIGN KEY (`entry_id`) REFERENCES `mrbs_entry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `notifications_registry`
+--
+ALTER TABLE `notifications_registry`
+  ADD CONSTRAINT `notifications_registry_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `mrbs_entry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `oficina_de_trabajo`
 --
 ALTER TABLE `oficina_de_trabajo`
-  ADD CONSTRAINT `oficina_de_trabajo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
+  ADD CONSTRAINT `oficina_de_trabajo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `recurso_computacional`
 --
 ALTER TABLE `recurso_computacional`
-  ADD CONSTRAINT `recurso_computacional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
+  ADD CONSTRAINT `recurso_computacional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sala_publica`
 --
 ALTER TABLE `sala_publica`
-  ADD CONSTRAINT `sala_publica_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
+  ADD CONSTRAINT `sala_publica_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
