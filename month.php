@@ -152,7 +152,7 @@ if (isset($general_view))
     trigger_error(sql_error(), E_USER_WARNING);
     fatal_error(TRUE, get_vocab("fatal_db_error"));
   }
-  $offices_id = get_work_offices(sql_query($sql));  // Nombre de oficina asociado a cupos
+  $offices_id = get_work_offices_month(sql_query($sql));  // Nombre de oficina asociado a cupos
   $v_id = 0;
   foreach($offices_id as $key => $value)
   {

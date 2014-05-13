@@ -26,6 +26,15 @@ function get_semaphore_class($i)
   else
     return "";
 }
+// A partir del nombre completo del recurso cupo, obtiene el
+// nombre de la oficina de trabajo de este cupo.
+function get_off_name($full_name)
+{
+  $end = strrpos($full_name, ",");
+  if (!$end)
+  	return $full_name;
+  return substr($full_name, 0, $end);
+}
 
 // Agrupa los rooms de tipo cupo de oficina de trabajo según su
 // oficina de trabajo común. recibe la lista de cupos junto a su
@@ -35,11 +44,31 @@ function get_work_offices($data)
   $room_ids = array();
   for ( $i = 0; ($room_row = sql_row_keyed($data, $i)); $i++)
   {
-    $of_name = $room_row['room_name'];
-	$room_ids[$of_name] = array($room_row['capacity']);
+    $of_name = get_off_name($room_row['room_name']);
+	if (isset($room_ids[$of_name]))
+	  $room_ids[$of_name][] = $room_row['id'];
+	else
+	  $room_ids[$of_name] = array($room_row['id']);
+	if (isset($room_row['description']) && !isset($room_ids[$of_name]['descr']))
+	  $room_ids[$of_name]['descr'] = $room_row['description'];
+  	
   }
   return $room_ids;
 }
+
+// Agrupa los rooms de tipo cupo de oficina de trabajo según su
+// oficina de trabajo común. recibe la lista de cupos junto a su
+// id, y retorna la lista de ids anidados.
+function get_work_offices_month($data)
+{
+  $room_ids = array();
+  for ( $i = 0; ($room_row = sql_row_keyed($data, $i)); $i++)
+  {
+    $of_name = $room_row['room_name'];
+	$room_ids[$of_name] = array($room_row['capacity']);  	
+  }
+  return $room_ids;
+}   
 
 // Agrupa los rooms de tipo cupo de oficina de trabajo según su
 // oficina de trabajo común. recibe la lista de cupos junto a su
