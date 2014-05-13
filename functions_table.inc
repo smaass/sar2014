@@ -652,7 +652,7 @@ function day_table_innerhtml($day, $month, $year, $room, $area, $timetohighlight
     else {
   	  $redirect_str .= "week.php?year=$year&month=$month&day=$day&area=$area";
     }
-    die($redirect_str);
+    //die($redirect_str);
   	header("Location: $redirect_str");
   }
   else //Por ahora no se puede ver ningún día. Siempre redirigimos a la vista de semana.
