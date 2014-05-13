@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 12, 2014 at 08:50 PM
--- Server version: 5.5.31
--- PHP Version: 5.4.16
+-- Generation Time: May 13, 2014 at 02:35 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `5401_1401_g2`
 --
-CREATE DATABASE IF NOT EXISTS `5401_1401_g2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `5401_1401_g2`;
 
 -- --------------------------------------------------------
 
@@ -103,81 +101,83 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   `ical_uid` varchar(255) NOT NULL DEFAULT '',
   `ical_sequence` smallint(6) NOT NULL DEFAULT '0',
   `ical_recur_id` varchar(16) NOT NULL DEFAULT '',
+  `emails` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=186 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=193 ;
 
 --
 -- Dumping data for table `mrbs_entry`
 --
 
-INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_id`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `ical_recur_id`) VALUES
-(38, 0, 1800, 0, 0, 27, '2013-07-05 20:30:33', 'admin', 'dasasd', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51d72ce933b21-1e233af1@anakena.dcc.uchile.cl', 0, ''),
-(39, 1374069600, 1374073200, 0, 0, 27, '2013-07-05 20:35:03', 'admin', 'jasdhk', 'I', 'sdajasdk', 0, NULL, NULL, NULL, NULL, 'MRBS-51d72df76d189-5e8b2561@anakena.dcc.uchile.cl', 0, ''),
-(47, 1371052800, 1371225660, 1, 10, 21, '2013-07-09 20:15:04', 'ralonso', 'Donald Knuth', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51dc6f484467f-1542cf1f@anakena.dcc.uchile.cl', 0, '20130612T160000Z'),
-(48, 1371657600, 1371830460, 1, 10, 21, '2013-07-09 20:15:04', 'ralonso', 'Donald Knuth', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51dc6f484467f-1542cf1f@anakena.dcc.uchile.cl', 0, '20130619T160000Z'),
-(49, 1371139200, 1371744060, 0, 0, 22, '2013-07-09 20:16:39', 'ralonso', 'Vinton Cerf', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51dc6fa75d491-e53c6d01@anakena.dcc.uchile.cl', 0, ''),
-(74, 1370448000, 1370620860, 0, 0, 31, '2013-07-17 21:48:02', 'ralonso', 'Francisco Cifuentes', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51e7111204037-7b312c17@anakena.dcc.uchile.cl', 0, ''),
-(76, 1374084000, 1374093000, 0, 0, 27, '2013-07-17 22:07:50', 'admin', 'asdasd', 'I', 'asdasd', 0, NULL, NULL, NULL, NULL, 'MRBS-51e715b6262c0-b7a0c3dd@anakena.dcc.uchile.cl', 0, ''),
-(77, 1374170400, 1374179400, 0, 0, 27, '2013-07-17 22:10:02', 'admin', 'test', 'I', 'asdasd', 0, NULL, NULL, NULL, NULL, 'MRBS-51e7163a506a1-8c5d9838@anakena.dcc.uchile.cl', 0, ''),
-(78, 1374256800, 1374267600, 0, 0, 27, '2013-07-17 22:13:23', 'admin', 'clase1', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51e717031ffa4-d2c84bcd@anakena.dcc.uchile.cl', 0, ''),
-(80, 1374339600, 1374355800, 0, 0, 27, '2013-07-17 22:16:06', 'admin', 'clase2', 'I', 'asdasd', 0, NULL, NULL, NULL, NULL, 'MRBS-51e717a683115-dbc5d3e0@anakena.dcc.uchile.cl', 0, ''),
-(82, 1374157800, 1374161400, 0, 0, 27, '2013-07-17 22:27:15', 'ralonso', 'Reu1', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51e71a43bc76d-6cff67f2@anakena.dcc.uchile.cl', 0, ''),
-(84, 1374357600, 1374366600, 0, 0, 27, '2013-07-17 22:52:26', 'admin', 'defensa', 'I', 'resum', 0, NULL, NULL, NULL, NULL, 'MRBS-51e71f7e377de-f158b92f@anakena.dcc.uchile.cl', 1, ''),
-(85, 0, 0, 0, 0, 27, '2014-05-01 23:17:29', 'Sandra Gaez', 'Charla "La web semantica"', 'E', 'Microsoft research realizara una charla mostrando aplicaciones de la web semantica a la XBOX One', 0, NULL, NULL, NULL, NULL, '', 0, ''),
-(86, 1399564800, 1399564860, 0, 0, 34, '2014-05-04 01:47:21', 'admin', 'Yo', 'I', 'Esta es una reserva de prueba', 0, NULL, NULL, NULL, NULL, 'MRBS-53659c29b68ff-063056ad@localhost', 0, ''),
-(113, 1399478400, 1399564860, 0, 0, 34, '2014-05-04 04:22:06', 'admin', 'asdf1', 'I', 'asdf1', 0, NULL, NULL, NULL, NULL, 'MRBS-5365c06ef1a25-00f0da78@localhost', 0, ''),
-(114, 1399910400, 1399996860, 0, 0, 34, '2014-05-04 04:30:49', 'admin', 'asdf', 'I', 'asdf', 0, NULL, NULL, NULL, NULL, 'MRBS-5365c2797d62b-3774cfbd@localhost', 0, ''),
-(119, 1399392000, 1399392060, 0, 0, 34, '2014-05-06 17:47:52', 'admin', 'asdf', 'I', 'descripción completa', 0, NULL, NULL, NULL, NULL, 'MRBS-536920481db63-4036b062@localhost', 0, ''),
-(120, 1399305600, 1399478460, 0, 0, 34, '2014-05-06 17:50:53', 'admin', 'asdf', 'I', 'sdf', 0, NULL, NULL, NULL, NULL, 'MRBS-536920fd25fb0-81c5c451@localhost', 0, ''),
-(123, 1400083200, 1400083260, 1, 13, 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, '20140514T160000Z'),
-(128, 1399460400, 1399473000, 0, 0, 27, '2014-05-07 02:02:29', 'admin', 'lkug', 'I', 'kig', 0, NULL, NULL, NULL, NULL, 'MRBS-5369943506a23-b8445da5@localhost', 0, ''),
-(129, 1399473000, 1399480200, 0, 0, 27, '2014-05-07 02:12:25', 'admin', 'o8huo', 'I', 'i8ygo', 0, NULL, NULL, NULL, NULL, 'MRBS-536996893a785-dee9d7e0@localhost', 0, ''),
-(130, 1399460400, 1399467600, 0, 0, 29, '2014-05-07 02:19:21', 'admin', 'lk89', 'I', '9hp', 0, NULL, NULL, NULL, NULL, 'MRBS-5369982900663-ac8623ab@localhost', 0, ''),
-(131, 1399467600, 1399473000, 0, 0, 29, '2014-05-07 02:20:44', 'admin', 'li7ho87', 'I', 'o876g97u69', 0, NULL, NULL, NULL, NULL, 'MRBS-5369987c06e11-0325ff2d@localhost', 0, ''),
-(132, 1399473000, 1399478400, 0, 0, 29, '2014-05-07 02:25:13', 'admin', 'sad', 'I', 'iounp98', 0, NULL, NULL, NULL, NULL, 'MRBS-53699989ee9a2-9ce30c92@localhost', 0, ''),
-(133, 1399480200, 1399489200, 0, 0, 29, '2014-05-07 02:26:03', 'admin', 'ñoij', 'I', 'p9o8', 0, NULL, NULL, NULL, NULL, 'MRBS-536999bba1f42-26e8ab29@localhost', 0, ''),
-(134, 1399491000, 1399492800, 0, 0, 29, '2014-05-07 02:28:36', 'admin', 'oi', 'I', '8h', 0, NULL, NULL, NULL, NULL, 'MRBS-53699a5435bab-093bf036@localhost', 0, ''),
-(135, 1399480200, 1399487400, 0, 0, 27, '2014-05-07 02:35:10', 'admin', 'oñk', 'I', 'oim', 0, NULL, NULL, NULL, NULL, 'MRBS-53699bdee3cc0-64f2d010@localhost', 0, ''),
-(136, 1399487400, 1399492800, 0, 0, 27, '2014-05-07 02:38:08', 'admin', 'ñoi', 'I', 'ñoin', 0, NULL, NULL, NULL, NULL, 'MRBS-53699c90d52c4-3920feba@localhost', 0, ''),
-(137, 1399546800, 1399555800, 0, 0, 27, '2014-05-07 02:39:08', 'admin', 'ñliaoijaoim', 'I', 'oim', 0, NULL, NULL, NULL, NULL, 'MRBS-53699ccc48e0c-2934299b@localhost', 0, ''),
-(138, 1399563000, 1399568400, 0, 0, 27, '2014-05-07 02:40:27', 'admin', 'ñlk', 'I', 'olmk', 0, NULL, NULL, NULL, NULL, 'MRBS-53699d1b7962f-ba0ef09a@localhost', 0, ''),
-(139, 1399555800, 1399557600, 0, 0, 27, '2014-05-07 02:44:46', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699e1e8c0d7-c473b704@localhost', 0, ''),
-(140, 1399642200, 1399644000, 0, 0, 27, '2014-05-07 02:46:46', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699e9680e30-57cb09ae@localhost', 0, ''),
-(141, 1399654800, 1399656600, 0, 0, 27, '2014-05-07 02:48:01', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699ee1a3db2-a55246db@localhost', 0, ''),
-(142, 1399559400, 1399563000, 0, 0, 27, '2014-05-07 02:51:06', 'admin', 'sdasd', 'I', 'qwd', 0, NULL, NULL, NULL, NULL, 'MRBS-53699f9ab3b90-30ed3360@localhost', 0, ''),
-(143, 1399557600, 1399559400, 0, 0, 29, '2014-05-07 02:56:40', 'admin', 'ño', 'I', 'i0oi', 0, NULL, NULL, NULL, NULL, 'MRBS-5369a0e81c37c-fa3fda24@localhost', 0, ''),
-(144, 1399653000, 1399656600, 0, 0, 29, '2014-05-07 04:59:01', 'admin', 'sdño', 'I', 'opipi', 0, NULL, NULL, NULL, NULL, 'MRBS-5369bd95f03c0-1f5c8c3e@localhost', 0, ''),
-(145, 1399638600, 1399642200, 0, 0, 29, '2014-05-07 05:00:19', 'admin', 'Hola', 'I', 'oiko', 0, NULL, NULL, NULL, NULL, 'MRBS-5369bde39bd6f-8ec62c44@localhost', 0, ''),
-(146, 1402916400, 1402925400, 0, 0, 29, '2014-05-07 12:06:37', 'admin', 'Makes me laugh', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a21cd3041e-ec179d44@localhost', 0, ''),
-(147, 1402947000, 1402956000, 0, 0, 29, '2014-05-07 12:18:51', 'admin', 'Makes me laugh', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a24ab8d0ae-bffe79e2@localhost', 0, ''),
-(148, 1403033400, 1403035200, 0, 0, 29, '2014-05-07 12:51:01', 'admin', 'Makes me laugh2', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2c3526d29-e948afc1@localhost', 0, ''),
-(149, 1403181000, 1403186400, 0, 0, 29, '2014-05-07 12:56:45', 'admin', 'JOJOJOJO', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2d8d9098b-c837f4c6@localhost', 0, ''),
-(150, 1403186400, 1403188200, 0, 0, 29, '2014-05-07 12:57:43', 'admin', 'JOJOJOJO2', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2dc7d7324-78c9019f@localhost', 0, ''),
-(151, 1403188200, 1403190000, 0, 0, 29, '2014-05-07 12:59:03', 'admin', 'JOJOJOJO3', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2e175f213-c09e3c27@localhost', 0, ''),
-(152, 1403190000, 1403191800, 0, 0, 29, '2014-05-07 13:01:41', 'admin', 'JOJOJOJO4', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2eb567ae3-3549a23e@localhost', 0, ''),
-(153, 1403191800, 1403193600, 0, 0, 29, '2014-05-07 13:05:24', 'admin', 'JOJOJOJO5', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2f947ad1a-fafb02fd@localhost', 0, ''),
-(154, 1403193600, 1403195400, 0, 0, 29, '2014-05-07 13:08:21', 'admin', 'JOJOJOJO6', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3045316d3-3cf24777@localhost', 0, ''),
-(155, 1403195400, 1403197200, 0, 0, 29, '2014-05-07 13:17:52', 'admin', 'JOJOJOJO7', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a32809a44e-2622569f@localhost', 0, ''),
-(156, 1403197200, 1403199000, 0, 0, 29, '2014-05-07 13:19:50', 'admin', 'JOJOJOJO8', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a32f6d8ba2-4b7a50f0@localhost', 0, ''),
-(157, 1403199000, 1403200800, 0, 0, 29, '2014-05-07 13:28:42', 'admin', 'JOJOJOJO9', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a350a1a224-da921d70@localhost', 0, ''),
-(158, 1399550400, 1399564800, 0, 0, 28, '2014-05-07 13:29:23', 'admin', 'HOla2', 'I', 'kip', 0, NULL, NULL, NULL, NULL, 'MRBS-536a35331ec90-fa0da228@localhost', 0, ''),
-(159, 1399564800, 1399566600, 0, 0, 28, '2014-05-07 13:30:13', 'admin', 'HOla3', 'I', 'kip', 0, NULL, NULL, NULL, NULL, 'MRBS-536a356501849-4d0bbbc1@localhost', 0, ''),
-(160, 1399568400, 1399572000, 0, 0, 28, '2014-05-07 13:32:37', 'admin', 'JAJAJA', 'I', 'kjo', 0, NULL, NULL, NULL, NULL, 'MRBS-536a35f5ac1a5-8d80381d@localhost', 0, ''),
-(161, 1399573800, 1399577400, 0, 0, 28, '2014-05-07 13:34:07', 'admin', 'JOJAJO', 'I', 'klj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a364fcd1e9-84f6ac23@localhost', 0, ''),
-(162, 1399577400, 1399581000, 0, 0, 28, '2014-05-07 13:35:39', 'admin', 'JOJAJO1', 'I', 'klj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a36ab5c1f5-ec50bd81@localhost', 0, ''),
-(163, 1399638600, 1399651200, 0, 0, 28, '2014-05-07 13:36:44', 'admin', 'JEJEJ', 'I', 'oj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a36ecf246b-a6027cbb@localhost', 0, ''),
-(164, 1399653000, 1399656600, 0, 0, 28, '2014-05-07 13:38:47', 'admin', 'JUJU', 'I', 'pk', 0, NULL, NULL, NULL, NULL, 'MRBS-536a376792bce-6c45bdc8@localhost', 0, ''),
-(165, 1399656600, 1399660200, 0, 0, 28, '2014-05-07 13:39:33', 'admin', 'JIJI', 'I', 'lkn', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3795b0504-c5609b5e@localhost', 0, ''),
-(166, 1399660200, 1399663800, 0, 0, 28, '2014-05-07 13:47:34', 'admin', 'JEJI', 'I', 'kj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3976e7943-c2503344@localhost', 0, ''),
-(167, 1399651200, 1399651260, 0, 0, 34, '2014-05-12 04:55:16', 'admin', 'sfdf', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537054348a34f-c11f68cb@localhost', 0, ''),
-(168, 1399651200, 1399651260, 0, 0, 34, '2014-05-12 04:55:26', 'admin', 'sdfsd', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-5370543e98959-0513bfec@localhost', 0, ''),
-(169, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 04:55:49', 'admin', 'asdas', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537054554bebc-5c828aa5@localhost', 0, ''),
-(170, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 04:56:04', 'admin', 'asdas', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-5370546421215-60b153a1@localhost', 0, ''),
-(171, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 05:05:49', 'admin', 'vxcv', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537056ad45b26-af9a6fb1@localhost', 0, ''),
-(172, 1399737600, 1399737660, 0, 0, 30, '2014-05-12 05:06:00', 'admin', 'sdfgs', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537056b8e145f-8404a67c@localhost', 0, ''),
-(173, 1400083200, 1400083260, 0, 0, 34, '2014-05-12 05:06:58', 'admin', 'sasa', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-537056f2d79bc-564502e9@localhost', 0, '');
+INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_id`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `ical_recur_id`, `emails`) VALUES
+(38, 0, 1800, 0, 0, 27, '2013-07-05 20:30:33', 'admin', 'dasasd', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51d72ce933b21-1e233af1@anakena.dcc.uchile.cl', 0, '', ''),
+(39, 1374069600, 1374073200, 0, 0, 27, '2013-07-05 20:35:03', 'admin', 'jasdhk', 'I', 'sdajasdk', 0, NULL, NULL, NULL, NULL, 'MRBS-51d72df76d189-5e8b2561@anakena.dcc.uchile.cl', 0, '', ''),
+(49, 1371139200, 1371744060, 0, 0, 22, '2013-07-09 20:16:39', 'ralonso', 'Vinton Cerf', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51dc6fa75d491-e53c6d01@anakena.dcc.uchile.cl', 0, '', ''),
+(76, 1374084000, 1374093000, 0, 0, 27, '2013-07-17 22:07:50', 'admin', 'asdasd', 'I', 'asdasd', 0, NULL, NULL, NULL, NULL, 'MRBS-51e715b6262c0-b7a0c3dd@anakena.dcc.uchile.cl', 0, '', ''),
+(77, 1374170400, 1374179400, 0, 0, 27, '2013-07-17 22:10:02', 'admin', 'test', 'I', 'asdasd', 0, NULL, NULL, NULL, NULL, 'MRBS-51e7163a506a1-8c5d9838@anakena.dcc.uchile.cl', 0, '', ''),
+(78, 1374256800, 1374267600, 0, 0, 27, '2013-07-17 22:13:23', 'admin', 'clase1', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51e717031ffa4-d2c84bcd@anakena.dcc.uchile.cl', 0, '', ''),
+(80, 1374339600, 1374355800, 0, 0, 27, '2013-07-17 22:16:06', 'admin', 'clase2', 'I', 'asdasd', 0, NULL, NULL, NULL, NULL, 'MRBS-51e717a683115-dbc5d3e0@anakena.dcc.uchile.cl', 0, '', ''),
+(82, 1374157800, 1374161400, 0, 0, 27, '2013-07-17 22:27:15', 'ralonso', 'Reu1', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51e71a43bc76d-6cff67f2@anakena.dcc.uchile.cl', 0, '', ''),
+(84, 1374357600, 1374366600, 0, 0, 27, '2013-07-17 22:52:26', 'admin', 'defensa', 'I', 'resum', 0, NULL, NULL, NULL, NULL, 'MRBS-51e71f7e377de-f158b92f@anakena.dcc.uchile.cl', 1, '', ''),
+(85, 0, 0, 0, 0, 27, '2014-05-01 23:17:29', 'Sandra Gaez', 'Charla "La web semantica"', 'E', 'Microsoft research realizara una charla mostrando aplicaciones de la web semantica a la XBOX One', 0, NULL, NULL, NULL, NULL, '', 0, '', ''),
+(86, 1399564800, 1399564860, 0, 0, 34, '2014-05-04 01:47:21', 'admin', 'Yo', 'I', 'Esta es una reserva de prueba', 0, NULL, NULL, NULL, NULL, 'MRBS-53659c29b68ff-063056ad@localhost', 0, '', ''),
+(113, 1399478400, 1399564860, 0, 0, 34, '2014-05-04 04:22:06', 'admin', 'asdf1', 'I', 'asdf1', 0, NULL, NULL, NULL, NULL, 'MRBS-5365c06ef1a25-00f0da78@localhost', 0, '', ''),
+(114, 1399910400, 1399996860, 0, 0, 34, '2014-05-04 04:30:49', 'admin', 'asdf', 'I', 'asdf', 0, NULL, NULL, NULL, NULL, 'MRBS-5365c2797d62b-3774cfbd@localhost', 0, '', ''),
+(119, 1399392000, 1399392060, 0, 0, 34, '2014-05-06 17:47:52', 'admin', 'asdf', 'I', 'descripción completa', 0, NULL, NULL, NULL, NULL, 'MRBS-536920481db63-4036b062@localhost', 0, '', ''),
+(120, 1399305600, 1399478460, 0, 0, 34, '2014-05-06 17:50:53', 'admin', 'asdf', 'I', 'sdf', 0, NULL, NULL, NULL, NULL, 'MRBS-536920fd25fb0-81c5c451@localhost', 0, '', ''),
+(123, 1400083200, 1400083260, 1, 13, 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, '20140514T160000Z', ''),
+(128, 1399460400, 1399473000, 0, 0, 27, '2014-05-07 02:02:29', 'admin', 'lkug', 'I', 'kig', 0, NULL, NULL, NULL, NULL, 'MRBS-5369943506a23-b8445da5@localhost', 0, '', ''),
+(129, 1399473000, 1399480200, 0, 0, 27, '2014-05-07 02:12:25', 'admin', 'o8huo', 'I', 'i8ygo', 0, NULL, NULL, NULL, NULL, 'MRBS-536996893a785-dee9d7e0@localhost', 0, '', ''),
+(130, 1399460400, 1399467600, 0, 0, 29, '2014-05-07 02:19:21', 'admin', 'lk89', 'I', '9hp', 0, NULL, NULL, NULL, NULL, 'MRBS-5369982900663-ac8623ab@localhost', 0, '', ''),
+(132, 1399473000, 1399478400, 0, 0, 29, '2014-05-07 02:25:13', 'admin', 'sad', 'I', 'iounp98', 0, NULL, NULL, NULL, NULL, 'MRBS-53699989ee9a2-9ce30c92@localhost', 0, '', ''),
+(133, 1399480200, 1399489200, 0, 0, 29, '2014-05-07 02:26:03', 'admin', 'ñoij', 'I', 'p9o8', 0, NULL, NULL, NULL, NULL, 'MRBS-536999bba1f42-26e8ab29@localhost', 0, '', ''),
+(134, 1399491000, 1399492800, 0, 0, 29, '2014-05-07 02:28:36', 'admin', 'oi', 'I', '8h', 0, NULL, NULL, NULL, NULL, 'MRBS-53699a5435bab-093bf036@localhost', 0, '', ''),
+(135, 1399480200, 1399487400, 0, 0, 27, '2014-05-07 02:35:10', 'admin', 'oñk', 'I', 'oim', 0, NULL, NULL, NULL, NULL, 'MRBS-53699bdee3cc0-64f2d010@localhost', 0, '', ''),
+(136, 1399487400, 1399492800, 0, 0, 27, '2014-05-07 02:38:08', 'admin', 'ñoi', 'I', 'ñoin', 0, NULL, NULL, NULL, NULL, 'MRBS-53699c90d52c4-3920feba@localhost', 0, '', ''),
+(137, 1399546800, 1399555800, 0, 0, 27, '2014-05-07 02:39:08', 'admin', 'ñliaoijaoim', 'I', 'oim', 0, NULL, NULL, NULL, NULL, 'MRBS-53699ccc48e0c-2934299b@localhost', 0, '', ''),
+(138, 1399563000, 1399568400, 0, 0, 27, '2014-05-07 02:40:27', 'admin', 'ñlk', 'I', 'olmk', 0, NULL, NULL, NULL, NULL, 'MRBS-53699d1b7962f-ba0ef09a@localhost', 0, '', ''),
+(139, 1399555800, 1399557600, 0, 0, 27, '2014-05-07 02:44:46', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699e1e8c0d7-c473b704@localhost', 0, '', ''),
+(140, 1399642200, 1399644000, 0, 0, 27, '2014-05-07 02:46:46', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699e9680e30-57cb09ae@localhost', 0, '', ''),
+(141, 1399654800, 1399656600, 0, 0, 27, '2014-05-07 02:48:01', 'admin', 'o', 'I', 'iun', 0, NULL, NULL, NULL, NULL, 'MRBS-53699ee1a3db2-a55246db@localhost', 0, '', ''),
+(142, 1399559400, 1399563000, 0, 0, 27, '2014-05-07 02:51:06', 'admin', 'sdasd', 'I', 'qwd', 0, NULL, NULL, NULL, NULL, 'MRBS-53699f9ab3b90-30ed3360@localhost', 0, '', ''),
+(143, 1399557600, 1399559400, 0, 0, 29, '2014-05-07 02:56:40', 'admin', 'ño', 'I', 'i0oi', 0, NULL, NULL, NULL, NULL, 'MRBS-5369a0e81c37c-fa3fda24@localhost', 0, '', ''),
+(146, 1402916400, 1402925400, 0, 0, 29, '2014-05-07 12:06:37', 'admin', 'Makes me laugh', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a21cd3041e-ec179d44@localhost', 0, '', ''),
+(147, 1402947000, 1402956000, 0, 0, 29, '2014-05-07 12:18:51', 'admin', 'Makes me laugh', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a24ab8d0ae-bffe79e2@localhost', 0, '', ''),
+(148, 1403033400, 1403035200, 0, 0, 29, '2014-05-07 12:51:01', 'admin', 'Makes me laugh2', 'I', 'pok', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2c3526d29-e948afc1@localhost', 0, '', ''),
+(149, 1403181000, 1403186400, 0, 0, 29, '2014-05-07 12:56:45', 'admin', 'JOJOJOJO', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2d8d9098b-c837f4c6@localhost', 0, '', ''),
+(150, 1403186400, 1403188200, 0, 0, 29, '2014-05-07 12:57:43', 'admin', 'JOJOJOJO2', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2dc7d7324-78c9019f@localhost', 0, '', ''),
+(151, 1403188200, 1403190000, 0, 0, 29, '2014-05-07 12:59:03', 'admin', 'JOJOJOJO3', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2e175f213-c09e3c27@localhost', 0, '', ''),
+(152, 1403190000, 1403191800, 0, 0, 29, '2014-05-07 13:01:41', 'admin', 'JOJOJOJO4', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2eb567ae3-3549a23e@localhost', 0, '', ''),
+(153, 1403191800, 1403193600, 0, 0, 29, '2014-05-07 13:05:24', 'admin', 'JOJOJOJO5', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a2f947ad1a-fafb02fd@localhost', 0, '', ''),
+(154, 1403193600, 1403195400, 0, 0, 29, '2014-05-07 13:08:21', 'admin', 'JOJOJOJO6', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3045316d3-3cf24777@localhost', 0, '', ''),
+(155, 1403195400, 1403197200, 0, 0, 29, '2014-05-07 13:17:52', 'admin', 'JOJOJOJO7', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a32809a44e-2622569f@localhost', 0, '', ''),
+(156, 1403197200, 1403199000, 0, 0, 29, '2014-05-07 13:19:50', 'admin', 'JOJOJOJO8', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a32f6d8ba2-4b7a50f0@localhost', 0, '', ''),
+(157, 1403199000, 1403200800, 0, 0, 29, '2014-05-07 13:28:42', 'admin', 'JOJOJOJO9', 'I', 'kjon', 0, NULL, NULL, NULL, NULL, 'MRBS-536a350a1a224-da921d70@localhost', 0, '', ''),
+(158, 1399550400, 1399564800, 0, 0, 28, '2014-05-07 13:29:23', 'admin', 'HOla2', 'I', 'kip', 0, NULL, NULL, NULL, NULL, 'MRBS-536a35331ec90-fa0da228@localhost', 0, '', ''),
+(159, 1399564800, 1399566600, 0, 0, 28, '2014-05-07 13:30:13', 'admin', 'HOla3', 'I', 'kip', 0, NULL, NULL, NULL, NULL, 'MRBS-536a356501849-4d0bbbc1@localhost', 0, '', ''),
+(160, 1399568400, 1399572000, 0, 0, 28, '2014-05-07 13:32:37', 'admin', 'JAJAJA', 'I', 'kjo', 0, NULL, NULL, NULL, NULL, 'MRBS-536a35f5ac1a5-8d80381d@localhost', 0, '', ''),
+(161, 1399573800, 1399577400, 0, 0, 28, '2014-05-07 13:34:07', 'admin', 'JOJAJO', 'I', 'klj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a364fcd1e9-84f6ac23@localhost', 0, '', ''),
+(162, 1399577400, 1399581000, 0, 0, 28, '2014-05-07 13:35:39', 'admin', 'JOJAJO1', 'I', 'klj', 0, NULL, NULL, NULL, NULL, 'MRBS-536a36ab5c1f5-ec50bd81@localhost', 0, '', ''),
+(164, 1399653000, 1399656600, 0, 0, 28, '2014-05-07 13:38:47', 'admin', 'JUJU', 'I', 'pk', 0, NULL, NULL, NULL, NULL, 'MRBS-536a376792bce-6c45bdc8@localhost', 0, '', ''),
+(165, 1399656600, 1399660200, 0, 0, 28, '2014-05-07 13:39:33', 'admin', 'JIJI', 'I', 'lkn', 0, NULL, NULL, NULL, NULL, 'MRBS-536a3795b0504-c5609b5e@localhost', 0, '', ''),
+(173, 1399638600, 1399642200, 0, 0, 29, '2014-05-10 23:23:58', 'admin', 'Hola Editado', 'I', 'oiko', 0, NULL, NULL, NULL, NULL, 'MRBS-5369bde39bd6f-8ec62c44@localhost', 1, '', ''),
+(174, 1399658400, 1399662000, 0, 0, 29, '2014-05-10 23:43:24', 'admin', 'sdño editado', 'I', 'opipi', 0, NULL, NULL, NULL, NULL, 'MRBS-5369bd95f03c0-1f5c8c3e@localhost', 1, '', ''),
+(176, 1399654800, 1399658400, 0, 0, 29, '2014-05-10 23:45:51', 'admin', 'Clase nueva', 'I', 'ñok', 0, NULL, NULL, NULL, NULL, 'MRBS-536eba1858cca-e2452763@localhost', 1, '', ''),
+(178, 1399663800, 1399667400, 0, 0, 29, '2014-05-10 23:47:34', 'admin', 'Mi calse', 'I', 'lkh', 0, NULL, NULL, NULL, NULL, 'MRBS-536eba79aaec3-73ddcd9f@localhost', 1, '', ''),
+(180, 1399644000, 1399645800, 0, 0, 29, '2014-05-10 23:51:17', 'admin', 'peque', 'I', 'lk', 0, NULL, NULL, NULL, NULL, 'MRBS-536ebb4f64b28-17df2e13@localhost', 1, '', ''),
+(182, 1399647600, 1399649400, 0, 0, 29, '2014-05-10 23:52:17', 'admin', 'mas peque', 'I', 'lkj', 0, NULL, NULL, NULL, NULL, 'MRBS-536ebba74458e-bd5b200f@localhost', 1, '', ''),
+(183, 1399982400, 1399986000, 0, 0, 27, '2014-05-12 22:05:12', 'admin', 'La mejor clase', 'I', 'lorem ipsum', 0, NULL, NULL, NULL, NULL, 'MRBS-53714598d78dc-20859713@localhost', 0, '', ''),
+(184, 1400068800, 1400072400, 0, 0, 27, '2014-05-12 22:20:09', 'admin', 'Clase nueva', 'I', 'lorep ipsum', 0, NULL, NULL, NULL, NULL, 'MRBS-53714919327bd-19d0c184@localhost', 0, '', ''),
+(185, 1400155200, 1400158800, 0, 0, 27, '2014-05-12 22:35:00', 'admin', 'lkjhlk', 'I', 'lkj', 0, NULL, NULL, NULL, NULL, 'MRBS-53714c947c3f9-4cfdd672@localhost', 0, '', ''),
+(186, 1400241600, 1400245200, 0, 0, 27, '2014-05-12 22:35:49', 'admin', 'ñkljói', 'I', '9o8', 0, NULL, NULL, NULL, NULL, 'MRBS-53714cc5db673-ad224a89@localhost', 0, '', ''),
+(187, 1399986000, 1399989600, 0, 0, 27, '2014-05-12 22:38:38', 'admin', 'lkj', 'I', 'ñlk', 0, NULL, NULL, NULL, NULL, 'MRBS-53714d6edb94d-b95f886b@localhost', 0, '', ''),
+(188, 1400099400, 1400103000, 0, 0, 27, '2014-05-12 23:25:06', 'admin', 'lk', 'I', 'jñlkj', 0, NULL, NULL, NULL, NULL, 'MRBS-53715852002b6-f15c3608@localhost', 0, '', 'ñlkjñlkj'),
+(189, 1400072400, 1400076000, 0, 0, 27, '2014-05-12 23:25:22', 'admin', 'lñkj', 'I', 'lkj', 0, NULL, NULL, NULL, NULL, 'MRBS-5371586254d01-fa6ae82e@localhost', 0, '', 'qñwoq'),
+(190, 1400158800, 1400162400, 0, 0, 27, '2014-05-12 23:31:59', 'admin', 'Ahora si', 'I', 'la terrible', 0, NULL, NULL, NULL, NULL, 'MRBS-537159ef03fa4-b02fcca1@localhost', 0, '', 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl'),
+(191, 1399989600, 1399993200, 0, 0, 27, '2014-05-12 23:42:53', 'admin', 'Hola', 'I', 'muy bn', 0, NULL, NULL, NULL, NULL, 'MRBS-53715c7df34ca-ae82ea71@localhost', 0, '', 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl'),
+(192, 1399939200, 1399942800, 0, 0, 27, '2014-05-12 23:50:07', 'admin', 'Estamos probando señores', 'I', 'Una buena descripción', 0, NULL, NULL, NULL, NULL, 'MRBS-53715e2f0f002-437855ec@localhost', 0, '', 'ian.alonyon@gmail.com;chalo.infante01@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -191,36 +191,29 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_opt` (
   `pais` varchar(50) DEFAULT NULL,
   `correo` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_entry_opt`
 --
 
 INSERT INTO `mrbs_entry_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
-(0, 'UdeChile', 'Chile', 'a@b.cl'),
 (47, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
 (48, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
 (49, 'Stanford University', 'EEUU', 'vint@acm.org'),
 (74, 'Universidad de Chile', 'Chile', 'fcifuent@dcc.uchile.cl'),
+(0, 'UdeChile', 'Chile', 'a@b.cl'),
 (109, 'asdf4', 'asdf4', 'asdf4'),
 (110, 'tf', 'tf', 'tf'),
 (111, 'df', 'df', 'df'),
 (112, 'as', 'as', 'as'),
 (113, 'asdf1', 'asdf1', 'asdf1'),
 (114, 'asdf', 'asdf', 'asdf'),
+(119, 'Stanford University', 'Chile', 'a@b.cl'),
 (117, 'asdf5', 'asdf5', 'asdf5'),
 (118, 'asdf5', 'asdf5', 'asdf5'),
-(119, 'Stanford University', 'Chile', 'a@b.cl'),
 (120, 'Stanford University', 'asdf', 'a@b.cl'),
-(123, 'Stanford University', 'asdf', 'a@b.cl'),
-(167, 'sdfs', 'sss', 'fsdf'),
-(168, 'sdfs', 'aaa', 'fdfd'),
-(169, 'aaa', 'dsa', 'dsad'),
-(170, 'aaa', 'ddsd', 'gggg'),
-(171, 'fvdfv', 'dfvf', 'dffg'),
-(172, 'sfdg', 'sss', 'asd'),
-(173, 'sas', 'dfsdf', 'sdfdf');
+(123, 'Stanford University', 'asdf', 'a@b.cl');
 
 -- --------------------------------------------------------
 
@@ -237,15 +230,15 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
   `resumen_expositor` varchar(1000) DEFAULT NULL,
   `tipo_evento` varchar(8) NOT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_entry_salas`
 --
 
 INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
-(38, 'asdasd', 'asdas', NULL, NULL, NULL, 'Clase'),
 (39, 'asddkasj', 'hjsdkasd', NULL, NULL, NULL, 'Clase'),
+(38, 'asdasd', 'asdas', NULL, NULL, NULL, 'Clase'),
 (77, 'asddas', 'asdasd', NULL, NULL, NULL, 'Clase'),
 (78, 'profe1', 'curso1', NULL, NULL, NULL, 'Clase'),
 (80, 'profe2', 'curso2', NULL, NULL, NULL, 'Clase'),
@@ -254,7 +247,7 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (128, 'ouyv', 'oiub09', NULL, NULL, NULL, 'Clase'),
 (129, 'o97', '0o9p', NULL, NULL, NULL, 'Clase'),
 (130, '9uhp98', 'p98', NULL, NULL, NULL, 'Clase'),
-(131, 'op897h', 'p9h', NULL, NULL, NULL, 'Clase'),
+(176, 'oñk', 'ñk', NULL, NULL, NULL, 'Clase'),
 (132, 'ñoin', '98h9', NULL, NULL, NULL, 'Clase'),
 (133, 'np9o8jh', '9', NULL, NULL, NULL, 'Clase'),
 (134, 'h98p7', '7', NULL, NULL, NULL, 'Clase'),
@@ -267,8 +260,8 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (141, 'iun', 'o9', NULL, NULL, NULL, 'Clase'),
 (142, 'qw', 'wq', NULL, NULL, NULL, 'Clase'),
 (143, '009', '0', NULL, NULL, NULL, 'Clase'),
-(144, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
-(145, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
+(178, 'lkj', 'lkj', NULL, NULL, NULL, 'Clase'),
+(174, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
 (146, 'oin', 'f34', NULL, NULL, NULL, 'Clase'),
 (147, NULL, NULL, 'asdf', 'Charla alumno', 'wefw', 'Defensa'),
 (148, NULL, NULL, 'asdf', 'Charla alumno', 'wefw', 'Defensa'),
@@ -286,10 +279,21 @@ INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `t
 (160, 'ñoi', 'oi', NULL, NULL, NULL, 'Clase'),
 (161, 'ñj', 'kjn', NULL, NULL, NULL, 'Clase'),
 (162, 'ñj', 'kjn', NULL, NULL, NULL, 'Clase'),
-(163, 'oij', 'oi', NULL, NULL, NULL, 'Clase'),
+(180, 'ñlkj', 'lkj', NULL, NULL, NULL, 'Clase'),
 (164, 'plk', 'p', NULL, NULL, NULL, 'Clase'),
 (165, 'lk', 'nlk', NULL, NULL, NULL, 'Clase'),
-(166, 'lk', 'jl', NULL, NULL, NULL, 'Clase');
+(183, 'lorem ipsum', 'lorem ipsum', NULL, NULL, NULL, 'Clase'),
+(173, NULL, NULL, NULL, NULL, NULL, 'Reunión'),
+(182, 'lkj', 'lkj', NULL, NULL, NULL, 'Clase'),
+(184, 'lorep ipsum', 'lorep ipsum', NULL, NULL, NULL, 'Clase'),
+(185, 'lkj', 'ñlkjlk', NULL, NULL, NULL, 'Clase'),
+(186, '9i8jh', '09ij', NULL, NULL, NULL, 'Clase'),
+(187, 'ñlkj', 'lkj', NULL, NULL, NULL, 'Clase'),
+(188, 'ñlkj', 'ñlkj', NULL, NULL, NULL, 'Clase'),
+(189, 'lkj', 'lkj', NULL, NULL, NULL, 'Clase'),
+(190, 'profe', 'le curso', NULL, NULL, NULL, 'Clase'),
+(191, 'klj', 'lkj', NULL, NULL, NULL, 'Clase'),
+(192, 'El mejor profe', 'El mejor curso', NULL, NULL, NULL, 'Clase');
 
 -- --------------------------------------------------------
 
@@ -318,6 +322,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
   `info_text` text,
   `ical_uid` varchar(255) NOT NULL DEFAULT '',
   `ical_sequence` smallint(6) NOT NULL DEFAULT '0',
+  `emails` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
@@ -325,10 +330,9 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
 -- Dumping data for table `mrbs_repeat`
 --
 
-INSERT INTO `mrbs_repeat` (`id`, `start_time`, `end_time`, `rep_type`, `end_date`, `rep_opt`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `rep_num_weeks`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`) VALUES
-(10, 1371052800, 1371225660, 2, 1371830400, '0001000', 21, '2013-07-09 20:15:04', 'ralonso', 'Donald Knuth', 'I', '', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-51dc6f484467f-1542cf1f@anakena.dcc.uchile.cl', 0),
-(12, 1400256000, 1400256060, 3, 1407254400, '0', 34, '2014-05-06 19:42:41', 'admin', 'asdf789', 'I', 'sdf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53693b311b351-a7854c27@localhost', 0),
-(13, 1400083200, 1400083260, 2, 1400083200, '0001110', 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0);
+INSERT INTO `mrbs_repeat` (`id`, `start_time`, `end_time`, `rep_type`, `end_date`, `rep_opt`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `rep_num_weeks`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `emails`) VALUES
+(12, 1400256000, 1400256060, 3, 1407254400, '0', 34, '2014-05-06 19:42:41', 'admin', 'asdf789', 'I', 'sdf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53693b311b351-a7854c27@localhost', 0, ''),
+(13, 1400083200, 1400083260, 2, 1400083200, '0001110', 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, '');
 
 -- --------------------------------------------------------
 
@@ -342,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
   `pais` varchar(25) DEFAULT NULL,
   `correo` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_repeat_opt`
@@ -350,8 +354,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
 
 INSERT INTO `mrbs_repeat_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
 (10, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
-(11, 'Stanford University', 'asdf', 'a@b.cl'),
 (12, '13212', '132123', '1233132'),
+(11, 'Stanford University', 'asdf', 'a@b.cl'),
 (13, 'Stanford University', 'asdf', 'a@b.cl'),
 (14, 'Stanford University', 'asdf', 'a@b.cl');
 
@@ -370,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_salas` (
   `resumen_expositor` varchar(1000) DEFAULT NULL,
   `tipo_evento` varchar(8) NOT NULL,
   PRIMARY KEY (`entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mrbs_repeat_salas`
@@ -411,14 +415,19 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 --
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
-(21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 3, '', '', '', '', 0, ''),
-(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, '', '', '', '', 0, ''),
+(21, 0, 5, 'Oficina 310, cupo 1', 'Oficina 310, cupo 1', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, '', '', '', '', 0, ''),
+(22, 0, 5, 'Oficina 310, cupo 2', 'Oficina 310, cupo 2', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, '', '', '', '', 0, ''),
+(23, 0, 5, 'Oficina 310, cupo 3', 'Oficina 310, cupo 3', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 0, NULL, NULL, '', '', 0, ''),
+(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, NULL, NULL, '', '', 0, ''),
 (25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (26, 0, 4, 'Notebook 2', 'Notebook 2', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', 30, 0, NULL, NULL, '', '', 0, ''),
-(28, 0, 3, 'Sala de Reuniones 4° piso', 'Sala de Reuniones 4° piso', '', 50, 0, '', '', '', '', 0, ''),
-(29, 0, 3, 'Sala de Reuniones 3° piso', 'Sala de Reuniones 3° piso', 'Sala primer piso', 10, 0, '', '', '', '', 0, ''),
-(30, 0, 5, 'Oficina 311', 'Oficina 311', 'Oficina dispuesta para profesores visitantes', 0, 4, '', '', '', '', 0, ''),
+(28, 0, 3, 'Sala B213', 'Sala B213', 'Sala segundo piso', 50, 0, '', '', '', '', 0, ''),
+(29, 0, 3, 'Sala B111', 'Sala B111', 'Sala primer piso', 10, 0, NULL, NULL, '', '', 0, ''),
+(30, 0, 5, 'Oficina 311, cupo 1', 'Oficina 311', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
+(31, 0, 5, 'Oficina 311, cupo 2', 'Oficina 311, cupo 2', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
+(32, 1, 5, 'Oficina 311, cupo 3', 'Oficina 311, cupo 3', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
+(33, 1, 5, 'Oficina 311, cupo 4', 'Oficina 311, cupo 4', 'Oficina dispuesta para profesores visitantes', 0, 0, '', '', '', '', 0, ''),
 (34, 0, 5, 'Oficina 999', 'Oficina 999', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 2, '', '', '', '', 0, '');
 
 -- --------------------------------------------------------
@@ -523,9 +532,8 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   `sent` tinyint(1) NOT NULL DEFAULT '0',
   `event_id` int(11) NOT NULL,
   `event_datetime` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `event_id` (`event_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `notifications_registry`
@@ -534,7 +542,21 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
 INSERT INTO `notifications_registry` (`id`, `text_id`, `mail_list`, `notification_datetime`, `sent`, `event_id`, `event_datetime`) VALUES
 (1, 1, 'ian.alonyon@gmail.com;iyon@dcc.uchile.cl', '2014-05-22 10:00:00', 0, 85, '2014-05-22 11:00:00'),
 (2, 2, 'ian.alonyon@gmail.com;chalo.infante01@gmail.com;fernando@balboa.cl;sergio.maass@gmail.com;macguionbajo@gmail.com', '2014-05-01 11:50:00', 1, 85, '2014-05-01 11:00:00'),
-(9, 1, 'ian.alonyon@gmail.com', '2014-05-09 14:25:00', 1, 166, '2014-05-09 14:30:00');
+(16, 2, 'ian.alonyon@gmail.com', '2014-05-09 08:15:00', 1, 173, '2014-05-09 08:30:00'),
+(17, 1, 'ian.alonyon@gmail.com', '2014-05-09 10:25:00', 0, 175, '2014-05-09 10:30:00'),
+(18, 1, 'ian.alonyon@gmail.com', '2014-05-09 09:55:00', 0, 177, '2014-05-09 10:00:00'),
+(19, 1, 'ian.alonyon@gmail.com', '2014-05-09 09:25:00', 0, 179, '2014-05-09 09:30:00'),
+(20, 1, 'ian.alonyon@gmail.com', '2014-05-09 10:55:00', 0, 181, '2014-05-09 11:00:00'),
+(21, 1, 'ian.alonyon@gmail.com', '2014-05-13 07:55:00', 0, 183, '2014-05-13 08:00:00'),
+(22, 1, 'ian.alonyon@gmail.com', '2014-05-14 07:55:00', 0, 184, '2014-05-14 08:00:00'),
+(23, 1, 'ian.alonyon@gmail.com', '2014-05-15 07:55:00', 0, 185, '2014-05-15 08:00:00'),
+(24, 1, 'ian.alonyon@gmail.com', '2014-05-16 07:55:00', 0, 186, '2014-05-16 08:00:00'),
+(25, 1, 'ian.alonyon@gmail.com', '2014-05-13 08:55:00', 0, 187, '2014-05-13 09:00:00'),
+(26, 1, 'ian.alonyon@gmail.com', '2014-05-14 16:25:00', 0, 188, '2014-05-14 16:30:00'),
+(27, 1, 'ian.alonyon@gmail.com', '2014-05-14 08:55:00', 0, 189, '2014-05-14 09:00:00'),
+(28, 1, 'ian.alonyon@gmail.com', '2014-05-15 08:55:00', 0, 190, '2014-05-15 09:00:00'),
+(29, 1, 'ian.alonyon@gmail.com', '2014-05-13 09:55:00', 0, 191, '2014-05-13 10:00:00'),
+(30, 1, 'ian.alonyon@gmail.com;chalo.infante01@gmail.com', '2014-05-12 19:55:00', 1, 192, '2014-05-12 20:00:00');
 
 -- --------------------------------------------------------
 
@@ -554,7 +576,12 @@ CREATE TABLE IF NOT EXISTS `oficina_de_trabajo` (
 
 INSERT INTO `oficina_de_trabajo` (`id`, `cupo_numero`) VALUES
 (21, 1),
-(30, 1);
+(22, 1),
+(23, 1),
+(30, 1),
+(31, 1),
+(32, 1),
+(33, 1);
 
 -- --------------------------------------------------------
 
@@ -604,28 +631,22 @@ INSERT INTO `sala_publica` (`id`, `capacidad`) VALUES
 --
 
 --
--- Constraints for table `notifications_registry`
---
-ALTER TABLE `notifications_registry`
-  ADD CONSTRAINT `notifications_registry_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `mrbs_entry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `oficina_de_trabajo`
 --
 ALTER TABLE `oficina_de_trabajo`
-  ADD CONSTRAINT `oficina_de_trabajo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `oficina_de_trabajo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
 
 --
 -- Constraints for table `recurso_computacional`
 --
 ALTER TABLE `recurso_computacional`
-  ADD CONSTRAINT `recurso_computacional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `recurso_computacional_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
 
 --
 -- Constraints for table `sala_publica`
 --
 ALTER TABLE `sala_publica`
-  ADD CONSTRAINT `sala_publica_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `sala_publica_ibfk_1` FOREIGN KEY (`id`) REFERENCES `mrbs_room` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

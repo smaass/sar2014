@@ -1,0 +1,7 @@
+
+La consulta fue SELECT M.room_name, M.room_admin_email, M.area_id, A.area_name, A.area_admin_email, M.disabled AS room_disabled, A.disabled AS area_disabled, (end_time - start_time) AS duration, T.id, T.start_time, T.end_time, entry_type, repeat_id, T.room_id,  UNIX_TIMESTAMP(timestamp) AS last_updated, T.create_by, T.name, T.type, T.description, T.status, T.reminded, info_time AS entry_info_time, info_user AS entry_info_user, info_text AS entry_info_text, T.ical_uid, T.ical_sequence, ical_recur_id, T.emails, N.universidad, N.pais, N.correo
+    	        FROM mrbs_entry T, mrbs_room M, mrbs_area A, mrbs_entry_opt N
+				WHERE T.room_id = M.id
+        	    AND M.area_id = A.id
+        	    AND N.entry_id = T.id
+        	    AND T.id=192 + 

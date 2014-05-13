@@ -14,7 +14,7 @@ function getPhpMailer(){
   $mail->SMTPSecure = 'tls';
   $mail->SMTPAuth = true;
   $mail->Username = 'ian.alonyon@gmail.com';
-  $mail->Password = 'V3rd4d 3s L4 M3j0r M3nt1r4|google';
+  $mail->Password = 'america latina no te llamas';
 
   $mail->IsHTML(true);
   $mail->CharSet = 'UTF-8';
@@ -62,8 +62,9 @@ $notifications = array();
 while ($row = mysql_fetch_assoc($result)) {
     $notifications[] = $row;
     $count += 1;
+    echo("<pre>Notificación $count: ".print_r($row, true)."<br></pre>");
 }
-echo("Se encontraron $count notificaciones<br>");
+echo("<br>Se encontraron <b>$count</b> notificaciones<br>");
 
 // Now we send the notifications to the mailist
 $mail = getPhpMailer();

@@ -889,7 +889,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   if($mail_previous){
     // We need to update all the notifications associated with this booking
     $sql = "UPDATE $tbl_notifications_registry
-            SET mail_list = 'ian.alonyon@gmail.com', 
+            SET mail_list = '$mail_previous[emails]', 
                 notification_datetime = '$notification_time',
                 event_datetime = '$start_time',
                 text_id = $text_id
@@ -905,7 +905,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
             VALUES ($text_id";
 
     //TODO: pasar lista de correos
-    $sql .= ", 'ian.alonyon@gmail.com'";
+    $sql .= ", '$data[emails]'";
 
     $sql .= ", '$notification_time', '$data[id]', '$start_time')";
               

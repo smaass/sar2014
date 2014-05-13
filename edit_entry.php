@@ -51,8 +51,6 @@
 require "defaultincludes.inc";
 require_once "mrbs_sql.inc";
 
-
-
 $fields = sql_field_info($tbl_entry);
 $custom_fields = array();
 
@@ -549,7 +547,7 @@ function create_field_entry_evento_reunion($disabled=FALSE)
   if($area_id == 5 or $area_id == 4)
     return;
 
-  echo "<div id=\"div_evento_reunion\" style=\"display: none\">\n";
+  echo "<div id=\"div_evento_reunion\" style=\"clear: both;\">\n";
   echo "</div>\n";
 }
 
@@ -575,7 +573,7 @@ function create_field_entry_evento_defensa($disabled=FALSE)
 	  echo "<div id=\"div_tipo_charla\" style=\"clear: both;\">\n";
 	  generate_select("Tipo charla:", 'tipo_charla', $tipo_charla,
       array('Charla alumno','Charla profesor','Defensa memoria', 'Defensa tesis magíster', 'Defensa doctorado'), false, $disabled);
-
+    
 	  echo "</div>\n";
   echo "</div>\n";
 }

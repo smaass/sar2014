@@ -66,11 +66,10 @@ function generate_search_nav_html($search_pos, $total, $num_records, $search_str
 function output_row($row)
 {
   global $ajax, $json_data;
-  
   $values = array();
   // booking name
   $html_name = htmlspecialchars($row['name']);
-  $values[] = "<a title=\"$html_name\" href=\"view_entry.php?id=" . $row['entry_id'] . "\">$html_name</a>";
+  $values[] = "<a title=\"$html_name\" href=\"view_entry.php?id=$row[entry_id]&area=$row[area_id]\">$html_name</a>";
   // created by
   $values[] = htmlspecialchars($row['create_by']);
   // start time and link to day view

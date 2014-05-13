@@ -141,6 +141,10 @@ $vocab["no"]                  = "No";
 $vocab["universidad"]         = "Universidad";
 $vocab["correo"]              = "Correo";
 $vocab["pais"]                = "País";
+
+// Modified
+$vocab_override['es']['entry.emails'] = "Emails";
+
 $vocab["profesor"]            = "Profesor";
 $vocab["curso"]               = "Curso";
 $vocab["expositor"]           = "Expositor";
@@ -327,8 +331,8 @@ $vocab["error_room"]         = "Error: Sala ";
 $vocab["not_found"]          = " no encontrado";
 $vocab["update_area_failed"] = "Actualización de conjunto fallida: ";
 $vocab["error_area"]         = "Error: Conjunto";
-$vocab["room_admin_email"]   = "Email del Administrador de Recurso";
-$vocab["area_admin_email"]   = "Correo Electrónico del Administrador de Conjunto";
+$vocab["room_admin_email"]   = "Email Administrador de Recurso";
+$vocab["area_admin_email"]   = "Email Administrador de Conjunto";
 $vocab["area_first_slot_start"]   = "Comienzo del primer periodo";
 $vocab["area_last_slot_start"]    = "Comienzo del último periodo";
 $vocab["area_res_mins"]           = "Duración (minutos)";

@@ -338,6 +338,12 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
   width: 240px;
 }
 
+#f_emails
+{
+  width: 240px;
+  height: 60px;
+}
+
 #resumen_expositor
 {
   width: 240px;
