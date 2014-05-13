@@ -118,7 +118,6 @@ INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_
 (82, 1374157800, 1374161400, 0, 0, 27, '2013-07-17 22:27:15', 'ralonso', 'Reu1', 'I', '', 0, NULL, NULL, NULL, NULL, 'MRBS-51e71a43bc76d-6cff67f2@anakena.dcc.uchile.cl', 0, '', ''),
 (84, 1374357600, 1374366600, 0, 0, 27, '2013-07-17 22:52:26', 'admin', 'defensa', 'I', 'resum', 0, NULL, NULL, NULL, NULL, 'MRBS-51e71f7e377de-f158b92f@anakena.dcc.uchile.cl', 1, '', ''),
 (85, 0, 0, 0, 0, 27, '2014-05-01 23:17:29', 'Sandra Gaez', 'Charla "La web semantica"', 'E', 'Microsoft research realizara una charla mostrando aplicaciones de la web semantica a la XBOX One', 0, NULL, NULL, NULL, NULL, '', 0, '', ''),
-(86, 1399564800, 1399564860, 0, 0, 34, '2014-05-04 01:47:21', 'admin', 'Yo', 'I', 'Esta es una reserva de prueba', 0, NULL, NULL, NULL, NULL, 'MRBS-53659c29b68ff-063056ad@localhost', 0, '', ''),
 (113, 1399478400, 1399564860, 0, 0, 34, '2014-05-04 04:22:06', 'admin', 'asdf1', 'I', 'asdf1', 0, NULL, NULL, NULL, NULL, 'MRBS-5365c06ef1a25-00f0da78@localhost', 0, '', ''),
 (114, 1399910400, 1399996860, 0, 0, 34, '2014-05-04 04:30:49', 'admin', 'asdf', 'I', 'asdf', 0, NULL, NULL, NULL, NULL, 'MRBS-5365c2797d62b-3774cfbd@localhost', 0, '', ''),
 (119, 1399392000, 1399392060, 0, 0, 34, '2014-05-06 17:47:52', 'admin', 'asdf', 'I', 'descripción completa', 0, NULL, NULL, NULL, NULL, 'MRBS-536920481db63-4036b062@localhost', 0, '', ''),
