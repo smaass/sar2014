@@ -54,6 +54,7 @@
     }
 .m-bellows .m-header a {
     color: black;
+    white-space:nowrap;
 }
 .m-bellows .m-inner-content {
     padding: 10px 15px;

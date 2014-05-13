@@ -322,6 +322,7 @@ $strftime_format['datetime24']   = "%H:%M:%S - %A %d %B %Y";    // 24 hour clock
 $strftime_format['daymonth']     = "%b %d";        // Used in trailer
 $strftime_format['monyear']      = "%b %Y";        // Used in trailer
 $strftime_format['monthyear']    = "%B %Y";        // Used in Month view
+$strftime_format['year']    = "%Y";        // Used in Week view
 
 // Whether or not to display the timezone
 $display_timezone = FALSE;
