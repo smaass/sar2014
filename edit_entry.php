@@ -495,7 +495,7 @@ function create_field_entry_reserva_oficina($disabled=FALSE)
   if($area_id == 3 or $area_id == 4)
     return;
 
-  global $universidad, $pais, $correo;
+  global $universidad, $pais; //, $correo;
   //echo "<div id=\"div_nombre_visita\">\n";
   // 'required' is there to prevent null input (pattern doesn't seem to be triggered until
   // there is sonething there).   [\S]+.* is any non-whitespace character followed by any number
@@ -511,10 +511,11 @@ function create_field_entry_reserva_oficina($disabled=FALSE)
   echo "<div id=\"div_pais\">\n";
   generate_input("Pais:", 'pais', $pais, $disabled, 50, 'type="text" required pattern="' . REGEX_TEXT_POS . '"');
   echo "</div>\n";
-
+/*
   echo "<div id=\"div_correo\">\n";
   generate_input("Correo:", 'correo', $correo, $disabled, 128, 'type="text" required pattern="' . REGEX_TEXT_POS . '"');
   echo "</div>\n";
+  */
 }
 
 function create_field_entry_evento_clases($disabled=FALSE)
@@ -985,7 +986,7 @@ if (isset($id))
       case 'description':
       case 'universidad':
       case 'pais':
-      case 'correo':
+//      case 'correo':
 	  case 'profesor':
 	  case 'curso':
 	  case 'expositor':
@@ -1109,7 +1110,7 @@ else
   if ($area_id == $area_of_trabajo){
     $universidad   = "";
     $pais          = "";
-    $correo        = "";
+//    $correo        = "";
   }else if($area_id == $area_salas){
 	$profesor	= "";
 	$curso		= "";

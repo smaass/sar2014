@@ -139,7 +139,7 @@ $vocab["sent_at"]             = "Enviada a ";
 $vocab["yes"]                 = "Si";
 $vocab["no"]                  = "No";
 $vocab["universidad"]         = "Universidad";
-$vocab["correo"]              = "Correo";
+//$vocab["correo"]              = "Correo";
 $vocab["pais"]                = "País";
 
 // Modified

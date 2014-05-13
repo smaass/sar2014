@@ -684,8 +684,10 @@ function mrbsCreateEntry($table, $data)
     $sql_val2[] = "'" . sql_escape($data['universidad']) . "'";  	
     $sql_col2[] = 'pais';
     $sql_val2[] = "'" . sql_escape($data['pais']) . "'";  	
+    /*
     $sql_col2[] = 'correo';
     $sql_val2[] = "'" . sql_escape($data['correo']) . "'";  	
+    */
     //$return_id = sql_insert_id($table, "id");
     $sql2 = "INSERT INTO " . $table . "_opt (entry_id, " . implode(', ',$sql_col2) . ") VALUES (" . $return_id .",". implode(', ',$sql_val2) . ")";
 
@@ -1283,7 +1285,7 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
   if($area == $area_of_trabajo){
         array_push($terms, "N.universidad");
         array_push($terms, "N.pais");
-        array_push($terms, "N.correo");
+//        array_push($terms, "N.correo");
         if ($series)
         {
 

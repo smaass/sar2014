@@ -146,7 +146,7 @@ $last_reminded = (empty($row['reminded'])) ? $row['last_updated'] : $row['remind
 if ($row['area_id'] == $area_of_trabajo){ 
 	$universidad=$row['universidad'];
 	$pais=$row['pais'];
-	$correo=$row['correo'];
+//	$correo=$row['correo'];
 	}
 else if ($row['area_id']==$area_salas){
 	$tipo_evento=$row['tipo_evento'];

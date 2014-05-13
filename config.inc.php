@@ -85,6 +85,8 @@ $auth["user"]["ralonso"] = "asdfqwerty";
 $auth["user"]["bromero"] = "asdf";
 $auth["user"]["admin"] = "admin";
 
+$auth["user"]["reservador"] = "hola";
+
 $auth["admin"][] = "fcifuentes";
 $auth["admin"][] = "ralonso";
 $auth["admin"][] = "admin";
