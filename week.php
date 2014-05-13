@@ -41,10 +41,14 @@ if ($this_room_name === -1)
 {
   $this_room_name = '';
 }
+
+$month_start = mktime(0, 0, 0, $month, 1, $year);
+
 echo "<div class=\"Cell Right\">";
 echo "<div class=\"Calendar\">";
 echo "<div id=\"dwm\">\n";
-echo "<h2>" . htmlspecialchars("$this_area_name - $this_room_name") . "</h2>\n";
+echo "<h2>" . $vocab["year_lc"] .' '. utf8_strftime($strftime_format['year'], $month_start) . ' - '
+		. htmlspecialchars("$this_area_name - $this_room_name") . "</h2>\n";
 echo "</div>\n";
 
 echo "<table class=\"dwm_main\" id=\"week_main\" data-resolution=\"$resolution\">";
