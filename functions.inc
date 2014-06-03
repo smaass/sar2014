@@ -624,7 +624,7 @@ function generate_textarea($label_text, $name, $value, $disabled=FALSE, $attribu
 // The function passes back three separate variables, rather than a single date 
 // variable, partly for compatibility with previous implementations of genDateSelector()
 // and partly because it's easier to do this for the non-JavaScript version.
-function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FALSE)
+function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FALSE, $inline=FALSE)
 {
   global $strftime_format, $year_range;
   
@@ -726,8 +726,11 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
  
   
   var dateselector = document.getElementById(<?php echo "'${prefix}dateselector'" ?>);
-  var datepicker_html = '<input class="date" type="text" id="<?php echo $datepicker_baseid ?>">\n';
-  <?php
+  <?php if($inline): ?>
+    var datepicker_html = '<div class="date" type="text" id="<?php echo $datepicker_baseid ?>"></div>\n';
+  <?php else: ?>
+    var datepicker_html = '<input class="date" type="text" id="<?php echo $datepicker_baseid ?>">\n';
+  <?php endif;
   // The next input is disabled because we don't need to pass the value through to
   // the form and we don't want the value cluttering up the URL (if it's a GET).
   // It's just used as a holder for the date in a known format so that it can
@@ -1450,7 +1453,7 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
 //menu
 
 function make_menu_html($link, $current, $year, $month, $day) {
-    $menu = "<div id=\"dwm_menu\" class=\"Cell Left\">\n";
+    $menu = "<div id=\"dwm_menu\" class=\"Left\">\n";
     if (authGetUserLevel(getUserName()) >= 2) {
         $menu .= make_admin_menu();
     }
@@ -1508,20 +1511,21 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
     while (!checkdate($cm, $cd, $cy) && ($cd > 1)) $cd--;
     
     echo "<div class=\"Nav\">";
-    echo "<div class=\"NavTitle\"> Calendario </div>";
+    //echo "<div class=\"NavTitle\"> Calendario </div>";
     echo "<div class=\"Now\">
           <a href=\"".$type.".php?year=$cy&amp;month=$cm&amp;day=$cd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
               "."Fecha actual"."
             </a>
         </div>";
-    if ($type == 'day') {
-        echo make_daynav_html($day, $month, $year, $area, $room, $type);
-    }
-    if ($type == 'week' || $type == 'day') {
-        echo make_weeknav_html($day, $month, $year, $area, $room, $type);
-    }    
-    echo make_monthnav_html($day, $month, $year, $area, $room, $type);
-    echo make_yearnav_html($day, $month, $year, $area, $room, $type);
+//     if ($type == 'day') {
+//         echo make_daynav_html($day, $month, $year, $area, $room, $type);
+//     }
+//     if ($type == 'week' || $type == 'day') {
+//         echo make_weeknav_html($day, $month, $year, $area, $room, $type);
+//     } 
+	
+    //echo make_monthnav_html($day, $month, $year, $area, $room, $type);
+    //echo make_yearnav_html($day, $month, $year, $area, $room, $type);
       
     //Calendar
     echo	"<div class=\"NavCalendar\">
@@ -1530,7 +1534,7 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
                 
     // Give the form id as the optional fifth parameter because we want
     // the form to be automatically submitted when the datepicker is closed
-    genDateSelector("", $day, $month, $year, "Form1");
+    genDateSelector("", $day, $month, $year, "Form1", false, true);
     if (!empty($area))
 	    {
         echo "<input type=\"hidden\" name=\"area\" value=\"$area\">\n";
@@ -1543,8 +1547,8 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
     // the date is changed, we still need a submit button because there
     // are occasions when you want to go to the date without changing it -
     // for example when you've been on a Search or Report page
-    echo "<p>";
-    echo "<input type=\"submit\" value=\"" . get_vocab("goto") . "\">\n";            
+    //echo "<p>";
+    //echo "<input type=\"submit\" value=\"" . get_vocab("goto") . "\">\n";            
     echo "</div> </form>";        
     // Provide a link to the list of bookings awaiting approval
     // (if there are any enabled areas where we require bookings to be approved)

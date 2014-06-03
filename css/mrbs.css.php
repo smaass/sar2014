@@ -52,24 +52,35 @@ expires_header(60*30); // 30 minute expiry
         height: 100%;
     }
 	.Left{
-		width:19%;
+		float:left;
+		position:absolute;
+		width:250px;
 		padding-right: 10px;
 	}
 	.Right{
-		width: 80%;
+		margin-left:270px;
 		vertical-align: middle;
+		position:relative;
 	}
 	.MainCell {
-	    width: 95.5%;
-	    background-color: #fff;
+		overflow:auto;
+		margin-left:270px;
+		position:relative;
+		background-color: #fff;
 	    box-shadow: 0 0 8px #777;
 		border-radius: 8px;
+		
 		padding-left: 2%;
 		padding-right: 2%;
-		margin-top: 5px;
+		/*margin-top: 5px;*/
+	    /*
+	    
+	    
+		
+		
 		padding-bottom: 10px;
 		overflow: hidden;
-		display:table-cell;
+		display:table-cell;*/
 	}
 
 /* ------------ Head -----------------------------*/
@@ -78,12 +89,16 @@ expires_header(60*30); // 30 minute expiry
 	    margin-top: 5px;
 	}
     .Top {
+    	position:relative;
         padding: 15px;
 		border-radius: 8px;
 		box-shadow: 0 0 8px #666;
 		background-color:rgba(136, 187, 238, 0.8);
 	}
 	.Links{
+		position:absolute;
+		right:15px;
+		top:15px;
 		text-align:right;
 	}
 	.Links > a{
@@ -102,9 +117,12 @@ expires_header(60*30); // 30 minute expiry
 		padding-bottom: 0px;
 	}
 	.Search {
-	    width: 40%;
+	    width: 200px;
 	    margin-left: 10px;
 	    text-align: middle;
+	    position:absolute;
+	    right:15px;
+	    bottom:15px;
 	}
 	.Search a {
 	    height: 100%;
@@ -121,21 +139,23 @@ expires_header(60*30); // 30 minute expiry
 	
 /* ------------ calendar and nav -----------------------------*/
 	.Calendar{
-		width:80.3%;
-		float:left;
 		border-radius: 8px;
 		padding: 2px;
 		box-shadow: 0 0 8px #777;
 		background-color: #fff;
+		margin-right:279px;
 	}
 	.Nav{
 		float:right;
 		background-color: #fff;
 		box-shadow: 0 0 8px #777;
 		border-radius: 8px;	
-		width:18%;
-		padding-bottom: 15px;			
-		}
+		width:251px;
+		padding:0px 5px 15px 5px;
+		position:absolute;
+		right:5px;
+		top:0;		
+	}
 	.NavTitle{
 		text-align:center;
 		padding-bottom: 20px;
@@ -230,7 +250,7 @@ body {font-size: small;
 .warning {color: <?php echo $highlight_font_color ?>}                        /* for warning messages */
 .note    {font-style: italic}
 
-div#contents, div.trailer {padding: 0 2em}
+div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px;overflow:auto; margin-top:15px;}
 
 h1 {font-size: x-large; clear: both}
 h2 {font-size: large; clear: both}
@@ -971,7 +991,7 @@ form#add_new_user {margin-left: 1em}
 
 
 /* ------------ FUNCTIONS.INC -------------------*/
-#logon_box {display: block; width: 250px; float: right;}
+#logon_box {display: block; width: 250px; float: right; position:absolute; right: 270px;top:68px;}
 #logon_box a {width: 65%; margin-right: 5%; margin-top: 5px; float: left; text-align: right;}
 #logon_box form {width: 30%; float: right;}
 table#banner {width: 100%; border-spacing: 0; border-collapse: collapse;

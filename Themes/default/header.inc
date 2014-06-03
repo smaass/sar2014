@@ -87,39 +87,10 @@ function print_theme_header($day, $month, $year, $area, $room)
     echo "[Warning: ".$locale_warning."]";
   }
 ?>  
-<div class="Table">
-    <div class="Row">
-      <div id="company" class="Cell Left">        
-          <?php
-          echo "<div id=\"logo\">\n";
-          if (!empty($mrbs_company_url))
-          {
-            echo "<a href=\"$mrbs_company_url\">\n";
-          }
-          if (empty($mrbs_company_logo))
-          {
-            echo "<span>$mrbs_company</span>\n";
-          }
-          else
-          {
-            // Suppress error messages in case the logo is a URL and allow_url_fopen
-            // is not enabled in php.ini
-            $logo_size = @getimagesize($mrbs_company_logo);
-
-            echo '<a href="index.php">';
-            echo "<img src=\"$mrbs_company_logo\" " . $logo_size[3] . " alt=\"$mrbs_company\">\n";
-	    echo "</a>";
-          }
-          if (!empty($mrbs_company_url))
-          {
-            echo "</a>\n";
-          }
-          echo "</div>\n";
-          if (!empty($mrbs_company_more_info))
-          {
-            echo "<div id=\"more_info\">$mrbs_company_more_info</div>\n";
-          }
-          ?>
+<div class="">
+    <div class="">
+      <div id="company" class="Left">        
+          
           
       </div>     
       
@@ -149,7 +120,38 @@ function print_theme_header($day, $month, $year, $area, $room)
       echo "</td>\n"; */
       ?>
       
-      <div class="Cell Right Top">
+      <div class="Top">
+      	<?php
+          echo "<div id=\"logo\">\n";
+          if (!empty($mrbs_company_url))
+          {
+            echo "<a href=\"$mrbs_company_url\">\n";
+          }
+          if (empty($mrbs_company_logo))
+          {
+            echo "<span>$mrbs_company</span>\n";
+          }
+          else
+          {
+            // Suppress error messages in case the logo is a URL and allow_url_fopen
+            // is not enabled in php.ini
+            $logo_size = @getimagesize($mrbs_company_logo);
+
+            echo '<a href="index.php">';
+            echo "<img src=\"$mrbs_company_logo\" " . $logo_size[3] . " alt=\"$mrbs_company\">\n";
+	    echo "</a>";
+          }
+          if (!empty($mrbs_company_url))
+          {
+            echo "</a>\n";
+          }
+          echo "</div>\n";
+          if (!empty($mrbs_company_more_info))
+          {
+            echo "<div id=\"more_info\">$mrbs_company_more_info</div>\n";
+          }
+          ?>
+      
       	<div class="Links">
       	<a>Contactenos </a>
       	<a>FAQ</a>
@@ -186,7 +188,7 @@ function print_theme_header($day, $month, $year, $area, $room)
         ?>
       </div>
     </div>
-<div id="contents" class="Row">
+<div id="contents" class="">
 <?php
 
 } // end of print_theme_header()

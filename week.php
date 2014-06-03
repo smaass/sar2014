@@ -44,7 +44,7 @@ if ($this_room_name === -1)
 
 $month_start = mktime(0, 0, 0, $month, 1, $year);
 
-echo "<div class=\"Cell Right\">";
+echo "<div class=\"Right\">";
 echo "<div class=\"Calendar\">";
 echo "<div id=\"dwm\">\n";
 echo "<h2>" . $vocab["year_lc"] .' '. utf8_strftime($strftime_format['year'], $month_start) . ' - '
