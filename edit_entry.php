@@ -1693,8 +1693,13 @@ foreach ($edit_entry_field_order as $key)
 if (! $ajax){ 
   echo "</div>";	
   output_trailer();
-	}
-else {
+	?>
+	<script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
+	<script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
+	<script type="text/javascript" src="js/datepicker.js.php?area=<?php echo $area; ?>"></script>
+	<script type="text/javascript" src="js/general.js.php?area=<?php echo $area; ?>"></script>
+<?php
+} else {
 ?>
 <script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
 <script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>

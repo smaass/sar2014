@@ -687,6 +687,7 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
     ?>
     var initial_date = new Date(<?php echo "$year, $month_js, $day" ?>);
     var dateFormat = $("#<?php echo $datepicker_baseid ?>").datepicker( "option", "dateFormat" );
+    if(!document.getElementById(<?php echo "'${datepicker_baseid}'" ?>)) return;
     document.getElementById(<?php echo "'${datepicker_baseid}'" ?>).value = $.datepicker.formatDate(dateFormat, initial_date);
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_day'" ?>).value = <?php echo $day ?>;
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_month'" ?>).value = <?php echo $month ?>;
