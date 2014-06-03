@@ -143,7 +143,7 @@ $area_name = get_form_var('area_name', 'string');
 $description = get_form_var('description', 'string');
 $universidad = get_form_var('universidad', 'string');
 $pais = get_form_var('pais', 'string');
-$correo = get_form_var('correo', 'string');
+//$correo = get_form_var('correo', 'string');
 $profesor = get_form_var('profesor', 'string');
 $curso = get_form_var('curso', 'string');
 $capacity = get_form_var('capacity', 'int');
@@ -340,9 +340,9 @@ if ($phase == 2)
                             case 'pais':
                                 $assign_array[] = "pais='" . sql_escape($pais) . "'";
                                 break;
-                            case 'correo':
+/*                            case 'correo':
                                 $assign_array[] = "correo='" . sql_escape($correo) . "'";
-                                break;
+                                break;*/
                             case 'profesor':
                                 $assign_array[] = "profesor='" . sql_escape($profesor) . "'";
                                 break;

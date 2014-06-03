@@ -904,7 +904,6 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
                         (text_id, mail_list, notification_datetime, event_id, event_datetime) 
             VALUES ($text_id";
 
-    //TODO: pasar lista de correos
     $sql .= ", '$data[emails]'";
 
     $sql .= ", '$notification_time', '$data[id]', '$start_time')";

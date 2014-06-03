@@ -27,7 +27,7 @@ $formvars = array('create_by'         => 'string',
                   'description'       => 'string',
                   'universidad'       => 'string',
                   'pais'              => 'string',
-                  'correo'            => 'string',
+//                  'correo'            => 'string',
                   'profesor'          => 'string',
                   'curso'             => 'string',
                   'expositor'         => 'string',
@@ -564,7 +564,7 @@ foreach ($rooms as $room_id)
   {
   	$booking['universidad'] = $universidad;
     $booking['pais'] = $pais;
-    $booking['correo'] = $correo;
+//    $booking['correo'] = $correo;
   }
   elseif ($row_area['area_id'] == $area_salas)
   {

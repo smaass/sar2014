@@ -134,7 +134,7 @@ function create_details_body($data, $as_html=FALSE, $keep_private=FALSE, $room_d
 
  $tbody .= create_details_row(get_vocab("universidad"), $data['universidad'], $as_html);
  $tbody .= create_details_row(get_vocab("pais"), $data['pais'], $as_html);
- $tbody .= create_details_row(get_vocab("correo"), $data['correo'], $as_html);
+// $tbody .= create_details_row(get_vocab("correo"), $data['correo'], $as_html);
  }
  else if ($area == $area_salas){
  	if($tipo_evento=='Clase'){ 
