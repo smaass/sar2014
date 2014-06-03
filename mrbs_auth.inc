@@ -65,11 +65,11 @@ function getAuthorised($level)
   $user = getUserName();
   if(isset($user) == FALSE)
   {
-    echo print_header($day, $month, $year, $area, isset($room) ? $room : "");
-  	echo make_menu_html('week.php', $area, $year, $month, $day);
-  	echo "<div class=\"MainCell\">";
-    authGet();
-    echo "</div>";
+    //echo print_header($day, $month, $year, $area, isset($room) ? $room : "");
+  	//echo make_menu_html('week.php', $area, $year, $month, $day);
+  	//echo "<div class=\"MainCell\">";
+    //authGet();
+    //echo "</div>";
     return 0;
   }
 
@@ -167,7 +167,7 @@ function showAccessDenied($day, $month, $year, $area, $room)
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
   echo make_menu_html("week.php", $area, $year, $month, $day);
 ?>
- <div class="Cell Right">
+ <div class="MainCell">
   <h1><?php echo get_vocab("accessdenied")?></h1>
   <p>
    <?php echo get_vocab("norights")?>
