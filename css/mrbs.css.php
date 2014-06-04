@@ -246,6 +246,20 @@ body {font-size: small;
 .warning {color: <?php echo $highlight_font_color ?>}                        /* for warning messages */
 .note    {font-style: italic}
 
+#dark_background {
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:25;
+	height:100%;
+	width:100%;
+	padding:0;
+	margin:0;
+	background-color:#000;
+	opacity:0.6;
+}
+
 .btn {
   display: inline-block;
   *display: inline;
@@ -400,9 +414,9 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 
 .entry_popup
 {
-  position:absolute;
-  top:0px;
-  left:0px;
+  position:fixed;
+  top:50%;
+  left:50%;
   width:250px;
   padding:10px;
   background-color:rgb(240,240,240);
@@ -410,6 +424,7 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
   display:none;
   z-index:100000000000000000;
   text: center;
+  margin-left:-125px;
 }
 
 .entry_popup #edit_entry_submit_save input

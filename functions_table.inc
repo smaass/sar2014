@@ -1410,7 +1410,6 @@ function table_popup_innerhtml()
   $html = " 
   <script>
   function setSelectListener(){
-	console.log('setListener');
 	$('#tipo_evento').change(function(){
 		switch($(this).val())
 		{
@@ -1437,37 +1436,36 @@ function table_popup_innerhtml()
 	}
   var popup = {};
   popup.opened = false;
-  popup.show = function(x,y,linkReservaDetallada) {
+  popup.show = function(linkReservaDetallada) {
     deactivateTimeout();
-    var default_entry = document.getElementById('default_entry');
-    default_entry.style.display = 'block';
-    default_entry.style.left=(x+window.pageXOffset)+'px';
-    default_entry.style.top=(y+window.pageYOffset)+'px';
-    document.getElementById('linkReservaDetallada').href = linkReservaDetallada;
+  	$('#dark_background').fadeIn();
+  	$('#dark_background').on('click', hidePopup);
+  	$('#default_entry').fadeIn();
+    //default_entry.style.left=(x+window.pageXOffset)+'px';
+    //default_entry.style.top=(y+window.pageYOffset)+'px';
+    $('#linkReservaDetallada').attr('href',linkReservaDetallada);
     
     // NOTE: Lo siguiente por fcifuent
-    var popupContent = document.getElementById('popupContent');
+    var popupContent = $('#popupContent');
     
     if (this.opened) {
-      popupContent.innerHTML = 'Cargando formulario...';
+      popupContent.html('Cargando formulario...');
     }
     
     var xhr = new XMLHttpRequest();
     var url = linkReservaDetallada + '&ajax=1';
-    xhr.onreadystatechange = function() {
-      if (this.readyState === 4 && this.status === 200) {
-        var forEach = Array.prototype.forEach;
-        popupContent.innerHTML = this.responseText;
-        var scripts = popupContent.getElementsByTagName('script');
+  	var jqxhr = $.get(url, null, function(data) {
+  		var forEach = Array.prototype.forEach;
+        popupContent.html(data);
+        var scripts = popupContent[0].getElementsByTagName('script');
         // Tecnica para evaluar globalmente :)
         setSelectListener();
         forEach.call(scripts, function(s) { eval.call(this, s.innerText); }); 
-		
-      }
-    };
-    xhr.open('GET', url, true);
-    xhr.send();
-    
+		adjustPopupHeight();
+    });
+  	jqxhr.fail(function() {
+  		popupContent.html('<h3>Ocurrió un error al traer el formulario</h3>');
+	}); 
     this.opened = true;
     
   };
@@ -1475,28 +1473,37 @@ function table_popup_innerhtml()
     activateTimeout();
     if(this.opened)
       document.getElementById('default_entry').style.display = 'none';
+  	$('#dark_background').hide();
   }
   
-  function showPopup(x,y,linkReservaDetallada) {"
+  function showPopup(linkReservaDetallada) {"
   	.
-  	(authGetUserLevel($user) >= 1 ? "popup.show(x,y,linkReservaDetallada);" : ";")
+  	(authGetUserLevel($user) >= 1 ? "popup.show(linkReservaDetallada);" : ";")
   	.
   "};
   
   function hidePopup() {
     popup.hide();
   }
+  $( window ).resize(function() {
+  	adjustPopupHeight();
+  });
+  			
+  function adjustPopupHeight() {
+  	$('#default_entry').css('margin-top',(parseInt($('#default_entry').css('height'), 10)/(-2)) + 'px');		
+  }
    </script>
   ";
-  /*$html .= '
+  $html .= '
+  <div id="dark_background"></div>
   <div id="default_entry" class="entry_popup">
   <div id="popupContent">
   </div>
   <a href="javascript:hidePopup();">Cerrar</a>
   |
   <a id="linkReservaDetallada">Reserva Detallada</a>
-  </form>
+  <!--/form-->
   </div>
-  ';*/
+  ';
   return $html;
 }

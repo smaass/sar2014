@@ -31,7 +31,7 @@ $user = getUserName();
 // print the page header
 print_header($day, $month, $year, $area, isset($room) ? $room : "");
 
-
+echo table_popup_innerhtml();
 
 
 // Note $room will be 0 if there are no rooms; this is checked for below.
@@ -484,7 +484,6 @@ if ($debug_flag)
   echo "</pre>\n";
 }
 echo "<table class=\"dwm_main\" id=\"month_main\">\n";
-echo table_popup_innerhtml();
 // Weekday name header row:
 echo "<thead>\n";
 echo "<tr>\n";
@@ -714,7 +713,7 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
 	    $entry_link = "'edit_entry.php?";
 	    $entry_link .= $query_string;
 	    $entry_link .= "'";      	
-	    echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup(event.clientX,event.clientY,$entry_link);\" ></div>";
+	    echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" ></div>";
 	    echo "</div>";
     }
     echo "</div>\n";
