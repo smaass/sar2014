@@ -627,7 +627,6 @@ function generate_textarea($label_text, $name, $value, $disabled=FALSE, $attribu
 function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FALSE, $inline=FALSE)
 {
   global $strftime_format, $year_range;
-  
   // Make sure we've got a date
   if (empty($day) or empty($month) or empty($year))
   {
@@ -714,8 +713,10 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
     <?php
     // Populate the input fields with the initial values
     ?>
+    
     var initial_date = new Date(<?php echo "$year, $month_js, $day" ?>);
     var dateFormat = $("#<?php echo $datepicker_baseid ?>").datepicker( "option", "dateFormat" );
+    $("#<?php echo $datepicker_baseid ?>").datepicker( "setDate", initial_date );
     if(!document.getElementById(<?php echo "'${datepicker_baseid}'" ?>)) return;
     document.getElementById(<?php echo "'${datepicker_baseid}'" ?>).value = $.datepicker.formatDate(dateFormat, initial_date);
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_day'" ?>).value = <?php echo $day ?>;
@@ -1370,7 +1371,7 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
 
 	$out_html .="<div id=\"test\" class=\"popup\"><span style=\"color: #0B263B; font-weight: bold;\" id=\"nombreTest\"></span>" .
 			"<table><tr><td>".
-			"<div id=\"fotoTest\"><img></img></div></td>" .
+			"<div id=\"fotoTest\"><img></div></td>" .
 			"<td><div id=\"descriptionTest\"></div></td></tr></table></div>";
     //$out_html .= "<div id=\"dwm_rooms\">\n";
     //$out_html .= "<h3>" . get_vocab("rooms") . "</h3>";
@@ -1424,7 +1425,7 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$value[0]."\">";
           $out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
-          $out_html .= "id=".$value[0] .">";
+          $out_html .= " id=".$value[0] .">";
           $out_html .= htmlspecialchars($key) . "</span>";
           $out_html .= "</a></li>\n";
           
@@ -1437,7 +1438,7 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\">";
           $out_html .= "<span";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
-          $out_html .= "id=".$row['id'] .">";
+          $out_html .= " id=".$row['id'] .">";
           $out_html .= htmlspecialchars($row['room_name']) . "</span>";
           $out_html .= "</a></li>\n";
         }
@@ -1513,9 +1514,9 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
     echo "<div class=\"Nav\">";
     //echo "<div class=\"NavTitle\"> Calendario </div>";
     echo "<div class=\"Now\">
-          <a href=\"".$type.".php?year=$cy&amp;month=$cm&amp;day=$cd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
-              "."Fecha actual"."
-            </a>
+          <a class=\"btn\" href=\"".$type.".php?year=$cy&amp;month=$cm&amp;day=$cd&amp;area=$area&amp;".(isset($room)?"room=$room":"")."\">
+              Fecha actual
+  		</a>
         </div>";
 //     if ($type == 'day') {
 //         echo make_daynav_html($day, $month, $year, $area, $room, $type);
@@ -1583,7 +1584,7 @@ function make_navbar_html($day, $month, $year, $area, $room, $type) {
             }
     echo "</div>";
     echo "</div>";
-    echo "</div class=\"Clear\"></div>";
+    echo "<div class=\"Clear\"></div>";
 }
 
 function get_navlink($day, $month, $year, $area, $room, $type) {

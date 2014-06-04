@@ -1488,7 +1488,7 @@ function table_popup_innerhtml()
   }
    </script>
   ";
-  $html .= '
+  /*$html .= '
   <div id="default_entry" class="entry_popup">
   <div id="popupContent">
   </div>
@@ -1497,6 +1497,6 @@ function table_popup_innerhtml()
   <a id="linkReservaDetallada">Reserva Detallada</a>
   </form>
   </div>
-  ';
+  ';*/
   return $html;
 }
