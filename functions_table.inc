@@ -1431,6 +1431,11 @@ function table_popup_innerhtml()
 			}
 		});
 	}
+  	function onIFrameLoaded(iframe) {
+  		iframe.height = iframe.contentWindow.document.body.scrollHeight+20;
+  		$('#default_entry').css('width',iframe.contentWindow.document.body.scrollWidth+'px');
+  		centerPopup();
+  	}
   var popup = {};
   popup.opened = false;
   popup.show = function(linkReservaDetallada) {
@@ -1451,19 +1456,19 @@ function table_popup_innerhtml()
     
     var xhr = new XMLHttpRequest();
     var url = linkReservaDetallada + '&ajax=1';
-  	//popupContent.html('<iframe id=\"popupiFrame\" onResize=\"console.log(123);\" src=\"'+url+'\"></iframe>');
-  	var jqxhr = $.get(url, null, function(data) {
+  	popupContent.html('<iframe onLoad=\"onIFrameLoaded(this)\" id=\"popupiFrame\" src=\"'+url+'\"></iframe>');
+  	/*var jqxhr = $.get(url, null, function(data) {
   		var forEach = Array.prototype.forEach;
         popupContent[0].innerHTML = data;
         var scripts = popupContent.find('script');
         // Tecnica para evaluar globalmente :)
         setSelectListener();
         forEach.call(scripts, function(s) { eval.call(this, s.innerText); }); 
-		adjustPopupHeight();
+		centerPopup();
     });
   	jqxhr.fail(function() {
   		popupContent.html('<h3>Ocurrió un error al traer el formulario</h3>');
-	});
+	});*/
     this.opened = true;
     
   };
@@ -1484,11 +1489,12 @@ function table_popup_innerhtml()
     popup.hide();
   }
   $( window ).resize(function() {
-  	adjustPopupHeight();
+  	centerPopup();
   });
   			
-  function adjustPopupHeight() {
-  	$('#default_entry').css('margin-top',(parseInt($('#default_entry').css('height'), 10)/(-2)) + 'px');		
+  function centerPopup() {
+  	$('#default_entry').css('margin-top',(parseInt($('#default_entry').css('height'), 10)/(-2)) + 'px');
+  	$('#default_entry').css('margin-left',(parseInt($('#default_entry').css('width'), 10)/(-2)) + 'px');		
   }
    </script>
   ";

@@ -13,14 +13,15 @@ if ($use_strict)
 }
 
 echo "
-    var refresh = true;
+	if(typeof(refresh) == 'undefined')
+    	var refresh = true;
     
     function activateTimeout() {
         refresh = true;
         var path = $(location).attr('pathname');
         var page = path.substr(path.lastIndexOf('/') + 1);
         if (page == 'day.php' || page == 'week.php' || page == 'month.php') {
-            //setTimeout('if (refresh) location.reload(true)', $calendar_views_refresh_milliseconds);
+            setTimeout('if (refresh) location.reload(true)', $calendar_views_refresh_milliseconds);
         }
     }
     
@@ -36,8 +37,7 @@ echo "
 
 // Extend the init() function 
 ?>
-
-var oldInitGeneral = init;
+var oldInitGeneral= init;
 init = function(args) {
   oldInitGeneral.apply(this, [args]);
 

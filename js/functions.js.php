@@ -13,7 +13,6 @@ if ($use_strict)
 }
 
 ?>
-
 function getErrorList(errors)
 {
   var result = {html: '', text: ''};

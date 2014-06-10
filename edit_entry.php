@@ -1231,6 +1231,9 @@ if(! $ajax) {
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
   // Show all available areas
   echo make_menu_html('week.php', $area, $room, $year, $month, $day);
+} else {
+  print_simple_header();
+  require_once("js.inc");
 }
 
 // Get the details of all the enabled rooms
@@ -1403,7 +1406,7 @@ echo "<div class=\"MainCell\">";
 ?>
 
 
-<form class="<?php echo !$ajax? "form_general" : ""; ?>" id="main" action="edit_entry_handler.php" method="post">
+<form class="<?php echo !$ajax? "form_general" : "entry_popup"; ?>" id="main" action="edit_entry_handler.php" method="post">
   <fieldset>
   <?php
   
@@ -1694,18 +1697,9 @@ foreach ($edit_entry_field_order as $key)
 if (! $ajax){ 
   echo "</div>";	
   output_trailer();
-	?>
-	<script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
-	<script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
-	<script type="text/javascript" src="js/datepicker.js.php?area=<?php echo $area; ?>"></script>
-	<script type="text/javascript" src="js/general.js.php?area=<?php echo $area; ?>"></script>
-<?php
-} else {
-?>
-<script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
-<script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
-<script type="text/javascript" src="js/datepicker.js.php?area=<?php echo $area; ?>"></script>
-<script type="text/javascript" src="js/general.js.php?area=<?php echo $area; ?>"></script>
-<?php
 }
 ?>
+<script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
+<!-- script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
+<script type="text/javascript" src="js/datepicker.js.php?area=<?php echo $area; ?>"></script>
+<script type="text/javascript" src="js/general.js.php?area=<?php echo $area; ?>"></script-->

@@ -424,8 +424,7 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
     display:none;
 }
 
-.entry_popup
-{
+#default_entry {
 	position:fixed;
 	top:50%;
 	left:50%;
