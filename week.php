@@ -25,7 +25,7 @@ if ($ajax)
 // print the page header and menu
 print_header($day, $month, $year, $area, isset($room) ? $room : "");
 
-echo make_menu_html('week.php', $area, $year, $month, $day);
+echo make_menu_html('week.php', $area, $room, $year, $month, $day);
 
 // Show area and room:
 // Get the area and room names

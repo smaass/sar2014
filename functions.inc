@@ -1347,7 +1347,7 @@ function make_area_select_html($link, $current, $year, $month, $day)
 } // end make_area_select_html
 
 //require "defaultincludes.inc";
-function make_room_select_html ($link, $area, $current, $year, $month, $day)
+function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year, $month, $day)
 {
   global $tbl_room, $tbl_area, $area_list_format, $area_of_trabajo;
   
@@ -1385,7 +1385,7 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
       	$offices_id = get_work_offices($res);
   	    foreach ($offices_id as $key => $value)
         {
-          $selected = in_array($current, $value) ? "selected=\"selected\"" : "";
+          $selected = in_array($currentArea, $value) ? "selected=\"selected\"" : "";
           $out_html .= "<option $selected value=\"". $value[0]. "\">" . htmlspecialchars($key) . "</option>\n";
         }
         // Note:  the submit button will not be displayed if JavaScript is enabled
@@ -1402,7 +1402,7 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
   	  {
   	    for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
         {
-          $selected = ($row['id'] == $current) ? "selected=\"selected\"" : "";
+          $selected = ($row['id'] == $currentArea) ? "selected=\"selected\"" : "";
           $out_html .= "<option $selected value=\"". $row['id']. "\">" . htmlspecialchars($row['room_name']) . "</option>\n";
         }
         // Note:  the submit button will not be displayed if JavaScript is enabled
@@ -1424,7 +1424,10 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
   	    foreach ($offices_id as $key => $value)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$value[0]."\">";
-          $out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
+          if($value[0] == $currentRoom)
+          	$out_html .= "<span selected"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
+          else
+          	$out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= " id=".$value[0] .">";
           $out_html .= htmlspecialchars($key) . "</span>";
           $out_html .= "</a></li>\n";
@@ -1437,7 +1440,10 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
         for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\">";
-          $out_html .= "<span";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
+          if($row['id'] == $currentRoom)
+          	$out_html .= "<span selected";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
+          else
+          	$out_html .= "<span";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= " id=".$row['id'] .">";
           $out_html .= htmlspecialchars($row['room_name']) . "</span>";
           $out_html .= "</a></li>\n";
@@ -1453,12 +1459,12 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day)
 
 //menu
 
-function make_menu_html($link, $current, $year, $month, $day) {
+function make_menu_html($link, $currentArea, $currentRoom, $year, $month, $day) {
     $menu = "<div id=\"dwm_menu\" class=\"Left\">\n";
     if (authGetUserLevel(getUserName()) >= 2) {
         $menu .= make_admin_menu();
     }
-    $menu .= make_normal_menu($link, $current, $year, $month, $day);
+    $menu .= make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day);
     $menu .= $out_html .= "</div>\n";
     return $menu;
 }
@@ -1468,7 +1474,7 @@ function make_admin_menu() {
     <button class="admin_button" onclick=\'window.location = "admin.php"\'>Opciones de administrador</button></div>';
 }
 
-function make_normal_menu($link, $current, $year, $month, $day)
+function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day)
 {
   global $tbl_area, $area_list_format;
   
@@ -1486,7 +1492,7 @@ function make_normal_menu($link, $current, $year, $month, $day)
     for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
     {
       $li_id = "M".$row['id'];
-      if ($row['id'] == $current) {
+      if ($row['id'] == $currentArea) {
 		$out_html .= "<li class=\"m-item m-opened\" id=\"" .$li_id. "\" >";
 	  }
 	  else
@@ -1497,7 +1503,7 @@ function make_normal_menu($link, $current, $year, $month, $day)
       $out_html .= "<a href=\"#" .$li_id. "\" \>";      
       $out_html .= htmlspecialchars($row['area_name']) . "</a></h3>";
       $out_html .= "<div class=\"m-content\"><div class=\"m-inner-content\">";
-      $out_html .= make_room_select_html ($link, $row['id'], "21", $year, $month, $day);
+      $out_html .= make_room_select_html ($link, $row['id'], $currentArea, $currentRoom, $year, $month, $day);
       $out_html .= "</div></div></li>\n";
     }
     $out_html .= "</ul>\n";

@@ -66,7 +66,7 @@ function getAuthorised($level)
   if(isset($user) == FALSE)
   {
     //echo print_header($day, $month, $year, $area, isset($room) ? $room : "");
-  	//echo make_menu_html('week.php', $area, $year, $month, $day);
+  	//echo make_menu_html('week.php', $area, $room, $year, $month, $day);
   	//echo "<div class=\"MainCell\">";
     //authGet();
     //echo "</div>";
@@ -165,7 +165,7 @@ function showAccessDenied($day, $month, $year, $area, $room)
   global $HTTP_REFERER;
 
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
-  echo make_menu_html("week.php", $area, $year, $month, $day);
+  echo make_menu_html("week.php", $area, $room, $year, $month, $day);
 ?>
  <div class="MainCell">
   <h1><?php echo get_vocab("accessdenied")?></h1>

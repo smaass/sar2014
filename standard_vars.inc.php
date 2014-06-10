@@ -21,7 +21,7 @@ if (empty($area))
 
 if (empty($room))
 {
-  if ($area != $area_of_trabajo)
+  //if ($area != $area_of_trabajo)
   {
     $room = get_default_room($area);
   }

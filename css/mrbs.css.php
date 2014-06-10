@@ -226,6 +226,18 @@ expires_header(60*30); // 30 minute expiry
 .admin_button:hover {
     background: linear-gradient(to bottom, #c44 0%, #b33 100%);
 }
+/* ------------ Rooms list -----------------------------*/
+ul.sub-menu li a span[selected]::before {
+	content:'[';
+}
+
+ul.sub-menu li a span[selected]::after {
+	content:']';
+}
+
+ul.sub-menu li a span[selected] {
+	font-size:125%;
+}
 	
 /* ------------ Footer -----------------------------*/
 .Footer{
@@ -407,30 +419,31 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
     height:150px;
     padding:10px;
     background-color:rgb(240,240,240);
-    border:2px solid grey;
-    z-index:100000000000000000;
-    display:none
+    border:3px solid grey;
+    z-index:100;
+    display:none;
 }
 
 .entry_popup
 {
-  position:fixed;
-  top:50%;
-  left:50%;
-  width:250px;
-  padding:10px;
-  background-color:rgb(240,240,240);
-  border:2px solid grey;
-  display:none;
-  z-index:100000000000000000;
-  text: center;
-  margin-left:-125px;
+	position:fixed;
+	top:50%;
+	left:50%;
+	width:250px;
+	padding:10px;
+	background-color:rgb(240,240,240);
+	border:2px solid grey;
+	display:none;
+	z-index:100;
+	text: center;
+	margin-left:-125px;
 }
 
-.entry_popup #edit_entry_submit_save input
-{
-	background-color:rgb(250,120,100);
-	
+#popupFooter {
+	background-color:#E2E2E2;
+	margin-top:5px;
+	padding:15px;
+	text-align:center;
 }
 
 .entry_popup #edit_entry_submit_save

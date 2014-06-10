@@ -1,7 +1,6 @@
 <?php
 
 // $Id: admin.php 2338 2012-07-18 10:54:42Z cimorrison $
-
 require "defaultincludes.inc";
 
 // Get non-standard form variables
@@ -38,7 +37,7 @@ $required_level = (isset($max_level) ? $max_level : 2);
 $is_admin = (authGetUserLevel($user) >= $required_level);
 
 print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $room : "");
-echo make_menu_html('week.php', $area, $year, $month, $day);
+echo make_menu_html('week.php', $area, $room, $year, $month, $day);
 echo '<div class="MainCell">';
 
 // Get the details we need for this area

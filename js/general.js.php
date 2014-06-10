@@ -20,7 +20,7 @@ echo "
         var path = $(location).attr('pathname');
         var page = path.substr(path.lastIndexOf('/') + 1);
         if (page == 'day.php' || page == 'week.php' || page == 'month.php') {
-            setTimeout('if (refresh) location.reload(true)', $calendar_views_refresh_milliseconds);
+            //setTimeout('if (refresh) location.reload(true)', $calendar_views_refresh_milliseconds);
         }
     }
     

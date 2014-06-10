@@ -146,7 +146,7 @@ if (!isset($search_str))
 if (!$ajax)
 {
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
-  echo make_menu_html('week.php', $area, $year, $month, $day);
+  echo make_menu_html('week.php', $area, $room, $year, $month, $day);
   echo "<div class=\"MainCell\">";
   if (!empty($advanced))
   {

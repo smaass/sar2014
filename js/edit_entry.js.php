@@ -878,9 +878,7 @@ function adjustSlotSelectors(form, oldArea, oldAreaStartValue, oldAreaEndValue)
 // Extend the init() function
 ?>
 
-var oldInitEditEntry = init;
 init = function() {
-  oldInitEditEntry.apply(this);
 
   <?php
   // (1) put the booking name field in focus (but only for new bookings,
@@ -1108,7 +1106,6 @@ init = function() {
 		 
 
 		<?php //nombre visitante ?>
-		console.log( $('#tipo_evento'));
 		$('#tipo_evento').change(function(){
 			switch($(this).val())
 			{

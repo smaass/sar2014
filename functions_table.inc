@@ -508,10 +508,7 @@ function cell_html($cell, $query_strings)
         $entry_link = "'edit_entry.php?" . (($enable_periods) ? $query_strings["new_periods"] : $query_strings["new_times"]) . "'" ;
 
         // a bookable slot is only one unit high
-        $html .= "<div class=\"celldiv slots1\" onmouseup=\"showPopup(
-        				event.clientX,
-        				event.clientY,
-        				$entry_link);\" >";
+        $html .= "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" >";
 
         if ($show_plus_link)
         {
@@ -1454,10 +1451,11 @@ function table_popup_innerhtml()
     
     var xhr = new XMLHttpRequest();
     var url = linkReservaDetallada + '&ajax=1';
+  	//popupContent.html('<iframe id=\"popupiFrame\" onResize=\"console.log(123);\" src=\"'+url+'\"></iframe>');
   	var jqxhr = $.get(url, null, function(data) {
   		var forEach = Array.prototype.forEach;
-        popupContent.html(data);
-        var scripts = popupContent[0].getElementsByTagName('script');
+        popupContent[0].innerHTML = data;
+        var scripts = popupContent.find('script');
         // Tecnica para evaluar globalmente :)
         setSelectListener();
         forEach.call(scripts, function(s) { eval.call(this, s.innerText); }); 
@@ -1465,7 +1463,7 @@ function table_popup_innerhtml()
     });
   	jqxhr.fail(function() {
   		popupContent.html('<h3>Ocurrió un error al traer el formulario</h3>');
-	}); 
+	});
     this.opened = true;
     
   };
@@ -1499,9 +1497,7 @@ function table_popup_innerhtml()
   <div id="default_entry" class="entry_popup">
   <div id="popupContent">
   </div>
-  <a href="javascript:hidePopup();">Cerrar</a>
-  |
-  <a id="linkReservaDetallada">Reserva Detallada</a>
+  <div id="popupFooter"><a class="btn" id="linkReservaDetallada">Reserva Detallada</a></div>
   <!--/form-->
   </div>
   ';

@@ -28,7 +28,7 @@ $timestamp = mktime(12, 0, 0, $month, $day, $year);
 // print the page header
 print_header($day, $month, $year, $area, isset($room) ? $room : "");
 
-echo make_menu_html('week.php', $area, $year, $month, $day);
+echo make_menu_html('week.php', $area, $room, $year, $month, $day);
 
 //y? are year, month and day of yesterday
 //t? are year, month and day of tomorrow

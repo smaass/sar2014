@@ -644,7 +644,7 @@ if ($phase == 2)
 // ----------------------------
 
 print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $room : "");
-echo make_menu_html('week.php', $area, $year, $month, $day);
+echo make_menu_html('week.php', $area, $room, $year, $month, $day);
 echo '<div class="MainCell">';
 
 // Non-admins will only be allowed to view room details, not change them

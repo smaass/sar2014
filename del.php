@@ -39,7 +39,7 @@ if ($type == "room")
   else
   {
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
-    echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo make_menu_html('week.php', $area, $room, $year, $month, $day);
     echo '<div class="MainCell">';
    
     // We tell them how bad what they're about to do is
@@ -98,7 +98,7 @@ if ($type == "area")
   {
     // There are rooms left in the area
     print_header($day, $month, $year, $area, isset($room) ? $room : "");
-    echo make_menu_html('week.php', $area, $year, $month, $day);
+    echo make_menu_html('week.php', $area, $room, $year, $month, $day);
     echo '<div class="MainCell">';
     echo "<p>\n";
     echo get_vocab("delarea");

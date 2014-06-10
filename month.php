@@ -104,7 +104,7 @@ if (isset($general_view))
 }
 
 // Show all available areas
-echo make_menu_html('week.php', $area, $year, $month, $day);
+echo make_menu_html('week.php', $area, $room, $year, $month, $day);
 
 
 
@@ -493,7 +493,7 @@ for ($weekcol = 0; $weekcol < 7; $weekcol++)
   {
     // These days are to be hidden in the display (as they are hidden, just give the
     // day of the week in the header row 
-    echo "<th class=\"hidden_day\">" . day_name(($weekcol + $weekstarts)%7) . "</th>";
+    //echo "<th class=\"hidden_day\">" . day_name(($weekcol + $weekstarts)%7) . "</th>"; //////////
   }
   else
   {
@@ -512,7 +512,7 @@ for ($weekcol = 0; $weekcol < $weekday_start; $weekcol++)
 {
   if (is_hidden_day(($weekcol + $weekstarts) % 7))
   {
-    echo "<td class=\"hidden_day\"><div class=\"cell_container\">&nbsp;</div></td>\n";
+    //echo "<td class=\"hidden_day\"><div class=\"cell_container\">&nbsp;</div></td>\n";
   }
   else
   {
@@ -536,14 +536,14 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
   {
     // These days are to be hidden in the display (as they are hidden, just give the
     // day of the week in the header row 
-    echo "<td class=\"hidden_day\">\n";
+    /*echo "<td class=\"hidden_day\">\n";
     echo "<div class=\"cell_container\">\n";
     echo "<div class=\"cell_header\">\n";
     // first put in the day of the month
     echo "<span>$cday</span>\n";
     echo "</div>\n";
     echo "</div>\n";
-    echo "</td>\n";
+    echo "</td>\n";*/
   }
   else
   {   
@@ -736,7 +736,7 @@ if ($weekcol > 0)
   {
     if (is_hidden_day(($weekcol + $weekstarts) % 7))
     {
-      echo "<td class=\"hidden_day\"><div class=\"cell_container\">&nbsp;</div></td>\n";
+      //echo "<td class=\"hidden_day\"><div class=\"cell_container\">&nbsp;</div></td>\n";
     }
     else
     {
