@@ -10,7 +10,6 @@ $name = get_form_var('name', 'string');
 $description = get_form_var('description', 'string');
 $capacity = get_form_var('capacity', 'int');
 $type = get_form_var('type', 'string');
-$photo = get_form_var('photo', 'string');
 $specifications = get_form_var('specifications', 'string');
 $slots = get_form_var('slots', 'int');
 
