@@ -227,6 +227,10 @@ expires_header(60*30); // 30 minute expiry
     background: linear-gradient(to bottom, #c44 0%, #b33 100%);
 }
 /* ------------ Rooms list -----------------------------*/
+ul.sub-menu li a span#vista_general {
+	font-size:125%;
+}
+
 ul.sub-menu li a span[selected]::before {
 	content:'[';
 }
@@ -263,7 +267,7 @@ body {font-size: small;
 	position:fixed;
 	top:0;
 	left:0;
-	z-index:25;
+	z-index:1010;
 	height:100%;
 	width:100%;
 	padding:0;
@@ -420,7 +424,7 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
     padding:10px;
     background-color:rgb(240,240,240);
     border:3px solid grey;
-    z-index:100;
+    z-index:1051;
     display:none;
 }
 
@@ -429,11 +433,11 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 	top:50%;
 	left:50%;
 	width:250px;
-	padding:10px;
+	/*padding:10px;*/
 	background-color:rgb(240,240,240);
 	border:2px solid grey;
 	display:none;
-	z-index:100;
+	z-index:1051;
 	text: center;
 	margin-left:-125px;
 }

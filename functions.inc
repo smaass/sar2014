@@ -855,7 +855,7 @@ function get_default_area()
 // This could be changed to implement something like per-user defaults.
 function get_default_room($area)
 {
-  global $tbl_room, $default_room;
+  global $tbl_room, $default_room, $area_of_trabajo;
   // Check to see whether this area contains $default_room
   if (isset($default_room))
   {
@@ -870,6 +870,7 @@ function get_default_room($area)
       return $room;
     }
   }
+  if($area == $area_of_trabajo) return;
   // Otherwise just return the first room (in sortkey order) in the area
   $room = sql_query1("SELECT id
                         FROM $tbl_room
@@ -1421,6 +1422,16 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
       $out_html .= "<ul class=\"sub-menu\" >\n";
       if ($area == $area_of_trabajo){
       	$offices_id = get_work_offices($res);
+      	
+      	$out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;\">";
+      	if($currentRoom == null)
+      		$out_html .= "<span selected"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
+      	else
+      		$out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
+      	$out_html .= " id=\"vista_general\">";
+      	$out_html .= "Vista general</span>";
+      	$out_html .= "</a></li>\n";
+      	
   	    foreach ($offices_id as $key => $value)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$value[0]."\">";
@@ -1431,8 +1442,6 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
           $out_html .= " id=".$value[0] .">";
           $out_html .= htmlspecialchars($key) . "</span>";
           $out_html .= "</a></li>\n";
-          
-          
         }
   	  }
   	  else

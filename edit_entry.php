@@ -1406,7 +1406,7 @@ echo "<div class=\"MainCell\">";
 ?>
 
 
-<form class="<?php echo !$ajax? "form_general" : "entry_popup"; ?>" id="main" action="edit_entry_handler.php" method="post">
+<form target="_top" class="<?php echo !$ajax? "form_general" : "entry_popup"; ?>" id="main" action="edit_entry_handler.php" method="post">
   <fieldset>
   <?php
   
@@ -1699,7 +1699,7 @@ if (! $ajax){
   output_trailer();
 }
 ?>
-<script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
-<!-- script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
+<!--script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
+<script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
 <script type="text/javascript" src="js/datepicker.js.php?area=<?php echo $area; ?>"></script>
 <script type="text/javascript" src="js/general.js.php?area=<?php echo $area; ?>"></script-->

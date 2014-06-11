@@ -1432,8 +1432,11 @@ function table_popup_innerhtml()
 		});
 	}
   	function onIFrameLoaded(iframe) {
+  		$(iframe).show();
   		iframe.height = iframe.contentWindow.document.body.scrollHeight+20;
   		$('#default_entry').css('width',iframe.contentWindow.document.body.scrollWidth+'px');
+  		$(iframe.contentWindow.document.body).css('background-color','transparent');
+  		$('span#loading').hide();
   		centerPopup();
   	}
   var popup = {};
@@ -1456,7 +1459,10 @@ function table_popup_innerhtml()
     
     var xhr = new XMLHttpRequest();
     var url = linkReservaDetallada + '&ajax=1';
-  	popupContent.html('<iframe onLoad=\"onIFrameLoaded(this)\" id=\"popupiFrame\" src=\"'+url+'\"></iframe>');
+  	popupContent.html(
+  		'<iframe onLoad=\"onIFrameLoaded(this)\" style=\"border:0;display:none;\" id=\"popupiFrame\" src=\"'+url+'\">'+
+  		'</iframe>'+
+  		'<span id=\"loading\">Cargando...</span>');
   	/*var jqxhr = $.get(url, null, function(data) {
   		var forEach = Array.prototype.forEach;
         popupContent[0].innerHTML = data;

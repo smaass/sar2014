@@ -54,7 +54,7 @@ $result = sql_query($sql);
 
 // Check result
 if (!$result) {
-    die('Consulta no válida: ' . mysql_error() . "\n");
+	error_log('Consulta no válida: ' . mysql_error() . "\n", 3, "errors.log");
 }
 
 $count = 0;

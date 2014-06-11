@@ -877,7 +877,6 @@ function adjustSlotSelectors(form, oldArea, oldAreaStartValue, oldAreaEndValue)
 
 // Extend the init() function
 ?>
-
 var oldInitEditEntry = init;
 init = function(args) {
   oldInitEditEntry.apply(this, [args]);

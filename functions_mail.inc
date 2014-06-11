@@ -873,7 +873,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
 
   // Check result
   if (!$result) {
-      die('Consulta no válida: ' . $sql . ' + '. mysql_error() . "\n");
+  	  error_log('Consulta no válida: ' . $sql . ' + '. mysql_error() . "\n", 3 , "errors.log");
   }
 
   $notification_info = mysql_fetch_assoc($result);

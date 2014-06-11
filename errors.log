@@ -5,3 +5,120 @@ La consulta fue SELECT M.room_name, M.room_admin_email, M.area_id, A.area_name, 
         	    AND M.area_id = A.id
         	    AND N.entry_id = T.id
         	    AND T.id=192 + 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Sí
+    [type] => I
+    [description] => descpriodnfsk
+    [room_id] => 27
+    [start_time] => 1399375800
+    [end_time] => 1399393800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397b1e363b48-70b98647@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => profe
+    [curso] => curso
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 5
+    [dur_units] => hours
+    [id] => 86
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => asdf3
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402399800
+    [end_time] => 1402403400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397b9dc29f46-fa4f48b1@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 87
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402405200
+    [end_time] => 1402408800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 88
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-10 09:00:00', '88', '2014-06-10 09:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-10 09:00:00', '88', '2014-06-10 09:00:00')' at line 3
