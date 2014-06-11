@@ -859,21 +859,26 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   global $tbl_notifications_info;
   global $tbl_notifications_registry;
 
+  //Escape the special characters
+  foreach ($data as $key => $value) {
+    $data[$key] = htmlspecialchars(sql_escape($value));
+  }
+
+  foreach ($mail_previous as $key => $value) {
+    $mail_previous[$key] = htmlspecialchars(sql_escape($value));
+  }
+
   // We need to create a new notification in the DB
   error_log("Bookings ".print_r($data, true)."\n", 3, "errors.log");
   error_log("Previous ".print_r($mail_previous, true)."\n", 3, "errors.log");
-  error_log("New Entry ".print_r($new_entry, true)."\n", 3, "errors.log");
-  error_log("Series ".print_r($series, true)."\n", 3, "errors.log");
 
-  $sql = "SELECT id, reminder_offset 
-          FROM $tbl_notifications_info
-          WHERE type = '{$data['tipo_evento']}'";
+  $sql = "SELECT id, reminder_offset FROM $tbl_notifications_info WHERE type = '$data[tipo_evento]'";
 
   $result = sql_query($sql); 
 
   // Check result
   if (!$result) {
-  	  error_log('Consulta no válida: ' . $sql . ' + '. mysql_error() . "\n", 3 , "errors.log");
+      error_log('Consulta no válida: ' . $sql . ' + '. mysql_error() . "\n", 3, "errors.log");
   }
 
   $notification_info = mysql_fetch_assoc($result);
@@ -1028,6 +1033,11 @@ function notifyAdminOnDelete($data, $series=FALSE, $action="delete", $note="")
 {
   global $tbl_notifications_info;
   global $tbl_notifications_registry;
+
+  //Escape the special characters
+  foreach ($data as $key => $value) {
+    $data[$key] = htmlspecialchars(sql_escape($value));
+  }
 
   // We need to create a new notification in the DB
   error_log("Bookings ".print_r($data, true)."\n", 3, "errors.log");
