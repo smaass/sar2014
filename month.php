@@ -483,6 +483,17 @@ if ($debug_flag)
   }
   echo "</pre>\n";
 }
+if($area == $area_of_trabajo && $room == null) {
+	echo "<div class='my-legend'>
+	<div class='legend-scale'>
+	  <ul class='legend-labels'>
+	    <li><span class='Z'></span>Disponible</li>
+	    <li><span class='Y'></span>1 cupo disponible</li>
+	    <li><span class='X'></span>Sin cupos</li>
+	  </ul>
+	</div>
+	</div>";
+}
 echo "<table class=\"dwm_main\" id=\"month_main\">\n";
 // Weekday name header row:
 echo "<thead>\n";

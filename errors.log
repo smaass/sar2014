@@ -789,3 +789,102 @@ Error al insertar las notificaciones UPDATE notifications_registry
                 event_datetime = '2014-06-10 09:00:00',
                 text_id = 
             WHERE event_id = 95 + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE event_id = 95' at line 6
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Patricio Fernández
+    [type] => I
+    [description] => Viene a hacer investigación con el profesor Tanter
+    [room_id] => 36
+    [start_time] => 1401897600
+    [end_time] => 1403193660
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539915ea2fef4-02887840@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [universidad] => Universidad de Washington
+    [pais] => USA
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 16
+    [dur_units] => days
+    [id] => 97
+    [room_name] => Oficina 8000
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+Consulta no válida: SELECT id, reminder_offset FROM notifications_info WHERE type = '' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-04 12:00:00', '97', '2014-06-04 12:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-04 12:00:00', '97', '2014-06-04 12:00:00')' at line 3
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_repeat"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Serie prueba
+    [type] => I
+    [description] => una serie de prueba
+    [room_id] => 29
+    [start_time] => 1401973200
+    [end_time] => 1401976800
+    [rep_type] => 2
+    [rep_opt] => 0010100
+    [rep_num_weeks] => 
+    [end_date] => 1403787600
+    [ical_uid] => MRBS-53992cce19d88-5c9530ae@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => profe favorito
+    [curso] => curos favortio
+    [status] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 1
+    [room_name] => Sala B111
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+Consulta no válida: SELECT id, reminder_offset FROM notifications_info WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-05 09:00:00', '1', '2014-06-05 09:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-05 09:00:00', '1', '2014-06-05 09:00:00')' at line 3
