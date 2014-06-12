@@ -1233,6 +1233,7 @@ if(! $ajax) {
   echo make_menu_html('week.php', $area, $room, $year, $month, $day);
 } else {
   print_simple_header();
+  $page = basename($PHP_SELF, ".php");
   require_once("js.inc");
 }
 

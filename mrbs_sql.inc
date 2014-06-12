@@ -1308,7 +1308,6 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
     }
     
   else if ($area==$area_salas){
-  	  
         array_push($terms, "N.profesor");
         array_push($terms, "N.curso");
         array_push($terms, "N.expositor");

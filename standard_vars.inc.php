@@ -10,6 +10,7 @@ $day = get_form_var('day', 'int');
 $month = get_form_var('month', 'int');
 $year = get_form_var('year', 'int');
 $area = get_form_var('area', 'int');
+//echo "area: $area ";
 $room = get_form_var('room', 'int');
 $area_of_trabajo = 5;
 $area_salas = 3;

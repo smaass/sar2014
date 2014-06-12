@@ -969,6 +969,7 @@ init = function(args) {
                   data.start_year = startDate[0];
                   data.start_month = startDate[1];
                   data.start_day = startDate[2];
+                  data.area = <?php echo $area; ?>;
                   <?php
                   if ($is_admin || !$auth['only_admin_can_book_repeat'])
                   {
