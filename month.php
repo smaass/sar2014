@@ -117,7 +117,7 @@ echo make_menu_html('week.php', $area, $room, $year, $month, $day);
 echo "<div class=\"Right\">";
 echo "<div class=\"Calendar\">";
 echo "<div id=\"dwm\">\n";
-echo "<h2>" . utf8_strftime($strftime_format['monthyear'], $month_start)
+echo "<h2>" . ucfirst(utf8_strftime($strftime_format['monthyear'], $month_start))
   . " - " . htmlspecialchars("$this_area_name - $this_room_name") . "</h2>\n";
 echo "</div>\n";
 

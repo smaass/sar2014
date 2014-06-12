@@ -47,7 +47,7 @@ $month_start = mktime(0, 0, 0, $month, 1, $year);
 echo "<div class=\"Right\">";
 echo "<div class=\"Calendar\">";
 echo "<div id=\"dwm\">\n";
-echo "<h2>" . $vocab["year_lc"] .' '. utf8_strftime($strftime_format['year'], $month_start) . ' - '
+echo "<h2>" . ucfirst($vocab["year_lc"]) .' '. utf8_strftime($strftime_format['year'], $month_start) . ' - '
 		. htmlspecialchars("$this_area_name - $this_room_name") . "</h2>\n";
 echo "</div>\n";
 
