@@ -228,19 +228,16 @@ expires_header(60*30); // 30 minute expiry
 }
 /* ------------ Rooms list -----------------------------*/
 ul.sub-menu li a span#vista_general {
-	font-size:125%;
+	color:#E40000;
+	font-size:115%
 }
 
 ul.sub-menu li a span[selected]::before {
-	content:'[';
-}
-
-ul.sub-menu li a span[selected]::after {
-	content:']';
+	content:'>';
 }
 
 ul.sub-menu li a span[selected] {
-	font-size:125%;
+	//font-size:125%;
 }
 	
 /* ------------ Footer -----------------------------*/
@@ -545,6 +542,60 @@ div.body_columns {max-width: 80%}
 
 /* ------------ DAY/WEEK/MONTH.PHP ------------------*/
 
+.my-legend {
+	float:right;
+}
+
+<?php
+// Generate the classes to give the colour coding by booking type in the day/week/month views
+foreach ($color_types as $type => $col)
+{
+  echo ".my-legend span.$type {background-color: $col}\n";         // used in the day and week views
+  //echo ".month div.$type {float: left; max-height: 1.3em; height: 1.3em; min-height: 1.3em; overflow: hidden; background-color: $col}\n";   // used in the month view
+}
+
+?>
+
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+.my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+.my-legend .legend-scale ul li {
+	float:left;
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0px;
+    margin-right: 15px;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+    }
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+    }
+.my-legend a {
+    color: #777;
+    }
+
 <?php
 $column_hidden_width  = 1;       // (%) width of the column for hidden days (set to 0 for no column at all; 1 for a narrow column);
                                  //     when $times_along_top is TRUE, hidden days (rows) are not shown at all
@@ -613,6 +664,7 @@ table.dwm_main {clear: both; width: 100%; border-spacing: 0; border-collapse: se
     color: <?php echo $header_font_color ?>;
     background-color: <?php echo $header_back_color ?>;
     border-left: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_header_border_color ?>}
+.dwm_main th.today {background-color:#888; }
 .dwm_main th.first_last, .dwm_main th span {padding: 0 2px}
 .dwm_main th:first-child {border-left: 0}
 .dwm_main a {display: block; min-height: inherit}

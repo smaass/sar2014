@@ -1207,6 +1207,7 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
     for ($j = 0; $j<=($num_of_days-1) ; $j++)
     {
       $t = mktime( 12, 0, 0, $month, $day_start_week+$j, $year);
+      $today = time();
       $date = date('Y-n-d', $t);
     
       if (is_hidden_day(($j + $weekstarts) % 7))
@@ -1219,7 +1220,13 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
       else  
       {
         // Put the date into a data attribute so that it can be picked up by JavaScript
-        $header_inner .= "<th data-date=\"$date\"><a href=\"day.php?year=" . strftime("%Y", $t) . 
+        if(strftime("%d", $t) == strftime("%d", $today) && strftime("%m", $t) == strftime("%m", $today)
+  			&& strftime("%Y", $t) == strftime("%Y", $today)) {
+        	$th_class = "class='today'";
+        } else {
+        	$th_class = "";
+        }
+        $header_inner .= "<th data-date=\"$date\" $th_class><a href=\"day.php?year=" . strftime("%Y", $t) . 
                          "&amp;month=" . strftime("%m", $t) . "&amp;day=" . strftime("%d", $t) . 
                          "&amp;area=$area\" title=\"" . get_vocab("viewday") . "\">" .
                          utf8_strftime($dformat, $t) . "</a></th>\n";
