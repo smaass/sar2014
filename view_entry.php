@@ -312,13 +312,13 @@ else
 
 // Now that we know all the data we start drawing it
 
-echo "<h3" . (($keep_private && $is_private_field['entry.name']) ? " class=\"private\"" : "") . ">\n";
+echo "<h1" . (($keep_private && $is_private_field['entry.name']) ? " class=\"private\"" : "") . ">\n";
 echo ($keep_private && $is_private_field['entry.name']) ? "[" . get_vocab("private") . "]" : htmlspecialchars($row['name']);
 if (is_private_event($private) && $writeable) 
 {
   echo ' ('.get_vocab("private").')';
 }
-echo "</h3>\n";
+echo "</h1>\n";
 
 
 echo "<table id=\"entry\">\n";
@@ -422,7 +422,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
     echo "<div>\n";
     if (!$series)
     {
-      echo "<a href=\"edit_entry.php?id=$id&amp;returl=$link_returl\">". get_vocab("editentry") ."</a>";
+      echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;returl=$link_returl\">". get_vocab("editentry") ."</a>";
     } 
     if (!empty($repeat_id)  && !$series && $repeats_allowed)
     {
@@ -430,7 +430,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
     }  
     if ((!empty($repeat_id) || $series) && $repeats_allowed)
     {
-      echo "<a href=\"edit_entry.php?id=$id&amp;edit_type=series&amp;day=$day&amp;month=$month&amp;year=$year&amp;returl=$link_returl\">".get_vocab("editseries")."</a>";
+      echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;edit_type=series&amp;day=$day&amp;month=$month&amp;year=$year&amp;returl=$link_returl\">".get_vocab("editseries")."</a>";
     }
     echo "</div>\n";
     
@@ -438,7 +438,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
     echo "<div>\n";
     if (!$series)
     {
-      echo "<a href=\"del_entry.php?id=$id&amp;series=0&amp;returl=$link_returl\" onclick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteentry")."</a>";
+      echo "<a class='btn' href=\"del_entry.php?id=$id&amp;series=0&amp;returl=$link_returl\" onclick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteentry")."</a>";
     }
     if (!empty($repeat_id) && !$series && $repeats_allowed)
     {
@@ -446,7 +446,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
     }
     if ((!empty($repeat_id) || $series) && $repeats_allowed)
     {
-      echo "<a href=\"del_entry.php?id=$id&amp;series=1&amp;day=$day&amp;month=$month&amp;year=$year&amp;returl=$link_returl\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</a>";
+      echo "<a class='btn' href=\"del_entry.php?id=$id&amp;series=1&amp;day=$day&amp;month=$month&amp;year=$year&amp;returl=$link_returl\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</a>";
     }
     echo "</div>\n";
   }
@@ -455,7 +455,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
   echo "<div>\n";
   if (!$series)
   {
-    echo "<a href=\"edit_entry.php?id=$id&amp;copy=1&amp;returl=$link_returl\">". get_vocab("copyentry") ."</a>";
+    echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;copy=1&amp;returl=$link_returl\">". get_vocab("copyentry") ."</a>";
   }      
   if (!empty($repeat_id) && !$series && $repeats_allowed)
   {
@@ -463,11 +463,11 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
   }     
   if ((!empty($repeat_id) || $series) && $repeats_allowed) 
   {
-    echo "<a href=\"edit_entry.php?id=$id&amp;edit_type=series&amp;day=$day&amp;month=$month&amp;year=$year&amp;copy=1&amp;returl=$link_returl\">".get_vocab("copyseries")."</a>";
+    echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;edit_type=series&amp;day=$day&amp;month=$month&amp;year=$year&amp;copy=1&amp;returl=$link_returl\">".get_vocab("copyseries")."</a>";
   }
   echo "</div>\n";
   
-  ?>
+  ?><!--
   <div id="returl">
     <?php
     if (isset($HTTP_REFERER)) //remove the link if displayed from an email
@@ -477,7 +477,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
     <?php
     }
     ?>
-  </div>
+  </div>-->
 </div>
 
 <?php

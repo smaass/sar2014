@@ -58,7 +58,7 @@ expires_header(60*30); // 30 minute expiry
 		padding-right: 10px;
 	}
 	.Right{
-		margin-left:270px;
+		margin-left:263px;
 		vertical-align: middle;
 		position:relative;
 	}
@@ -370,7 +370,7 @@ body {font-size: small;
           box-shadow: none;
 }
 
-div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px;overflow:auto; margin-top:20px;}
+div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 5px;overflow:auto; margin-top:10px;}
 
 h1 {font-size: x-large; clear: both}
 h2 {font-size: large; clear: both}
@@ -1242,8 +1242,14 @@ div#simple_trailer {clear: both; text-align: center; padding-top: 1.0em; padding
 
 
 /* ------------ VIEW_ENTRY.PHP ------------------*/
-.view_entry #entry td:first-child {text-align: right; font-weight: bold; padding-right: 1.0em}
-.view_entry div#view_entry_nav {margin-top: 1.0em}
+.view_entry #entry {
+	padding-top: 10px;
+}
+.view_entry #entry td:first-child {text-align: right; font-weight: bold; padding-right: 15px;}
+.view_entry div#view_entry_nav {margin-top: 30px;}
+#view_entry_nav div {
+	display: inline;
+}
 .view_entry #approve_buttons form {float: left; margin-right: 2em}
 .view_entry #approve_buttons legend {font-size: 0}
 .view_entry div#returl {margin-top: 1em}
