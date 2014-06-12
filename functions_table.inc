@@ -1021,7 +1021,7 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
   	header("Location: $redirect_str");
   }
 
-  // Check that we've gor a valid, enabled room
+  // Check that we've got a valid, enabled room
   $sql = "SELECT COUNT(*)
             FROM $tbl_room R, $tbl_area A
            WHERE R.id=$room
@@ -1035,7 +1035,7 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
     return "<tbody data-empty=1><tr><td><h1>".get_vocab("no_rooms_for_area")."</h1></td></tr></tbody>";
   }
   
-  $num_of_days=7; // days in a week
+  $num_of_days=6; // days in a week
   
   $format = ($enable_periods) ? "i" : "Gi";
 
