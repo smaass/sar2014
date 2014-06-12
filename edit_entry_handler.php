@@ -393,7 +393,7 @@ if (!$ajax)
     // Print footer and exit
     print_footer(TRUE);
   }
-
+  
   if (count($is_mandatory_field))
   {
     foreach ($is_mandatory_field as $field => $value)

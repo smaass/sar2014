@@ -1,0 +1,631 @@
+
+La consulta fue SELECT M.room_name, M.room_admin_email, M.area_id, A.area_name, A.area_admin_email, M.disabled AS room_disabled, A.disabled AS area_disabled, (end_time - start_time) AS duration, T.id, T.start_time, T.end_time, entry_type, repeat_id, T.room_id,  UNIX_TIMESTAMP(timestamp) AS last_updated, T.create_by, T.name, T.type, T.description, T.status, T.reminded, info_time AS entry_info_time, info_user AS entry_info_user, info_text AS entry_info_text, T.ical_uid, T.ical_sequence, ical_recur_id, T.emails, N.universidad, N.pais, N.correo
+    	        FROM mrbs_entry T, mrbs_room M, mrbs_area A, mrbs_entry_opt N
+				WHERE T.room_id = M.id
+        	    AND M.area_id = A.id
+        	    AND N.entry_id = T.id
+        	    AND T.id=192 + 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Sí
+    [type] => I
+    [description] => descpriodnfsk
+    [room_id] => 27
+    [start_time] => 1399375800
+    [end_time] => 1399393800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397b1e363b48-70b98647@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => profe
+    [curso] => curso
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 5
+    [dur_units] => hours
+    [id] => 86
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => asdf3
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402399800
+    [end_time] => 1402403400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397b9dc29f46-fa4f48b1@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 87
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402405200
+    [end_time] => 1402408800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 88
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+New Entry 1
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-10 09:00:00', '88', '2014-06-10 09:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-10 09:00:00', '88', '2014-06-10 09:00:00')' at line 3
+area:3area:
+area:
+area:3
+area:INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Sí
+    [type] => I
+    [description] => descpriodnfsk
+    [room_id] => 27
+    [start_time] => 1399375800
+    [end_time] => 1399397400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397b1e363b48-70b98647@localhost
+    [ical_sequence] => 1
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => profe
+    [curso] => curso
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 6
+    [dur_units] => hours
+    [id] => 89
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+    [room_name] => Auditorio 1
+    [room_admin_email] => 
+    [area_id] => 3
+    [area_name] => Salas Públicas
+    [area_admin_email] => 
+    [room_disabled] => 0
+    [area_disabled] => 0
+    [duration] => 5
+    [id] => 86
+    [start_time] => 1399375800
+    [end_time] => 1399393800
+    [entry_type] => 0
+    [repeat_id] => 0
+    [room_id] => 27
+    [last_updated] => 1402450403
+    [create_by] => admin
+    [name] => Sí
+    [type] => I
+    [description] => descpriodnfsk
+    [status] => 0
+    [reminded] => 
+    [entry_info_time] => 
+    [entry_info_user] => 
+    [entry_info_text] => 
+    [ical_uid] => MRBS-5397b1e363b48-70b98647@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [profesor] => profe
+    [curso] => curso
+    [expositor] => 
+    [tipo_charla] => 
+    [resumen_expositor] => 
+    [tipo_evento] => Clase
+    [dur_units] => hours
+    [rep_type] => 0
+    [repeat_info_time] => 
+    [repeat_info_user] => 
+    [repeat_info_text] => 
+)
+
+New Entry 
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones UPDATE notifications_registry
+            SET mail_list = '', 
+                notification_datetime = '2014-05-06 07:30:00',
+                event_datetime = '2014-05-06 07:30:00',
+                text_id = 
+            WHERE event_id = 86 + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE event_id = 86' at line 6
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Sí
+    [type] => I
+    [description] => descpriodnfsk
+    [room_id] => 27
+    [start_time] => 1399375800
+    [end_time] => 1399393800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397b1e363b48-70b98647@localhost
+    [ical_sequence] => 2
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => profe
+    [curso] => curso
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 5
+    [dur_units] => hours
+    [id] => 90
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+    [room_name] => Auditorio 1
+    [room_admin_email] => 
+    [area_id] => 3
+    [area_name] => Salas Públicas
+    [area_admin_email] => 
+    [room_disabled] => 0
+    [area_disabled] => 0
+    [duration] => 6
+    [id] => 89
+    [start_time] => 1399375800
+    [end_time] => 1399397400
+    [entry_type] => 0
+    [repeat_id] => 0
+    [room_id] => 27
+    [last_updated] => 1402523495
+    [create_by] => admin
+    [name] => Sí
+    [type] => I
+    [description] => descpriodnfsk
+    [status] => 0
+    [reminded] => 
+    [entry_info_time] => 
+    [entry_info_user] => 
+    [entry_info_text] => 
+    [ical_uid] => MRBS-5397b1e363b48-70b98647@localhost
+    [ical_sequence] => 1
+    [ical_recur_id] => 
+    [profesor] => profe
+    [curso] => curso
+    [expositor] => 
+    [tipo_charla] => 
+    [resumen_expositor] => 
+    [tipo_evento] => Clase
+    [dur_units] => hours
+    [rep_type] => 0
+    [repeat_info_time] => 
+    [repeat_info_user] => 
+    [repeat_info_text] => 
+)
+
+New Entry 
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones UPDATE notifications_registry
+            SET mail_list = '', 
+                notification_datetime = '2014-05-06 07:30:00',
+                event_datetime = '2014-05-06 07:30:00',
+                text_id = 
+            WHERE event_id = 89 + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE event_id = 89' at line 6
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402405200
+    [end_time] => 1402410600
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 1
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1.5
+    [dur_units] => hours
+    [id] => 91
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+    [room_name] => Auditorio 1
+    [room_admin_email] => 
+    [area_id] => 3
+    [area_name] => Salas Públicas
+    [area_admin_email] => 
+    [room_disabled] => 0
+    [area_disabled] => 0
+    [duration] => 1
+    [id] => 88
+    [start_time] => 1402405200
+    [end_time] => 1402408800
+    [entry_type] => 0
+    [repeat_id] => 0
+    [room_id] => 27
+    [last_updated] => 1402452886
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [status] => 0
+    [reminded] => 
+    [entry_info_time] => 
+    [entry_info_user] => 
+    [entry_info_text] => 
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [profesor] => asdf
+    [curso] => asdf
+    [expositor] => 
+    [tipo_charla] => 
+    [resumen_expositor] => 
+    [tipo_evento] => Clase
+    [dur_units] => hours
+    [rep_type] => 0
+    [repeat_info_time] => 
+    [repeat_info_user] => 
+    [repeat_info_text] => 
+)
+
+New Entry 
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones UPDATE notifications_registry
+            SET mail_list = '', 
+                notification_datetime = '2014-06-10 09:00:00',
+                event_datetime = '2014-06-10 09:00:00',
+                text_id = 
+            WHERE event_id = 88 + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE event_id = 88' at line 6
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402405200
+    [end_time] => 1402414200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 2
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 2.5
+    [dur_units] => hours
+    [id] => 92
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+    [room_name] => Auditorio 1
+    [room_admin_email] => 
+    [area_id] => 3
+    [area_name] => Salas Públicas
+    [area_admin_email] => 
+    [room_disabled] => 0
+    [area_disabled] => 0
+    [duration] => 1.5
+    [id] => 91
+    [start_time] => 1402405200
+    [end_time] => 1402410600
+    [entry_type] => 0
+    [repeat_id] => 0
+    [room_id] => 27
+    [last_updated] => 1402540003
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [status] => 0
+    [reminded] => 
+    [entry_info_time] => 
+    [entry_info_user] => 
+    [entry_info_text] => 
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 1
+    [ical_recur_id] => 
+    [profesor] => asdf
+    [curso] => asdf
+    [expositor] => 
+    [tipo_charla] => 
+    [resumen_expositor] => 
+    [tipo_evento] => Clase
+    [dur_units] => hours
+    [rep_type] => 0
+    [repeat_info_time] => 
+    [repeat_info_user] => 
+    [repeat_info_text] => 
+)
+
+New Entry 
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones UPDATE notifications_registry
+            SET mail_list = '', 
+                notification_datetime = '2014-06-10 09:00:00',
+                event_datetime = '2014-06-10 09:00:00',
+                text_id = 
+            WHERE event_id = 91 + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE event_id = 91' at line 6
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402405200
+    [end_time] => 1402434000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 3
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 8
+    [dur_units] => hours
+    [id] => 93
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+    [room_name] => Auditorio 1
+    [room_admin_email] => 
+    [area_id] => 3
+    [area_name] => Salas Públicas
+    [area_admin_email] => 
+    [room_disabled] => 0
+    [area_disabled] => 0
+    [duration] => 2.5
+    [id] => 92
+    [start_time] => 1402405200
+    [end_time] => 1402414200
+    [entry_type] => 0
+    [repeat_id] => 0
+    [room_id] => 27
+    [last_updated] => 1402540038
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [status] => 0
+    [reminded] => 
+    [entry_info_time] => 
+    [entry_info_user] => 
+    [entry_info_text] => 
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 2
+    [ical_recur_id] => 
+    [profesor] => asdf
+    [curso] => asdf
+    [expositor] => 
+    [tipo_charla] => 
+    [resumen_expositor] => 
+    [tipo_evento] => Clase
+    [dur_units] => hours
+    [rep_type] => 0
+    [repeat_info_time] => 
+    [repeat_info_user] => 
+    [repeat_info_text] => 
+)
+
+New Entry 
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones UPDATE notifications_registry
+            SET mail_list = '', 
+                notification_datetime = '2014-06-10 09:00:00',
+                event_datetime = '2014-06-10 09:00:00',
+                text_id = 
+            WHERE event_id = 92 + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE event_id = 92' at line 6
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402405200
+    [end_time] => 1402421400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 4
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => asdf
+    [curso] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 4.5
+    [dur_units] => hours
+    [id] => 94
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+    [room_name] => Auditorio 1
+    [room_admin_email] => 
+    [area_id] => 3
+    [area_name] => Salas Públicas
+    [area_admin_email] => 
+    [room_disabled] => 0
+    [area_disabled] => 0
+    [duration] => 8
+    [id] => 93
+    [start_time] => 1402405200
+    [end_time] => 1402434000
+    [entry_type] => 0
+    [repeat_id] => 0
+    [room_id] => 27
+    [last_updated] => 1402540057
+    [create_by] => admin
+    [name] => GSAD
+    [type] => I
+    [description] => asdf
+    [status] => 0
+    [reminded] => 
+    [entry_info_time] => 
+    [entry_info_user] => 
+    [entry_info_text] => 
+    [ical_uid] => MRBS-5397bb9654fd9-38ff4525@localhost
+    [ical_sequence] => 3
+    [ical_recur_id] => 
+    [profesor] => asdf
+    [curso] => asdf
+    [expositor] => 
+    [tipo_charla] => 
+    [resumen_expositor] => 
+    [tipo_evento] => Clase
+    [dur_units] => hours
+    [rep_type] => 0
+    [repeat_info_time] => 
+    [repeat_info_user] => 
+    [repeat_info_text] => 
+)
+
+New Entry 
+Series 
+Consulta no válida: SELECT id, reminder_offset 
+          FROM notifications_info
+          WHERE type = 'Clase' + Unknown column 'reminder_offset' in 'field list'
+Error al insertar las notificaciones UPDATE notifications_registry
+            SET mail_list = '', 
+                notification_datetime = '2014-06-10 09:00:00',
+                event_datetime = '2014-06-10 09:00:00',
+                text_id = 
+            WHERE event_id = 93 + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE event_id = 93' at line 6

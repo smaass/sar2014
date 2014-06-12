@@ -409,10 +409,6 @@ if ($is_admin || ($n_displayable_areas > 0))
                 <label for="room_specifications">Especificaciones</label>
                 <input type="text" id="room_specifications" name="specifications">
             </div>
-            <div>
-                <label for="room_photo">Foto</label>
-                <input type="file" id="room_photo" name="photo">
-            </div>
         <?php
         }
         else if($area == 5) {

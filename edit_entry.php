@@ -125,7 +125,7 @@ function genSlotSelector($area, $prefix, $first, $last, $time, $display_none=FAL
   }
   if ($enable_periods)
   {
-      $html .= "<input type=\"hidden\" disabled=\"disabled\" id=\"${prefix}seconds${area['id']}\" name=\"${prefix}seconds\" value=\"0\">\n";
+      $html .= "<input type='hidden' disabled='disabled' id=\"${prefix}seconds${area['id']}\" name=\"${prefix}seconds\" value=\"0\">\n";
   }
   else
   {
@@ -211,7 +211,7 @@ function create_field_entry_start_date($disabled=FALSE)
   echo "<div id=\"div_start_date\">\n";
   echo "<label>" . get_vocab("start") . ":</label>\n";
   $date = getdate($start_time);
-  gendateselector("start_", $date['mday'], $date['mon'], $date['year'], '', $disabled);
+  genDateselector("start_", $date['mday'], $date['mon'], $date['year'], '', $disabled);
   // If we're using periods the booking model is slightly different:
   // you're allowed to specify the last period as your first period.
   // This is why we don't substract the resolution
@@ -1225,6 +1225,7 @@ if (!getWritable($create_by, $user, $room_id))
   exit;
 }
 
+
 //header
 
 if(! $ajax) {
@@ -1284,7 +1285,6 @@ if ($res)
 
 <script type="text/javascript">
 //<![CDATA[
-
 var currentArea = <?php echo $area_id ?>;
 var areas = [];
 <?php
@@ -1363,6 +1363,7 @@ function OnAllDayClick(el)
     adjustSlotSelectors(form); <?php // need to get the duration right ?>
   }
 }
+
 //]]>
 </script>
 
@@ -1405,7 +1406,6 @@ echo "<div class=\"MainCell\">";
 }
 
 ?>
-
 
 <form target="_top" class="<?php echo !$ajax? "form_general" : "entry_popup"; ?>" id="main" action="edit_entry_handler.php" method="post">
   <fieldset>
@@ -1696,7 +1696,7 @@ foreach ($edit_entry_field_order as $key)
 
 <?php 
 if (! $ajax){ 
-  echo "</div>";	
+  echo "</div>";  
   output_trailer();
 }
 ?>
@@ -1704,3 +1704,11 @@ if (! $ajax){
 <script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
 <script type="text/javascript" src="js/datepicker.js.php?area=<?php echo $area; ?>"></script>
 <script type="text/javascript" src="js/general.js.php?area=<?php echo $area; ?>"></script-->
+
+<script>
+  // Set the call to validate emails
+  var f_emails = document.getElementById("f_emails");
+  f_emails.onblur = function(){
+    return validarEmails(f_emails);
+  };  
+</script>>

@@ -717,7 +717,9 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
     var initial_date = new Date(<?php echo "$year, $month_js, $day" ?>);
     var dateFormat = $("#<?php echo $datepicker_baseid ?>").datepicker( "option", "dateFormat" );
     $("#<?php echo $datepicker_baseid ?>").datepicker( "setDate", initial_date );
+
     if(!document.getElementById(<?php echo "'${datepicker_baseid}'" ?>)) return;
+
     document.getElementById(<?php echo "'${datepicker_baseid}'" ?>).value = $.datepicker.formatDate(dateFormat, initial_date);
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_day'" ?>).value = <?php echo $day ?>;
     document.getElementById(<?php echo "'${datepicker_baseid}_alt_month'" ?>).value = <?php echo $month ?>;
@@ -730,7 +732,7 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
   <?php if($inline): ?>
     var datepicker_html = '<div class="date" type="text" id="<?php echo $datepicker_baseid ?>"></div>\n';
   <?php else: ?>
-    var datepicker_html = '<input class="date" type="text" id="<?php echo $datepicker_baseid ?>">\n';
+    var datepicker_html = '<input class="date" type="button" id="<?php echo $datepicker_baseid ?>">\n';
   <?php endif;
   // The next input is disabled because we don't need to pass the value through to
   // the form and we don't want the value cluttering up the URL (if it's a GET).
@@ -741,9 +743,9 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
   datepicker_html += ' name="<?php echo $prefix ?>_alt"';
   datepicker_html += ' value="<?php echo "${year}-${month}-${day}" ?>"';
   datepicker_html += ' disabled="disabled">\n';
-  <?php
+  
   // These three inputs we do want
-  ?>
+
   datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_day" name="<?php echo $prefix ?>day">\n';
   datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_month" name="<?php echo $prefix ?>month">\n';
   datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_year" name="<?php echo $prefix ?>year">\n';
