@@ -751,7 +751,7 @@ td.hidden_day     {background-color: <?php echo $column_hidden_color ?>; /* hidd
     ?>
     }
 tr.row_highlight td.new {background-color: <?php echo $row_highlight_color ?>} /* used for highlighting a row */
-.dwm_main td.row_labels     {background-color: <?php echo $main_table_labels_back_color ?>; white-space: nowrap}    /* used for the row labels column */
+.dwm_main td.row_labels     {color: <?= $anchor_link_color_header ?>; background-color: <?php echo $main_table_labels_back_color ?>; white-space: nowrap}    /* used for the row labels column */
 .row_labels a:link    {color: <?php echo $anchor_link_color_header ?>;    text-decoration: none; font-weight: normal}
 .row_labels a:visited {color: <?php echo $anchor_visited_color_header ?>; text-decoration: none; font-weight: normal}
 .row_labels a:hover   {color: <?php echo $anchor_hover_color_header ?>;   text-decoration: underline; font-weight: normal}
