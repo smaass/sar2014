@@ -86,7 +86,7 @@ expires_header(60*30); // 30 minute expiry
 /* ------------ Head -----------------------------*/
     #logo {
 	    margin-left: 10px;
-	    margin-top: 5px;
+	    margin-top: 0px;
 	}
     .Top {
     	position:relative;
@@ -211,6 +211,7 @@ expires_header(60*30); // 30 minute expiry
 	}
 	
 /* ------------ Admin menu -----------------------------*/
+#admin_menu { margin-bottom: 10px; }
 .admin_button {
 	cursor:pointer;
     width: 100%;
@@ -226,6 +227,7 @@ expires_header(60*30); // 30 minute expiry
 .admin_button:hover {
     background: linear-gradient(to bottom, #c44 0%, #b33 100%);
 }
+#dwm_menu ul { margin: 0; }
 /* ------------ Rooms list -----------------------------*/
 ul.sub-menu li a span#vista_general {
 	color:#E40000;
@@ -367,7 +369,7 @@ body {font-size: small;
           box-shadow: none;
 }
 
-div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 5px;overflow:auto; margin-top:10px;}
+div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 5px;overflow:auto; margin-top:5px;}
 
 h1 {font-size: x-large; clear: both}
 h2 {font-size: large; clear: both}
