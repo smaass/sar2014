@@ -432,6 +432,8 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 	top:50%;
 	left:50%;
 	width:250px;
+	max-height:95%;
+	overflow-y:overlay;
 	/*padding:10px;*/
 	background-color:rgb(240,240,240);
 	border:2px solid grey;
@@ -1060,7 +1062,7 @@ form#edit_room {float: left; width: auto; margin: 0 2em 1em 1em}
 .form_general input.checkbox {width: auto; margin-top: 0.2em}
 .edit_area_room .form_general input.checkbox {margin-left: <?php echo $general_gap ?>em}
 .edit_area_room .form_general #booking_policies input.text {width: 4em}
-.form_general input.submit {display: block; width: auto; float: left; clear: left; margin-top: 1.0em}
+.form_general input.submit {display: block; width: auto; float: left; clear: left; /*margin-top: 1.0em*/}
 
 div#import_submit     {width: <?php echo $general_left_col_width ?>%; max-width: <?php echo $import_left_col_max_width ?>em}
 div#report_submit     {width: <?php echo $general_left_col_width ?>%; max-width: <?php echo $report_left_col_max_width ?>em}

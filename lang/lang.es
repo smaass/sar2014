@@ -104,6 +104,7 @@ $vocab["missing_mandatory_field"] = "No se ha incluído un valor para un campo o
 $vocab["confirmed"]          = "Confirmada";
 $vocab["start_after_end"]    = "Día inicial es posterior al día final";
 $vocab["start_after_end_long"] = "Error: el día de comienzo es posterior al día de finalización";
+$vocab["back"] 		         = "Volver";
 
 // Used in view_entry.php
 $vocab["description"]        = "Descripción";

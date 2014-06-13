@@ -79,6 +79,8 @@ $periods[] = "Period&nbsp;1";
 
 $auth["type"] = "config";
 $auth["session"] = "php";
+// $auth["type"] = "dcc";
+// $auth["session"] = "dcc";
 
 $auth["user"]["fcifuentes"] = "asdfqwerty";
 $auth["user"]["ralonso"] = "asdfqwerty";
