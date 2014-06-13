@@ -413,6 +413,8 @@ if (function_exists('json_encode'))
           var conflictDiv = $('#conflict_check');
           var scheduleDetails = $('#schedule_details');
           var policyDetails = $('#policy_details');
+          var saveButtonDiv = $('#edit_entry_submit_save');
+          var saveButton = $('#edit_entry_submit_save input');
           var checkMark = "\u2714";
           var cross = "\u2718";
           var titleText, detailsHTML;
@@ -421,6 +423,8 @@ if (function_exists('json_encode'))
             conflictDiv.text(checkMark).attr('class', 'good');
             titleText = '<?php echo escape_js(mrbs_entity_decode(get_vocab("no_conflicts"))) ?>';
             detailsHTML = titleText;
+            saveButton.removeAttr('disabled');
+            saveButtonDiv.removeAttr('title');
           }
           else
           {
@@ -431,6 +435,8 @@ if (function_exists('json_encode'))
             var conflictsList = getErrorList(result.conflicts);
             detailsHTML += conflictsList.html;
             titleText += conflictsList.text;
+            saveButton.attr('disabled', 'disabled');
+            saveButtonDiv.attr('title', titleText);
           }
           conflictDiv.attr('title', titleText);
           scheduleDetails.html(detailsHTML);
@@ -1057,60 +1063,11 @@ init = function() {
 
     checkConflicts();
 
-    $('#conflict_check, #policy_check').click(function() {
-        var tabId;
-        var checkResults = $('#check_results');
-        var checkTabs = $('#check_tabs');
-        <?php
-        // Work out which tab should be selected
-        // (Slightly long-winded using a switch, but there may be more tabs in future)
-        ?>
-        switch ($(this).attr('id'))
-        {
-          case 'policy_check':
-            tabId = 'policy_details';
-            break;
-          case 'conflict_check':
-          default:
-            tabId = 'schedule_details';
-            break;
-        }
-        <?php
-        // If we've already created the dialog and tabs, then all we have
-        // to do is re-open the dialog if it has previously been closed and
-        // select the tab corresponding to the div that was clicked
-        ?>
-        if (arguments.callee.alreadyExists)
-        {
-          if (!checkResults.dialog("isOpen"))
-          {
-            checkResults.dialog("open");
-          }
-          checkTabs.tabs("select", tabId);
-          return;
-        }
-        <?php
-        // We want to create a set of tabs that appear inside a dialog box,
-        // with the whole structure being draggable.   Thanks to dbroox at
-        // http://forum.jquery.com/topic/combining-ui-dialog-and-tabs for the solution.
-        ?>
-        checkTabs.tabs();
-        checkTabs.tabs("select", tabId);
-        checkResults.dialog({'width':400, 'height':200,
-                                    'minWidth':300, 'minHeight':150,
-                                    'draggable':true });
-        <?php //steal the close button ?>
-        $('#ui-tab-dialog-close').append($('a.ui-dialog-titlebar-close'));
-        <?php //move the tabs out of the content and make them draggable ?>
-        $('.ui-dialog').addClass('ui-tabs')
-                       .prepend($('#details_tabs'))
-                       .draggable('option', 'handle', '#details_tabs');
-        <?php //switch the titlebar class ?>
-        $('.ui-dialog-titlebar').remove();
-        $('#details_tabs').addClass('ui-dialog-titlebar');
-
-        arguments.callee.alreadyExists=true;
-      });
+    $('#conflict_check').click(function() {
+      if ($(this).hasClass('bad')) {
+        alert($(this).attr('title'));
+      }
+    });
 
         <?php //Required field check ?>
 		 $('label ~ [required]').each(function(x,y ){

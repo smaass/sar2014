@@ -1649,8 +1649,6 @@ foreach ($edit_entry_field_order as $key)
 
     // Buttons
     echo "<fieldset class=\"submit_buttons\">\n";
-    echo "<br>\n";
-    echo "<legend></legend>\n";
     
     if(!$ajax) {
       // The Back button
@@ -1670,9 +1668,6 @@ foreach ($edit_entry_field_order as $key)
     echo "<div id=\"conflict_check\">\n";
     echo "</div>\n";
 
-    echo "<div id=\"policy_check\">\n";
-    echo "</div>\n";
-
     echo "</fieldset>";
 
     // and a div to hold the dialog box which gives more details.    The dialog
@@ -1683,11 +1678,9 @@ foreach ($edit_entry_field_order as $key)
     echo "<div id=\"check_tabs\">\n";
     echo "<ul id=\"details_tabs\">\n";
     echo "<li><a href=\"#schedule_details\">" . get_vocab("schedule") . "</a></li>\n";
-    echo "<li><a href=\"#policy_details\">" . get_vocab("policy") . "</a></li>\n";
     echo "<li id=\"ui-tab-dialog-close\"></li>\n";
     echo "</ul>\n";
     echo "<div id=\"schedule_details\"></div>\n";
-    echo "<div id=\"policy_details\"></div>\n";
     echo "</div>\n";
     echo "</div>\n";
     ?>

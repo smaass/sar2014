@@ -684,7 +684,7 @@ echo "<div id=\"submit_buttons\">\n";
 
 // Back button
 echo "<form method=\"post\" action=\"" . htmlspecialchars($returl) . "\">\n";
-echo "<fieldset><legend></legend>\n";
+echo "<fieldset>\n";
 echo "<input type=\"submit\" value=\"" . get_vocab("back") . "\">\n";
 echo "</fieldset>\n";
 echo "</form>\n";
@@ -696,7 +696,7 @@ if (empty($result['rules_broken'])  &&
     isset($rep_type) && ($rep_type != REP_NONE))
 {
   echo "<form method=\"post\" action=\"" . htmlspecialchars(basename($PHP_SELF)) . "\">\n";
-  echo "<fieldset><legend></legend>\n";
+  echo "<fieldset>\n";
   // Put the booking data in as hidden inputs
   $skip = 1;  // Force a skip next time round
   // First the ordinary fields
