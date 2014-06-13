@@ -552,15 +552,11 @@ function time_cell_html($t, $time_t, $time_t_stripped, $slot_seconds, $url)
   if ( $enable_periods )
   {
     
-    $html .= "<a href=\"$url\"  title=\""
-             . get_vocab("highlight_line") . "\">"
-             . $periods[$time_t_stripped] . "</a>\n";
+    $html .= $periods[$time_t_stripped] . "\n";
   }
   else
   {
-    $html .= "<a href=\"$url\" title=\""
-             . get_vocab("highlight_line") . "\">"
-             . utf8_strftime(hour_min_format(),$t) . "</a>\n";
+    $html .= utf8_strftime(hour_min_format(),$t) . "\n";
   }
   $html .= "</div></td>\n";
   
@@ -1226,10 +1222,8 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
         } else {
         	$th_class = "";
         }
-        $header_inner .= "<th data-date=\"$date\" $th_class><a href=\"day.php?year=" . strftime("%Y", $t) . 
-                         "&amp;month=" . strftime("%m", $t) . "&amp;day=" . strftime("%d", $t) . 
-                         "&amp;area=$area\" title=\"" . get_vocab("viewday") . "\">" .
-                         utf8_strftime($dformat, $t) . "</a></th>\n";
+        $header_inner .= "<th data-date=\"$date\" $th_class>" .
+                         utf8_strftime($dformat, $t) . "</th>\n";
       }
     }
     // next line to display times on right side

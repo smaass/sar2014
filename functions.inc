@@ -1482,7 +1482,7 @@ function make_menu_html($link, $currentArea, $currentRoom, $year, $month, $day) 
 
 function make_admin_menu() {
     return '<div id="admin_menu">
-    <button class="admin_button" onclick=\'window.location = "admin.php"\'>Opciones de administrador</button></div>';
+    <button class="admin_button" onclick=\'window.location = "admin.php"\'>Opciones de Administrador</button></div>';
 }
 
 function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day)

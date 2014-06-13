@@ -86,7 +86,7 @@ expires_header(60*30); // 30 minute expiry
 /* ------------ Head -----------------------------*/
     #logo {
 	    margin-left: 10px;
-	    margin-top: 5px;
+	    margin-top: 0px;
 	}
     .Top {
     	position:relative;
@@ -211,6 +211,7 @@ expires_header(60*30); // 30 minute expiry
 	}
 	
 /* ------------ Admin menu -----------------------------*/
+#admin_menu { margin-bottom: 10px; }
 .admin_button {
 	cursor:pointer;
     width: 100%;
@@ -226,6 +227,7 @@ expires_header(60*30); // 30 minute expiry
 .admin_button:hover {
     background: linear-gradient(to bottom, #c44 0%, #b33 100%);
 }
+#dwm_menu ul { margin: 0; }
 /* ------------ Rooms list -----------------------------*/
 ul.sub-menu li a span#vista_general {
 	color:#E40000;
@@ -367,7 +369,7 @@ body {font-size: small;
           box-shadow: none;
 }
 
-div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 5px;overflow:auto; margin-top:10px;}
+div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 5px;overflow:auto; margin-top:5px;}
 
 h1 {font-size: x-large; clear: both}
 h2 {font-size: large; clear: both}
@@ -751,7 +753,7 @@ td.hidden_day     {background-color: <?php echo $column_hidden_color ?>; /* hidd
     ?>
     }
 tr.row_highlight td.new {background-color: <?php echo $row_highlight_color ?>} /* used for highlighting a row */
-.dwm_main td.row_labels     {background-color: <?php echo $main_table_labels_back_color ?>; white-space: nowrap}    /* used for the row labels column */
+.dwm_main td.row_labels     {color: <?= $anchor_link_color_header ?>; background-color: <?php echo $main_table_labels_back_color ?>; white-space: nowrap}    /* used for the row labels column */
 .row_labels a:link    {color: <?php echo $anchor_link_color_header ?>;    text-decoration: none; font-weight: normal}
 .row_labels a:visited {color: <?php echo $anchor_visited_color_header ?>; text-decoration: none; font-weight: normal}
 .row_labels a:hover   {color: <?php echo $anchor_hover_color_header ?>;   text-decoration: underline; font-weight: normal}
