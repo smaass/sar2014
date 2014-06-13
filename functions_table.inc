@@ -1455,7 +1455,12 @@ function table_popup_innerhtml()
   	$('#default_entry').fadeIn();
     //default_entry.style.left=(x+window.pageXOffset)+'px';
     //default_entry.style.top=(y+window.pageYOffset)+'px';
-    $('#linkReservaDetallada').attr('href',linkReservaDetallada);
+    //$('#linkReservaDetallada').attr('href',linkReservaDetallada);
+  	$('#linkReservaDetallada').on('click',function() {
+  		var form = $($('#popupiFrame')[0].contentWindow.document.body).find('form#main');
+  		form.attr('action',linkReservaDetallada);
+  		form.submit();
+	});
     
     // NOTE: Lo siguiente por fcifuent
     var popupContent = $('#popupContent');

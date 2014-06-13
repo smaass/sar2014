@@ -888,3 +888,5 @@ Consulta no válida: SELECT id, reminder_offset FROM notifications_info WHERE ty
 Error al insertar las notificaciones INSERT INTO notifications_registry
                         (text_id, mail_list, notification_datetime, event_id, event_datetime) 
             VALUES (, '', '2014-06-05 09:00:00', '1', '2014-06-05 09:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-05 09:00:00', '1', '2014-06-05 09:00:00')' at line 3
+INSERTING INTO"mrbs_entry"
+

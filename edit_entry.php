@@ -823,7 +823,6 @@ $multiday_allowed = $is_admin || empty($auth['only_admin_can_book_multiday']);
 $multiroom_allowed = $is_admin || empty($auth['only_admin_can_select_multiroom']);
 
 
-
 if (isset($start_seconds))
 {
   $minutes = intval($start_seconds/60);
@@ -875,7 +874,6 @@ if (!isset($returl))
 // Firstly we need to know if this is a new booking or modifying an old one
 // and if it's a modification we need to get all the old data from the db.
 // If we had $id passed in then it's a modification.
-
 if (isset($id))
 {
   $res = sql_query("SELECT area_id FROM mrbs_room, mrbs_entry WHERE mrbs_room.id=mrbs_entry.room_id AND mrbs_entry.id=$id");
@@ -939,96 +937,114 @@ if (isset($id))
   {
     $keep_private = FALSE;
   }
-
-  foreach ($row as $column => $value)
+} else {
+	$row = $_POST;
+}
+foreach ($row as $column => $value)
+{
+  //echo "column: $column => $value<br>\n";
+  switch ($column)
   {
-    switch ($column)
-    {
-      // Don't bother with these columns
-      case 'id':
-      case 'timestamp':
-      case 'reminded':
-      case 'info_time':
-      case 'info_user':
-      case 'info_text':
-        break;
+    // Don't bother with these columns
+    case 'id':
+    case 'timestamp':
+    case 'reminded':
+    case 'info_time':
+    case 'info_user':
+    case 'info_text':
+      break;
 
-      // These columns cannot be made private
-      case 'room_id':
-        // We need to preserve the original room_id for existing bookings and pass
-        // it through to edit_entry_handler.    We need this because we need to know
-        // in edit_entry_handler which room contains the original booking.   It's
-        // possible in this form to select multiple rooms, or even change the room.
-        // We will need to know which booking is the "original booking" because the
-        // original booking will keep the same ical_uid and have the ical_sequence
-        // incremented, whereas new bookings will have a new ical_uid and start with
-        // an ical_sequence of 0.    (If there is more than one room when we get to
-        // edit_entry_handler and the original room isn't among them, then we will
-        // just have to make an arbitrary choice as to which is the room containing
-        // the original booking.)
-        // NOTE:  We do not set the original_room_id if we are copying an entry,
-        // because when we are copying we are effectively making a new entry and
-        // so we want edit_entry_handler to assign a new UID, etc.
-        if (!$copy)
-        {
-          $original_room_id = $row['room_id'];
-        }
-      case 'ical_uid':
-      case 'ical_sequence':
-      case 'ical_recur_id':
-      case 'entry_type':
-        $$column = $row[$column];
-        break;
+    // These columns cannot be made private
+    case 'room_id':
+      // We need to preserve the original room_id for existing bookings and pass
+      // it through to edit_entry_handler.    We need this because we need to know
+      // in edit_entry_handler which room contains the original booking.   It's
+      // possible in this form to select multiple rooms, or even change the room.
+      // We will need to know which booking is the "original booking" because the
+      // original booking will keep the same ical_uid and have the ical_sequence
+      // incremented, whereas new bookings will have a new ical_uid and start with
+      // an ical_sequence of 0.    (If there is more than one room when we get to
+      // edit_entry_handler and the original room isn't among them, then we will
+      // just have to make an arbitrary choice as to which is the room containing
+      // the original booking.)
+      // NOTE:  We do not set the original_room_id if we are copying an entry,
+      // because when we are copying we are effectively making a new entry and
+      // so we want edit_entry_handler to assign a new UID, etc.
+      if (!$copy)
+      {
+        $original_room_id = $row['room_id'];
+      }
+    case 'ical_uid':
+    case 'ical_sequence':
+    case 'ical_recur_id':
+    case 'entry_type':
+      $$column = $row[$column];
+      break;
 
-      // These columns can be made private [not sure about 'type' though - haven't
-      // checked whether it makes sense/works to make the 'type' column private]
-      case 'name':
-      case 'description':
-      case 'universidad':
-      case 'pais':
-//      case 'correo':
+    // These columns can be made private [not sure about 'type' though - haven't
+    // checked whether it makes sense/works to make the 'type' column private]
+    case 'name':
+    case 'description':
+    case 'universidad':
+    case 'pais':
+      //case 'correo':
 	  case 'profesor':
 	  case 'curso':
 	  case 'expositor':
 	  case 'resumen_expositor':
 	  case 'tipo_charla':
 	  case 'tipo_evento':
-      case 'type':
-        $$column = ($keep_private && $is_private_field["entry.$column"]) ? '' : $row[$column];
-        break;
+    case 'type':
+      $$column = ($keep_private && $is_private_field["entry.$column"]) ? '' : $row[$column];
+      break;
 
-      case 'status':
-        // No need to do the privacy status as we've already done that.
-        // Just do the confirmation status
-        $confirmed = !($row['status'] & STATUS_TENTATIVE);
-        break;
+    case 'status':
+      // No need to do the privacy status as we've already done that.
+      // Just do the confirmation status
+      $confirmed = !($row['status'] & STATUS_TENTATIVE);
+      break;
+      
+    case 'start_year': 
+    case 'start_month':
+    case 'start_day':
+    case 'start_seconds':
+    case 'end_year':
+    case 'end_month':
+    case 'end_day':
+    case 'end_seconds':
+    	// En caso de provenir de reserva rápida
+    	$$column = $value;
+    	break;
+    	
+    case 'f_emails':
+    	$custom_fields['emails'] = ($keep_private && $is_private_field["entry.$column"]) ? '' : $row[$column];
 
-      case 'repeat_id':
-        $rep_id      = $row['repeat_id'];
-        break;
+    case 'repeat_id':
+      $rep_id      = $row['repeat_id'];
+      break;
 
-      case 'create_by':
-        // If we're copying an existing entry then we need to change the create_by (they could be
-        // different if it's an admin doing the copying)
-        $create_by   = (isset($copy)) ? $user : $row['create_by'];
-        break;
+    case 'create_by':
+      // If we're copying an existing entry then we need to change the create_by (they could be
+      // different if it's an admin doing the copying)
+      $create_by   = (isset($copy)) ? $user : $row['create_by'];
+      break;
 
-      case 'start_time':
-        $start_time = $row['start_time'];
-        break;
+    case 'start_time':
+      $start_time = $row['start_time'];
+      break;
 
-      case 'end_time':
-        $end_time = $row['end_time'];
-        $duration = $row['end_time'] - $row['start_time'] - cross_dst($row['start_time'], $row['end_time']);
-        break;
+    case 'end_time':
+      $end_time = $row['end_time'];
+      $duration = $row['end_time'] - $row['start_time'] - cross_dst($row['start_time'], $row['end_time']);
+      break;
 
-      default:
-        $custom_fields[$column] = ($keep_private && $is_private_field["entry.$column"]) ? '' : $row[$column];
-        break;
-    }
+    default:
+      $custom_fields[$column] = ($keep_private && $is_private_field["entry.$column"]) ? '' : $row[$column];
+      break;
   }
+}
 
-
+if(isset($id)) {
   if(($entry_type == ENTRY_RPT_ORIGINAL) || ($entry_type == ENTRY_RPT_CHANGED))
   {
     $sql = "SELECT rep_type, start_time, end_time, end_date, rep_opt, rep_num_weeks
@@ -1100,23 +1116,12 @@ if (isset($id))
     }
   }
 }
-else
+else if(!isset($_POST['name']))
 {
   // It is a new booking. The data comes from whichever button the user clicked
   $edit_type     = "series";
-  $name          = "";
   $create_by     = $user;
-  $description   = $default_description;
-  if ($area_id == $area_of_trabajo){
-    $universidad   = "";
-    $pais          = "";
-//    $correo        = "";
-  }else if($area_id == $area_salas){
-	$profesor	= "";
-	$curso		= "";
-	$expositor	= "";
-	$resumen_expositor	= "";
-	$tipo_charla	= "";
+  if($area_id == $area_salas){
 	$tipo_evento	= "Clase";
   }
   $type          = $default_type;
@@ -1188,6 +1193,25 @@ else
     $pm7 = mktime($eveningends, $eveningends_minutes, 0, $month, $day, $year);
     $end_time = min($end_time, $pm7 + $resolution);
   }
+} else { //Data to fill
+	$edit_type     = "series";
+	$create_by     = $user;
+	$room_id       = $room;
+	$rep_id        = 0;
+	if (!isset($rep_type))  // We might have set it through a drag selection
+	{
+		$rep_type      = REP_NONE;
+		$rep_end_day   = $day;
+		$rep_end_month = $month;
+		$rep_end_year  = $year;
+	}
+	$rep_day       = array();
+	$private       = $private_default;
+	$confirmed     = $confirmed_default;
+	//$start_time = mktime(intval($start_seconds/3600), $start_seconds % 60, 0, $start_month, $start_day, $start_year);
+	$start_time = mktime(0, 0, $start_seconds, $start_month, $start_day, $start_year);
+	//$end_time = mktime(intval($end_seconds/3600), $end_seconds % 60, 0, $end_month, $end_day, $end_year);
+	$end_time = mktime(0, 0, $end_seconds, $end_month, $end_day, $end_year);
 }
 
 $start_hour  = strftime('%H', $start_time);
@@ -1225,9 +1249,8 @@ if (!getWritable($create_by, $user, $room_id))
   exit;
 }
 
-
+//var_dump($_POST);
 //header
-
 if(! $ajax) {
   print_header($day, $month, $year, $area, isset($room) ? $room : "");
   // Show all available areas
@@ -1655,7 +1678,7 @@ foreach ($edit_entry_field_order as $key)
     if(!$ajax) {
       // The Back button
       echo "<div id=\"edit_entry_submit_back\">\n";
-      echo "<input class=\"submit\" type=\"submit\" name=\"back_button\" value=\"" . get_vocab("back") . "\" formnovalidate>\n";
+      echo "<input class=\"submit btn\" type=\"submit\" name=\"back_button\" value=\"" . get_vocab("back") . "\" formnovalidate>\n";
       echo "</div>\n";
     }
     
@@ -1707,8 +1730,8 @@ if (! $ajax){
 
 <script>
   // Set the call to validate emails
-  var f_emails = document.getElementById("f_emails");
-  f_emails.onblur = function(){
-    return validarEmails(f_emails);
-  };  
+  //$("#f_emails").on('blur',function(){
+  //	  console.log(this.value);
+  //    return validarEmails(this.value);
+  //});  
 </script>
