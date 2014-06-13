@@ -1671,7 +1671,7 @@ foreach ($edit_entry_field_order as $key)
     }
 
     // Buttons
-    echo "<fieldset class=\"submit_buttons\">\n";
+    echo "<fieldset class=\"submit_buttons".(!$ajax ? " not_ajax": "")."\">\n";
     
     if(!$ajax) {
       // The Back button

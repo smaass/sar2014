@@ -1075,7 +1075,8 @@ div#edit_area_room_submit_back {float: left; width: <?php echo $edit_area_room_l
 div#edit_area_room_submit_save {float: left; clear: none; width: auto}
 #edit_area_room_submit_back input {float: right}
 div#edit_entry_submit_back {float: left; width: <?php echo $general_left_col_width ?>em; max-width: <?php echo $edit_entry_left_col_max_width ?>em}
-#edit_entry_submit_back input {float: right}
+#edit_entry_submit_back input {float: left }
+#edit_entry_submit_save input { width: 80px; }
 
 
 .form_general .div_dur_mins input{width: 4.0em}
@@ -1118,6 +1119,12 @@ div.bad {color: red}
 .edit_entry_handler div#submit_buttons {float: left}
 .edit_entry_handler #submit_buttons form {float: left; margin: 1em 2em 1em 0}
 fieldset .submit_buttons { margin-top: 15px; }
+fieldset .not_ajax { margin-top: 0px; width: 100%; display: inline; padding: 20px 0;}
+fieldset .not_ajax #edit_entry_submit_back { width: 80px; margin-left: 20px;}
+fieldset .not_ajax #edit_entry_submit_back input { width: 100%;}
+fieldset .not_ajax #edit_entry_submit_save { width: 150px; clear: none; margin-left: 40px;}
+fieldset .not_ajax #edit_entry_submit_save input { width: 100%; }
+fieldset .not_ajax #conflict_check { width: 30%; margin: 0; clear: none; float: left; margin-left: 50px;}
 
 
 /* ------------ EDIT_USERS.PHP ------------------*/
