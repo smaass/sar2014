@@ -706,7 +706,7 @@ function mrbsCreateEntry($table, $data)
 	    $sql_col2[] = 'curso';
 	    $sql_val2[] = "'" . sql_escape($data['curso']) . "'";
   	}
-  	elseif ($data['tipo_evento'] == 'Charla'){
+  	elseif ($data['tipo_evento'] == 'Charla' || $data['tipo_evento'] == 'Defensa'){
 	    $sql_col2[] = 'expositor';
 	    $sql_val2[] = "'" . sql_escape($data['expositor']) . "'";  	
 	    $sql_col2[] = 'tipo_charla';
