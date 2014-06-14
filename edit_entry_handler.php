@@ -574,14 +574,14 @@ foreach ($rooms as $room_id)
 	  	$booking['profesor'] = $profesor;
     	$booking['curso'] = $curso;
   	}
-  	elseif ($tipo_evento == 'Defensa')
+  	elseif ($tipo_evento == 'Charla')
   	{
   		$booking['expositor'] = $expositor;
     	$booking['tipo_charla'] = $tipo_charla;
     	$booking['resumen_expositor'] = $resumen_expositor;
-      $posCharla = strpos($tipo_charla, 'Charla');
+      $posCharla = strpos($tipo_charla, 'Defensa');
       if ($posCharla >= 0 && $posCharla !== FALSE) {
-        $booking['tipo_evento'] = 'Charla';
+        $booking['tipo_evento'] = 'Defensa';
       }
   	}
   }

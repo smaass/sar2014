@@ -592,7 +592,7 @@ function create_field_entry_evento($disabled=FALSE)
 
   echo "<div id=\"div_evento\">\n";
 	  generate_select("Evento:", 'tipo_evento', $tipo_evento,
-      array('Clase','Reunión','Defensa'), true, $disabled);
+      array('Clase','Reunión','Charla'), true, $disabled);
   echo "</div>\n";
 }
 

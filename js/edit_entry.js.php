@@ -1099,7 +1099,7 @@ init = function() {
 					$('label[for="name"]').text("Nombre (*):");
 					$('label[for="description"]').text("Descripción Completa:");
 					break;
-				case 'Defensa':
+				case 'Charla':
 					$('[id*=div_evento_][id!=div_evento_defensa]').css('display','none');
 					$('#div_evento_defensa').css('display','block');
 					$('label[for="name"]').text("Titulo (*):");
