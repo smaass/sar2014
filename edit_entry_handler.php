@@ -549,6 +549,7 @@ foreach ($rooms as $room_id)
   $booking['ical_uid'] = $ical_uid;
   $booking['ical_sequence'] = $ical_sequence;
   $booking['ical_recur_id'] = $ical_recur_id;
+  $booking['tipo_evento'] = $tipo_evento;
   // Do the custom fields
   foreach ($custom_fields as $key => $value)
   {
@@ -568,7 +569,6 @@ foreach ($rooms as $room_id)
   }
   elseif ($row_area['area_id'] == $area_salas)
   {
-  	$booking['tipo_evento'] = $tipo_evento;
   	if ($tipo_evento == 'Clase')
   	{
 	  	$booking['profesor'] = $profesor;
@@ -579,6 +579,10 @@ foreach ($rooms as $room_id)
   		$booking['expositor'] = $expositor;
     	$booking['tipo_charla'] = $tipo_charla;
     	$booking['resumen_expositor'] = $resumen_expositor;
+      $posCharla = strpos($tipo_charla, 'Charla');
+      if ($posCharla >= 0 && $posCharla !== FALSE) {
+        $booking['tipo_evento'] = 'Charla';
+      }
   	}
   }
   // Set the various bits in the status field as appropriate
