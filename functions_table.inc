@@ -1407,45 +1407,22 @@ function table_popup_innerhtml()
   $user = getUserName();
   $html = " 
   <script>
-  function setSelectListener(){
-	$('#tipo_evento').change(function(){
-		switch($(this).val())
-		{
-			case 'Clase':
-				$('[id*=div_evento_][id!=div_evento_clase]').css('display','none');
-				$('#div_evento_clase').css('display','block');
-				$('label[for=\"name\"]').text(\"Nombre (*):\");
-				$('label[for=\"description\"]').text(\"Descripción Completa:\");
-				break;
-			case 'Reunión':
-				$('[id*=div_evento_][id!=div_evento_reunion]').css('display','none');
-				$('#div_evento_reunion').css('display','block');
-				$('label[for=\"name\"]').text(\"Nombre (*):\");
-				$('label[for=\"description\"]').text(\"Descripción Completa:\");
-				break;
-			case 'Defensa':
-				$('[id*=div_evento_][id!=div_evento_defensa]').css('display','none');
-				$('#div_evento_defensa').css('display','block');
-				$('label[for=\"name\"]').text(\"Titulo (*):\");
-				$('label[for=\"description\"]').text(\"Resumen\");
-				break;
-			}
-		});
-	}
-  	function onIFrameLoaded(iframe) {
-  		$(iframe).show();
-  		iframe.height = iframe.contentWindow.document.body.scrollHeight+20;
-  		$('#default_entry').css('width',iframe.contentWindow.document.body.scrollWidth+'px');
-  		$(iframe.contentWindow.document.body).css('background-color','transparent');
-  		$('span#loading').hide();
-  		centerPopup();
-  	}
+  function onIFrameLoaded(iframe) {
+  	$(iframe).show();
+  	iframe.height = iframe.contentWindow.document.body.scrollHeight+20;
+  	$('#default_entry').css('width',iframe.contentWindow.document.body.scrollWidth+'px');
+  	$(iframe.contentWindow.document.body).css('background-color','transparent');
+  	$('span#loading').hide();
+  	centerPopup();
+  	$(iframe.contentWindow.document.body).find('form#main input#name')[0].focus();	
+  }
   var popup = {};
   popup.opened = false;
   popup.show = function(linkReservaDetallada) {
     deactivateTimeout();
   	$('#dark_background').fadeIn();
   	$('#dark_background').on('click', hidePopup);
+  	$('#close-x').on('click', hidePopup);
   	$('#default_entry').fadeIn();
     //default_entry.style.left=(x+window.pageXOffset)+'px';
     //default_entry.style.top=(y+window.pageYOffset)+'px';
@@ -1513,6 +1490,7 @@ function table_popup_innerhtml()
   $html .= '
   <div id="dark_background"></div>
   <div id="default_entry" class="entry_popup">
+  <img id="close-x" src="images/close_x.png">
   <div id="popupContent">
   </div>
   <div id="popupFooter"><a class="btn" id="linkReservaDetallada">Reserva Detallada</a></div>

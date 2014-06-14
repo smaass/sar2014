@@ -890,3 +890,266 @@ Error al insertar las notificaciones INSERT INTO notifications_registry
             VALUES (, '', '2014-06-05 09:00:00', '1', '2014-06-05 09:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-05 09:00:00', '1', '2014-06-05 09:00:00')' at line 3
 INSERTING INTO"mrbs_entry"
 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => nombre
+    [type] => I
+    [description] => asdñlfkj
+    [room_id] => 21
+    [start_time] => 1403107200
+    [end_time] => 1403107260
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539b46f537f20-c86cd665@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [emails] => 
+    [universidad] => szdf
+    [pais] => sdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 195
+    [room_name] => Oficina 310
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-18 12:00:00', '195', '2014-06-18 12:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-18 12:00:00', '195', '2014-06-18 12:00:00')' at line 3
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => sadfñaklsdj fñaskldjfñalksjdf ñalksdj flksadj fñklasdj fñlaksdj fñlkasdj 
+    [type] => I
+    [description] => sdfsdfa
+    [room_id] => 21
+    [start_time] => 1403107200
+    [end_time] => 1403107260
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539b470b3c31e-ffd96ff9@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [emails] => 
+    [universidad] => df
+    [pais] => adffds
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 196
+    [room_name] => Oficina 310
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-18 12:00:00', '196', '2014-06-18 12:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-18 12:00:00', '196', '2014-06-18 12:00:00')' at line 3
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => La otra reserva
+    [type] => I
+    [description] => asjdñflk
+    [room_id] => 30
+    [start_time] => 1403107200
+    [end_time] => 1403107260
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539b4c5cbab2a-e4766e37@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [emails] => 
+    [universidad] => asdf
+    [pais] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 197
+    [room_name] => Oficina 311
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-18 12:00:00', '197', '2014-06-18 12:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-18 12:00:00', '197', '2014-06-18 12:00:00')' at line 3
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Primera reserva 19
+    [type] => I
+    [description] => sadf
+    [room_id] => 30
+    [start_time] => 1403193600
+    [end_time] => 1403193660
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539b4cbb9428d-ff1ab259@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [emails] => 
+    [universidad] => asdf
+    [pais] => adsf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 198
+    [room_name] => Oficina 311
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-19 12:00:00', '198', '2014-06-19 12:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-19 12:00:00', '198', '2014-06-19 12:00:00')' at line 3
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => segunda
+    [type] => I
+    [description] => de
+    [room_id] => 34
+    [start_time] => 1403193600
+    [end_time] => 1403193660
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539b4cd08579f-da9b6b19@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [emails] => 
+    [universidad] => asdf
+    [pais] => asdf
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 199
+    [room_name] => Oficina 999
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+Error al insertar las notificaciones INSERT INTO notifications_registry
+                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
+            VALUES (, '', '2014-06-19 12:00:00', '199', '2014-06-19 12:00:00') + You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' '', '2014-06-19 12:00:00', '199', '2014-06-19 12:00:00')' at line 3
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => nombre
+    [type] => I
+    [description] => asdf
+    [room_id] => 27
+    [start_time] => 1402405200
+    [end_time] => 1402408800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539cd068dd8c6-26965e4b@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [emails] => 
+    [tipo_evento] => Clase
+    [profesor] => 
+    [curso] => 
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 200
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Esta es una defensa de prueba
+    [type] => I
+    [description] => Corresponde a una defensa de memoria.
+    [room_id] => 27
+    [start_time] => 1402491600
+    [end_time] => 1402495200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539cd11ec256a-99a6dc4e@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [emails] => 
+    [tipo_evento] => Defensa
+    [expositor] => El mejor expositor
+    [tipo_charla] => Defensa memoria
+    [resumen_expositor] => Este es el mejor expositor
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 201
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+

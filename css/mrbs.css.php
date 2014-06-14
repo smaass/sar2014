@@ -69,18 +69,8 @@ expires_header(60*30); // 30 minute expiry
 		background-color: #fff;
 	    box-shadow: 0 0 8px #777;
 		border-radius: 8px;
-		
 		padding-left: 2%;
 		padding-right: 2%;
-		/*margin-top: 5px;*/
-	    /*
-	    
-	    
-		
-		
-		padding-bottom: 10px;
-		overflow: hidden;
-		display:table-cell;*/
 	}
 
 /* ------------ Head -----------------------------*/
@@ -433,7 +423,8 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 	left:50%;
 	width:250px;
 	max-height:95%;
-	overflow-y:overlay;
+	overflow-y:auto;
+	overflow-x:hidden;
 	/*padding:10px;*/
 	background-color:rgb(240,240,240);
 	border:2px solid grey;
@@ -441,6 +432,12 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 	z-index:1051;
 	text: center;
 	margin-left:-125px;
+}
+
+#close-x {
+	float:right;
+	margin:10px;
+	cursor:pointer;
 }
 
 #popupFooter {
@@ -685,7 +682,7 @@ table.dwm_main {clear: both; width: 100%; border-spacing: 0; border-collapse: se
 .dwm_main#month_main td.valid              {background-color: <?php echo $main_table_month_color ?>}
 .dwm_main#month_main td.valid_no_highlight {background-color: <?php echo $main_table_month_color ?>}
 .dwm_main#month_main td.invalid            {background-color: <?php echo $main_table_month_invalid_color ?>}
-.dwm_main#month_main a {height: 100%; width: 100%; padding: 0 2px 0 2px}
+.dwm_main#month_main a {height: 100%; width: 100%; padding: 0 2px 0 0.5em}
 
 td.new a, a.new_booking {display: block; font-size: medium; text-align: center}
 td.new img, .new_booking img {margin: auto; padding: 4px 0 2px 0}
@@ -860,7 +857,8 @@ for ($i=1; $i<=$classes_required; $i++)
 }
 
 ?>
-div.celldiv {max-width: 100%; overflow: hidden; margin: 0; padding: 0}
+div.celldiv {max-width: 100%; overflow: hidden; margin: 0; padding: 0 0 0 0.5em; cursor:pointer;}
+div.celldiv:hover {text-decoration:underline;}
 .row_labels div.celldiv {overflow: visible}  /* we want to see the content in the row label columns */
 <?php
 

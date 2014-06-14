@@ -176,6 +176,7 @@ if (isset($general_view))
       $res[$nRoom] = sql_query($sql);
       if (!$res[$nRoom])
       {
+      	
         trigger_error(sql_error(), E_USER_WARNING);
         fatal_error(TRUE, get_vocab("fatal_db_error"));
       }
@@ -187,139 +188,16 @@ if (isset($general_view))
           $d[$day_num]["id"][$offices_id[$off_name]['id']] = $room_row['id'];
           $d[$day_num]["name"][$offices_id[$off_name]['id']] = $off_name;
           $d[$day_num]["color"][$offices_id[$off_name]['id']] = $offices_id[$off_name]['count'];
+          $d[$day_num]["nombres_reservas"][$offices_id[$off_name]['id']] = "Reservas de este día:";
         }
         for ($i = 0; ($row = sql_row_keyed($res[$nRoom], $i)); $i++)
         {
+        	//var_dump($row);
+          $d[$day_num]["nombres_reservas"][$offices_id[$off_name]['id']] .= "\n - ".$row['name'];
           $d[$day_num]["color"][$offices_id[$off_name]['id']]--;
         }
-      }
-    }
-  }
-}
-elseif (isset($grouped_view))
-{
-  $sql = "SELECT R.id, R.room_name
-            FROM $tbl_room R, $tbl_area A
-           WHERE R.area_id=$area
-             AND R.area_id=A.id
-             AND R.disabled=0
-             AND A.disabled=0
-        ORDER BY R.sort_key";
-  $rooms = sql_query($sql);             // Cupos
-  if (! $rooms)
-  {
-    trigger_error(sql_error(), E_USER_WARNING);
-    fatal_error(TRUE, get_vocab("fatal_db_error"));
-  }
-  $slots_id = get_work_office($rooms, $room);
-  // color_map associates a numerical value for each entry id, used to colorize it.
-  $color_map = array();
-  $color_n = 0;
-  for ($day_num = 1; $day_num<=$days_in_month; $day_num++)
-  {
-  	foreach($slots_id as $key => $room_id)
-  	{
-      $sql = "SELECT start_time, end_time, id, name, type,
-                     repeat_id, status, create_by
-                FROM $tbl_entry
-               WHERE room_id=$room_id
-                 AND start_time <= $midnight_tonight[$day_num] AND end_time > $midnight[$day_num]
-            ORDER BY start_time";
-
-      $res = sql_query($sql);
-      if (! $res)
-      {
-        trigger_error(sql_error(), E_USER_WARNING);
-        fatal_error(TRUE, get_vocab("fatal_db_error"));
-      }
-      else
-      {
-      	// Placeholder
-        $d[$day_num]["id"][$key] = -1;
-        $d[$day_num]["room_id"][$key] = $room_id;
-        $d[$day_num]["color"][$key] = "C";
-        
-        // Build an array of information about each day in the month.
-        // The information is stored as:
-        //  d[monthday]["id"][] = ID of each entry, for linking.
-        //  d[monthday]["data"][] = "start-stop" times or "name" of each entry.
-        for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
-        {
-          if ($debug_flag)
-          {
-            echo "<br>DEBUG: result $i, id ".$row['id'].", starts ".$row['start_time'].", ends ".$row['end_time']."\n";
-          }
-
-          if ($debug_flag)
-          {
-            echo "<br>DEBUG: Entry ".$row['id']." day $day_num\n";
-          }
-          $d[$day_num]["id"][$key] = $row['id'];
-          if (!isset($color_map[$row['id']]))
-          {
-          	$color_map[$row['id']] = $color_n++;
-          }
-          $d[$day_num]["color"][$key] = "entry_color" . ($color_map[$row['id']] % 16);
-          $d[$day_num]["is_repeat"][$key] = !empty($row['repeat_id']);
-
-          // Handle private events
-          if (is_private_event($row['status'] & STATUS_PRIVATE)) 
-          {
-            if (getWritable($row['create_by'], $user, $room))
-            {
-              $private = FALSE;
-            }
-            else 
-            {
-              $private = TRUE;
-            }
-          }
-          else 
-          {
-            $private = FALSE;
-          }
-
-          if ($private & $is_private_field['entry.name']) 
-          {
-            $d[$day_num]["status"][$key] = $row['status'] | STATUS_PRIVATE;  // Set the private bit
-            $d[$day_num]["shortdescrip"][$key] = '['.get_vocab('unavailable').']';
-          }
-          else
-          {
-            $d[$day_num]["status"][$key] = $row['status'] & ~STATUS_PRIVATE;  // Clear the private bit
-            $d[$day_num]["shortdescrip"][$key] = htmlspecialchars($row['name']);
-          }
-
-
-          // Describe the start and end time, accounting for "all day"
-          // and for entries starting before/ending after today.
-          // There are 9 cases, for start time < = or > midnight this morning,
-          // and end time < = or > midnight tonight.
-          // Use ~ (not -) to separate the start and stop times, because MSIE
-          // will incorrectly line break after a -.
-
-          $start_str = period_time_string($row['start_time']);
-          $end_str   = period_time_string($row['end_time'], -1);
-          switch (cmp3($row['start_time'], $midnight[$day_num]) . cmp3($row['end_time'], $midnight_tonight[$day_num] + 1))
-          {
-            case "> < ":         // Starts after midnight, ends before midnight
-            case "= < ":         // Starts at midnight, ends before midnight
-            case "> = ":         // Starts after midnight, ends at midnight
-            case "= = ":         // Starts at midnight, ends at midnight
-              $d[$day_num]["cell"][$key] = " b_left b_center b_right";
-              break;
-            case "> > ":         // Starts after midnight, continues tomorrow
-            case "= > ":         // Starts at midnight, continues tomorrow
-              $d[$day_num]["cell"][$key] = " b_left b_center";
-              break;
-            case "< < ":         // Starts before today, ends before midnight
-            case "< = ":         // Starts before today, ends at midnight
-              $d[$day_num]["cell"][$key] = " b_center b_right";
-              break;
-            case "< > ":         // Starts before today, continues tomorrow
-              $d[$day_num]["cell"][$key] = " b_center";
-              break;
-          }
+        if($i == 0) {
+        	$d[$day_num]["nombres_reservas"][$offices_id[$off_name]['id']] = "\n No hay reservas en este día";
         }
       }
     }
@@ -650,13 +528,16 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
           $class = get_semaphore_class($d[$cday]["color"][$i]);
           switch ($class){
             case "X":
-              $details = "No quedan cupos disponibles";
+              //$details = "No quedan cupos disponibles";
+            	$details = $d[$cday]["nombres_reservas"][$i];
               break;
             case "Y":
-              $details = "Sólo un cupo disponible";
+              //$details = "Sólo un cupo disponible";
+            	$details = $d[$cday]["nombres_reservas"][$i];
               break;
             case "Z":
-              $details = $d[$cday]["color"][$i]." cupos disponibles";
+              //$details = $d[$cday]["color"][$i]." cupos disponibles";
+            	$details = $d[$cday]["nombres_reservas"][$i];
               break;
           }
         }
@@ -724,7 +605,11 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
 	    $entry_link = "'edit_entry.php?";
 	    $entry_link .= $query_string;
 	    $entry_link .= "'";      	
-	    echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" ></div>";
+	    if($i==0) {
+	    	echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" >Reservar</div>";
+	    } else {
+	    	echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" ></div>";
+	    }
 	    echo "</div>";
     }
     echo "</div>\n";
