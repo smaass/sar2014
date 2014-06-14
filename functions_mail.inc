@@ -904,7 +904,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
     if(!$result){
          error_log("Error al insertar las notificaciones ".$sql." + ".mysql_error() . "\n", 3 , "errors.log");
     }
-  } else {
+  } else if (strlen(str_replace(';', '', $data[emails])) > 0) {
     $sql = "INSERT INTO $tbl_notifications_registry
                         (text_id, mail_list, notification_datetime, event_id, event_datetime) 
             VALUES ($text_id";
