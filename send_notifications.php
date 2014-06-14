@@ -87,7 +87,9 @@ foreach ($notifications as $notification) {
   $mail_list = explode(";", $notification['mail_list']);
 
   foreach ($mail_list as $address) {
-    $mail->addAddress($address);
+    if (strlen($address) > 1) {
+      $mail->addAddress($address);
+    }
   }
 
   $mail->WordWrap = 80;

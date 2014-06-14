@@ -377,7 +377,7 @@ td, th {vertical-align: top}
 
 td form {margin: 0}     /* Prevent IE from displaying margins around forms in tables. */
 
-legend {font-weight: bold; font-size: large;
+legend {font-weight: bold; font-size: large; margin-bottom: 10px;
     font-family: <?php echo $standard_font_family ?>;
     color: <?php echo $standard_font_color ?>}
 fieldset {margin: 0; padding: 0; border: 0;
@@ -442,14 +442,14 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 
 #popupFooter {
 	background-color:#E2E2E2;
-	margin-top:5px;
 	padding:15px;
 	text-align:center;
 }
 
 .entry_popup #edit_entry_submit_save
 {
-	float: right;	
+	float: left;
+	margin-left: 90px;
 }
 
 .entry_popup label
@@ -1073,8 +1073,8 @@ div#edit_area_room_submit_back {float: left; width: <?php echo $edit_area_room_l
 div#edit_area_room_submit_save {float: left; clear: none; width: auto}
 #edit_area_room_submit_back input {float: right}
 div#edit_entry_submit_back {float: left; width: <?php echo $general_left_col_width ?>em; max-width: <?php echo $edit_entry_left_col_max_width ?>em}
-div#edit_entry_submit_save {float: left; clear: none; width: auto}
-#edit_entry_submit_back input {float: right}
+#edit_entry_submit_back input {float: left }
+#edit_entry_submit_save input { width: 80px; }
 
 
 .form_general .div_dur_mins input{width: 4.0em}
@@ -1097,8 +1097,14 @@ fieldset#rep_info {border-top: 1px solid <?php echo $site_faq_entry_border_color
 
 .form_general label.secondary {font-weight: normal; width: auto}
 
-div#conflict_check, div#policy_check {float: left; clear: none; width: 2em; padding: 1em 0.5em; cursor: pointer}
-div#conflict_check {margin-left: 3em}
+div#conflict_check, div#policy_check {
+	float: right; 
+	clear: none; 
+	padding-top: 4px;
+	cursor: pointer;
+	font-size: x-large;
+}
+div#conflict_check {margin-right: 40px;}
 div.good {color: green}
 div.bad {color: red}
 
@@ -1110,6 +1116,13 @@ div.bad {color: red}
 /* ------------ EDIT_ENTRY_HANDLER.PHP ------------------*/
 .edit_entry_handler div#submit_buttons {float: left}
 .edit_entry_handler #submit_buttons form {float: left; margin: 1em 2em 1em 0}
+fieldset .submit_buttons { margin-top: 15px; }
+fieldset .not_ajax { margin-top: 0px; width: 100%; display: inline; padding: 20px 0;}
+fieldset .not_ajax #edit_entry_submit_back { width: 80px; margin-left: 20px;}
+fieldset .not_ajax #edit_entry_submit_back input { width: 100%;}
+fieldset .not_ajax #edit_entry_submit_save { width: 150px; clear: none; margin-left: 40px;}
+fieldset .not_ajax #edit_entry_submit_save input { width: 100%; }
+fieldset .not_ajax #conflict_check { width: 30%; margin: 0; clear: none; float: left; margin-left: 50px;}
 
 
 /* ------------ EDIT_USERS.PHP ------------------*/
