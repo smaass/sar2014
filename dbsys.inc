@@ -15,9 +15,12 @@ $tbl_users     = $db_tbl_prefix . "users";
 $tbl_variables = $db_tbl_prefix . "variables";
 $tbl_zoneinfo  = $db_tbl_prefix . "zoneinfo";
 
-// New tables
+// Notifications tables
 $tbl_notifications_registry = "notifications_registry";
-$tbl_notifications_info     = "notifications_info";
+$tbl_notifications_event    = "notifications_event";
+$tbl_notifications_text     = "notifications_text";
+$tbl_notifications_time     = "notifications_time";
+$tbl_notifications_type     = "notifications_type";
 
 $db_schema_version = 30;
 $local_db_schema_version = 1;

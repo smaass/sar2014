@@ -41,7 +41,7 @@ $sql = "SELECT reg.id as id,
                room.room_name as room_name, 
                entry.name as event_name
         FROM $tbl_notifications_registry as reg,
-             $tbl_notifications_info as inf, 
+             $tbl_notifications_text as inf, 
              $tbl_entry as entry, 
              $tbl_room as room
         WHERE reg.text_id = inf.id

@@ -840,6 +840,28 @@ function create_addresses($data, $action)
 }
 
 
+function getTextId($event_type, $notification_type) {
+  $sql = "SELECT notifications_text.id AS id FROM notifications_text, notifications_event
+          WHERE event_name = '$event_type'
+          AND notifications_event.id = notifications_text.id_event
+          AND id_type = $notification_type";
+  $result = mysql_fetch_assoc(sql_query($sql));
+  return $result['id'];
+}
+
+function getReminderOffsets($event_type) {
+  $sql = "SELECT offset FROM notifications_time, notifications_event
+          WHERE event_name = '$event_type'
+          AND notifications_time.event_type = notifications_event.id";
+  $result = sql_query($sql);
+
+  $resultArray = array();
+  while ($record = mysql_fetch_assoc($result)) {
+    array_push($resultArray, $record['offset']);
+  }
+  return $resultArray;
+}
+
 // }}}
 // {{{ notifyAdminOnBooking()
 
@@ -872,148 +894,37 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   error_log("Bookings ".print_r($data, true)."\n", 3, "errors.log");
   error_log("Previous ".print_r($mail_previous, true)."\n", 3, "errors.log");
 
-  $sql = "SELECT id, reminder_offset FROM $tbl_notifications_info WHERE type = '$data[tipo_evento]'";
+  $text_id = getTextId($data['tipo_evento'], 2);
+  $reminders = getReminderOffsets($data['tipo_evento']);
 
-  $result = sql_query($sql); 
+  foreach ($reminders as $offset) {
+    $diff_time = $data['start_time'] - $offset;
+    $notification_time = date('Y-m-d H:i:s', $diff_time);
+    $start_time = date('Y-m-d H:i:s', $data['start_time']);
 
-  // Check result
+    if ($mail_previous) {
+      removeNotifications($mail_previous[id]);
+      addNotification($text_id, $mail_previous[emails], $notification_time, $mail_previous[id], $start_time);
+    }
+    else if (strlen(str_replace(';', '', $data[emails])) > 0) {
+      addNotification($text_id, $data[emails], $notification_time, $data[id], $start_time);
+    }
+  }
+}
+
+function removeNotifications($event_id) {
+  $sql = 'DELETE FROM notifications_registry WHERE event_id = $event_id';
+  sql_query($sql);
+}
+
+function addNotification($text_id, $mail_list, $notification_datetime, $event_id, $event_datetime) {
+  $sql = "INSERT INTO notifications_registry (text_id, mail_list, notification_datetime, event_id, event_datetime)
+          VALUES ($text_id, '$mail_list', '$notification_datetime', $event_id, '$event_datetime')";
+
+  $result = sql_query($sql);
   if (!$result) {
-      error_log('Consulta no válida: ' . $sql . ' + '. mysql_error() . "\n", 3, "errors.log");
+    error_log("Error al insertar las notificaciones ".$sql." + ".mysql_error() . "\n", 3 , "errors.log");
   }
-
-  $notification_info = mysql_fetch_assoc($result);
-
-  $text_id = $notification_info['id'];
-
-  $diff_time = $data['start_time'] - $notification_info['reminder_offset'];
-
-  $notification_time = date('Y-m-d H:i:s', $diff_time);
-  $start_time = date('Y-m-d H:i:s', $data['start_time']);
-
-  // Check if we are editing a booking
-  if($mail_previous){
-    // We need to update all the notifications associated with this booking
-    $sql = "UPDATE $tbl_notifications_registry
-            SET mail_list = '$mail_previous[emails]', 
-                notification_datetime = '$notification_time',
-                event_datetime = '$start_time',
-                text_id = $text_id
-            WHERE event_id = $mail_previous[id]";
-
-    $result = sql_query($sql); 
-    if(!$result){
-         error_log("Error al insertar las notificaciones ".$sql." + ".mysql_error() . "\n", 3 , "errors.log");
-    }
-  } else if (strlen(str_replace(';', '', $data[emails])) > 0) {
-    $sql = "INSERT INTO $tbl_notifications_registry
-                        (text_id, mail_list, notification_datetime, event_id, event_datetime) 
-            VALUES ($text_id";
-
-    $sql .= ", '$data[emails]'";
-
-    $sql .= ", '$notification_time', '$data[id]', '$start_time')";
-              
-    $result = sql_query($sql); 
-    if(!$result){
-         error_log("Error al insertar las notificaciones ".$sql." + ".mysql_error() . "\n", 3 , "errors.log");
-    }  
-  }
-
-  
-/* The old mailing functionality
-  global $mail_settings, $enable_periods;
-  
-  if ($mail_settings['debug'])
-  {
-    echo "[DEBUG] Preparing email for new or changed booking ... <br>";
-  }
-
-  // Add some values to the $data array before we go and create the addresses
-  if (!$new_entry)
-  {
-    $data['area_admin_email'] = (!empty($mail_previous['area_admin_email'])) ? $mail_previous['area_admin_email'] : NULL;
-    $data['room_admin_email'] = (!empty($mail_previous['room_admin_email'])) ? $mail_previous['room_admin_email'] : NULL;
-  }
-  
-  // Set up the addresses (from, to and cc)
-  $addresses = create_addresses($data, $action);
-  if ($addresses === FALSE)
-  {
-    if ($mail_settings['debug'])
-    {
-      echo "[DEBUG] Email abandoned:  no addresses.<br>";
-    }
-    return;
-  }
-  
-  // Set up the subject
-  //
-  // If we're sending iCalendar notifications, then it seems that some calendar
-  // applications use the email subject as the booking title instead of the iCal
-  // SUMMARY field.   As far as I can see this is wrong, but as a circumvention
-  // we'll put the booking title in the email subject line.   (See also
-  // SF Tracker id 3297799)
-  if ($mail_settings['icalendar'] && !$enable_periods)
-  {
-    $subject = $data['name'];
-  }
-  else
-  {
-    switch ($action)
-    {
-      case "approve":
-        $subject = get_mail_vocab("mail_subject_approved");
-        break;
-      case "more_info":
-        $subject = get_mail_vocab("mail_subject_more_info");
-        break;
-      case "remind":
-        $subject = get_mail_vocab("mail_subject_reminder");
-        break;
-      default:
-        if ($new_entry)
-        {
-          $subject = get_mail_vocab("mail_subject_new_entry");
-        }
-        else
-        {
-          $subject = get_mail_vocab("mail_subject_changed_entry");
-        }
-        break;
-    }
-  }
-
-  // Create the text body
-  $compare = !$new_entry;
-  $text_body = array();
-  $text_body['content'] = create_body($data, $mail_previous, $compare, $series, $action, FALSE, $note);
-  
-  // Create the HTML body
-  $html_body = array();
-  if ($mail_settings['html'])
-  {
-    $html_body['content'] = create_body($data, $mail_previous, $compare, $series, $action, TRUE, $note);
-    $html_body['cid'] = generate_global_uid("html");
-  }
-  
-  // Create the iCalendar if required
-  $attachment = array();
-  if ($mail_settings['icalendar'] && !$enable_periods)
-  {
-    $attachment['method']   = "REQUEST";
-    $ical_components = array();
-    $ical_components[] = create_ical_event($attachment['method'], $data, $text_body, $html_body, $addresses, $series);
-    $attachment['content']  = create_icalendar($attachment['method'], $ical_components);
-    $attachment['name']     = $mail_settings['ics_filename'] . ".ics";
-  }
-
-  $result = sendMail($addresses,
-                     $subject,
-                     $text_body,
-                     $html_body,
-                     $attachment,
-                     get_mail_charset());
-*/
   return $result;
 }
 
