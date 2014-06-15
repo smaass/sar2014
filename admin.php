@@ -375,7 +375,7 @@ if ($is_admin || ($n_displayable_areas > 0))
   if ($is_admin && $areas_defined && !empty($area))
   {
   ?>
-    <form id="add_room" class="form_admin" action="add.php" method="post">
+    <form id="add_room" class="form_admin" action="add.php" method="post" onsubmit="return validar();">
       <fieldset>
       <legend><?php echo get_vocab("addroom") ?></legend>
         
@@ -399,7 +399,7 @@ if ($is_admin || ($n_displayable_areas > 0))
         ?>
             <div>
                       <label for="room_capacity"><?php echo get_vocab("capacity") ?>:</label>
-                      <input type="text" id="room_capacity" name="capacity">
+                      <input type="number" max= "299" min= "1" id="room_capacity" name="capacity">
             </div>
         <?php
         }
@@ -415,7 +415,7 @@ if ($is_admin || ($n_displayable_areas > 0))
         ?>
             <div>
                 <label for="room_slots">Cupos</label>
-                <input type="text" id="room_slots" name="slots">
+                <input type="number" max= "99" min= "1" id="room_slots" name="slots">
             </div>
         <?php
         }
@@ -434,3 +434,21 @@ if ($is_admin || ($n_displayable_areas > 0))
 echo '</div>';
 output_trailer();
 ?>
+
+<script>
+  function validar(){
+    var valid = true;
+    var cupos = 0;
+    var area = document.getElementsByName("area")[0].value;
+    if(area == 3){
+      cupos = document.getElementById("room_capacity").value;
+      valid &= cupos < 300 && cupos > 0 && cupos % 1 === 0;
+    }else if(area == 4)
+      return true;
+    else if(area == 5){
+      cupos = document.getElementById("room_slots").value;
+      valid &= cupos < 100 && cupos > 0 && cupos % 1 === 0;
+    }
+    return valid;
+  }
+</script>

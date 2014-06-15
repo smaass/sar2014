@@ -26,6 +26,17 @@ if (!isset($name) || ($name === ''))
   $error = "empty_name";
 }
 
+// Check the slots variable
+if (isset($slots) && ($slots > 99 || $slots < 1 || !is_int($slots)))
+{
+  $error .= " invalid slots";
+}
+
+// Check the slots variable
+if (isset($capacity) && ($capacity > 299 || $capacity < 1 || !is_int($capacity)))
+{
+  $error .= " invalid capacity";
+}
 // we need to do different things depending on if its a room
 // or an area
 elseif ($type == "area")
