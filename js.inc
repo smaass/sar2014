@@ -114,7 +114,7 @@ if (in_array($page, array('admin', 'edit_users', 'pending', 'report', 'search'))
   <script type="text/javascript" src="jquery/datatables/js/ColVis.min.js"></script>
   */
   ?>
-  <script type="text/javascript" src="jquery/datatables/js/ColVis.mrbs.min.js"></script>
+
   <?php
   // We also have a customised version of FixedColumns which fixes a problem to do with the
   // resizing of windows in IE7/8.   The problem has been reported.

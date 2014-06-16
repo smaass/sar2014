@@ -195,8 +195,9 @@ function create_field_entry_description($disabled=FALSE)
   }
   else
   {
-    $attributes = (isset($is_mandatory_field['entry.description']) && $is_mandatory_field['entry.description']) ? "required" : "";
-    generate_textarea($label_text, 'description', $description, $disabled, $attributes);
+    //$attributes = (isset($is_mandatory_field['entry.description']) && $is_mandatory_field['entry.description']) ? "required" : "";
+    //generate_textarea($label_text, 'description', $description, $disabled, $attributes);
+    generate_textarea($label_text, 'description', $description, $disabled, "required");
   }
   echo "</div>\n";
 }
@@ -505,7 +506,7 @@ function create_field_entry_reserva_oficina($disabled=FALSE)
   //echo "</div>\n";
 
   echo "<div id=\"div_universidad\">\n";
-  generate_input("Universidad:", 'universidad', $universidad, $disabled, 80, 'type="text" required pattern="' . REGEX_TEXT_POS . '"');
+  generate_input("Universidad:", 'universidad', $universidad, $disabled, 80, 'type="text" pattern="' . REGEX_TEXT_POS . '"');
   echo "</div>\n";
 
   echo "<div id=\"div_pais\">\n";
@@ -1723,9 +1724,11 @@ if (! $ajax){
 <script type="text/javascript" src="js/general.js.php?area=<?php echo $area; ?>"></script-->
 
 <script>
-  // Set the call to validate emails
-  //$("#f_emails").on('blur',function(){
-  //	  console.log(this.value);
-  //    return validarEmails(this.value);
-  //});  
+function getURLParameter(name) {
+      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+  }
+  
+  if(getURLParameter("charla")){
+    document.getElementById("tipo_evento").selectedIndex=2;
+  }
 </script>

@@ -1091,20 +1091,20 @@ init = function() {
 					$('[id*=div_evento_][id!=div_evento_clase]').css('display','none');
 					$('#div_evento_clase').css('display','block');
 					$('label[for="name"]').text("Nombre (*):");
-					$('label[for="description"]').text("Descripción Completa:");
+					$('label[for="description"]').text("Descripción Completa (*):");
 					break;
 				case 'Reunión':
 					$('[id*=div_evento_][id!=div_evento_reunion]').css('display','none');
 					$('#div_evento_reunion').css('display','block');
 					$('label[for="name"]').text("Nombre (*):");
-					$('label[for="description"]').text("Descripción Completa:");
+					$('label[for="description"]').text("Descripción Completa (*):");
 					break;
 				case 'Charla':
         case 'Defensa':
 					$('[id*=div_evento_][id!=div_evento_defensa]').css('display','none');
 					$('#div_evento_defensa').css('display','block');
 					$('label[for="name"]').text("Titulo (*):");
-					$('label[for="description"]').text("Resumen");
+					$('label[for="description"]').text("Resumen (*)");
 					break;
 			}
 		});

@@ -739,11 +739,13 @@ if (isset($change_room) && !empty($room))
                     echo "</div>\n";
                 }
 
+                /*
                 // Room admin email
                 echo "<div>\n";
                 echo "<label for=\"room_admin_email\" title=\"" . get_vocab("email_list_note") . "\">" . get_vocab("room_admin_email") . ":</label>\n";
                 echo "<textarea id=\"room_admin_email\" name=\"room_admin_email\" rows=\"4\" cols=\"40\"$disabled>" . htmlspecialchars($row["room_admin_email"]) . "</textarea>\n";
                 echo "</div>\n";
+                */
 
                 // Description
                 echo "<div>\n";
@@ -765,11 +767,13 @@ if (isset($change_room) && !empty($room))
                     echo "<textarea id=\"specifications\" name=\"specifications\" $disabled>" . htmlspecialchars($row2["especificaciones"]) . "</textarea>\n";
                     echo "</div>\n";
 
+                    /*
                     // Photo
                     echo "<div>\n";
                     echo "<label for=\"photo\">" . "Foto" . ":</label>\n";
                     echo "<input type=\"file\" id=\"photo\" name=\"photo\" value=\"" . htmlspecialchars($row2["foto"]) . "\" $disabled>\n";
                     echo "</div>\n";
+                    */
                 }
                 else if($area == 5) {
                     // Slots

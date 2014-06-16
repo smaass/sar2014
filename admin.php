@@ -179,7 +179,23 @@ if ($is_admin || ($n_displayable_areas > 0))
   echo "<div id=\"room_form\">\n";
   if (isset($area))
   {
-    $res = sql_query("SELECT * FROM $tbl_room WHERE area_id=$area ORDER BY sort_key");
+    // Oficinas de trabajo no necesitan tabla adicional
+    $sql_mod = "";
+    $extra_fields = array();
+
+    if($area == 4) // Recursos computacionales
+    {
+      $sql_mod = "join $tbl_room_recursos as rec on rec.id = room.id";
+      $extra_fields = sql_field_info($tbl_room_recursos);
+    } 
+    else if($area == 3) // Salas publicas
+    {
+      $sql_mod = "join $tbl_room_publicas as pub on pub.id = room.id";
+      $extra_fields = sql_field_info($tbl_room_publicas);
+    } 
+    
+    $res = sql_query("SELECT * FROM $tbl_room as room $sql_mod WHERE area_id=$area ORDER BY sort_key");
+
     if (! $res)
     {
       trigger_error(sql_error(), E_USER_WARNING);
@@ -193,7 +209,9 @@ if ($is_admin || ($n_displayable_areas > 0))
     {
        // Get the information about the fields in the room table
       $fields = sql_field_info($tbl_room);
-    
+
+      $fields = array_merge($fields, $extra_fields);
+        
       // Build an array with the room info and also see if there are going
       // to be any rooms to display (in other words rooms if you are not an
       // admin whether any rooms are enabled)
@@ -233,7 +251,18 @@ if ($is_admin || ($n_displayable_areas > 0))
         }
         // ignore these columns, either because we don't want to display them,
         // or because we have already displayed them in the header column
-        $ignore = array('id', 'area_id', 'room_name', 'disabled', 'sort_key', 'custom_html', 'capacity', 'expositor_profesor', 'titulo_charla_nombre_curso', 'tipo_presentacion', 'email_involucrados');
+        $ignore = array('id', 'area_id', 'room_name', 'disabled', 'room_admin_email', 'sort_key', 'custom_html', 'capacity', 'expositor_profesor', 'titulo_charla_nombre_curso', 'tipo_presentacion', 'email_involucrados');
+        
+        // Oficinas de trabajo no necesitan ignorar campos
+        if($area == 3) // Salas publicas
+        {
+          $ignore[] = 'capacity_for_multientry';
+        } 
+        else if($area == 4) // Recursos computacionales
+        {
+          $ignore[] = 'capacity_for_multientry';
+        }
+
         foreach($fields as $field)
         {
           if (!in_array($field['name'], $ignore))
@@ -248,6 +277,12 @@ if ($is_admin || ($n_displayable_areas > 0))
               case 'capacity':
               case 'room_admin_email':
                 $text = get_vocab($field['name']);
+                break;
+              case 'especificaciones':
+                $text = "Especificaciones";
+                break;
+              case 'capacidad':
+                $text = "Capacidad";
                 break;
               // any user defined fields
               default:
@@ -375,7 +410,7 @@ if ($is_admin || ($n_displayable_areas > 0))
   if ($is_admin && $areas_defined && !empty($area))
   {
   ?>
-    <form id="add_room" class="form_admin" action="add.php" method="post">
+    <form id="add_room" class="form_admin" action="add.php" method="post" onsubmit="return validar();">
       <fieldset>
       <legend><?php echo get_vocab("addroom") ?></legend>
         
@@ -399,7 +434,7 @@ if ($is_admin || ($n_displayable_areas > 0))
         ?>
             <div>
                       <label for="room_capacity"><?php echo get_vocab("capacity") ?>:</label>
-                      <input type="text" id="room_capacity" name="capacity">
+                      <input type="number" max= "299" min= "1" id="room_capacity" name="capacity">
             </div>
         <?php
         }
@@ -407,7 +442,7 @@ if ($is_admin || ($n_displayable_areas > 0))
         ?>
             <div>
                 <label for="room_specifications">Especificaciones</label>
-                <input type="text" id="room_specifications" name="specifications">
+                <textarea id="room_specifications" name="specifications" rows="4" cols="30" maxlength="300" style='margin-left: 1em;'></textarea>
             </div>
         <?php
         }
@@ -415,7 +450,7 @@ if ($is_admin || ($n_displayable_areas > 0))
         ?>
             <div>
                 <label for="room_slots">Cupos</label>
-                <input type="text" id="room_slots" name="slots">
+                <input type="number" max= "99" min= "1" id="room_slots" name="slots">
             </div>
         <?php
         }
@@ -434,3 +469,21 @@ if ($is_admin || ($n_displayable_areas > 0))
 echo '</div>';
 output_trailer();
 ?>
+
+<script>
+  function validar(){
+    var valid = true;
+    var cupos = 0;
+    var area = document.getElementsByName("area")[0].value;
+    if(area == 3){
+      cupos = document.getElementById("room_capacity").value;
+      valid &= cupos < 300 && cupos > 0 && cupos % 1 === 0;
+    }else if(area == 4)
+      return true;
+    else if(area == 5){
+      cupos = document.getElementById("room_slots").value;
+      valid &= cupos < 100 && cupos > 0 && cupos % 1 === 0;
+    }
+    return valid;
+  }
+</script>
