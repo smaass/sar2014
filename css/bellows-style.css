@@ -15,40 +15,55 @@
 }
 
 .header3{
-    background: #3F9745;
+    background: #4FB755;
 }
 
     .header3:hover{
-        background:#4CBA54;
+        background:#5DD760;
     }
 
 .header4{
-    background: #456D67;
+    background: #D37441;
 }
 
     .header4:hover{
-        background:#5A9189;
+        background:#E38746;
     }
 
 .header5{
-    background: #4A9187;
+    background: #2AA1D7;
 }
 
     .header5:hover{
-        background:#5CB5A9;
+        background:#2AC1F7;
     }
 
 .area3{
-    background: #3F9745;
+    background: #4FB755;
 }
 
 .area4{
-    background: #456D67;
+    background: #D37441;
 }
 
 .area5{
-    background: #4A9187;
+    background: #2AA1D7;
 }
+
+.area3-current{
+    background: #2EFF12;
+}
+
+.area4-current{
+    background: #FF8811;
+}
+
+.area5-current{
+    background: #1173F2;
+}
+
+
+
     
     .m-bellows .m-item:first-child .m-header {
         -webkit-border-top-left-radius: 9px;
@@ -76,7 +91,7 @@
     white-space:nowrap;
 }
 .m-bellows .m-inner-content {
-    padding: 10px 15px;
+    padding: 0px 10px 15px;
     background: #ddf;
 }
 .m-bellows .m-inner-content ul li {

@@ -1153,3 +1153,288 @@ Previous Array
 (
 )
 
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Makes me laugh
+    [type] => I
+    [description] => pok
+    [room_id] => 29
+    [start_time] => 1402916400
+    [end_time] => 1402929000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-536a21cd3041e-ec179d44@localhost
+    [ical_sequence] => 1
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => oin
+    [curso] => f34
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 3.5
+    [dur_units] => hours
+    [id] => 188
+    [room_name] => Sala de Reuniones 3° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+    [room_name] => Sala de Reuniones 3° piso
+    [room_admin_email] => 
+    [area_id] => 3
+    [area_name] => Salas Públicas
+    [area_admin_email] => 
+    [room_disabled] => 0
+    [area_disabled] => 0
+    [duration] => 2.5
+    [id] => 146
+    [start_time] => 1402916400
+    [end_time] => 1402925400
+    [entry_type] => 0
+    [repeat_id] => 0
+    [room_id] => 29
+    [last_updated] => 1399464397
+    [create_by] => admin
+    [name] => Makes me laugh
+    [type] => I
+    [description] => pok
+    [status] => 0
+    [reminded] => 
+    [entry_info_time] => 
+    [entry_info_user] => 
+    [entry_info_text] => 
+    [ical_uid] => MRBS-536a21cd3041e-ec179d44@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [profesor] => oin
+    [curso] => f34
+    [expositor] => 
+    [tipo_charla] => 
+    [resumen_expositor] => 
+    [tipo_evento] => Clase
+    [dur_units] => hours
+    [rep_type] => 0
+    [repeat_info_time] => 
+    [repeat_info_user] => 
+    [repeat_info_text] => 
+)
+
+INSERTING INTO"mrbs_entry"
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => dsf
+    [type] => I
+    [description] => \r\n
+    [room_id] => 27
+    [start_time] => 1402921800
+    [end_time] => 1402925400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f6b73d0a48-bc0ffc2d@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => 
+    [curso] => 
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 190
+    [room_name] => Auditorio 1
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => asd
+    [type] => I
+    [description] => asd
+    [room_id] => 30
+    [start_time] => 1401811200
+    [end_time] => 1401811260
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f6cdf50389-bffdcbda@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Oficina
+    [universidad] => 
+    [pais] => asd
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 191
+    [room_name] => Oficina 311
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => asd
+    [type] => I
+    [description] => asd
+    [room_id] => 29
+    [start_time] => 1401796800
+    [end_time] => 1401800400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f6cf2345b3-06db2961@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => 
+    [curso] => 
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 192
+    [room_name] => Sala de Reuniones 3° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => sdfs
+    [type] => I
+    [description] => sfdsf
+    [room_id] => 29
+    [start_time] => 1401879600
+    [end_time] => 1401883200
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f6d0965c90-2d4a399d@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Clase
+    [profesor] => 
+    [curso] => 
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 193
+    [room_name] => Sala de Reuniones 3° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => asd
+    [type] => I
+    [description] => sd
+    [room_id] => 34
+    [start_time] => 1401724800
+    [end_time] => 1401724860
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f6f920f783-56b50d49@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Oficina
+    [universidad] => 
+    [pais] => asd
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 194
+    [room_name] => Oficina 999
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO"mrbs_entry"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => asd
+    [type] => I
+    [description] => asd
+    [room_id] => 34
+    [start_time] => 1401724800
+    [end_time] => 1401724860
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f6fa0d5047-9678600d@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Oficina
+    [universidad] => 
+    [pais] => asd
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => days
+    [id] => 195
+    [room_name] => Oficina 999
+    [area_name] => Oficinas de Trabajo
+)
+
+Previous Array
+(
+)
+

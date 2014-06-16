@@ -1422,12 +1422,13 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
     else  // list format
     {
       $out_html .= "<ul class=\"sub-menu\" >\n";
+      $class_current = "area$area-current";
       if ($area == $area_of_trabajo){
-      	$offices_id = get_work_offices($res);
-      	
+      	$offices_id = get_work_offices($res);      	
       	$out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;\">";
+      	
       	if($currentRoom == null)
-      		$out_html .= "<span selected"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
+      		$out_html .= "<span selected class=\"$class_current\""; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
       	else
       		$out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
       	$out_html .= " id=\"vista_general\">";
@@ -1438,7 +1439,7 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$value[0]."\">";
           if($value[0] == $currentRoom)
-          	$out_html .= "<span selected"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
+          	$out_html .= "<span selected class=\"$class_current\""; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
           else
           	$out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= " id=".$value[0] .">";
@@ -1452,7 +1453,7 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\">";
           if($row['id'] == $currentRoom)
-          	$out_html .= "<span selected";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
+          	$out_html .= "<span selected class=\"$class_current\"";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
           else
           	$out_html .= "<span";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
           $out_html .= " id=".$row['id'] .">";

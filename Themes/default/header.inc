@@ -160,7 +160,7 @@ function print_theme_header($day, $month, $year, $area, $room)
         <form id="header_search" class="Search" method="get" action="search.php">
             <a href="search.php?advanced=1"><?php echo get_vocab("search") ?>:</a>
             <p>
-            <input type="search" name="search_str" value="<?php echo htmlspecialchars($search_str) ?>" required>
+            <input type="search" name="search_str" value="<?php echo htmlspecialchars($search_str) ?>" placeholder="Palabra Clave..." required>
             <input type="hidden" name="day"        value="<?php echo $day        ?>">
             <input type="hidden" name="month"      value="<?php echo $month      ?>">
             <input type="hidden" name="year"       value="<?php echo $year       ?>">

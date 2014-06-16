@@ -124,9 +124,14 @@ expires_header(60*30); // 30 minute expiry
 	    margin-top: 5px;
 	    width: 100%;
 	    height: 100%;
-	    border-radius: 5px;
+	    border-radius: 10px;
+	}
+	.Search placeholder {
+		color: #888;
 	}
 	
+	
+	 
 /* ------------ calendar and nav -----------------------------*/
 	.Calendar{
 		border-radius: 8px;
@@ -208,7 +213,7 @@ expires_header(60*30); // 30 minute expiry
     height: 54px;
     text-align: left;
     font-weight: bold;
-    padding-left: 20px;
+    padding-left: 10px;
     border: 0;
     border-radius: 9px;
     background: rgba(183, 67, 67, 1);
@@ -220,15 +225,21 @@ expires_header(60*30); // 30 minute expiry
 }
 #dwm_menu ul { margin: 0; }
 /* ------------ Rooms list -----------------------------*/
+ul.sub-menu li a span{
+	display:block;
+	width:250px;
+	padding: 5px 0px 5px 5px;	
+	font-size:115%;
+}
 ul.sub-menu li a span#vista_general {
 	color:#E40000;
 	font-size:115%
 }
-
+/*
 ul.sub-menu li a span[selected]::before {
 	content:'>';
 }
-
+*/
 ul.sub-menu li a span[selected] {
 	//font-size:125%;
 }
