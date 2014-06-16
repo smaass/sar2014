@@ -179,7 +179,23 @@ if ($is_admin || ($n_displayable_areas > 0))
   echo "<div id=\"room_form\">\n";
   if (isset($area))
   {
-    $res = sql_query("SELECT * FROM $tbl_room WHERE area_id=$area ORDER BY sort_key");
+    // Oficinas de trabajo no necesitan tabla adicional
+    $sql_mod = "";
+    $extra_fields = array();
+
+    if($area == 4) // Recursos computacionales
+    {
+      $sql_mod = "join $tbl_room_recursos as rec on rec.id = room.id";
+      $extra_fields = sql_field_info($tbl_room_recursos);
+    } 
+    else if($area == 3) // Salas publicas
+    {
+      $sql_mod = "join $tbl_room_publicas as pub on pub.id = room.id";
+      $extra_fields = sql_field_info($tbl_room_publicas);
+    } 
+    
+    $res = sql_query("SELECT * FROM $tbl_room as room $sql_mod WHERE area_id=$area ORDER BY sort_key");
+
     if (! $res)
     {
       trigger_error(sql_error(), E_USER_WARNING);
@@ -193,7 +209,9 @@ if ($is_admin || ($n_displayable_areas > 0))
     {
        // Get the information about the fields in the room table
       $fields = sql_field_info($tbl_room);
-    
+
+      $fields = array_merge($fields, $extra_fields);
+        
       // Build an array with the room info and also see if there are going
       // to be any rooms to display (in other words rooms if you are not an
       // admin whether any rooms are enabled)
@@ -233,7 +251,18 @@ if ($is_admin || ($n_displayable_areas > 0))
         }
         // ignore these columns, either because we don't want to display them,
         // or because we have already displayed them in the header column
-        $ignore = array('id', 'area_id', 'room_name', 'disabled', 'sort_key', 'custom_html', 'capacity', 'expositor_profesor', 'titulo_charla_nombre_curso', 'tipo_presentacion', 'email_involucrados');
+        $ignore = array('id', 'area_id', 'room_name', 'disabled', 'room_admin_email', 'sort_key', 'custom_html', 'capacity', 'expositor_profesor', 'titulo_charla_nombre_curso', 'tipo_presentacion', 'email_involucrados');
+        
+        // Oficinas de trabajo no necesitan ignorar campos
+        if($area == 3) // Salas publicas
+        {
+          $ignore[] = 'capacity_for_multientry';
+        } 
+        else if($area == 4) // Recursos computacionales
+        {
+          $ignore[] = 'capacity_for_multientry';
+        }
+
         foreach($fields as $field)
         {
           if (!in_array($field['name'], $ignore))
@@ -248,6 +277,12 @@ if ($is_admin || ($n_displayable_areas > 0))
               case 'capacity':
               case 'room_admin_email':
                 $text = get_vocab($field['name']);
+                break;
+              case 'especificaciones':
+                $text = "Especificaciones";
+                break;
+              case 'capacidad':
+                $text = "Capacidad";
                 break;
               // any user defined fields
               default:
