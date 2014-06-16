@@ -609,7 +609,8 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
 	    //echo "<a href=\"edit_entry.php?$query_string\"></a></div>";
 	    $entry_link = "'edit_entry.php?" . $query_string . "'";      	
 	    if($i==0) {
-	    	echo "<div class=\"celldiv slots1\" onclick=\"showPopup($entry_link);\" ><a>Reservar</a></div>";	    } else {
+	    	echo "<div class=\"celldiv slots1\" onclick=\"showPopup($entry_link);\" ><a>Reservar</a></div>";
+	    } else {
 	    	echo "<div class=\"celldiv slots1\" onclick=\"showPopup($entry_link);\" ></div>";
 	    }
 	    echo "</div>";

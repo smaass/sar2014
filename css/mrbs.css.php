@@ -83,7 +83,7 @@ expires_header(60*30); // 30 minute expiry
         padding: 15px;
 		border-radius: 8px;
 		box-shadow: 0 0 8px #666;
-		background-color:#8EA3A0;
+		background-color:<?php echo $banner_back_color?>;
 	}
 	.Links{
 		position:absolute;
@@ -211,7 +211,7 @@ expires_header(60*30); // 30 minute expiry
     padding-left: 20px;
     border: 0;
     border-radius: 9px;
-    background: rgba(183, 67, 67, 1);
+    background: #EB5F5F;
     color: #ffffff;
 }
 

@@ -15,27 +15,27 @@
 }
 
 .header3{
-    background: #3F9745;
+    background: #F4696D;
 }
 
     .header3:hover{
-        background:#4CBA54;
+        background:#F48B8E;
     }
 
 .header4{
-    background: #456D67;
+    background: #F5D36A;
 }
 
     .header4:hover{
-        background:#5A9189;
+        background:#F5DB8C;
     }
 
 .header5{
-    background: #4A9187;
+    background: #6D6BCF;
 }
 
     .header5:hover{
-        background:#5CB5A9;
+        background:#8583CF;
     }
 
 .area3{
