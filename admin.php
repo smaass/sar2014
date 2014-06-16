@@ -407,7 +407,7 @@ if ($is_admin || ($n_displayable_areas > 0))
         ?>
             <div>
                 <label for="room_specifications">Especificaciones</label>
-                <input type="text" id="room_specifications" name="specifications">
+                <textarea id="room_specifications" name="specifications" rows="4" cols="30" maxlength="300" style='margin-left: 1em;'></textarea>
             </div>
         <?php
         }

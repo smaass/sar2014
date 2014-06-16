@@ -592,10 +592,11 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
           $entry_link = "'edit_entry.php?" . $query_string . "'";
           $room_link = "month.php?day=$cday&amp;month=$month&amp;year=$year&amp;area=$area&amp;room=$roomid";
           $resource = $d[$cday]["name"][$i];
-          echo "<table style='padding-bottom:5em;'><tr>";
-          echo "<td style='border-style:none; align=left;'><a href=\"$room_link\" title=\"$details\">$resource</a></td>\n";
-          echo "<td style='border-style:none; align=right;' onclick=\"showPopup($entry_link);\" title='Agregar reserva'><div class='celldiv slots1' style='margin-left:1.5em;'> [+] </div></td>\n";
-          echo "</tr></table>";
+          echo "<table style='padding-bottom:5em;'><tr>".
+            "<td style='border-style:none; align=left;'><a href=\"$room_link\" title=\"$details\">$resource</a></td>\n".
+            "<td style='border-style:none; align=right;' onclick=\"showPopup($entry_link);\" title='Agregar reserva'>".
+            "<div class='celldiv slots1' style='margin-left:1.5em;'> [+] </div></td>\n".
+            "</tr></table>\n";
         }
         echo "</div>\n";
       }

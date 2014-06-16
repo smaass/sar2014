@@ -422,7 +422,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
     echo "<div>\n";
     if (!$series)
     {
-      echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;returl=$link_returl\">". get_vocab("editentry") ."</a>";
+      echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;charla=si&amp;returl=$link_returl\">". get_vocab("editentry") ."</a>";
     } 
     if (!empty($repeat_id)  && !$series && $repeats_allowed)
     {

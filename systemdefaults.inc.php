@@ -521,8 +521,8 @@ $working_days = array(1,2,3,4,5);  // Mon-Fri
 //                                          'c' => 'Coffee', 
 //                                          's' => 'Sandwiches',
 //                                          'h' => 'Hot Lunch');
-
 $is_mandatory_field = array();
+//$is_mandatory_field['entry.description'] = true;
 // You can define custom entry fields to be mandatory by setting
 // items in the array $is_mandatory_field.   (Note that making a checkbox
 // field mandatory means that the box must be checked.)   For example:
