@@ -46,6 +46,7 @@ $sql = "SELECT reg.id as id,
              $tbl_room as room
         WHERE reg.text_id = inf.id
           AND '{$today}' > reg.notification_datetime
+          AND '{$today}' < reg.event_datetime
           AND sent = 0
           AND room.id = entry.room_id
           AND entry.id = reg.event_id";

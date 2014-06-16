@@ -846,7 +846,8 @@ function getTextId($event_type, $notification_type) {
           AND notifications_event.id = notifications_text.id_event
           AND id_type = $notification_type";
   $result = mysql_fetch_assoc(sql_query($sql));
-  return $result['id'];
+  if ($result) return $result['id'];
+  return FALSE;
 }
 
 function getReminderOffsets($event_type) {
@@ -876,11 +877,7 @@ function getReminderOffsets($event_type) {
  * @param string  $note          a note that is used with "more_info"
  * @return bool                  TRUE or PEAR error object if fails
  */
-function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $action="book", $note='')
-{
-  global $tbl_notifications_info;
-  global $tbl_notifications_registry;
-
+function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $action="book", $note='') {
   //Escape the special characters
   foreach ($data as $key => $value) {
     $data[$key] = htmlspecialchars(sql_escape($value));
@@ -894,20 +891,29 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   error_log("Bookings ".print_r($data, true)."\n", 3, "errors.log");
   error_log("Previous ".print_r($mail_previous, true)."\n", 3, "errors.log");
 
-  $text_id = getTextId($data['tipo_evento'], 2);
+  $thereAreEmails = strlen(str_replace(';', '', $data[emails])) > 0;
+  $start_time = date('Y-m-d H:i:s', $data['start_time']);
+
+  $creationTextId = getTextId($data['tipo_evento'], 1);
+  // If there is a creation text for this event, we schedule an immediate notification
+  if ($creationTextId && !$mail_previous && $thereAreEmails) {
+    addNotification($creationTextId, $data[emails], date('Y-m-d H:i:s'), $data[id], $start_time);
+  }
+
+  $reminderTextId = getTextId($data['tipo_evento'], 2);
   $reminders = getReminderOffsets($data['tipo_evento']);
 
+  // We schedule the reminder notifications
   foreach ($reminders as $offset) {
     $diff_time = $data['start_time'] - $offset;
     $notification_time = date('Y-m-d H:i:s', $diff_time);
-    $start_time = date('Y-m-d H:i:s', $data['start_time']);
 
     if ($mail_previous) {
       removeNotifications($mail_previous[id]);
-      addNotification($text_id, $mail_previous[emails], $notification_time, $mail_previous[id], $start_time);
+      addNotification($reminderTextId, $mail_previous[emails], $notification_time, $mail_previous[id], $start_time);
     }
-    else if (strlen(str_replace(';', '', $data[emails])) > 0) {
-      addNotification($text_id, $data[emails], $notification_time, $data[id], $start_time);
+    else if ($thereAreEmails) {
+      addNotification($reminderTextId, $data[emails], $notification_time, $data[id], $start_time);
     }
   }
 }
