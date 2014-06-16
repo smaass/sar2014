@@ -543,12 +543,12 @@ function cell_html($cell, $query_strings)
 //    $url               the url to form the basis of the link in the time cell
 function time_cell_html($t, $time_t, $time_t_stripped, $slot_seconds, $url)
 {
-  global $enable_periods, $periods;
+  global $enable_periods, $periods, $area;
   
   $html = '';
   
   $html .= tdcell("row_labels", 1, array('name' => 'seconds', 'value' => $slot_seconds));
-  $html .= "<div class=\"celldiv slots1\">\n";
+  $html .= "<div class=\"timediv slots1 area$area\">\n";
   if ( $enable_periods )
   {
     
@@ -1188,6 +1188,7 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
       }
       $header_inner .= "</span>";
       $header_inner .= "</th>\n";
+      echo $header_inner;
     }
     // next: line to display times on right side
     if ( FALSE != $row_labels_both_sides )
@@ -1199,7 +1200,7 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
   else
   {
     // the standard view, with days along the top and times down the side
-    $header_inner .= "<th class=\"first_last\">".($enable_periods ? get_vocab("period") : get_vocab("time")).":</th>";
+    $header_inner .= "<th class=\"first_last area$area\">".($enable_periods ? get_vocab("period") : get_vocab("time")).":</th>";
     for ($j = 0; $j<=($num_of_days-1) ; $j++)
     {
       $t = mktime( 12, 0, 0, $month, $day_start_week+$j, $year);
@@ -1218,11 +1219,11 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
         // Put the date into a data attribute so that it can be picked up by JavaScript
         if(strftime("%d", $t) == strftime("%d", $today) && strftime("%m", $t) == strftime("%m", $today)
   			&& strftime("%Y", $t) == strftime("%Y", $today)) {
-        	$th_class = "class='today'";
+        	$th_class = "today";
         } else {
         	$th_class = "";
         }
-        $header_inner .= "<th data-date=\"$date\" $th_class>" .
+        $header_inner .= "<th data-date=\"$date\" class=\"$th_class area$area\">" .
                          utf8_strftime($dformat, $t) . "</th>\n";
       }
     }

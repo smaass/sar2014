@@ -34,7 +34,7 @@
 
 .dataTables_wrapper {
   position: relative;
-  min-height: 302px;
+  min-height: 200px;
   float: left;
   width: 100%;
   clear: both;
@@ -567,5 +567,7 @@ table.display span.normal {
   display: inline;
 }
 
-
+.timediv {
+  padding: 0 0.3em 0 0.3em;
+}
 

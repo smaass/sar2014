@@ -1510,7 +1510,7 @@ function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day
 	  {
       	$out_html .= "<li class=\"m-item\" id=\"" .$li_id. "\" >";
 	  }
-      $out_html .= "<h3 class=\"m-header\">"; 
+      $out_html .= "<h3 class=\"m-header header$row[id]\">"; 
       $out_html .= "<a href=\"#" .$li_id. "\" \>";      
       $out_html .= htmlspecialchars($row['area_name']) . "</a></h3>";
       $out_html .= "<div class=\"m-content\"><div class=\"m-inner-content\">";
