@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2014 at 01:10 AM
+-- Generation Time: Jun 16, 2014 at 11:15 
 -- Server version: 5.5.31
 -- PHP Version: 5.4.16
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=303 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=310 ;
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
   `ical_sequence` smallint(6) NOT NULL DEFAULT '0',
   `emails` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `mrbs_repeat`
@@ -177,7 +177,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
 
 INSERT INTO `mrbs_repeat` (`id`, `start_time`, `end_time`, `rep_type`, `end_date`, `rep_opt`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `rep_num_weeks`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `emails`) VALUES
 (12, 1400256000, 1400256060, 3, 1407254400, '0', 34, '2014-05-06 19:42:41', 'admin', 'asdf789', 'I', 'sdf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53693b311b351-a7854c27@localhost', 0, ''),
-(13, 1400083200, 1400083260, 2, 1400083200, '0001110', 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, '');
+(13, 1400083200, 1400083260, 2, 1400083200, '0001110', 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, ''),
+(14, 1403015400, 1403019000, 1, 1403101800, '0', 27, '2014-06-15 23:57:23', 'admin', 'LLOLO', 'I', '', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-539e32995478c-450948f8@localhost', 1, 'sergio.maass@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -356,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   KEY `text_id` (`text_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=85 ;
 
 -- --------------------------------------------------------
 
@@ -373,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `notifications_text` (
   UNIQUE KEY `id_event_2` (`id_event`,`id_type`),
   KEY `id_type` (`id_type`),
   KEY `id_event` (`id_event`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `notifications_text`
@@ -402,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `notifications_time` (
   `offset` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_type` (`event_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `notifications_time`
@@ -434,7 +435,6 @@ CREATE TABLE IF NOT EXISTS `notifications_type` (
 --
 
 INSERT INTO `notifications_type` (`id`, `type_name`) VALUES
-(3, 'Cancelacion'),
 (1, 'Creación'),
 (2, 'Recordatorio');
 
