@@ -606,7 +606,7 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
 	    $entry_link .= $query_string;
 	    $entry_link .= "'";      	
 	    if($i==0) {
-	    	echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" >Reservar</div>";
+	    	echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" ><a>Reservar</a></div>";
 	    } else {
 	    	echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" ></div>";
 	    }

@@ -857,7 +857,7 @@ for ($i=1; $i<=$classes_required; $i++)
 }
 
 ?>
-div.celldiv {max-width: 100%; overflow: hidden; margin: 0; padding: 0 0 0 0.5em; cursor:pointer;}
+div.celldiv {max-width: 100%; overflow: hidden; margin: 0; padding: 0; cursor:pointer;}
 div.celldiv:hover {text-decoration:underline;}
 .row_labels div.celldiv {overflow: visible}  /* we want to see the content in the row label columns */
 <?php

@@ -1171,7 +1171,7 @@ init = function(args) {
                     .css('min-height', '<?php echo $main_cell_height ?>px')
                     .addClass('clone')
                     .width(divBooking.outerWidth())
-                    .height(divBooking.outerHeight())
+                    .height(divBooking.outerHeight());
             if (handles)
             {
               divClone.resizable({handles: handles,
