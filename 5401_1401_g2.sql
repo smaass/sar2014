@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2014 at 11:15 
+-- Generation Time: Jun 16, 2014 at 11:23 AM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.16
 
@@ -263,11 +263,11 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 --
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
-(21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, -3, '', '', '', '', 0, ''),
+(21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 1, '', '', '', '', 0, ''),
 (24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, '', '', '', '', 0, ''),
 (25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (26, 0, 4, 'Notebook 2', 'Notebook 2', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
-(27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', -30, 0, '', '', '', '', 0, ''),
+(27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', 30, 0, '', '', '', '', 0, ''),
 (28, 0, 3, 'Sala de Reuniones 4° piso', 'Sala de Reuniones 4° piso', '', 50, 0, '', '', '', '', 0, ''),
 (29, 0, 3, 'Sala de Reuniones 3° piso', 'Sala de Reuniones 3° piso', 'Sala primer piso', 10, 0, '', '', '', '', 0, ''),
 (30, 0, 5, 'Oficina 311', 'Oficina 311', 'Oficina dispuesta para profesores visitantes', 0, 4, '', '', '', '', 0, ''),
@@ -467,7 +467,6 @@ INSERT INTO `oficina_de_trabajo` (`id`, `cupo_numero`) VALUES
 CREATE TABLE IF NOT EXISTS `recurso_computacional` (
   `id` int(11) NOT NULL DEFAULT '0',
   `especificaciones` varchar(300) DEFAULT NULL,
-  `foto` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -475,10 +474,10 @@ CREATE TABLE IF NOT EXISTS `recurso_computacional` (
 -- Dumping data for table `recurso_computacional`
 --
 
-INSERT INTO `recurso_computacional` (`id`, `especificaciones`, `foto`) VALUES
-(24, '', 'tarea3_2014A.pdf'),
-(25, 'Dell XPS', ''),
-(26, 'ASUS', '');
+INSERT INTO `recurso_computacional` (`id`, `especificaciones`) VALUES
+(24, ''),
+(25, 'Dell XPS'),
+(26, 'ASUS');
 
 -- --------------------------------------------------------
 
@@ -497,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `sala_publica` (
 --
 
 INSERT INTO `sala_publica` (`id`, `capacidad`) VALUES
-(27, -30),
+(27, 30),
 (28, 50),
 (29, 10);
 
