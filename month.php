@@ -386,7 +386,7 @@ for ($weekcol = 0; $weekcol < 7; $weekcol++)
   }
   else
   {
-    echo "<th>" . day_name(($weekcol + $weekstarts)%7) . "</th>";
+    echo "<th class='area4'>" . day_name(($weekcol + $weekstarts)%7) . "</th>";
   }
 }
 echo "\n</tr>\n";
@@ -589,9 +589,14 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
         else
         {
           $roomid = $d[$cday]['id'][$i];
+          $entry_link = "'edit_entry.php?" . $query_string . "'";
           $room_link = "month.php?day=$cday&amp;month=$month&amp;year=$year&amp;area=$area&amp;room=$roomid";
           $resource = $d[$cday]["name"][$i];
-          echo "<a href=\"$room_link\" title=\"$details\">$resource</a>\n";
+          echo "<table style='padding-bottom:5em;'><tr>".
+            "<td style='border-style:none; align=left;'><a href=\"$room_link\" title=\"$details\">$resource</a></td>\n".
+            "<td style='border-style:none; align=right;' onclick=\"showPopup($entry_link);\" title='Agregar reserva'>".
+            "<div class='celldiv slots1' style='margin-left:1.5em;'> [+] </div></td>\n".
+            "</tr></table>\n";
         }
         echo "</div>\n";
       }
@@ -602,13 +607,10 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
 	    " style=\"width: " . (($monthly_view_entries_details == "both") ? '100%' : '49.9%') . "\">\n";
 	    //echo "<i>{$d[$cday][available_capacity]} cupos libres<i>";
 	    //echo "<a href=\"edit_entry.php?$query_string\"></a></div>";
-	    $entry_link = "'edit_entry.php?";
-	    $entry_link .= $query_string;
-	    $entry_link .= "'";      	
+	    $entry_link = "'edit_entry.php?" . $query_string . "'";      	
 	    if($i==0) {
-	    	echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" ><a>Reservar</a></div>";
-	    } else {
-	    	echo "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" ></div>";
+	    	echo "<div class=\"celldiv slots1\" onclick=\"showPopup($entry_link);\" ><a>Reservar</a></div>";	    } else {
+	    	echo "<div class=\"celldiv slots1\" onclick=\"showPopup($entry_link);\" ></div>";
 	    }
 	    echo "</div>";
     }

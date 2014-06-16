@@ -83,7 +83,7 @@ expires_header(60*30); // 30 minute expiry
         padding: 15px;
 		border-radius: 8px;
 		box-shadow: 0 0 8px #666;
-		background-color:rgba(136, 187, 238, 0.8);
+		background-color:#8EA3A0;
 	}
 	.Links{
 		position:absolute;
@@ -211,7 +211,8 @@ expires_header(60*30); // 30 minute expiry
     padding-left: 20px;
     border: 0;
     border-radius: 9px;
-    background: linear-gradient(to bottom, #e55 0%, #c44 100%);
+    background: rgba(183, 67, 67, 1);
+    color: #ffffff;
 }
 
 .admin_button:hover {
@@ -662,8 +663,7 @@ table.dwm_main {clear: both; width: 100%; border-spacing: 0; border-collapse: se
 // need padding put it on the contained element.
 ?>
 .dwm_main th {font-size: small; font-weight: normal; vertical-align: top; padding: 0;
-    color: <?php echo $header_font_color ?>;
-    background-color: <?php echo $header_back_color ?>;
+    color: #ffffff;
     border-left: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_header_border_color ?>}
 .dwm_main th.today {background-color:#888; }
 .dwm_main th.first_last, .dwm_main th span {padding: 0 2px}
@@ -720,7 +720,7 @@ div.booking_list {position: relative; z-index: 20;                      /* conta
     max-height: 80%; font-size: x-small;                                /* needs to be above new_booking */
     overflow: <?php echo ($month_cell_scrolling ? 'auto' : 'visible') ?>
     padding: 1px; margin-right: 2px}
-.booking_list a {font-size: x-small}
+//.booking_list a {font-size: x-small}
 div.b_center {border-top : 1px solid; border-bottom: 1px solid; padding-left: 1px; padding-right: 1px}
 div.b_left   {border-left: 1px solid; padding-left: 0px}
 div.b_right  {border-right: 1px solid; padding-right: 0px}
@@ -731,7 +731,7 @@ div.b_none   {padding: 1px}
 foreach ($color_types as $type => $col)
 {
   echo "td.$type {background-color: $col}\n";         // used in the day and week views
-  echo ".month div.$type {float: left; max-height: 1.3em; height: 1.3em; min-height: 1.3em; overflow: hidden; background-color: $col}\n";   // used in the month view
+  echo ".month div.$type {float: left; max-height: 1.6em; height: 1.6em; min-height: 1.3em; overflow: hidden; background-color: $col}\n";   // used in the month view
 }
 
 ?>
