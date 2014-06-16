@@ -249,9 +249,10 @@ div.cell_header {position: relative; width: 100%; z-index: 20;         /* needs 
 #month_main div.cell_header a.week_number {opacity: 0.5; padding: 2px 4px 0 4px}
 
 div.booking_list {position: relative; z-index: 20;                      /* contains the list of bookings */
-    max-height: 80%; font-size: x-small;                                /* needs to be above new_booking */
+    max-height: 80%; //font-size: x-small;                                /* needs to be above new_booking */
     overflow: <?php echo ($month_cell_scrolling ? 'auto' : 'visible') ?>}
-.booking_list a {font-size: x-small}
+//.booking_list a {font-size: x-small}
+
 
 
 <?php
