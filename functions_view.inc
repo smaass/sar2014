@@ -141,10 +141,14 @@ function create_details_body($data, $as_html=FALSE, $keep_private=FALSE, $room_d
  		$tbody .= create_details_row(get_vocab("profesor"), $data['profesor'], $as_html);
  		$tbody .= create_details_row(get_vocab("curso"), $data['curso'], $as_html);
  		
- 	    }else if ($tipo_evento=='Charla' || $tipo_evento=='Defensa'){
- 		$tbody .= create_details_row(get_vocab("expositor"), $data['expositor'], $as_html);
- 		$tbody .= create_details_row(get_vocab("resumen_expositor"), $data['resumen_expositor'], $as_html);
- 		$tbody .= create_details_row(get_vocab("tipo_charla"), $data['tipo_charla'], $as_html);
+    } else if ($tipo_evento=='Charla'){
+      $tbody .= create_details_row(get_vocab("expositor"), $data['expositor'], $as_html);
+      $tbody .= create_details_row(get_vocab("resumen_expositor"), $data['resumen_expositor'], $as_html);
+      $tbody .= create_details_row(get_vocab("tipo_charla"), $data['tipo_charla'], $as_html);
+    } else if ($tipo_evento=='Defensa'){
+   		$tbody .= create_details_row(get_vocab("expositor"), $data['expositor'], $as_html);
+   		$tbody .= create_details_row(get_vocab("resumen_expositor"), $data['resumen_expositor'], $as_html);
+   		$tbody .= create_details_row(get_vocab("tipo_defensa"), $data['tipo_charla'], $as_html);
  		}
  }
     

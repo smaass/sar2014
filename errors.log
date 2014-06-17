@@ -1438,3 +1438,255 @@ Previous Array
 (
 )
 
+INSERTING INTO "mrbs_entry"
+
+The DATA{"create_by":"admin","name":"La nueva otra defensa","type":"I","description":"La nueva otra defensa","room_id":"35","start_time":1403190000,"end_time":1403191800,"rep_type":0,"rep_opt":"","rep_num_weeks":"","end_date":0,"ical_uid":"MRBS-539f99e605bdd-3b28c69a@localhost","ical_sequence":0,"ical_recur_id":null,"tipo_evento":"Defensa","emails":"","expositor":"La nueva otra defensa","tipo_charla":"Defensa doctorado","resumen_expositor":"La nueva otra defensa","status":0,"entry_type":0,"repeat_id":0,"duration":30,"dur_units":"minutes"}
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => La nueva otra defensa
+    [type] => I
+    [description] => La nueva otra defensa
+    [room_id] => 35
+    [start_time] => 1403190000
+    [end_time] => 1403191800
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f99e605bdd-3b28c69a@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Defensa
+    [emails] => 
+    [expositor] => La nueva otra defensa
+    [tipo_charla] => Defensa doctorado
+    [resumen_expositor] => La nueva otra defensa
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 30
+    [dur_units] => minutes
+    [id] => 329
+    [room_name] => Auditorio 4° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO "mrbs_entry"
+
+The DATA{"create_by":"admin","name":"Defesna desconocida","type":"I","description":"Defesna desconocida","room_id":"35","start_time":1403191800,"end_time":1403195400,"rep_type":0,"rep_opt":"","rep_num_weeks":"","end_date":0,"ical_uid":"MRBS-539f9a53020db-551f5dc1@localhost","ical_sequence":0,"ical_recur_id":null,"tipo_evento":"Defensa","emails":"","expositor":"Defesna desconocida","tipo_charla":"Defensa tesis mag\u00edster","resumen_expositor":"Defesna desconocida","status":0,"entry_type":0,"repeat_id":0,"duration":1,"dur_units":"hours"}
+
+The SQL: "INSERT INTO mrbs_entry (start_time, end_time, entry_type, repeat_id, room_id, create_by, name, type, description, status, ical_uid, ical_sequence, ical_recur_id, emails) VALUES (1403191800, 1403195400, 0, 0, 35, 'admin', 'Defesna desconocida', 'I', 'Defesna desconocida', 0, 'MRBS-539f9a53020db-551f5dc1@localhost', 0, '', '')"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => Defesna desconocida
+    [type] => I
+    [description] => Defesna desconocida
+    [room_id] => 35
+    [start_time] => 1403191800
+    [end_time] => 1403195400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f9a53020db-551f5dc1@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Defensa
+    [emails] => 
+    [expositor] => Defesna desconocida
+    [tipo_charla] => Defensa tesis magíster
+    [resumen_expositor] => Defesna desconocida
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 330
+    [room_name] => Auditorio 4° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO "mrbs_entry"
+
+The DATA{"create_by":"admin","name":"The final defensa","type":"I","description":"The final defensa","room_id":"35","start_time":1403195400,"end_time":1403199000,"rep_type":0,"rep_opt":"","rep_num_weeks":"","end_date":0,"ical_uid":"MRBS-539f9ad3acfd9-3d0ba145@localhost","ical_sequence":0,"ical_recur_id":null,"tipo_evento":"Defensa","emails":"","expositor":"The final defensa","tipo_charla":"Defensa tesis mag\u00edster","resumen_expositor":"The final defensa","status":0,"entry_type":0,"repeat_id":0,"duration":1,"dur_units":"hours"}
+
+The SQL inicial: "INSERT INTO mrbs_entry (start_time, end_time, entry_type, repeat_id, room_id, create_by, name, type, description, status, ical_uid, ical_sequence, ical_recur_id, emails) VALUES (1403195400, 1403199000, 0, 0, 35, 'admin', 'The final defensa', 'I', 'The final defensa', 0, 'MRBS-539f9ad3acfd9-3d0ba145@localhost', 0, '', '')"
+
+The other SQL inicial: "INSERT INTO mrbs_entry_salas (entry_id, expositor, tipo_charla, resumen_expositor, tipo_evento) VALUES (331,'The final defensa', '', 'The final defensa', 'Defensa')"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => The final defensa
+    [type] => I
+    [description] => The final defensa
+    [room_id] => 35
+    [start_time] => 1403195400
+    [end_time] => 1403199000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f9ad3acfd9-3d0ba145@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Defensa
+    [emails] => 
+    [expositor] => The final defensa
+    [tipo_charla] => Defensa tesis magíster
+    [resumen_expositor] => The final defensa
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 331
+    [room_name] => Auditorio 4° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO "mrbs_entry"
+
+The DATA{"create_by":"admin","name":"hola defensa","type":"I","description":"resumen","room_id":"35","start_time":1403199000,"end_time":1403202600,"rep_type":0,"rep_opt":"","rep_num_weeks":"","end_date":0,"ical_uid":"MRBS-539f9b272190d-7e3de663@localhost","ical_sequence":0,"ical_recur_id":null,"tipo_evento":"Defensa","emails":"","expositor":"nombre","tipo_charla":"Defensa doctorado","resumen_expositor":"resum expo","status":0,"entry_type":0,"repeat_id":0,"duration":1,"dur_units":"hours"}
+
+The SQL inicial: "INSERT INTO mrbs_entry (start_time, end_time, entry_type, repeat_id, room_id, create_by, name, type, description, status, ical_uid, ical_sequence, ical_recur_id, emails) VALUES (1403199000, 1403202600, 0, 0, 35, 'admin', 'hola defensa', 'I', 'resumen', 0, 'MRBS-539f9b272190d-7e3de663@localhost', 0, '', '')"
+
+The other SQL inicial: "INSERT INTO mrbs_entry_salas (entry_id, expositor, tipo_charla, resumen_expositor, tipo_evento) VALUES (332,'nombre', 'Defensa doctorado', 'resum expo', 'Defensa')"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => hola defensa
+    [type] => I
+    [description] => resumen
+    [room_id] => 35
+    [start_time] => 1403199000
+    [end_time] => 1403202600
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539f9b272190d-7e3de663@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Defensa
+    [emails] => 
+    [expositor] => nombre
+    [tipo_charla] => Defensa doctorado
+    [resumen_expositor] => resum expo
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 332
+    [room_name] => Auditorio 4° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO "mrbs_entry"
+
+The DATA{"create_by":"admin","name":"La charla","type":"I","description":"La charla","room_id":"35","start_time":1403002800,"end_time":1403006400,"rep_type":0,"rep_opt":"","rep_num_weeks":"","end_date":0,"ical_uid":"MRBS-539fb92002364-b0ff7096@localhost","ical_sequence":0,"ical_recur_id":null,"tipo_evento":"Charla","emails":"","expositor":"La charla","tipo_charla":"Charla profesor","resumen_expositor":"La charla","status":0,"entry_type":0,"repeat_id":0,"duration":1,"dur_units":"hours"}
+
+The SQL inicial: "INSERT INTO mrbs_entry (start_time, end_time, entry_type, repeat_id, room_id, create_by, name, type, description, status, ical_uid, ical_sequence, ical_recur_id, emails) VALUES (1403002800, 1403006400, 0, 0, 35, 'admin', 'La charla', 'I', 'La charla', 0, 'MRBS-539fb92002364-b0ff7096@localhost', 0, '', '')"
+
+The other SQL inicial: "INSERT INTO mrbs_entry_salas (entry_id, expositor, tipo_charla, resumen_expositor, tipo_evento) VALUES (333,'La charla', 'Charla profesor', 'La charla', 'Charla')"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => La charla
+    [type] => I
+    [description] => La charla
+    [room_id] => 35
+    [start_time] => 1403002800
+    [end_time] => 1403006400
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539fb92002364-b0ff7096@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Charla
+    [emails] => 
+    [expositor] => La charla
+    [tipo_charla] => Charla profesor
+    [resumen_expositor] => La charla
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 333
+    [room_name] => Auditorio 4° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+
+INSERTING INTO "mrbs_entry"
+
+The DATA{"create_by":"admin","name":"La defensa","type":"I","description":"La defensa","room_id":"35","start_time":1403006400,"end_time":1403010000,"rep_type":0,"rep_opt":"","rep_num_weeks":"","end_date":0,"ical_uid":"MRBS-539fb94104f4a-a51b4da3@localhost","ical_sequence":0,"ical_recur_id":null,"tipo_evento":"Defensa","emails":"","expositor":"La defensa","tipo_charla":"Defensa tesis mag\u00edster","resumen_expositor":"La defensa","status":0,"entry_type":0,"repeat_id":0,"duration":1,"dur_units":"hours"}
+
+The SQL inicial: "INSERT INTO mrbs_entry (start_time, end_time, entry_type, repeat_id, room_id, create_by, name, type, description, status, ical_uid, ical_sequence, ical_recur_id, emails) VALUES (1403006400, 1403010000, 0, 0, 35, 'admin', 'La defensa', 'I', 'La defensa', 0, 'MRBS-539fb94104f4a-a51b4da3@localhost', 0, '', '')"
+
+The other SQL inicial: "INSERT INTO mrbs_entry_salas (entry_id, expositor, tipo_charla, resumen_expositor, tipo_evento) VALUES (334,'La defensa', 'Defensa tesis mag\u00edster', 'La defensa', 'Defensa')"
+
+Bookings Array
+(
+    [create_by] => admin
+    [name] => La defensa
+    [type] => I
+    [description] => La defensa
+    [room_id] => 35
+    [start_time] => 1403006400
+    [end_time] => 1403010000
+    [rep_type] => 0
+    [rep_opt] => 
+    [rep_num_weeks] => 
+    [end_date] => 0
+    [ical_uid] => MRBS-539fb94104f4a-a51b4da3@localhost
+    [ical_sequence] => 0
+    [ical_recur_id] => 
+    [tipo_evento] => Defensa
+    [emails] => 
+    [expositor] => La defensa
+    [tipo_charla] => Defensa tesis magíster
+    [resumen_expositor] => La defensa
+    [status] => 0
+    [entry_type] => 0
+    [repeat_id] => 0
+    [duration] => 1
+    [dur_units] => hours
+    [id] => 334
+    [room_name] => Auditorio 4° piso
+    [area_name] => Salas Públicas
+)
+
+Previous Array
+(
+)
+

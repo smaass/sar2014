@@ -896,10 +896,35 @@ function adjustSlotSelectors(form, oldArea, oldAreaStartValue, oldAreaEndValue)
   $(startId).width(maxWidth);
   $(endId).width(maxWidth);
 
-} <?php // function adjustSlotSelectors()
+} 
+
+function showReunion(){
+  $('[id*=div_evento_][id!=div_evento_reunion]').css('display','none');
+  $('#div_evento_reunion').css('display','block');
+  $('label[for="name"]').text("Nombre (*):");
+  $('label[for="description"]').text("Descripción Completa (*):");
+}
+
+function showCharla(){
+  $('[id*=div_evento_][id!=div_evento_defensa]').css('display','none');
+  $('#div_evento_defensa').css('display','block');
+  $('#div_tipo_charla').css('display','block');
+  $('#div_tipo_defensa').css('display','none');          
+  $('label[for="name"]').text("Titulo (*):");
+  $('label[for="description"]').text("Resumen (*)");
+}
+
+function showDefensa(){
+  $('[id*=div_evento_][id!=div_evento_defensa]').css('display','none');
+  $('#div_evento_defensa').css('display','block');
+  $('#div_tipo_defensa').css('display','block');
+  $('#div_tipo_charla').css('display','none');
+  $('label[for="name"]').text("Titulo (*):");
+  $('label[for="description"]').text("Resumen (*)"); 
+}
 
 
-
+<?php // function adjustSlotSelectors()
 
 // =================================================================================
 
@@ -1094,21 +1119,18 @@ init = function() {
 					$('label[for="description"]').text("Descripción Completa (*):");
 					break;
 				case 'Reunión':
-					$('[id*=div_evento_][id!=div_evento_reunion]').css('display','none');
-					$('#div_evento_reunion').css('display','block');
-					$('label[for="name"]').text("Nombre (*):");
-					$('label[for="description"]').text("Descripción Completa (*):");
+        case 'Otro':
+					showReunion();
 					break;
 				case 'Charla':
+          showCharla();
+          break;
         case 'Defensa':
-					$('[id*=div_evento_][id!=div_evento_defensa]').css('display','none');
-					$('#div_evento_defensa').css('display','block');
-					$('label[for="name"]').text("Titulo (*):");
-					$('label[for="description"]').text("Resumen (*)");
+					showDefensa();
 					break;
 			}
 		});
-		$('#tipo_evento').change();
+    $('#tipo_evento').change();
     <?php
     // Finally set a timer so that conflicts are periodically checked for,
     // in case someone else books that slot before you press Save.

@@ -20,7 +20,7 @@
 // char(n)      character(n)          text/textarea, depending on the value of n
 //
 // NOTE 1: For char(n) and varchar(n) fields, a text input will be presented if
-// n is less than or equal to $text_input_max, otherwise a textarea box will be
+// n is less than or equal to $text_input_max, otherwise a textarea box will becreate_details_body
 // presented.
 //
 // NOTE 2: PostgreSQL booleans are not supported, due to difficulties in
@@ -683,7 +683,7 @@ if (isset($change_room) && !empty($room))
     echo ($is_admin) ? get_vocab("editroom") : get_vocab("viewroom");
     echo "</h2>\n";
     ?>
-    <form class="form_general" id="edit_room" action="edit_area_room.php" method="post">
+    <form class="form_general" id="edit_room" action="edit_area_room.php" method="post" onsubmit="return validar();">
         <fieldset class="admin">
             <legend></legend>
 
@@ -753,34 +753,20 @@ if (isset($change_room) && !empty($room))
                 echo "<textarea id=\"description\" name=\"description\" $disabled>" . htmlspecialchars($row["description"]) . "</textarea>\n";
                 echo "</div>\n";
 
-                if($area == 3) {
-                    // Capacity
+                if($area == 3) { // Capacity
                     echo "<div>\n";
-                    echo "<label for=\"capacity\">" . get_vocab("capacity") . ":</label>\n";
-                    echo "<input type=\"text\" id=\"capacity\" name=\"capacity\" value=\"" . htmlspecialchars($row2["capacidad"]) . "\" $disabled>\n";
+                    echo "<label for='capacity'>" . get_vocab("capacity") . ":</label>\n";
+                    echo "<input type='number' max='299' min='1' id='capacity' name='capacity' value='" . htmlspecialchars($row2["capacidad"]) . "' $disabled>\n";
                     echo "</div>\n";
-                }
-                else if($area == 4) {
-                    // Specifications
+                } else if($area == 4) { // Specifications
                     echo "<div>\n";
                     echo "<label for=\"specifications\">" . "Especificaciones" . ":</label>\n";
                     echo "<textarea id=\"specifications\" name=\"specifications\" $disabled>" . htmlspecialchars($row2["especificaciones"]) . "</textarea>\n";
                     echo "</div>\n";
-
-                    /*
-                    // Photo
+                } else if($area == 5) { // Slots
                     echo "<div>\n";
-                    echo "<label for=\"photo\">" . "Foto" . ":</label>\n";
-                    echo "<input type=\"file\" id=\"photo\" name=\"photo\" value=\"" . htmlspecialchars($row2["foto"]) . "\" $disabled>\n";
-                    echo "</div>\n";
-                    */
-                }
-                else if($area == 5) {
-                    // Slots
-                    echo "<div>\n";
-                    echo "<label for=\"slots\">" . "Cupos" . ":</label>\n";
-                    //echo "<input type=\"text\" id=\"slots\" name=\"slots\" value=\"" . htmlspecialchars($row2["cupo_numero"]) . "\" $disabled>\n";
-                    echo "<input type=\"text\" id=\"slots\" name=\"slots\" value=\"" . htmlspecialchars($row["capacity_for_multientry"]) . "\" $disabled>\n";
+                    echo "<label for='slots'>" . "Cupos" . ":</label>\n";
+                    echo "<input type='number' max='99' min='1' id='slots' name='slots' value='" . htmlspecialchars($row["capacity_for_multientry"]) . "' $disabled>\n";
                     echo "</div>\n";
                 }
 
@@ -1227,3 +1213,21 @@ if (isset($change_area) &&!empty($area))
 echo '</div>';
 output_trailer();
 ?>
+
+<script>
+  function validar(){
+    var valid = true;
+    var cupos = 0;
+    var area = document.getElementsByName("area")[0].value;
+    if(area == 3){
+      cupos = document.getElementById("capacity").value;
+      valid &= cupos < 300 && cupos > 0 && cupos % 1 === 0;
+    }else if(area == 4)
+      return true;
+    else if(area == 5){
+      cupos = document.getElementById("slots").value;
+      valid &= cupos < 100 && cupos > 0 && cupos % 1 === 0;
+    }
+    return valid? true : false;
+  }
+</script>

@@ -32,6 +32,7 @@ $formvars = array('create_by'         => 'string',
                   'curso'             => 'string',
                   'expositor'         => 'string',
                   'tipo_charla'       => 'string',
+                  'tipo_defensa'      => 'string',
                   'resumen_expositor' => 'string',
                   'tipo_evento'       => 'string',
                   'start_seconds'     => 'int',
@@ -561,29 +562,23 @@ foreach ($rooms as $room_id)
   $row_area = sql_row_keyed($res_area, 0);
   sql_free($res_area);
   
-  if ($row_area['area_id'] == $area_of_trabajo)
-  {
+  if ($row_area['area_id'] == $area_of_trabajo) {
   	$booking['universidad'] = $universidad;
     $booking['pais'] = $pais;
 //    $booking['correo'] = $correo;
-  }
-  elseif ($row_area['area_id'] == $area_salas)
-  {
-  	if ($tipo_evento == 'Clase')
-  	{
+  } elseif ($row_area['area_id'] == $area_salas) {
+  	if ($tipo_evento == 'Clase') {
 	  	$booking['profesor'] = $profesor;
     	$booking['curso'] = $curso;
-  	}
-  	elseif ($tipo_evento == 'Charla')
-  	{
+  	} elseif ($tipo_evento == 'Charla') {
   		$booking['expositor'] = $expositor;
     	$booking['tipo_charla'] = $tipo_charla;
     	$booking['resumen_expositor'] = $resumen_expositor;
-      $posCharla = strpos($tipo_charla, 'Defensa');
-      if ($posCharla >= 0 && $posCharla !== FALSE) {
-        $booking['tipo_evento'] = 'Defensa';
-      }
-  	}
+  	} elseif ($tipo_evento == 'Defensa') {
+      $booking['expositor'] = $expositor;
+      $booking['tipo_charla'] = $tipo_defensa;
+      $booking['resumen_expositor'] = $resumen_expositor;
+    }
   }
   // Set the various bits in the status field as appropriate
   // (Note: the status field is the only one that can differ by room)

@@ -151,6 +151,7 @@ $vocab["curso"]               = "Curso";
 $vocab["expositor"]           = "Expositor";
 $vocab["resumen_expositor"]   = "Resumen Expositor";
 $vocab["tipo_charla"]         = "Tipo de Charla";
+$vocab["tipo_defensa"]         = "Tipo de Defensa";
 
 
 // Used in edit_entry_handler.php

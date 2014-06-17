@@ -563,7 +563,8 @@ function mrbsCreateEntry($table, $data)
 {
   global $standard_fields, $db_tbl_prefix, $area_of_trabajo, $area_salas;
   
-  error_log("INSERTING INTO" . json_encode($table) . "\n\n", 3, "errors.log");
+  error_log("INSERTING INTO " . json_encode($table) . "\n\n", 3, "errors.log");
+  error_log("The DATA" . json_encode($data) . "\n\n", 3, "errors.log");
 
   $sql_col = array();
   $sql_val = array();
@@ -667,6 +668,8 @@ function mrbsCreateEntry($table, $data)
   // Note that we don't have to escape or quote the fieldname
   // thanks to the restriction on custom field names
   $sql = "INSERT INTO $table (" . implode(', ',$sql_col) . ") VALUES (" . implode(', ',$sql_val) . ")";
+
+  error_log("The SQL inicial: " . json_encode($sql) . "\n\n", 3, "errors.log");
   if (sql_command($sql) < 0)
   {
     // probably because the table hasn't been created properly
@@ -698,27 +701,25 @@ function mrbsCreateEntry($table, $data)
       fatal_error(TRUE, get_vocab("fatal_db_error"));
     }
     return $return_id;
-  }
-  if ($row['area_id'] == $area_salas){
+  } else if ($row['area_id'] == $area_salas){
   	if ($data['tipo_evento'] == 'Clase'){
 	    $sql_col2[] = 'profesor';
 	    $sql_val2[] = "'" . sql_escape($data['profesor']) . "'";  	
 	    $sql_col2[] = 'curso';
 	    $sql_val2[] = "'" . sql_escape($data['curso']) . "'";
-  	}
-  	elseif ($data['tipo_evento'] == 'Charla' || $data['tipo_evento'] == 'Defensa'){
-	    $sql_col2[] = 'expositor';
-	    $sql_val2[] = "'" . sql_escape($data['expositor']) . "'";  	
-	    $sql_col2[] = 'tipo_charla';
-	    $sql_val2[] = "'" . sql_escape($data['tipo_charla']) . "'";
-	    $sql_col2[] = 'resumen_expositor';
-	    $sql_val2[] = "'" . sql_escape($data['resumen_expositor']) . "'";  	
-  	}
+  	} elseif ($data['tipo_evento'] == 'Charla' || $data['tipo_evento'] == 'Defensa'){
+      $sql_col2[] = 'expositor';
+      $sql_val2[] = "'" . sql_escape($data['expositor']) . "'";   
+      $sql_col2[] = 'tipo_charla';
+      $sql_val2[] = "'" . sql_escape($data['tipo_charla']) . "'";
+      $sql_col2[] = 'resumen_expositor';
+      $sql_val2[] = "'" . sql_escape($data['resumen_expositor']) . "'";   
+    }
 	$sql_col2[] = 'tipo_evento';
 	$sql_val2[] = "'" . sql_escape($data['tipo_evento']) . "'";  	
     //$return_id = sql_insert_id($table, "id");
     $sql2 = "INSERT INTO " . $table . "_salas (entry_id, " . implode(', ',$sql_col2) . ") VALUES (" . $return_id .",". implode(', ',$sql_val2) . ")";
-
+    error_log("The other SQL inicial: " . json_encode($sql2) . "\n\n", 3, "errors.log");
     if (sql_command($sql2) < 0)
     {
       // probably because the table hasn't been created properly
@@ -1193,22 +1194,15 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
   global $tbl_entry, $tbl_repeat, $tbl_room, $tbl_area;
   global $approval_enabled, $enable_periods;
   global $area, $area_of_trabajo, $area_salas;
-  global $tipo_evento, $tipo_charla, $expositor, $resumen_expositor, $profesor, $curso;
-
-
+  global $tipo_evento, $tipo_charla, $expositor, $resumen_expositor, $profesor, $curso, $tipo_defensa;
 
   // Check that we've got an id
   
-  
-  if (!isset($id))
-  {
+  if (!isset($id)){
     trigger_error("id not set", E_USER_WARNING);
-    if ($silent)
-    {
+    if ($silent){
       return FALSE;
-    }
-    else
-    {
+    } else {
       fatal_error(TRUE, ($series ? get_vocab("invalid_series_id") : get_vocab("invalid_entry_id")));
     }
   }
@@ -1221,8 +1215,7 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
   // we'll be able to do some sanity checking later
   $repeat_fields = sql_field_info($tbl_repeat);
   $rep_fields = array();
-  foreach ($repeat_fields as $field)
-  {
+  foreach ($repeat_fields as $field){
     $rep_fields[$field['name']] = 1;
   }
 
@@ -1283,84 +1276,70 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
   //echo("area =".$area);
   
   if($area == $area_of_trabajo){
-        array_push($terms, "N.universidad");
-        array_push($terms, "N.pais");
+      array_push($terms, "N.universidad");
+      array_push($terms, "N.pais");
 //        array_push($terms, "N.correo");
-        if ($series)
-        {
+      if ($series)
+      {
 
-          $sql = "SELECT " . implode(", ",$terms)."
-    	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_repeat_opt N
-				WHERE T.room_id = M.id
-        	    AND M.area_id = A.id
-        	    AND N.repeat_id = T.id
-        	    AND T.id=$id";
-        }
-        else
-        {
-          $sql = "SELECT " . implode(", ",$terms)."
-    	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_entry_opt N
-				WHERE T.room_id = M.id
-        	    AND M.area_id = A.id
-        	    AND N.entry_id = T.id
-        	    AND T.id=$id";
-        }
-    }
-    
-  else if ($area==$area_salas){
-        array_push($terms, "N.profesor");
-        array_push($terms, "N.curso");
-        array_push($terms, "N.expositor");
-        array_push($terms, "N.tipo_charla");
-        array_push($terms, "N.resumen_expositor");
-        array_push($terms, "N.tipo_evento");
-        if ($series)
-        	{
+        $sql = "SELECT " . implode(", ",$terms)."
+  	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_repeat_opt N
+			      WHERE T.room_id = M.id
+      	    AND M.area_id = A.id
+      	    AND N.repeat_id = T.id
+      	    AND T.id=$id";
+      }
+      else
+      {
+        $sql = "SELECT " . implode(", ",$terms)."
+  	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_entry_opt N
+		      	WHERE T.room_id = M.id
+      	    AND M.area_id = A.id
+      	    AND N.entry_id = T.id
+      	    AND T.id=$id";
+      }
+  } else if ($area==$area_salas){
+      array_push($terms, "N.profesor");
+      array_push($terms, "N.curso");
+      array_push($terms, "N.expositor");
+      array_push($terms, "N.tipo_charla");
+      array_push($terms, "N.resumen_expositor");
+      array_push($terms, "N.tipo_evento");
 
-        	  $sql = "SELECT " . implode(", ",$terms)."
-    	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_repeat_salas N
-				WHERE T.room_id = M.id
-        	    AND M.area_id = A.id
-        	    AND N.repeat_id = T.id
-        	    AND T.id=$id";
-        	}
-        	else
-        	{
-          		$sql = "SELECT " . implode(", ",$terms)."
-    	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_entry_salas N
-				WHERE T.room_id = M.id
-        	    AND M.area_id = A.id
-        	    AND N.entry_id = T.id
-        	    AND T.id=$id";
-        	}
-  }
-
-  	
-  else {
-  $sql = "SELECT " . implode(", ",$terms)."
+      if ($series){
+      	  $sql = "SELECT " . implode(", ",$terms)."
+  	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_repeat_salas N
+			      WHERE T.room_id = M.id
+      	    AND M.area_id = A.id
+      	    AND N.repeat_id = T.id
+      	    AND T.id=$id";
+    	} else {
+        		$sql = "SELECT " . implode(", ",$terms)."
+  	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_entry_salas N
+			      WHERE T.room_id = M.id
+      	    AND M.area_id = A.id
+      	    AND N.entry_id = T.id
+      	    AND T.id=$id";
+    	}
+  } else {
+    $sql = "SELECT " . implode(", ",$terms)."
             FROM $table T, $tbl_room M, $tbl_area A
-           WHERE T.room_id = M.id
-             AND M.area_id = A.id
-             AND T.id=$id";
-  
+            WHERE T.room_id = M.id
+            AND M.area_id = A.id
+            AND T.id=$id";
   }
   
   $res = sql_query($sql);
-  if (! $res)
-  {
+  if (! $res) {
     trigger_error(sql_error(), E_USER_WARNING);
-    if ($silent)
-    {
+    if ($silent) {
       return FALSE;
-    }
-    else
-    {
+    } else {
       fatal_error(FALSE, get_vocab("fatal_db_error"));
     }
   }
 
-  if (sql_count($res) < 1)
-  {
+  if (sql_count($res) < 1) {
     // It's quite possible that the id will have disappeared, eg if somebody
     // else has deleted or edited the entry
     trigger_error("No rows found matching id=$id", E_USER_NOTICE);
@@ -1385,39 +1364,28 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
   $row['dur_units'] = $d['dur_units'];
     
   // Get some extra information
-  if ($series)
-  {
+  if ($series) {
     $row['entry_info_time'] = '';
     $row['entry_info_user'] = '';
     $row['entry_info_text'] = '';
-  }
-  else
-  {
+  } else {
     // Get the repeat information
-    if (empty($row['repeat_id']))
-    {
+    if (empty($row['repeat_id'])) {
       $row['rep_type'] = REP_NONE;   // just as a precaution
       $row['repeat_info_time'] = '';
       $row['repeat_info_user'] = '';
       $row['repeat_info_text'] = '';
-    }
-    else
-    {
+    } else {
       $res = sql_query("SELECT rep_type, end_date, rep_opt, rep_num_weeks,
                         info_time AS repeat_info_time, info_user AS repeat_info_user, info_text AS repeat_info_text
                         FROM $tbl_repeat WHERE id=${row['repeat_id']} LIMIT 1");
-      if (!$res || (!$extra_row = sql_row_keyed($res, 0)))
-      {
-        if (!$res)
-        {
+      if (!$res || (!$extra_row = sql_row_keyed($res, 0))) {
+        if (!$res) {
           trigger_error(sql_error(), E_USER_WARNING);
         }
-        if ($silent)
-        {
+        if ($silent) {
           return FALSE;
-        }
-        else
-        {
+        } else {
           fatal_error(TRUE, get_vocab("invalid_series_id"));
         }
       }

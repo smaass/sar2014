@@ -560,24 +560,30 @@ function create_field_entry_evento_defensa($disabled=FALSE)
   //         4: Recursos computacionales
   //         3: Salas publicas
   global $area_id;
-  global $expositor, $resumen_expositor, $tipo_charla;
+  global $expositor, $resumen_expositor, $tipo_charla, $tipo_defensa;
   if($area_id == 5 or $area_id == 4)
     return;
 
-  echo "<div id=\"div_evento_defensa\" style=\"display: none\">\n";
-	  echo "<div id=\"div_expositor\" style=\"clear: both;\">\n";
+  echo "<div id='div_evento_defensa' style='display: none'>\n";
+	  echo "<div id='div_expositor' style='clear: both;'>\n";
 	  generate_input("Nombre expositor:", 'expositor', $expositor, $disabled, 80, 'type="text" pattern="' . REGEX_TEXT_POS . '"');
 	  echo "</div>\n";
 
-	  echo "<div id=\"div_resumen_expositor\" style=\"clear: both;\">\n";
-	  generate_textarea("Resumen expositor:", 'resumen_expositor', $resumen_expositor, $disabled, "maxlength=\"1000\"");
+	  echo "<div id='div_resumen_expositor' style='clear: both;'>\n";
+	  generate_textarea("Resumen expositor:", 'resumen_expositor', $resumen_expositor, $disabled, "maxlength='1000'");
 	  echo "</div>\n";
 
-	  echo "<div id=\"div_tipo_charla\" style=\"clear: both;\">\n";
+	  echo "<div id='div_tipo_charla' style='clear: both; display: none;'>\n";
 	  generate_select("Tipo charla:", 'tipo_charla', $tipo_charla,
-      array('Charla alumno','Charla profesor','Defensa memoria', 'Defensa tesis magíster', 'Defensa doctorado'), false, $disabled);
+      array('Charla alumno','Charla profesor'), false, $disabled);
     
 	  echo "</div>\n";
+
+    echo "<div id='div_tipo_defensa' style='clear: both;'>\n";
+    generate_select("Tipo defensa:", 'tipo_defensa', $tipo_charla,
+      array('Defensa memoria', 'Defensa tesis magíster', 'Defensa doctorado'), false, $disabled);
+    
+    echo "</div>\n";
   echo "</div>\n";
 }
 
@@ -587,13 +593,13 @@ function create_field_entry_evento($disabled=FALSE)
   //         4: Recursos computacionales
   //         3: Salas publicas
   global $area_id, $tipo_evento;
-  global $expositor, $resumen_expositor, $tipo_charla;
+  global $expositor, $resumen_expositor, $tipo_charla, $tipo_defensa;
   if($area_id == 5 or $area_id == 4)
     return;
 
   echo "<div id=\"div_evento\">\n";
 	  generate_select("Evento:", 'tipo_evento', $tipo_evento,
-      array('Clase','Reunión','Charla'), true, $disabled);
+      array('Clase','Reunión','Charla', 'Defensa', 'Otro'), true, $disabled);
   echo "</div>\n";
 }
 
@@ -727,7 +733,7 @@ function create_field_entry_custom_field($field, $key, $disabled=FALSE)
 {
   global $custom_fields, $tbl_entry, $select_options;
   global $is_mandatory_field, $text_input_max;
-  global $tipo_evento, $expositor, $resumen_expositor, $tipo_charla;
+  global $tipo_evento, $expositor, $resumen_expositor, $tipo_charla, $tipo_defensa;
 
   $var_name = VAR_PREFIX . $key;
   $value = $custom_fields[$key];
@@ -995,6 +1001,7 @@ foreach ($row as $column => $value)
 	  case 'expositor':
 	  case 'resumen_expositor':
 	  case 'tipo_charla':
+    case 'tipo_defensa':
 	  case 'tipo_evento':
     case 'type':
       $$column = ($keep_private && $is_private_field["entry.$column"]) ? '' : $row[$column];
@@ -1308,7 +1315,7 @@ if ($res)
 
 ?>
 
-<script type="text/javascript">
+<script>
 //<![CDATA[
 var currentArea = <?php echo $area_id ?>;
 var areas = [];
@@ -1725,10 +1732,19 @@ if (! $ajax){
 
 <script>
 function getURLParameter(name) {
-      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
-  }
-  
-  if(getURLParameter("charla")){
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+}
+
+$(function(){
+  var tipo = getURLParameter("tipo");
+  if(tipo == 'Reunión'){
+    document.getElementById("tipo_evento").selectedIndex=1;
+  } else if(tipo == 'Charla'){
     document.getElementById("tipo_evento").selectedIndex=2;
+  } else if(tipo == 'Defensa'){
+    document.getElementById("tipo_evento").selectedIndex=3;
+  }  else if(tipo == 'Otro'){
+    document.getElementById("tipo_evento").selectedIndex=4;
   }
+});
 </script>

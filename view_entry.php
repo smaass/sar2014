@@ -147,24 +147,27 @@ if ($row['area_id'] == $area_of_trabajo){
 	$universidad=$row['universidad'];
 	$pais=$row['pais'];
 //	$correo=$row['correo'];
-	}
-else if ($row['area_id']==$area_salas){
+} else if ($row['area_id']==$area_salas){
 	$tipo_evento=$row['tipo_evento'];
 	if($tipo_evento=='Clase'){
 		$profesor=$row['profesor'];
 		$curso=$row['curso'];
-	}
-	else if ($tipo_evento=='Reunión'){
+	} else if ($tipo_evento=='Reunión'){
 		$expositor=$row['expositor'];
 		$tipo_charla=$row['tipo_charla'];
 		$resumen_expositor=$row['resumen_expositor'];
-	}
+	} else if ($tipo_evento=='Charla'){
+    $expositor=$row['expositor'];
+    $tipo_charla=$row['$tipo_charla'];
+    $resumen_expositor=$row['resumen_expositor'];
+  } else if ($tipo_evento=='Defensa'){
+    $expositor=$row['expositor'];
+    $tipo_defensa=$row['$tipo_charla'];
+    $resumen_expositor=$row['resumen_expositor'];
+  }
 }
 
-
-
-if ($series == 1)
-{
+if ($series == 1) {
   $repeat_id = $id;  // Save the repeat_id
   // I also need to set $id to the value of a single entry as it is a
   // single entry from a series that is used by del_entry.php and
@@ -422,7 +425,7 @@ echo create_details_body($row, TRUE, $keep_private, $room_disabled);
     echo "<div>\n";
     if (!$series)
     {
-      echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;charla=si&amp;returl=$link_returl\">". get_vocab("editentry") ."</a>";
+      echo "<a class='btn' href=\"edit_entry.php?id=$id&amp;tipo=$tipo_evento&amp;returl=$link_returl\">". get_vocab("editentry") ."</a>";
     } 
     if (!empty($repeat_id)  && !$series && $repeats_allowed)
     {

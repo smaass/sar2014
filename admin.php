@@ -433,24 +433,24 @@ if ($is_admin || ($n_displayable_areas > 0))
         if($area == 3) {
         ?>
             <div>
-                      <label for="room_capacity"><?php echo get_vocab("capacity") ?>:</label>
-                      <input type="number" max= "299" min= "1" id="room_capacity" name="capacity">
+              <label for="room_capacity"><?php echo get_vocab("capacity") ?>:</label>
+              <input type="number" max= "299" min= "1" id="room_capacity" name="capacity">
             </div>
         <?php
         }
         else if($area == 4) {
         ?>
             <div>
-                <label for="room_specifications">Especificaciones</label>
-                <textarea id="room_specifications" name="specifications" rows="4" cols="30" maxlength="300" style='margin-left: 1em;'></textarea>
+              <label for="room_specifications">Especificaciones</label>
+              <textarea id="room_specifications" name="specifications" rows="4" cols="30" maxlength="300" style='margin-left: 1em;'></textarea>
             </div>
         <?php
         }
         else if($area == 5) {
         ?>
             <div>
-                <label for="room_slots">Cupos</label>
-                <input type="number" max= "99" min= "1" id="room_slots" name="slots">
+              <label for="room_slots">Cupos</label>
+              <input type="number" max= "99" min= "1" id="room_slots" name="slots">
             </div>
         <?php
         }
@@ -484,6 +484,6 @@ output_trailer();
       cupos = document.getElementById("room_slots").value;
       valid &= cupos < 100 && cupos > 0 && cupos % 1 === 0;
     }
-    return valid;
+    return valid? true : false;
   }
 </script>
