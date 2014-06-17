@@ -239,17 +239,12 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
 
   $reminderTextId = getTextId($data['tipo_evento'], 2);
   $reminders = columnFromAssocArray(getReminders($data['tipo_evento']), 'offset');
-
+  
   // We schedule the reminder notifications
-  foreach ($reminders as $offset) {
-    $diff_time = $data['start_time'] - $offset;
-    $notification_time = date('Y-m-d H:i:s', $diff_time);
-
-    if ($mail_previous) {
-      removeNotifications($mail_previous[id]);
-      addNotification($reminderTextId, $mail_previous[emails], $notification_time, $mail_previous[id], $start_time);
-    }
-    else if ($thereAreEmails) {
+  if ($thereAreEmails) {
+    foreach ($reminders as $offset) {
+      $diff_time = $data['start_time'] - $offset;
+      $notification_time = date('Y-m-d H:i:s', $diff_time);
       addNotification($reminderTextId, $data[emails], $notification_time, $data[id], $start_time);
     }
   }
