@@ -144,7 +144,7 @@ $vocab["universidad"]         = "Universidad";
 $vocab["pais"]                = "País";
 
 // Modified
-$vocab_override['es']['entry.emails'] = "Emails";
+$vocab_override['es']['entry.emails'] = "Correos";
 
 $vocab["profesor"]            = "Profesor";
 $vocab["curso"]               = "Curso";
