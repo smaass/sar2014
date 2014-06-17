@@ -508,7 +508,7 @@ function cell_html($cell, $query_strings)
         $entry_link = "'edit_entry.php?" . (($enable_periods) ? $query_strings["new_periods"] : $query_strings["new_times"]) . "'" ;
 
         // a bookable slot is only one unit high
-        $html .= "<div class=\"celldiv slots1\" onclick=\"showPopup($entry_link);\" >";
+        $html .= "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" >";
 
         if ($show_plus_link)
         {

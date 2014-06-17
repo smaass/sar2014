@@ -458,6 +458,10 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
   display: block;
 }
 
+#div_start_date select, #div_end_date select {
+	width:150px;
+}
+
 .entry_popup input[type="text"]
 {
   width: 240px;
@@ -476,6 +480,7 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 #description
 {
   width: 240px;
+  display:block;
 }
 
 #f_emails
