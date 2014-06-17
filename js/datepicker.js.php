@@ -144,3 +144,8 @@ function datepicker_close(dateText, inst, formId)
     form.submit();
   }
 }
+
+function validarSeleccionFecha(picker){
+
+  
+}

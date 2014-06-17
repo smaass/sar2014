@@ -1069,8 +1069,7 @@ if(isset($id)) {
     }
     if (sql_count($res) != 1)
     {
-      fatal_error(1,
-                  get_vocab("repeat_id") . $rep_id . get_vocab("not_found"));
+      fatal_error(1, get_vocab("repeat_id") . $rep_id . get_vocab("not_found"));
     }
 
     $row = sql_row_keyed($res, 0);
@@ -1746,5 +1745,9 @@ $(function(){
   }  else if(tipo == 'Otro'){
     document.getElementById("tipo_evento").selectedIndex=4;
   }
+});
+$( document ).ready(function(){
+  $("#start_datepicker").datepicker("option", "minDate", 0);
+  $("#end_datepicker").datepicker("option", "minDate", 0);
 });
 </script>

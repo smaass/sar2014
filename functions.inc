@@ -658,7 +658,7 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
   // the day selector
   echo "<select name=\"${prefix}day\"" . 
        ($disabled ? " disabled=\"disabled\"" : "") .
-       ">\n"; 
+       "onclick='validarSeleccionFecha(this);'>\n"; 
   for ($i = 1; $i <= 31; $i++)
   {
     echo "<option" . ($i == $day ? " selected=\"selected\"" : "") . ">$i</option>\n";
