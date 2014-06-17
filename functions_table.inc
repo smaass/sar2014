@@ -285,7 +285,7 @@ function cell_html($cell, $query_strings)
   //    ['booking']       the string to be used for a full cell
     
   global $main_cell_height, $main_table_cell_border_width;
-  global $area, $year, $month, $timetohighlight;
+  global $area, $year, $month, $timetohighlight, $room;
   global $enable_periods, $times_along_top, $show_plus_link;
   global $approval_enabled, $confirmation_enabled;
   
@@ -522,7 +522,7 @@ function cell_html($cell, $query_strings)
         $html .= "<div data-id=\"$id\" class=\"celldiv slots" .
                  (($times_along_top) ? "1" : $slots) .
                  "\">\n";
-        $html .= "<a href=\"view_entry.php?id=$id&amp;". $query_strings['booking'] . "\" title=\"$long_descr\">";
+        $html .= "<a href=\"view_entry.php?id=$id&amp;". $query_strings['booking'] . "&amp;room=$room\" title=\"$long_descr\">";
         $html .= ($is_repeat) ? "<img class=\"repeat_symbol $c\" src=\"images/repeat.png\" alt=\"" . get_vocab("series") . "\" title=\"" . get_vocab("series") . "\" width=\"10\" height=\"10\">" : '';
         $html .= "$descr</a>\n";
         $html .= "</div>\n";

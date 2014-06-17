@@ -180,13 +180,9 @@ if ($series == 1) {
           ORDER BY start_time
           LIMIT 1";
   $id = sql_query1($sql);
-  if ($id < 1)
-  {
-    // if all entries in series have been modified then
-    // as a fallback position just select the first entry
-    // in the series
-    // hopefully this code will never be reached as
-    // this page will display the start time of the series
+  if ($id < 1) {
+    // if all entries in series have been modified then as a fallback position just select the first entry
+    // in the series hopefully this code will never be reached as this page will display the start time of the series
     // but edit_entry.php will display the start time of the entry
     $sql = "SELECT id
             FROM $tbl_entry
@@ -198,9 +194,7 @@ if ($series == 1) {
   $repeat_info_time = $row['repeat_info_time'];
   $repeat_info_user = $row['repeat_info_user'];
   $repeat_info_text = $row['repeat_info_text'];
-}
-else
-{
+} else {
   $repeat_id = $row['repeat_id'];
   
   $entry_info_time = $row['entry_info_time'];
@@ -212,49 +206,39 @@ else
 // PHASE 2 - EXPORTING ICALENDAR FILES
 // -------------------------------------
 
-if (isset($action) && ($action == "export"))
-{
-  if ($keep_private  || $enable_periods)
-  {
+if (isset($action) && ($action == "export")) {
+  if ($keep_private  || $enable_periods) {
     // should never normally be able to get here, but if we have then
     // go somewhere safe.
     header("Location: index.php");
     exit;
-  }
-  else
-  {    
+  } else {    
     // Construct the SQL query
     $sql = "SELECT E.*, "
          .  sql_syntax_timestamp_to_unix("E.timestamp") . " AS last_updated, "
          . "A.area_name, R.room_name, "
          . "A.approval_enabled, A.confirmation_enabled";
-    if ($series)
-    {
+    if ($series) {
       // If it's a series we want the repeat information
       $sql .= ", T.rep_type, T.end_date, T.rep_opt, T.rep_num_weeks";
     }
     $sql .= " FROM $tbl_area A, $tbl_room R, $tbl_entry E";
-    if ($series)
-    {
+    if ($series) {
       $sql .= ", $tbl_repeat T"
             . " WHERE E.repeat_id=$repeat_id"
             . " AND E.repeat_id=T.id";
-    }
-    else
-    {
+    } else {
       $sql .= " WHERE E.id=$id";
     }
     
     $sql .= " AND E.room_id=R.id
               AND R.area_id=A.id";
               
-    if ($series)
-    {
+    if ($series) {
       $sql .= " ORDER BY E.ical_recur_id";
     }
     $res = sql_query($sql);
-    if ($res === FALSE)
-    {
+    if ($res === FALSE) {
       trigger_error(sql_error(), E_USER_WARNING);
       fatal_error(FALSE, get_vocab("fatal_db_error"));
     }
@@ -324,32 +308,25 @@ if (is_private_event($private) && $writeable)
 echo "</h1>\n";
 
 
-echo "<table id=\"entry\">\n";
+echo "<table id='entry'>\n";
 
 // Output any error messages
-if (!empty($error))
-{
+if (!empty($error)) {
   echo "<tr><td>&nbsp;</td><td class=\"error\">" . get_vocab($error) . "</td></tr>\n";
 }
-
 // If bookings require approval, and the room is enabled, put the buttons
 // to do with managing the bookings in the footer
-if ($approval_enabled && !$room_disabled && ($status & STATUS_AWAITING_APPROVAL))
-{
+if ($approval_enabled && !$room_disabled && ($status & STATUS_AWAITING_APPROVAL)) {
   echo "<tfoot id=\"approve_buttons\">\n";
   // PHASE 2 - REJECT
-  if (isset($action) && ($action == "reject"))
-  {
+  if (isset($action) && ($action == "reject")) {
     // del_entry expects the id of a member of a series
     // when deleting a series and not the repeat_id
     generateTextArea("del_entry.php", $id, $series,
                      "reject", $returl,
                      get_vocab("reject"),
                      get_vocab("reject_reason"));
-  }
-  // PHASE 2 - MORE INFO
-  elseif (isset($action) && ($action == "more_info"))
-  {
+  } elseif (isset($action) && ($action == "more_info")) { // PHASE 2 - MORE INFO
     // but approve_entry_handler expects the id to be a repeat_id
     // if $series is true (ie behaves like the rest of MRBS).
     // Sometime this difference in behaviour should be rationalised
@@ -359,15 +336,11 @@ if ($approval_enabled && !$room_disabled && ($status & STATUS_AWAITING_APPROVAL)
     $info_user = ($series) ? $repeat_info_user : $entry_info_user;
     $info_text = ($series) ? $repeat_info_text : $entry_info_text;
     
-    if (empty($info_time))
-    {
+    if (empty($info_time)) {
       $value = '';
-    }
-    else
-    {
+    } else {
       $value = get_vocab("sent_at") . time_date_string($info_time);
-      if (!empty($info_user))
-      {
+      if (!empty($info_user)) {
         $value .= "\n" . get_vocab("by") . " $info_user";
       }
       $value .= "\n----\n";
@@ -378,30 +351,19 @@ if ($approval_enabled && !$room_disabled && ($status & STATUS_AWAITING_APPROVAL)
                      get_vocab("send"),
                      get_vocab("request_more_info"),
                      $value);
-  }
-  // PHASE 1 - first time through this page
-  else
-  {
+
+  } else {  // PHASE 1 - first time through this page
     // Buttons for those who are allowed to approve this booking
-    if (auth_book_admin($user, $row['room_id']))
-    {
-      if (!$series)
-      {
+    if (auth_book_admin($user, $row['room_id'])) {
+      if (!$series) {
         generateApproveButtons($id, FALSE);
       }
-      if (!empty($repeat_id) || $series)
-      {
+      if (!empty($repeat_id) || $series) {
         generateApproveButtons($repeat_id, TRUE);
       }    
-    }
-    // Buttons for the owner of this booking
-    elseif ($user == $create_by)
-    {
+    } elseif ($user == $create_by) { // Buttons for the owner of this booking
       generateOwnerButtons($id, $series);
-    }
-    // Others don't get any buttons
-    else
-    {
+    } else { // Others don't get any buttons
       // But valid HTML requires that there's something inside the <tfoot></tfoot>
       echo "<tr><td></td><td></td></tr>\n";
     }
@@ -410,7 +372,6 @@ if ($approval_enabled && !$room_disabled && ($status & STATUS_AWAITING_APPROVAL)
 }
 
 echo create_details_body($row, TRUE, $keep_private, $room_disabled);
-
 ?>
 </table>
 

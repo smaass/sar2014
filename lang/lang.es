@@ -150,6 +150,7 @@ $vocab["profesor"]            = "Profesor";
 $vocab["curso"]               = "Curso";
 $vocab["expositor"]           = "Expositor";
 $vocab["resumen_expositor"]   = "Resumen Expositor";
+$vocab["resumen"]   = "Resumen";
 $vocab["tipo_charla"]         = "Tipo de Charla";
 $vocab["tipo_defensa"]         = "Tipo de Defensa";
 

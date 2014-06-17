@@ -102,7 +102,11 @@ function create_details_body($data, $as_html=FALSE, $keep_private=FALSE, $room_d
   $tbody .= ($as_html) ? "<tbody>\n" : "";
   // Description
   $class = ($keep_private & $is_private_field['entry.description']) ? "private" : "";
-  $tbody .= create_details_row(get_vocab("description"), $data['description'], $as_html, $class);
+  if ($area == $area_salas && ($tipo_evento=='Charla' || $tipo_evento=='Defensa')) {
+    $tbody .= create_details_row('Resumen', $data['description'], $as_html, $class);
+  } else {
+    $tbody .= create_details_row(get_vocab("description"), $data['description'], $as_html, $class);
+  }
   // Confirmation status
   /*if ($confirmation_enabled)
   {
@@ -130,29 +134,26 @@ function create_details_body($data, $as_html=FALSE, $keep_private=FALSE, $room_d
   else
   {*/
   
- if ($area == $area_of_trabajo){
+  if ($area == $area_of_trabajo){
 
- $tbody .= create_details_row(get_vocab("universidad"), $data['universidad'], $as_html);
- $tbody .= create_details_row(get_vocab("pais"), $data['pais'], $as_html);
-// $tbody .= create_details_row(get_vocab("correo"), $data['correo'], $as_html);
- }
- else if ($area == $area_salas){
- 	if($tipo_evento=='Clase'){ 
- 		$tbody .= create_details_row(get_vocab("profesor"), $data['profesor'], $as_html);
- 		$tbody .= create_details_row(get_vocab("curso"), $data['curso'], $as_html);
- 		
-    } else if ($tipo_evento=='Charla'){
-      $tbody .= create_details_row(get_vocab("expositor"), $data['expositor'], $as_html);
-      $tbody .= create_details_row(get_vocab("resumen_expositor"), $data['resumen_expositor'], $as_html);
-      $tbody .= create_details_row(get_vocab("tipo_charla"), $data['tipo_charla'], $as_html);
-    } else if ($tipo_evento=='Defensa'){
-   		$tbody .= create_details_row(get_vocab("expositor"), $data['expositor'], $as_html);
-   		$tbody .= create_details_row(get_vocab("resumen_expositor"), $data['resumen_expositor'], $as_html);
-   		$tbody .= create_details_row(get_vocab("tipo_defensa"), $data['tipo_charla'], $as_html);
- 		}
- }
-    
-    
+  $tbody .= create_details_row(get_vocab("universidad"), $data['universidad'], $as_html);
+  $tbody .= create_details_row(get_vocab("pais"), $data['pais'], $as_html);
+  // $tbody .= create_details_row(get_vocab("correo"), $data['correo'], $as_html);
+  } else if ($area == $area_salas){
+   	if($tipo_evento=='Clase'){ 
+   		$tbody .= create_details_row(get_vocab("profesor"), $data['profesor'], $as_html);
+   		$tbody .= create_details_row(get_vocab("curso"), $data['curso'], $as_html);
+   		
+      } else if ($tipo_evento=='Charla'){
+        $tbody .= create_details_row(get_vocab("expositor"), $data['expositor'], $as_html);
+        $tbody .= create_details_row(get_vocab("resumen_expositor"), $data['resumen_expositor'], $as_html);
+        $tbody .= create_details_row(get_vocab("tipo_charla"), $data['tipo_charla'], $as_html);
+      } else if ($tipo_evento=='Defensa'){
+     		$tbody .= create_details_row(get_vocab("expositor"), $data['expositor'], $as_html);
+     		$tbody .= create_details_row(get_vocab("resumen_expositor"), $data['resumen_expositor'], $as_html);
+     		$tbody .= create_details_row(get_vocab("tipo_defensa"), $data['tipo_charla'], $as_html);
+   		}
+  }
   
   $start_date = time_date_string($data['start_time']);
   //}
@@ -181,62 +182,44 @@ function create_details_body($data, $as_html=FALSE, $keep_private=FALSE, $room_d
   $tbody .= create_details_row(get_vocab("lastupdate"), time_date_string($data['last_updated']), $as_html);
   // The custom fields
   $fields = sql_field_info($tbl_entry);
-  foreach ($fields as $field)
-  {
+  foreach ($fields as $field) {
+
     $key = $field['name'];
-    if (!in_array($key, $standard_fields['entry']))
-    {
-      $label = get_loc_field_name($tbl_entry, $key);
-      // Output a yes/no if it's a boolean or integer <= 2 bytes (which we will
-      // assume are intended to be booleans)
-      if (($field['nature'] == 'boolean') || 
-          (($field['nature'] == 'integer') && isset($field['length']) && ($field['length'] <= 2)) )
-      {
-        if ($keep_private && $is_private_field["entry.$key"])
-        {
-          $value = $data[$key];  // Will have been set previously
-        }
-        else
-        {
-          $value = empty($data[$key]) ? get_vocab("no") : get_vocab("yes");
-        }
-      }
-      // Otherwise output a string
-      else
-      {
-        if (isset($data[$key]))
-        {
-          // If the custom field is an associative array then we want
-          // the value rather than the array key
-          if (isset($select_options["entry.$key"]) &&
-              is_assoc($select_options["entry.$key"]) && 
-              array_key_exists($data[$key], $select_options["entry.$key"]))
-          {
-            $value = $select_options["entry.$key"][$data[$key]];
-          }
-          else
-          {
-            $value = $data[$key];
-          }
-        }
-        else
-        {
-          $value = "";
-        }
-      }
-      $class = ($keep_private && $is_private_field["entry.$key"]) ? "private" : "";
-      $tbody .= create_details_row($label, $value, $as_html, $class);
+
+    if (in_array($key, $standard_fields['entry'])) {
+      continue;
     }
+
+    $label = get_loc_field_name($tbl_entry, $key);
+    // Output a yes/no if it's a boolean or integer <= 2 bytes (which we will assume are intended to be booleans)
+    if (($field['nature'] == 'boolean') || (($field['nature'] == 'integer') && isset($field['length']) && ($field['length'] <= 2)) ) {
+      if ($keep_private && $is_private_field["entry.$key"]) {
+        $value = $data[$key];  // Will have been set previously
+      } else {
+        $value = empty($data[$key]) ? get_vocab("no") : get_vocab("yes");
+      }
+    } elseif (isset($data[$key])) { // Otherwise output a string
+        // If the custom field is an associative array then we want the value rather than the array key
+        if (isset($select_options["entry.$key"]) && is_assoc($select_options["entry.$key"]) && 
+            array_key_exists($data[$key], $select_options["entry.$key"])) {
+          $value = $select_options["entry.$key"][$data[$key]];
+        } else {
+          $value = $data[$key];
+        }
+    } else {
+      $value = "";
+    }
+    $class = ($keep_private && $is_private_field["entry.$key"]) ? "private" : "";
+    
+    $tbody .= create_details_row($label, $value, $as_html, $class);
   }
+  echo "<tr><td>label</td><td>".$label."</td></tr>";
   // Repeat type
   $tbody .= create_details_row(get_vocab("rep_type"), get_vocab("rep_type_" . $data['rep_type']), $as_html);
   // Repeat details
-  if($data['rep_type'] != REP_NONE)
-  {
-    if (($data['rep_type'] == REP_WEEKLY) || ($data['rep_type'] == REP_N_WEEKLY))
-    {
-      if ($data['rep_type'] == REP_N_WEEKLY)
-      {
+  if($data['rep_type'] != REP_NONE) {
+    if (($data['rep_type'] == REP_WEEKLY) || ($data['rep_type'] == REP_N_WEEKLY)) {
+      if ($data['rep_type'] == REP_N_WEEKLY) {
         // Repeat number of weeks
         $tbody .= create_details_row(get_vocab("rep_num_weeks")." ".get_vocab("rep_for_nweekly"), $data['rep_num_weeks'], $as_html);
       }
