@@ -1390,3 +1390,7 @@ div#check_tabs {background-image: none}
   border: 2px solid #99cc99;
   border-radius: 3px;
 }
+
+.disabledSlot {
+	background: #7D7863;
+}

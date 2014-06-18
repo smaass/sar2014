@@ -249,7 +249,7 @@ function map_add_booking ($row, &$column, $am7, $pm7, $format)
 
 
 
-function cell_html($cell, $query_strings)
+function cell_html($cell, $query_strings, $currentDayDate)
 {
   // draws a single cell in the main table of the day and week views
   //
@@ -285,7 +285,7 @@ function cell_html($cell, $query_strings)
   //    ['booking']       the string to be used for a full cell
     
   global $main_cell_height, $main_table_cell_border_width;
-  global $area, $year, $month, $timetohighlight;
+  global $area, $year, $month, $timetohighlight, $room;
   global $enable_periods, $times_along_top, $show_plus_link;
   global $approval_enabled, $confirmation_enabled;
   
@@ -489,8 +489,13 @@ function cell_html($cell, $query_strings)
       }
     }
     else
-    {
-      $c = "new";
+    {      
+      $diff = date("d-n-Y") - date($currentDayDate);
+      if($diff > 0){
+        $c = "disabledSlot";
+      } else {
+        $c = "new";
+      }
     }
     
     // Don't put in a <td> cell if the slot is booked and there's no description.
@@ -506,9 +511,15 @@ function cell_html($cell, $query_strings)
       if (!isset($id))
       {
         $entry_link = "'edit_entry.php?" . (($enable_periods) ? $query_strings["new_periods"] : $query_strings["new_times"]) . "'" ;
-
-        // a bookable slot is only one unit high
-        $html .= "<div class=\"celldiv slots1\" onmouseup=\"showPopup($entry_link);\" >";
+        
+        $diff = date("d-n-Y") - date($currentDayDate);
+        if($diff > 0){
+          // In previous days we cannot book
+          $html .= "<div class='disabledSlot'>";
+        } else {
+          // a bookable slot is only one unit high
+          $html .= "<div class='celldiv slots1' onmouseup=\"showPopup($entry_link);\">";
+        }
 
         if ($show_plus_link)
         {
@@ -522,7 +533,7 @@ function cell_html($cell, $query_strings)
         $html .= "<div data-id=\"$id\" class=\"celldiv slots" .
                  (($times_along_top) ? "1" : $slots) .
                  "\">\n";
-        $html .= "<a href=\"view_entry.php?id=$id&amp;". $query_strings['booking'] . "\" title=\"$long_descr\">";
+        $html .= "<a href=\"view_entry.php?id=$id&amp;". $query_strings['booking'] . "&amp;room=$room\" title=\"$long_descr\">";
         $html .= ($is_repeat) ? "<img class=\"repeat_symbol $c\" src=\"images/repeat.png\" alt=\"" . get_vocab("series") . "\" title=\"" . get_vocab("series") . "\" width=\"10\" height=\"10\">" : '';
         $html .= "$descr</a>\n";
         $html .= "</div>\n";
@@ -919,7 +930,7 @@ function day_table_innerhtml($day, $month, $year, $room, $area, $timetohighlight
         {
           $today[$room_id][$day][$time_t] = array();  // to avoid an undefined index NOTICE error
         }   
-        $tbody .= cell_html($today[$room_id][$day][$time_t], $query_strings);
+        $tbody .= cell_html($today[$room_id][$day][$time_t], $query_strings, "$day-$month-$year");
       }  // end for (looping through the times)
       if ( FALSE != $row_labels_both_sides )
       {
@@ -977,7 +988,7 @@ function day_table_innerhtml($day, $month, $year, $room, $area, $timetohighlight
         {
           $today[$room_id][$day][$time_t] = array();  // to avoid an undefined index NOTICE error
         }
-        $tbody .= cell_html($today[$room_id][$day][$time_t], $query_strings);
+        $tbody .= cell_html($today[$room_id][$day][$time_t], $query_strings, "$day-$month-$year");
       }
       
       // next lines to display times on right side
@@ -1264,10 +1275,7 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
         // Toggle the row class back to keep it in sequence
         $row_class = ($row_class == "even_row")?"odd_row":"even_row";
         continue;
-      }
-    
-      else
-      {
+      } else {
         $tbody .= "<tr class=\"$row_class\">\n";
       
         $wt = mktime( 12, 0, 0, $month, $day_start_week+$thisday, $year );
@@ -1305,16 +1313,17 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
           $query_strings['booking']     = "area=$area&amp;day=$wday&amp;month=$wmonth&amp;year=$wyear";
         
           // and then draw the cell
-          if (!isset($week_map[$room][$thisday][$time_t]))
-          {
+          if (!isset($week_map[$room][$thisday][$time_t])) {
             $week_map[$room][$thisday][$time_t] = array();  // to avoid an undefined index NOTICE error
           }
-          $tbody .= cell_html($week_map[$room][$thisday][$time_t], $query_strings);
+
+          $tbody .= cell_html($week_map[$room][$thisday][$time_t], $query_strings, "$day-$month-$year");
         }  // end looping through the time slots
-        if ( FALSE != $row_labels_both_sides )
-        {
+
+        if ( FALSE != $row_labels_both_sides ){
           $tbody .= day_cell_html($day_cell_text, $day_cell_link, $wdate);
         }
+
         $tbody .= "</tr>\n";
       }
     
@@ -1378,16 +1387,16 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
           $query_strings['new_periods'] = "room=$room&amp;area=$area&amp;period=$time_t_stripped&amp;year=$wyear&amp;month=$wmonth&amp;day=$wday";
           $query_strings['new_times']   = "room=$room&amp;area=$area&amp;hour=$hour&amp;minute=$minute&amp;year=$wyear&amp;month=$wmonth&amp;day=$wday";
           $query_strings['booking']     = "area=$area&amp;day=$wday&amp;month=$wmonth&amp;year=$wyear";
-        
+
           // and then draw the cell
           if (!isset($week_map[$room][$thisday][$time_t]))
           {
             $week_map[$room][$thisday][$time_t] = array();  // to avoid an undefined index NOTICE error
           }
-          $tbody .= cell_html($week_map[$room][$thisday][$time_t], $query_strings);
+          $tbody .= cell_html($week_map[$room][$thisday][$time_t], $query_strings, "$wday-$wmonth-$wyear");
         }
   
-      }    // for loop
+      } // for loop
   
       // next lines to display times on right side
       if ( FALSE != $row_labels_both_sides )
