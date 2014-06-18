@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2014 at 11:23 AM
+-- Generation Time: Jun 17, 2014 at 07:33 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.16
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=310 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 -- --------------------------------------------------------
 
@@ -327,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `notifications_event` (
   `event_name` varchar(20) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `event_name` (`event_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `notifications_event`
@@ -338,6 +338,7 @@ INSERT INTO `notifications_event` (`id`, `event_name`) VALUES
 (1, 'Clase'),
 (3, 'Defensa'),
 (4, 'Oficina'),
+(6, 'Otro'),
 (2, 'Reunión');
 
 -- --------------------------------------------------------
@@ -357,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   KEY `text_id` (`text_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=85 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 -- --------------------------------------------------------
 
@@ -374,22 +375,22 @@ CREATE TABLE IF NOT EXISTS `notifications_text` (
   UNIQUE KEY `id_event_2` (`id_event`,`id_type`),
   KEY `id_type` (`id_type`),
   KEY `id_event` (`id_event`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `notifications_text`
 --
 
 INSERT INTO `notifications_text` (`id`, `id_event`, `id_type`, `text`) VALUES
-(1, 1, 2, 'Estimado,\r\nSe le recuerda la clase <i>$event</i> a realizarse en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(2, 2, 2, 'Estimado,\nSe le recuerda la reunión <i>$event</i> que se realizará en $room a las $time.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
-(3, 3, 2, 'Estimado,\r\nSe le recuerda que el día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(4, 4, 1, 'Nueva reserva de $room'),
-(5, 5, 2, 'Estimado,\r\nSe le recuerda que el día $day se realizará la charla <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(6, 2, 1, 'Estimado,\r\nLa reunión <i>$event</i> se realizará en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(7, 3, 1, 'Estimado,\r\nEl día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(8, 5, 1, 'Estimado,\r\nEl día $day se realizará la charla <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(9, 4, 2, 'Recordatorio $room');
+(1, 1, 2, 'Estimado,<br>\r\nSe le recuerda la clase <i>$event</i> a realizarse en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
+(2, 2, 2, 'Estimado,<br>\r\nSe le recuerda la reunión <i>$event</i> que se realizará en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
+(3, 3, 2, 'Estimado,<br>\r\nSe le recuerda que el día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
+(4, 4, 1, 'Estimado,<br>\r\nSe le informa que se ha realizado la reserva de $room para <i>$event</i> a las $time.<br>\r\n<br>SAR<br>Mensaje auto-generado'),
+(5, 5, 2, 'Estimado,<br>\r\nSe le recuerda que el día $day se realizará la charla <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
+(6, 2, 1, 'Estimado,<br>\r\nLa reunión <i>$event</i> se realizará en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
+(7, 3, 1, 'Estimado,<br>\r\nEl día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
+(8, 5, 1, 'Estimado,<br>\r\nEl día $day se realizará la charla <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
+(9, 4, 2, 'Estimado,<br>\r\nSe le recuerda la reserva de $room para <i>$event</i> el día $day.\r\n<br>\r\n<br>SAR<br>Mensaje auto-generado');
 
 -- --------------------------------------------------------
 
@@ -403,19 +404,21 @@ CREATE TABLE IF NOT EXISTS `notifications_time` (
   `offset` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_type` (`event_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `notifications_time`
 --
 
 INSERT INTO `notifications_time` (`id`, `event_type`, `offset`) VALUES
-(1, 1, 300),
+(1, 1, 14400),
 (2, 2, 900),
-(3, 3, 1800),
+(3, 3, 900),
 (4, 4, 172800),
 (5, 5, 900),
-(7, 5, 28800);
+(7, 5, 28800),
+(8, 2, 43200),
+(9, 3, 43200);
 
 -- --------------------------------------------------------
 
@@ -428,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `notifications_type` (
   `type_name` varchar(20) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `type_name` (`type_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `notifications_type`
@@ -526,8 +529,8 @@ ALTER TABLE `notifications_registry`
 -- Constraints for table `notifications_text`
 --
 ALTER TABLE `notifications_text`
-  ADD CONSTRAINT `notifications_text_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `notifications_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `notifications_text_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `notifications_event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `notifications_text_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `notifications_event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `notifications_text_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `notifications_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `notifications_time`
