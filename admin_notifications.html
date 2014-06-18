@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>Administrar notificaciones</title>
+
+<script type="text/javascript" src="jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/admin_notifications.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/tabs.css" media="all"/>
+
+</head>
+<body>
+
+<h2>Administración de notificaciones</h2>
+  
+<label id='area_label' for='area_select'>Conjunto:</label>
+<select class='room_area_select' id='area_select' name='area'>
+	<option value="">Cargando áreas</option>
+</select>
+
+<div class="tabs">
+    <ul class="tab-links">
+        <li class="active"><a href="#tab1">Nuevo Evento</a></li>
+        <li><a href="#tab2">Recordatorio Evento</a></li>
+        <li><a href="#tab3">Cancelación Evento</a></li>
+    </ul>
+ 
+    <div class="tab-content">
+        <div id="tab1" class="tab active"></div>
+        <div id="tab2" class="tab"></div>
+        <div id="tab3" class="tab"></div>
+    </div>
+</div>
+
+<script>
+function getURLParameter(name) {
+		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+}
+
+result = getURLParameter("resultado");
+
+if(result){
+	if(result == "ok"){
+		alert("Se agregó exitosamente el viaje");
+	}else{
+		alert("Hubo un error al agregar el viaje");
+	}
+}
+</script>
+</body>
+</html>

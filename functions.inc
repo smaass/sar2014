@@ -1482,8 +1482,20 @@ function make_menu_html($link, $currentArea, $currentRoom, $year, $month, $day) 
 }
 
 function make_admin_menu() {
-    return '<div id="admin_menu">
-    <button class="admin_button" onclick=\'window.location = "admin.php"\'>Opciones de Administrador</button></div>';
+    $menu = ' <ul class="m-bellows" id="admin_menu">
+                <li class="m-item" id="M6" >
+                  <button class="m-header admin_button">Opciones de Administrador</button>
+                  <div class="m-content">
+                    <div class="m-inner-content">
+                      <ul class="sub-menu">
+                        <li><a href="admin.php"><span>Administrar recursos</span></a></li>
+                        <li><a href="admin_notifications.php"><span>Administrar notificaciones</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>';
+    return $menu;
 }
 
 function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day)

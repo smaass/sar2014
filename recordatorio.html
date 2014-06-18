@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>Administrar notificaciones</title>
+</head>
+<body>
+<h4>Mensaje predeterminado:</h4>
+<form method="post" action="agregar-viaje.php" onSubmit="return validar();">
+	<textarea id="template" name="template" cols="60" rows="10"></textarea> 
+	<textarea id="tags" name="tags" cols="20" rows="10" disabled></textarea> 
+	<br><br>
+	Notificaciones previas al comienzo del evento
+	<ul id="notifications">
+	</ul>
+	<ul>
+		<li>
+			<input id="add" name="add" type="button" value="Agregar" onclick="agregarNotificacion();" /> 
+			<input id="delete" name="delete" type="button" value="Quitar" onclick="quitarNotificacion();" /> 
+		</li>		
+	</ul>
+
+	<input id="saveForm" type="submit" name="submit" value="Guardar" />
+	<input id="default" type="button" name="default" value="Predeterminado" />
+	<input id="help" type="button" name="help" value="Ayuda" />
+</form>
+</body>
+</html>
