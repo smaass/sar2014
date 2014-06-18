@@ -490,7 +490,7 @@ function cell_html($cell, $query_strings, $currentDayDate)
     }
     else
     {      
-      $diff = date("d-n-Y") - date($currentDayDate);
+      $diff = (time()-(60*60*24)) - strtotime($currentDayDate);
       if($diff > 0){
         $c = "disabledSlot";
       } else {
@@ -512,7 +512,7 @@ function cell_html($cell, $query_strings, $currentDayDate)
       {
         $entry_link = "'edit_entry.php?" . (($enable_periods) ? $query_strings["new_periods"] : $query_strings["new_times"]) . "'" ;
         
-        $diff = date("d-n-Y") - date($currentDayDate);
+        $diff = (time()-(60*60*24)) - strtotime($currentDayDate);
         if($diff > 0){
           // In previous days we cannot book
           $html .= "<div class='disabledSlot'>";

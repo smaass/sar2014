@@ -151,12 +151,7 @@ function print_theme_header($day, $month, $year, $area, $room)
             echo "<div id=\"more_info\">$mrbs_company_more_info</div>\n";
           }
           ?>
-      
-      	<div class="Links">
-      	<a>Contactenos </a>
-      	<a>FAQ</a>
-      	<a>Desarrolladores</a>
-      	</div>
+
         <form id="header_search" class="Search" method="get" action="search.php">
             <a href="search.php?advanced=1"><?php echo get_vocab("search") ?>:</a>
             <p>

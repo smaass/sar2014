@@ -273,6 +273,8 @@ if ($phase == 2)
         // validate the email addresses
         $valid_email = validate_email_list($room_admin_email);
 
+        echo "<script>alert('Valid email: ".$valid_email."');</script>";
+
         if (FALSE != $valid_email)
         {
             if (empty($capacity))
@@ -708,17 +710,18 @@ if (isset($change_room) && !empty($room))
 
                 // The area select box
                 echo "<div>\n";
-                echo "<label for=\"new_area\">" . get_vocab("area") . ": </label>\n";
-                echo "<label id=\"new_area\">" . $area_name . "</label>\n";
-                echo "<input type=\"hidden\" name=\"old_area\" value=\"" . $row['area_id'] . "\">\n";
+                echo "<label for='new_area'>" . get_vocab("area") . ": </label>\n";
+                echo "<label id='new_area'>" . $area_name . "</label>\n";
+                echo "<input type='hidden' name='old_area' value='$row[area_id]''>\n";
                 echo "</div>\n";
 
                 // First of all deal with the standard MRBS fields
                 // Room name
                 echo "<div>\n";
-                echo "<label for=\"room_name\">" . get_vocab("name") . ":</label>\n";
-                echo "<input type=\"text\" id=\"room_name\" name=\"room_name\" value=\"" . htmlspecialchars($row["room_name"]) . "\"$disabled>\n";
-                echo "<input type=\"hidden\" name=\"old_room_name\" value=\"" . htmlspecialchars($row["room_name"]) . "\">\n";
+                echo "<label for='room_name'>" . get_vocab("name") . ":</label>\n";
+                echo "<input type='text' id='room_name' name='room_name' pattern='^\w+[\s\w]*' value='" . htmlspecialchars($row["room_name"]) . 
+                    "' title='Escriba un nombre válido (No puede empezar por espacios o ser vacio)' required $disabled>\n";
+                echo "<input type='hidden' name='old_room_name' value='" . htmlspecialchars($row["room_name"]) . "'>\n";
                 echo "</div>\n";
 
                 // Status (Enabled or Disabled)
@@ -756,7 +759,8 @@ if (isset($change_room) && !empty($room))
                 if($area == 3) { // Capacity
                     echo "<div>\n";
                     echo "<label for='capacity'>" . get_vocab("capacity") . ":</label>\n";
-                    echo "<input type='number' max='299' min='1' id='capacity' name='capacity' value='" . htmlspecialchars($row2["capacidad"]) . "' $disabled>\n";
+                    echo "<input type='number' max='299' min='1' id='capacity' name='capacity' value='" . htmlspecialchars($row2["capacidad"]) . 
+                        "' title='Ingrese una capacidad entre 1 y 299' required $disabled>\n";
                     echo "</div>\n";
                 } else if($area == 4) { // Specifications
                     echo "<div>\n";
@@ -766,7 +770,8 @@ if (isset($change_room) && !empty($room))
                 } else if($area == 5) { // Slots
                     echo "<div>\n";
                     echo "<label for='slots'>" . "Cupos" . ":</label>\n";
-                    echo "<input type='number' max='99' min='1' id='slots' name='slots' value='" . htmlspecialchars($row["capacity_for_multientry"]) . "' $disabled>\n";
+                    echo "<input type='number' max='99' min='1' id='slots' name='slots' value='" . htmlspecialchars($row["capacity_for_multientry"]) . 
+                        "' title='Ingrese una capacidad entre 1 y 99' required $disabled>\n";
                     echo "</div>\n";
                 }
 
