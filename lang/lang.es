@@ -12,7 +12,7 @@
 // This file is PHP code. Treat it as such.
 
 // Used in style.inc
-$vocab["mrbs"]               = "Sistema de Reservas";
+$vocab["mrbs"]               = "SAR DCC";
 
 // Used in functions.inc
 $vocab["report"]             = "Informes";

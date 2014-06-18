@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 17, 2014 at 07:33 PM
+-- Generation Time: Jun 18, 2014 at 03:29 AM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.16
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 -- --------------------------------------------------------
 
@@ -357,8 +357,10 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   `event_datetime` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
-  KEY `text_id` (`text_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+  KEY `text_id` (`text_id`),
+  KEY `notification_datetime` (`notification_datetime`),
+  KEY `event_datetime` (`event_datetime`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 -- --------------------------------------------------------
 

@@ -233,7 +233,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
 
   $creationTextId = getTextId($data['tipo_evento'], 1);
   // If there is a creation text for this event, we schedule an immediate notification
-  if ($creationTextId && !$mail_previous && $thereAreEmails) {
+  if ($creationTextId && $thereAreEmails) {
     addNotification($creationTextId, $data[emails], date('Y-m-d H:i:s'), $data[id], $start_time);
   }
 
@@ -244,10 +244,31 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   if ($thereAreEmails) {
     foreach ($reminders as $offset) {
       $diff_time = $data['start_time'] - $offset;
-      $notification_time = date('Y-m-d H:i:s', $diff_time);
+      if ($offset > 3600) {
+        $notification_time = closestWorkingHour($diff_time);
+      }
+      else {
+        $notification_time = date('Y-m-d H:i:s', $diff_time);
+      }
       addNotification($reminderTextId, $data[emails], $notification_time, $data[id], $start_time);
     }
   }
+}
+
+function closestWorkingHour($timestamp) {
+  $working_hours_start = 8;
+  $working_hours_end = 18;
+
+  $h = date('H', $timestamp);
+  if ($h > $working_hours_end) {
+    $dh = $h - 18;
+    $timestamp -= $dh*3600;
+  }
+  else if ($h < $working_hours_start) {
+    $previousDay = date('Y-m-d', $timestamp - 3600*12);
+    return $previousDay.' '.$working_hours_end.':00:00';
+  }
+  return date('Y-m-d H:i:s', $timestamp);
 }
 
 // }}}
