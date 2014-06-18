@@ -22,6 +22,10 @@
         background:#5DD760;
     }
 
+#M3 div {
+    background: #9EEC9E;
+}
+
 .header4{
     background: #D37441;
 }
@@ -29,6 +33,10 @@
     .header4:hover{
         background:#E38746;
     }
+
+#M4 div {
+    background: #E9AF90;
+}
 
 .header5{
     background: #2AA1D7;
@@ -38,28 +46,41 @@
         background:#2AC1F7;
     }
 
+#M5 div {
+    background: #83CCEB;
+}
+
 .area3{
     background: #4FB755;
+}
+.today.area3 {
+    background: #309D37;
 }
 
 .area4{
     background: #D37441;
 }
+.today.area4 {
+    background: #B45522;
+}
 
 .area5{
     background: #2AA1D7;
 }
+.today.area5 {
+    background: #0892CE;
+}
 
 .area3-current{
-    background: #2EFF12;
+    background: #5DD760;
 }
 
 .area4-current{
-    background: #FF8811;
+    background: #E38746;
 }
 
 .area5-current{
-    background: #1173F2;
+    background: #4EB4DF;
 }
 
 

@@ -213,7 +213,7 @@ expires_header(60*30); // 30 minute expiry
     height: 54px;
     text-align: left;
     font-weight: bold;
-    padding-left: 10px;
+    padding-left: 20px;
     border: 0;
     border-radius: 9px;
     background: rgba(183, 67, 67, 1);
@@ -676,7 +676,6 @@ table.dwm_main {clear: both; width: 100%; border-spacing: 0; border-collapse: se
 .dwm_main th {font-size: small; font-weight: normal; vertical-align: top; padding: 0;
     color: #ffffff;
     border-left: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_header_border_color ?>}
-.dwm_main th.today {background-color:#888; }
 .dwm_main th.first_last, .dwm_main th span {padding: 0 2px}
 .dwm_main th:first-child {border-left: 0}
 .dwm_main a {display: block; min-height: inherit}
