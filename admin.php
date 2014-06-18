@@ -37,7 +37,8 @@ $required_level = (isset($max_level) ? $max_level : 2);
 $is_admin = (authGetUserLevel($user) >= $required_level);
 
 print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $room : "");
-echo make_menu_html('week.php', $area, $room, $year, $month, $day);
+$Menu_Flag = 1;
+echo make_menu_html_admin('week.php', $area, $room, $year, $month, $day,$Menu_Flag);
 echo '<div class="MainCell">';
 
 // Get the details we need for this area

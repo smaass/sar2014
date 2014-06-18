@@ -50,6 +50,18 @@
     background: #83CCEB;
 }
 
+.header6{
+    background: rgba(190, 65, 65, 1);
+}
+
+    .header6:hover{
+        background:rgba(200, 72, 72, 1);
+    }
+
+#M6 div {
+    background: rgba(230, 210, 210, 1);
+}
+
 .area3{
     background: #4FB755;
 }
@@ -82,6 +94,10 @@
 .area5-current{
     background: #4EB4DF;
 }
+.area6-current{
+    background: rgba(230, 83, 83, 1);
+}
+
 #M3 ul.sub-menu li a:hover span{
 background: #6DE770;}
 
@@ -91,6 +107,8 @@ background: #F39756}
 #M5 ul.sub-menu li a:hover span{
 background: #5EC4EF;}
 
+#M6 ul.sub-menu li a:hover span{
+background: rgba(210, 77, 77, 1);}
     
     .m-bellows .m-item:first-child .m-header {
         -webkit-border-top-left-radius: 9px;

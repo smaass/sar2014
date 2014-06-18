@@ -36,7 +36,9 @@ $is_admin       = (authGetUserLevel($user) >= $required_level);
 
 
 print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $room : "");
-echo make_menu_html('week.php', $area, $room, $year, $month, $day);
+$Menu_Flag = 2;
+echo make_menu_html_admin('week.php', $area, $room, $year, $month, $day,$Menu_Flag);
+
 echo '<div class="MainCell">';
 
 if (!$is_admin){
@@ -69,6 +71,7 @@ if (!empty($error)) {
   	include ('admin_notifications.html'); 
 
 echo '</div>';
+
 output_trailer();
 ?>
 

@@ -1350,7 +1350,7 @@ function make_area_select_html($link, $current, $year, $month, $day)
 } // end make_area_select_html
 
 //require "defaultincludes.inc";
-function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year, $month, $day)
+function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year, $month, $day, $Menu_Flag)
 {
   global $tbl_room, $tbl_area, $area_list_format, $area_of_trabajo;
   
@@ -1427,7 +1427,7 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
       	$offices_id = get_work_offices($res);      	
       	$out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;\">";
       	
-      	if($currentRoom == null)
+      	if($currentRoom == null && $Menu_Flag == 0)
       		$out_html .= "<span selected class=\"$class_current\""; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
       	else
       		$out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
@@ -1438,7 +1438,7 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
   	    foreach ($offices_id as $key => $value)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$value[0]."\">";
-          if($value[0] == $currentRoom)
+          if($value[0] == $currentRoom && $Menu_Flag == 0)
           	$out_html .= "<span selected class=\"$class_current\""; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
           else
           	$out_html .= "<span"; //onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($key)."', '".htmlspecialchars($value['descr'])."');\" onMouseOut=\"closePopup();\"";
@@ -1452,7 +1452,7 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
         for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
         {
           $out_html .= "<li><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\">";
-          if($row['id'] == $currentRoom)
+          if($row['id'] == $currentRoom && $Menu_Flag == 0)
           	$out_html .= "<span selected class=\"$class_current\"";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
           else
           	$out_html .= "<span";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
@@ -1470,35 +1470,53 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
 
 
 //menu
+function make_menu_html_admin($link, $currentArea, $currentRoom, $year, $month, $day,$Menu_Flag) {
+	return make_menu_html_generic($link, $currentArea, $currentRoom, $year, $month, $day,$Menu_Flag);
+}
+function make_menu_html($link, $currentArea, $currentRoom, $year, $month, $day){
+	return make_menu_html_generic($link, $currentArea, $currentRoom, $year, $month, $day,0);
+}
 
-function make_menu_html($link, $currentArea, $currentRoom, $year, $month, $day) {
+function make_menu_html_generic($link, $currentArea, $currentRoom, $year, $month, $day,$Menu_Flag) {
+	
     $menu = "<div id=\"dwm_menu\" class=\"Left\">\n";
+    $menu .= "<ul class=\"m-bellows\">\n";
     if (authGetUserLevel(getUserName()) >= 2) {
-        $menu .= make_admin_menu();
+        $menu .= make_admin_menu($Menu_Flag);
     }
-    $menu .= make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day);
-    $menu .= $out_html .= "</div>\n";
+    $menu .= make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day, $Menu_Flag);    
+    $menu .= $out_html .= "</ul>\n"."</div>\n";
     return $menu;
 }
 
-function make_admin_menu() {
-    $menu = ' <ul class="m-bellows" id="admin_menu">
-                <li class="m-item" id="M6" >
-                  <button class="m-header admin_button">Opciones de Administrador</button>
+function make_admin_menu($Menu_Flag) {
+	$menu = '';
+	if ($Menu_Flag == 1 || $Menu_Flag == 2)
+    	$menu .=' <li class="m-item m-opened" id="M6" >';
+    else            
+    	$menu .=' <li class="m-item " id="M6" >';
+    $menu .=    '<h3 class="m-header header6">Opciones de Administrador</h3>
                   <div class="m-content">
                     <div class="m-inner-content">
-                      <ul class="sub-menu">
-                        <li><a href="admin.php"><span>Administrar recursos</span></a></li>
-                        <li><a href="admin_notifications.php"><span>Administrar notificaciones</span></a></li>
-                      </ul>
+                      <ul class="sub-menu">';
+	if($Menu_Flag == 1)
+    	$menu .= '<li><a href="admin.php"><span class="area6-current">Administrar recursos</span></a></li>';
+    else 
+    	$menu .= '<li><a href="admin.php"><span >Administrar recursos</span></a></li>';
+    if($Menu_Flag == 2)
+        $menu .= '<li><a href="admin_notifications.php"><span class="area6-current">Administrar notificaciones</span></a></li>';
+    else 
+    	$menu .= '<li><a href="admin_notifications.php"><span>Administrar notificaciones</span></a></li>';
+                        
+    $menu .= '         </ul>
                     </div>
                   </div>
                 </li>
-              </ul>';
+              ';
     return $menu;
 }
 
-function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day)
+function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day, $Menu_Flag)
 {
   global $tbl_area, $area_list_format;
   
@@ -1511,12 +1529,12 @@ function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day
   // Only show the areas if there's more than one of them, otherwise
   // there's no point
   if ($res  && (sql_count($res) > 1))
-  {        
-    $out_html .= "<ul class=\"m-bellows\">\n";
+  {      
+    
     for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
     {
       $li_id = "M".$row['id'];
-      if ($row['id'] == $currentArea) {
+      if ($row['id'] == $currentArea && $Menu_Flag == 0) {
 		$out_html .= "<li class=\"m-item m-opened\" id=\"" .$li_id. "\" >";
 	  }
 	  else
@@ -1527,10 +1545,10 @@ function make_normal_menu($link, $currentArea, $currentRoom, $year, $month, $day
       $out_html .= "<a href=\"#" .$li_id. "\" \>";      
       $out_html .= htmlspecialchars($row['area_name']) . "</a></h3>";
       $out_html .= "<div class=\"m-content\"><div class=\"m-inner-content\">";
-      $out_html .= make_room_select_html ($link, $row['id'], $currentArea, $currentRoom, $year, $month, $day);
+      $out_html .= make_room_select_html ($link, $row['id'], $currentArea, $currentRoom, $year, $month, $day, $Menu_Flag);
       $out_html .= "</div></div></li>\n";
     }
-    $out_html .= "</ul>\n";
+    
   }
   return $out_html;
 }
