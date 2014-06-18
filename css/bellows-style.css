@@ -82,8 +82,14 @@
 .area5-current{
     background: #4EB4DF;
 }
+#M3 ul.sub-menu li a:hover span{
+background: #6DE770;}
 
+#M4 ul.sub-menu li a:hover span{
+background: #F39756}
 
+#M5 ul.sub-menu li a:hover span{
+background: #5EC4EF;}
 
     
     .m-bellows .m-item:first-child .m-header {

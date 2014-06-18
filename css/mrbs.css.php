@@ -231,6 +231,12 @@ ul.sub-menu li a span{
 	padding: 5px 0px 5px 5px;	
 	font-size:115%;
 }
+
+ul.sub-menu li a:hover{
+	text-decoration:none;
+	color:inherit;
+}
+
 ul.sub-menu li a span#vista_general {
 	color:#E40000;
 	font-size:115%
