@@ -54,17 +54,17 @@ expires_header(60*30); // 30 minute expiry
 	.Left{
 		float:left;
 		position:absolute;
-		width:250px;
+		width:270px;
 		padding-right: 10px;
 	}
 	.Right{
-		margin-left:263px;
+		margin-left:283px;
 		vertical-align: middle;
 		position:relative;
 	}
 	.MainCell {
 		overflow:auto;
-		margin-left:270px;
+		margin-left:283px;
 		position:relative;
 		background-color: #fff;
 	    box-shadow: 0 0 8px #777;
@@ -786,7 +786,7 @@ tr.row_highlight td.new {background-color: <?php echo $row_highlight_color ?>} /
 // not support the :hover pseudo class on anything other than an anchor.
 ?>
 .dwm_main td:hover.new, .dwm_main td.new_hover {background-color: <?php echo $row_highlight_color ?>}
-.dwm_main tr:hover td.row_labels, .dwm_main td.row_labels_hover {background-color: <?php echo $row_highlight_color ?>; color: <?php echo $standard_font_color ?>}
+.dwm_main tr:hover td.row_labels, .dwm_main td.row_labels_hover {background-color: <?php echo $row_highlight_color ?>; color: #AAA}
 .dwm_main#month_main td:hover.valid, .dwm_main#month_main td.valid_hover {background-color: <?php echo $row_highlight_color ?>}
 div:hover.new_booking {background-color: <?php echo $row_highlight_color ?>}
 <?php
@@ -794,9 +794,11 @@ div:hover.new_booking {background-color: <?php echo $row_highlight_color ?>}
 // inherit would mean that (1) you didn't have to specify the colour again and (2) you needn't use the tbody selector to
 // stop the header links changing colour.
 ?>
-.dwm_main tbody a:link {color:#FFF}
-.dwm_main tbody tr:hover a:link,    td.row_labels_hover a:link    {color: <?php echo $anchor_link_color ?>}
-.dwm_main tbody tr:hover a:visited, td.row_labels_hover a:visited {color: <?php echo $anchor_link_color ?>}
+.dwm_main .booking_list .booking.area5 a {color:white}
+.dwm_main .celldiv.slots2 a {color:white}
+/*.dwm_main tbody a:link, .dwm_main tbody a:visited {color:#FFF}*/
+/*.dwm_main tbody tr:hover a:link,    td.row_labels_hover a:link    {color: <?php echo $anchor_link_color ?>}
+.dwm_main tbody tr:hover a:visited, td.row_labels_hover a:visited {color: <?php echo $anchor_link_color ?>}*/
 <?php // Disable the highlighting when we're in resize mode ?>
 .resizing .dwm_main tr.even_row td:hover.new {background-color: <?php echo $row_even_color ?>}
 .resizing .dwm_main tr.odd_row td:hover.new {background-color: <?php echo $row_odd_color ?>}
