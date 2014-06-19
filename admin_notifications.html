@@ -20,14 +20,19 @@
 <div class="tabs">
     <ul class="tab-links">
         <li class="active"><a href="#tab1">Nuevo Evento</a></li>
+
+        <!-- 
         <li><a href="#tab2">Recordatorio Evento</a></li>
         <li><a href="#tab3">Cancelación Evento</a></li>
+        -->
     </ul>
  
     <div class="tab-content">
         <div id="tab1" class="tab active"></div>
+        <!-- 
         <div id="tab2" class="tab"></div>
         <div id="tab3" class="tab"></div>
+        -->
     </div>
 </div>
 
@@ -35,6 +40,10 @@
 function getURLParameter(name) {
 		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 }
+
+$("#tab1").load("recordatorio.html", onAfterLoad);
+//$("#tab2").load("recordatorio.html", onAfterLoad);
+//$("#tab3").load("recordatorio.html", onAfterLoad);
 
 result = getURLParameter("resultado");
 

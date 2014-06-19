@@ -33,6 +33,10 @@ function populateTags(){
 }
 
 function quitarNotificacion(){
+
+	if(notificationsCount == 0)
+		return;
+
 	var elem = document.getElementById("notification"+notificationsCount--);
 	elem.parentNode.removeChild(elem);
 }
@@ -81,14 +85,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-	$("#tab1").load("recordatorio.html", onAfterLoad);
-	$("#tab2").load("recordatorio.html", onAfterLoad);
-	$("#tab3").load("recordatorio.html", onAfterLoad);
-
     notificationsCount = 0;
 });
 
 function onAfterLoad(){
+	console.log("count: "+notificationsCount);
 	populateTags();
 	agregarNotificacion();
 }
