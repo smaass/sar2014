@@ -75,7 +75,7 @@ expires_header(60*30); // 30 minute expiry
 
 /* ------------ Head -----------------------------*/
     #logo {
-	    margin-left: 10px;
+	    margin-left: 66px;
 	    margin-top: 15px;
       float: left;
 	}
@@ -1205,7 +1205,7 @@ form#add_new_user {margin-left: 1em}
 
 
 /* ------------ FUNCTIONS.INC -------------------*/
-#logon_box {display: block; width: 250px; float: right; position:absolute; right: 270px;bottom:10px;}
+#logon_box {display: block; width: 300px; float: right; position:absolute; right: 270px;bottom:10px;}
 #logon_box a {width: 65%; margin-right: 5%; margin-top: 5px; float: left; text-align: right;}
 #logon_box form {width: 30%; float: right;}
 table#banner {width: 100%; border-spacing: 0; border-collapse: collapse;

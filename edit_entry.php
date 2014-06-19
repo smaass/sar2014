@@ -510,7 +510,7 @@ function create_field_entry_reserva_oficina($disabled=FALSE)
   echo "</div>\n";
 
   echo "<div id=\"div_pais\">\n";
-  generate_input("Pais:", 'pais', $pais, $disabled, 50, 'type="text" required pattern="' . REGEX_TEXT_POS . '"');
+  generate_input("País:", 'pais', $pais, $disabled, 50, 'type="text" pattern="' . REGEX_TEXT_POS . '"');
   echo "</div>\n";
   echo '<input type="hidden" name="tipo_evento" value="Oficina"/>';
 /*
