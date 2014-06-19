@@ -76,13 +76,16 @@ expires_header(60*30); // 30 minute expiry
 /* ------------ Head -----------------------------*/
     #logo {
 	    margin-left: 10px;
-	    margin-top: 0px;
+	    margin-top: 15px;
+      float: left;
 	}
     .Top {
     	position:relative;
-        padding: 10px;
-		box-shadow: 0 0 8px #777;
-		background-color:#F1F1F1;
+        padding: 5px;
+		border-radius: 8px;
+		box-shadow: 0 0 8px #666;
+		/*background-color:<?php echo $banner_back_color?>;*/
+    background: linear-gradient(to right, #dcedc8, #d1d2d1);
 	}
 	.Links{
 		position:absolute;
@@ -217,12 +220,12 @@ expires_header(60*30); // 30 minute expiry
     padding-left: 20px;
     border: 0;
     border-radius: 9px;
-    background: rgba(183, 67, 67, 1);
-    color: #ffffff;
+    background: linear-gradient(to bottom, #c8c8c8 0%, #aaaaaa 100%);
+    color: #000;
 }
 
 .admin_button:hover {
-    background: linear-gradient(to bottom, #c44 0%, #b33 100%);
+    background: linear-gradient(to bottom, #999999 0%, #777777 100%);
 }
 #dwm_menu ul { margin: 0; }
 /* ------------ Rooms list -----------------------------*/
@@ -470,6 +473,10 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
   display: block;
 }
 
+#div_start_date select, #div_end_date select {
+	width:150px;
+}
+
 .entry_popup input[type="text"]
 {
   width: 240px;
@@ -488,6 +495,7 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 #description
 {
   width: 240px;
+  display:block;
 }
 
 #f_emails

@@ -697,6 +697,28 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
   <script type="text/javascript">
 
   $(function() {
+	var dateselector = document.getElementById(<?php echo "'${prefix}dateselector'" ?>);
+	<?php if($inline): ?>
+	  var datepicker_html = '<div class="date" type="text" id="<?php echo $datepicker_baseid ?>"></div>\n';
+	<?php else: ?>
+	  var datepicker_html = '<input class="date" type="button" id="<?php echo $datepicker_baseid ?>">\n';
+	<?php endif;
+	// The next input is disabled because we don't need to pass the value through to
+	// the form and we don't want the value cluttering up the URL (if it's a GET).
+	// It's just used as a holder for the date in a known format so that it can
+	// then be used by datepicker_close() to populate the following three inputs.
+	?>
+	datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt"'
+	datepicker_html += ' name="<?php echo $prefix ?>_alt"';
+	datepicker_html += ' value="<?php echo "${year}-${month}-${day}" ?>"';
+	datepicker_html += ' disabled="disabled">\n';
+	  
+	// These three inputs we do want
+
+	datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_day" name="<?php echo $prefix ?>day">\n';
+	datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_month" name="<?php echo $prefix ?>month">\n';
+	datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_year" name="<?php echo $prefix ?>year">\n';
+	dateselector.innerHTML = datepicker_html;
     $("#<?php echo $datepicker_baseid ?>").datepicker({yearRange: <?php echo "'$min:$max'" ?>,
                                                        altField: '#<?php echo $datepicker_baseid ?>_alt'
                                                        <?php
@@ -728,28 +750,6 @@ function genDateSelector($prefix, $day, $month, $year, $form_id='', $disabled=FA
   });
  
   
-  var dateselector = document.getElementById(<?php echo "'${prefix}dateselector'" ?>);
-  <?php if($inline): ?>
-    var datepicker_html = '<div class="date" type="text" id="<?php echo $datepicker_baseid ?>"></div>\n';
-  <?php else: ?>
-    var datepicker_html = '<input class="date" type="button" id="<?php echo $datepicker_baseid ?>">\n';
-  <?php endif;
-  // The next input is disabled because we don't need to pass the value through to
-  // the form and we don't want the value cluttering up the URL (if it's a GET).
-  // It's just used as a holder for the date in a known format so that it can
-  // then be used by datepicker_close() to populate the following three inputs.
-  ?>
-  datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt"'
-  datepicker_html += ' name="<?php echo $prefix ?>_alt"';
-  datepicker_html += ' value="<?php echo "${year}-${month}-${day}" ?>"';
-  datepicker_html += ' disabled="disabled">\n';
-  
-  // These three inputs we do want
-
-  datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_day" name="<?php echo $prefix ?>day">\n';
-  datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_month" name="<?php echo $prefix ?>month">\n';
-  datepicker_html += '<input type="hidden" id="<?php echo $datepicker_baseid ?>_alt_year" name="<?php echo $prefix ?>year">\n';
-  dateselector.innerHTML = datepicker_html;
   
   </script>
   <?php
