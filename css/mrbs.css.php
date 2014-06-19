@@ -80,10 +80,9 @@ expires_header(60*30); // 30 minute expiry
 	}
     .Top {
     	position:relative;
-        padding: 15px;
-		border-radius: 8px;
-		box-shadow: 0 0 8px #666;
-		background-color:#8EA3A0;
+        padding: 10px;
+		box-shadow: 0 0 8px #777;
+		background-color:#F1F1F1;
 	}
 	.Links{
 		position:absolute;
@@ -256,9 +255,6 @@ padding-bottom: 50px;}
 
 body {font-size: 15px;
     margin: 0;
-    padding-top: 5px;
-    padding-left: 5%;
-    padding-right: 5%;
     color:            <?php echo $standard_font_color ?>;
     font-family:      <?php echo $standard_font_family ?>;
     background-color: <?php echo $body_background_color ?>}
@@ -376,7 +372,7 @@ body {font-size: 15px;
           box-shadow: none;
 }
 
-div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 5px;overflow:auto; margin-top:5px;}
+div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 15px;overflow:auto; margin-top:5px;}
 
 h1 {font-size: x-large; clear: both}
 h2 {font-size: 25px; clear: both}
@@ -1194,7 +1190,7 @@ form#add_new_user {margin-left: 1em}
 
 
 /* ------------ FUNCTIONS.INC -------------------*/
-#logon_box {display: block; width: 250px; float: right; position:absolute; right: 270px;top:68px;}
+#logon_box {display: block; width: 250px; float: right; position:absolute; right: 270px;top:41px;}
 #logon_box a {width: 65%; margin-right: 5%; margin-top: 5px; float: left; text-align: right;}
 #logon_box form {width: 30%; float: right;}
 table#banner {width: 100%; border-spacing: 0; border-collapse: collapse;
