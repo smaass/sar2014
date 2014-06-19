@@ -2,7 +2,7 @@
 
 // $Id: functions_table.inc 2374 2012-08-12 19:11:43Z cimorrison $
 
-function map_add_booking ($row, &$column, $am7, $pm7, $format)
+function map_add_booking ($row, &$column, $am7, $pm7, $format, $area)
 {
   // Enters the contents of the booking found in $row into $column, which is
   // a column of the map of the bookings being prepared ready for display.
@@ -119,7 +119,8 @@ function map_add_booking ($row, &$column, $am7, $pm7, $format)
     $column[$time_t][$n]["is_multiday_start"] = $is_multiday_start;
     $column[$time_t][$n]["is_multiday_end"] = $is_multiday_end;
     $column[$time_t][$n]["status"] = $row['status'];
-    $column[$time_t][$n]["color"] = $row['type'];
+    //$column[$time_t][$n]["color"] = $row['type'];
+    $column[$time_t][$n]["color"] = "area$area";
     $column[$time_t][$n]["start_time"] = utf8_strftime(hour_min_format(), $row['start_time']);
     $column[$time_t][$n]["slots"] = null;  // to avoid undefined index NOTICE errors
     // if it's a multiple booking also fill in the name and description
@@ -767,7 +768,7 @@ function day_table_innerhtml($day, $month, $year, $room, $area, $timetohighlight
     //  row['entry_create_by'] = Creator/owner of entry
     //  row['status'] = Status code of the entry
   
-    map_add_booking($row, $today[$row['room_id']][$day], $am7, $pm7, $format);
+    map_add_booking($row, $today[$row['room_id']][$day], $am7, $pm7, $format, $area);
 
   }
 
@@ -1135,7 +1136,7 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
     {
       for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
       {
-        map_add_booking($row, $week_map[$room][$j], $am7[$j], $pm7[$j], $format);
+        map_add_booking($row, $week_map[$room][$j], $am7[$j], $pm7[$j], $format, $area);
       }
     }
   } 

@@ -742,10 +742,12 @@ div.b_none   {padding: 1px}
 foreach ($color_types as $type => $col)
 {
   echo "td.$type {background-color: $col}\n";         // used in the day and week views
-  echo ".month div.$type {float: left; max-height: 1.6em; height: 1.6em; min-height: 1.3em; overflow: hidden; background-color: $col}\n";   // used in the month view
+  echo ".month div.$type {background-color: $col}\n";   // used in the month view
 }
-
 ?>
+.month div.booking_list div.booking {
+	float: left; max-height: 1.6em; height: 1.6em; min-height: 1.3em; overflow: hidden;
+}
 
 .dwm_main#week_main th.hidden_day, .dwm_main#month_main th.hidden_day
     {width: <?php echo $column_hidden_width ?>%;
@@ -1392,5 +1394,5 @@ div#check_tabs {background-image: none}
 }
 
 .disabledSlot {
-	background: #7D7863;
+	background: #CCC8B5;
 }

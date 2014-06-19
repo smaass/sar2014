@@ -242,7 +242,8 @@ else
           echo "<br>DEBUG: Entry ".$row['id']." day $day_num\n";
         }
         $d[$day_num]["id"][] = $row['id'];
-        $d[$day_num]["color"][] = $row['type'];
+        //$d[$day_num]["color"][] = $row['type'];
+        $d[$day_num]["color"][] = "area$area";
         $d[$day_num]["is_repeat"][] = !empty($row['repeat_id']);
         
         // Handle private events
@@ -541,7 +542,7 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
               break;
           }
         }
-        echo "<div class=\"" . $class . "\"" .
+        echo "<div class=\"booking " . $class . "\"" .
           " style=\"width: " . (($monthly_view_entries_details == "both") ? '100%' : '49.9%') . "\">\n";
         if (!isset($general_view))
         {
@@ -603,7 +604,7 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
     }
     for($i=0;$i<$d[$cday]["available_capacity"];$i++)
     {
-	    echo "<div class=\"" . "A" . "\"" .
+	    echo "<div class=\"booking " . "A" . "\"" .
 	    " style=\"width: " . (($monthly_view_entries_details == "both") ? '100%' : '49.9%') . "\">\n";
 	    //echo "<i>{$d[$cday][available_capacity]} cupos libres<i>";
 	    //echo "<a href=\"edit_entry.php?$query_string\"></a></div>";
