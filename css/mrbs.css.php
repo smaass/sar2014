@@ -76,14 +76,16 @@ expires_header(60*30); // 30 minute expiry
 /* ------------ Head -----------------------------*/
     #logo {
 	    margin-left: 10px;
-	    margin-top: 0px;
+	    margin-top: 15px;
+      float: left;
 	}
     .Top {
     	position:relative;
-        padding: 15px;
+        padding: 5px;
 		border-radius: 8px;
 		box-shadow: 0 0 8px #666;
-		background-color:<?php echo $banner_back_color?>;
+		/*background-color:<?php echo $banner_back_color?>;*/
+    background: linear-gradient(to right, #dcedc8, #d1d2d1);
 	}
 	.Links{
 		position:absolute;
@@ -211,12 +213,12 @@ expires_header(60*30); // 30 minute expiry
     padding-left: 20px;
     border: 0;
     border-radius: 9px;
-    background: #EB5F5F;
-    color: #ffffff;
+    background: linear-gradient(to bottom, #c8c8c8 0%, #aaaaaa 100%);
+    color: #000;
 }
 
 .admin_button:hover {
-    background: linear-gradient(to bottom, #c44 0%, #b33 100%);
+    background: linear-gradient(to bottom, #999999 0%, #777777 100%);
 }
 #dwm_menu ul { margin: 0; }
 /* ------------ Rooms list -----------------------------*/
@@ -736,7 +738,7 @@ div.b_none   {padding: 1px}
 foreach ($color_types as $type => $col)
 {
   echo "td.$type {background-color: $col}\n";         // used in the day and week views
-  echo ".month div.$type {float: left; max-height: 1.6em; height: 1.6em; min-height: 1.3em; overflow: hidden; background-color: $col}\n";   // used in the month view
+  echo ".month div.$type {color: white; float: left; max-height: 1.6em; height: 1.6em; min-height: 1.3em; overflow: hidden; background-color: $col}\n";   // used in the month view
 }
 
 ?>

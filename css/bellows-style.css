@@ -15,39 +15,43 @@
 }
 
 .header3{
-    background: #F4696D;
+    background: linear-gradient(to bottom, #226765 0%, #134543 100%); /*verde azuloso agua oscuro Salas Publicas*/
 }
 
     .header3:hover{
-        background:#F48B8E;
+        background:#509A97;
     }
 
 .header4{
-    background: #F5D36A;
+    background: linear-gradient(to bottom, #4E9231 0%, #3a6925 100%); /* verdoso Recursos computacionales*/
 }
 
     .header4:hover{
-        background:#F5DB8C;
+        background:#90DA71;
     }
 
 .header5{
-    background: #6D6BCF;
+    background: linear-gradient(to bottom, #303D74 0%, #26305d 100%); /* azuloso Oficinas de trabajo*/
 }
 
     .header5:hover{
-        background:#8583CF;
+        background:#6372AC;
     }
 
 .area3{
-    background: #3F9745;
+    background: #083433;
+
 }
 
 .area4{
-    background: #456D67;
+    background: #238019;
 }
 
 .area5{
-    background: #4A9187;
+    background: #0D1B3A;
+}
+.area8000{
+    background: #10470A;
 }
     
     .m-bellows .m-item:first-child .m-header {
@@ -72,8 +76,9 @@
         border-radius: 0;
     }
 .m-bellows .m-header a {
-    color: black;
+    color: white;
     white-space:nowrap;
+    font-size:120%;
 }
 .m-bellows .m-inner-content {
     padding: 10px 15px;

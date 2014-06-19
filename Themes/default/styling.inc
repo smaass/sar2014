@@ -13,13 +13,13 @@ $header_font_color              = "#ffffff";    // font color for text in header
 $highlight_font_color           = "#ff0066";    // used for highlighting text (eg links, errors)
 $colour_key_font_color          = $standard_font_color;    // used in the colour key table
 
-$banner_back_color              = "#D3F8A9";    // background colour for banner
+$banner_back_color              = "#dcedc8";    // background colour for banner
 $banner_border_color            = $body_background_color;    // border colour for banner
 $banner_font_color              = $header_font_color;       // font colour for banner
 
 $header_back_color              = $banner_back_color;  // background colour for headers
 
-$admin_table_header_back_color  = $header_back_color;     // background colour for header and also border colour for table cells
+$admin_table_header_back_color  = "#787b84";     // background colour for header and also border colour for table cells
 $admin_table_header_sep_color   = $body_background_color; // vertical separator colour in header
 $admin_table_header_font_color  = $header_font_color;     // font colour for header
 $admin_table_border_color       = "#C3CCD3";

@@ -386,7 +386,7 @@ for ($weekcol = 0; $weekcol < 7; $weekcol++)
   }
   else
   {
-    echo "<th class='area4'>" . day_name(($weekcol + $weekstarts)%7) . "</th>";
+    echo "<th class='area$area'>" . day_name(($weekcol + $weekstarts)%7) . "</th>";
   }
 }
 echo "\n</tr>\n";
