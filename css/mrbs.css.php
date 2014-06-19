@@ -232,7 +232,7 @@ ul.sub-menu li a span{
 	display:block;
 	width:250px;
 	padding: 5px 0px 5px 5px;	
-	font-size:115%;
+	font-size:90%;
 }
 
 ul.sub-menu li a:hover{
@@ -795,7 +795,7 @@ div:hover.new_booking {background-color: <?php echo $row_highlight_color ?>}
 // stop the header links changing colour.
 ?>
 .dwm_main .booking_list .booking.area5 a {color:white}
-.dwm_main .celldiv.slots2 a {color:white}
+.dwm_main .celldiv a {color:white}
 /*.dwm_main tbody a:link, .dwm_main tbody a:visited {color:#FFF}*/
 /*.dwm_main tbody tr:hover a:link,    td.row_labels_hover a:link    {color: <?php echo $anchor_link_color ?>}
 .dwm_main tbody tr:hover a:visited, td.row_labels_hover a:visited {color: <?php echo $anchor_link_color ?>}*/
