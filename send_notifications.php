@@ -46,10 +46,12 @@ $sql = "SELECT reg.id as id,
              $tbl_room as room
         WHERE reg.text_id = inf.id
           AND '{$today}' > reg.notification_datetime
-          AND '{$today}' < reg.event_datetime
           AND sent = 0
           AND room.id = entry.room_id
           AND entry.id = reg.event_id";
+          //AND '{$today}' < reg.event_datetime";
+
+error_log('Se consultara con: ' . $sql . "\n", 3, "errors.log");
           
 $result = sql_query($sql); 
 
