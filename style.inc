@@ -15,6 +15,7 @@ global $using_rtl, $refresh_rate, $PHP_SELF;
     <link rel="stylesheet" href="css/bellows.css">
     <link rel="stylesheet" href="css/bellows-style.css">
     <link rel="stylesheet" href="css/mrbs.css.php" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/tabs.css" media="all"/>
     
     <?php
     if ($using_rtl)

@@ -1,0 +1,14 @@
+<h4>Mensaje predeterminado:</h4>
+<form method="post" action="agregar-viaje.php" onSubmit="return validar();">
+	<textarea id="template_nuevoevento" name="template" cols="60" rows="10"></textarea> 
+	<textarea id="tags" name="tags" cols="20" rows="10" disabled>Tags disponibles:
+
+@event
+@day
+@time
+@room
+	</textarea> 
+	<br><br>
+	<input id="saveForm" type="submit" name="submit" value="Guardar" />
+	<!--<input id="help" type="button" name="help" value="Ayuda" />-->
+</form>

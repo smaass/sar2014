@@ -1,48 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>Administrar notificaciones</title>
-
-
-<script type="text/javascript" src="js/admin_notifications.js"></script>
-
-<link rel="stylesheet" type="text/css" href="css/tabs.css" media="all"/>
-
-</head>
-<body>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <h2>Administración de notificaciones</h2>
   
 <label id='area_label' for='area_select'>Conjunto:</label>
 <select class='room_area_select' id='area_select' name='area'>
-	<option value="">Cargando áreas</option>
+    <option value="">Cargando áreas</option>
 </select>
 
 <div class="tabs">
     <ul class="tab-links">
         <li class="active"><a href="#tab1">Nuevo Evento</a></li>
         <li><a href="#tab2">Recordatorio Evento</a></li>
-        <li><a href="#tab3">Cancelación Evento</a></li>
     </ul>
  
     <div class="tab-content">
-        <div id="tab1" class="tab active"></div>
-        <div id="tab2" class="tab"></div>
-        <div id="tab3" class="tab"></div>
+        <div id="tab1" class="tab active">
+            <h4>Mensaje de notificación:</h4>
+                <div>
+                    <textarea id="template_nuevoevento" name="template" cols="60" rows="10"></textarea> 
+                    <textarea class="tags" name="tags" cols="20" rows="10" disabled></textarea> 
+                    <br><br>
+                    <button class="saveForm">Guardar</button>
+                    <!--<input id="help" type="button" name="help" value="Ayuda" />-->
+                </div>
+        </div>
+
+        <div id="tab2" class="tab">
+            <h4>Mensaje de notificación:</h4>
+            <div>
+                <textarea id="template_recordatorio" name="template" cols="60" rows="10"></textarea> 
+                <textarea class="tags" name="tags" cols="20" rows="10" disabled></textarea> 
+                <br><br>
+                Tiempos de notificaciones previas al comienzo del evento (minutos)
+                <ul id="notifications">
+                </ul>
+                <ul>
+                    <li>
+                        <input id="add" name="add" type="button" value="Agregar" /> 
+                        <input id="delete" name="delete" type="button" value="Quitar" /> 
+                    </li>       
+                </ul>
+
+                <button class="saveForm">Guardar</button>
+                <!--<input id="help" type="button" name="help" value="Ayuda" />-->
+            </div>
+        </div>
     </div>
 </div>
-
-<script>
-function getURLParameter(name) {
-		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
-}
-
-result = getURLParameter("resultado");
-
-if(result){
-	if(result == "ok"){
-		alert("Se agregó exitosamente el viaje");
-	}else{
-		alert("Hubo un error al agregar el viaje");
-	}
-}
-</script>
