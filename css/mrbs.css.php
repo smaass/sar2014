@@ -232,7 +232,7 @@ ul.sub-menu li a span{
 	display:block;
 	width:250px;
 	padding: 5px 0px 5px 5px;	
-	font-size:115%;
+	font-size:110%;
 }
 
 ul.sub-menu li a:hover{
@@ -255,7 +255,7 @@ ul.sub-menu li a span[selected] {
 padding-bottom: 50px;}
 /* ------------ GENERAL -----------------------------*/
 
-body {font-size: 15px;
+body {font-size: 13px;
     margin: 0;
     color:            <?php echo $standard_font_color ?>;
     font-family:      <?php echo $standard_font_family ?>;
@@ -377,7 +377,7 @@ body {font-size: 15px;
 div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 15px;overflow:auto; margin-top:5px;}
 
 h1 {font-size: x-large; clear: both}
-h2 {font-size: 25px; clear: both}
+h2 {font-size: 20px; clear: both}
 h3 {font-size:20px;}
 img {border: 0}
 
@@ -463,6 +463,10 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 	background-color:#E2E2E2;
 	padding:15px;
 	text-align:center;
+}
+
+form#main.entry_popup {
+	padding: 0 5%;
 }
 
 .entry_popup #edit_entry_submit_save
@@ -685,7 +689,7 @@ table.dwm_main {clear: both; width: 100%; border-spacing: 0; border-collapse: se
 // the grid when using resizable bookings.   jQuery.offset() measures to the content.  If you
 // need padding put it on the contained element.
 ?>
-.dwm_main th {font-size: small; font-weight: normal; vertical-align: top; padding: 0;
+.dwm_main th {font-size: 13px; font-weight: normal; vertical-align: top; padding: 0;
     color: #ffffff;
     border-left: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_header_border_color ?>}
 .dwm_main th.first_last, .dwm_main th span {padding: 0 2px}
@@ -739,7 +743,7 @@ div.cell_header {position: relative; width: 100%; z-index: 20;         /* needs 
 #month_main div.cell_header a.week_number {opacity: 0.5; padding: 2px 4px 0 4px}
 
 div.booking_list {position: relative; z-index: 20;                      /* contains the list of bookings */
-    max-height: 80%; font-size: smaller;                                /* needs to be above new_booking */
+    max-height: 80%; font-size: 11px;                                /* needs to be above new_booking */
     overflow: <?php echo ($month_cell_scrolling ? 'auto' : 'visible') ?>
     padding: 1px; margin-right: 2px}
 //.booking_list a {font-size: x-small}

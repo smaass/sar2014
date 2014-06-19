@@ -73,7 +73,7 @@ function getReminders($event_type_name) {
 *   no hardcodear, y sacarlos de acá.
 */
 function getEventTypes() {
-  $sql = "SELECT event_name FROM notifications_event";
+  $sql = "SELECT event_name FROM notifications_event ORDER BY id";
   $result = sql_query($sql);
   return columnFromAssocArray(arrayFromSQLResult($result), 'event_name');
 }
@@ -117,6 +117,15 @@ function addReminderTime($event_type_name, $offset) {
 */
 function deleteReminder($id) {
   $sql = "DELETE FROM notifications_time WHERE id = $id";
+  return sql_query($sql);
+}
+
+/*
+*   Elimina todos los tiempos de recordatorio de los eventos de tipo $event_type_name.
+*/
+function deleteReminders($event_type_name) {
+  $event_id = getEventTypeId($event_type_name);
+  $sql = "DELETE FROM notifications_time WHERE event_type = $event_id";
   return sql_query($sql);
 }
 

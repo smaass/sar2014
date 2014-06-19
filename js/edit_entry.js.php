@@ -886,7 +886,6 @@ function adjustSlotSelectors(form, oldArea, oldAreaStartValue, oldAreaEndValue)
   // The width: auto is necessary to get the boxes to resize themselves
   // according to their new contents.
   ?>
-
   /*var startId = "#start_seconds" + area;
   var endId = "#end_seconds" + area;
   $(startId).css("width", "auto");
@@ -895,6 +894,7 @@ function adjustSlotSelectors(form, oldArea, oldAreaStartValue, oldAreaEndValue)
   var endWidth = $(endId).width();
   //console.log(startWidth+" "+endWidth);
   var maxWidth = Math.max(startWidth, endWidth) + 2;
+
   $(startId).width(maxWidth);
   $(endId).width(maxWidth);*/
 }
