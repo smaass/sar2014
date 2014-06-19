@@ -63,21 +63,21 @@
 }
 
 .area3{
-    background: #4FB755;
+    background: linear-gradient(to bottom, #226765 0%, #134543 100%);
 }
 .today.area3 {
     background: #309D37;
 }
 
 .area4{
-    background: #D37441;
+    background: linear-gradient(to bottom, #238019 0%, rgba(19, 75, 13, 1) 100%);
 }
 .today.area4 {
     background: #B45522;
 }
 
 .area5{
-    background: #2AA1D7;
+    background: linear-gradient(to bottom, #303D74 0%, #26305d 100%);
 }
 .today.area5 {
     background: #0892CE;
