@@ -139,6 +139,7 @@ expires_header(60*30); // 30 minute expiry
 		box-shadow: 0 0 8px #777;
 		background-color: #fff;
 		margin-right:279px;
+		
 	}
 	.Nav{
 		float:right;
@@ -200,6 +201,7 @@ expires_header(60*30); // 30 minute expiry
 	.NavCalendar{
 		padding-top:25px;
 		text-align:center;
+		font-size:13px;
 	}
 	.Now{
 		text-align:center;
@@ -237,10 +239,7 @@ ul.sub-menu li a:hover{
 	color:inherit;
 }
 
-ul.sub-menu li a span#vista_general {
-	color:#E40000;
-	font-size:115%
-}
+
 /*
 ul.sub-menu li a span[selected]::before {
 	content:'>';
@@ -255,7 +254,7 @@ ul.sub-menu li a span[selected] {
 padding-bottom: 50px;}
 /* ------------ GENERAL -----------------------------*/
 
-body {font-size: small;
+body {font-size: 15px;
     margin: 0;
     padding-top: 5px;
     padding-left: 5%;
@@ -380,8 +379,8 @@ body {font-size: small;
 div#contents, div.trailer {clear:both; padding: 0 2em; padding:10px 5px;overflow:auto; margin-top:5px;}
 
 h1 {font-size: x-large; clear: both}
-h2 {font-size: large; clear: both}
-
+h2 {font-size: 25px; clear: both}
+h3 {font-size:20px;}
 img {border: 0}
 
 a:link    {color: <?php echo $anchor_link_color ?>;    text-decoration: none; font-weight: bold}
@@ -733,7 +732,7 @@ div.cell_header {position: relative; width: 100%; z-index: 20;         /* needs 
 #month_main div.cell_header a.week_number {opacity: 0.5; padding: 2px 4px 0 4px}
 
 div.booking_list {position: relative; z-index: 20;                      /* contains the list of bookings */
-    max-height: 80%; font-size: x-small;                                /* needs to be above new_booking */
+    max-height: 80%; font-size: smaller;                                /* needs to be above new_booking */
     overflow: <?php echo ($month_cell_scrolling ? 'auto' : 'visible') ?>
     padding: 1px; margin-right: 2px}
 //.booking_list a {font-size: x-small}
