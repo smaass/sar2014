@@ -23,7 +23,7 @@
     }
 
 #M3 div {
-    background: #9EEC9E;
+    background: #e0e0e0;
 }
 
 .header4{
@@ -35,7 +35,7 @@
     }
 
 #M4 div {
-    background: #E9AF90;
+    background: #e0e0e0;
 }
 
 .header5{
@@ -47,19 +47,19 @@
     }
 
 #M5 div {
-    background: #83CCEB;
+    background: #e0e0e0;
 }
 
 .header6{
-    background: rgba(190, 65, 65, 1);
+    background: linear-gradient(to bottom, #c8c8c8 0%, #999999 100%);
 }
 
     .header6:hover{
-        background:rgba(200, 72, 72, 1);
+        background: linear-gradient(to bottom, #999999 0%, #707070 100%);
     }
 
 #M6 div {
-    background: rgba(230, 210, 210, 1);
+    background: #e0e0e0;
 }
 
 .area3{
@@ -84,31 +84,31 @@
 }
 
 .area3-current{
-    background: #5DD760;
+    background: #ccc;
 }
 
 .area4-current{
-    background: #E38746;
+    background: #ccc;
 }
 
 .area5-current{
-    background: #4EB4DF;
+    background: #ccc;
 }
 .area6-current{
-    background: rgba(230, 83, 83, 1);
+    background: #ccc;
 }
 
 #M3 ul.sub-menu li a:hover span{
-background: #6DE770;}
+background: #bbb;}
 
 #M4 ul.sub-menu li a:hover span{
-background: #F39756}
+background: #bbb}
 
 #M5 ul.sub-menu li a:hover span{
-background: #5EC4EF;}
+background: #bbb;}
 
 #M6 ul.sub-menu li a:hover span{
-background: rgba(210, 77, 77, 1);}
+background: #bbb;}
     
     .m-bellows .m-item:first-child .m-header {
         -webkit-border-top-left-radius: 9px;
@@ -134,7 +134,7 @@ background: rgba(210, 77, 77, 1);}
 .m-bellows .m-header a {
     color: white;
     white-space:nowrap;
-    font-size:120%;
+    font-size:110%;
 }
 .m-bellows .m-inner-content {
     padding: 0px 10px 15px;
