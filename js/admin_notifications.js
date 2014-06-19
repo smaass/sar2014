@@ -13,6 +13,8 @@ function populateAreas(select){
 
 			select.options[0] = null;
 
+			console.log("areas:"+ result);
+
 			for(var i = 0; i < result.length; i++) {
 			    var opt = result[i];
 			    var el = new Option(opt.area_name, opt.id, i==0? true : false);
@@ -71,8 +73,6 @@ function agregarNotificacion(){
 }
 
 $(document).ready(function() {
-	populateAreas(document.getElementById("area_select"));	
-
     $('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = $(this).attr('href');
  
@@ -89,7 +89,6 @@ $(document).ready(function() {
 });
 
 function onAfterLoad(){
-	console.log("count: "+notificationsCount);
 	populateTags();
 	agregarNotificacion();
 }

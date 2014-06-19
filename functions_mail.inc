@@ -234,6 +234,12 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
   $creationTextId = getTextId($data['tipo_evento'], 1);
   // If there is a creation text for this event, we schedule an immediate notification
   if ($creationTextId && $thereAreEmails) {
+    // We need to check if there is a repeating id or not
+    if($data['rep_type'] > 0){
+      // Obtain the entry id
+      $data['id'] = getEntryId($data['id']);
+    }
+
     addNotification($creationTextId, $data[emails], date('Y-m-d H:i:s'), $data[id], $start_time);
   }
 
@@ -253,6 +259,15 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
       addNotification($reminderTextId, $data[emails], $notification_time, $data[id], $start_time);
     }
   }
+}
+
+function getEntryId($id){
+  $sql = "SELECT E.id
+              FROM $tbl_entry E join $tbl_repeat R on R.id = E.repeat_id 
+              WHERE R.id = $id";
+  $res = sql_query($sql);
+  $row = sql_row_keyed($res, 0);
+  return $row['id'];
 }
 
 function closestWorkingHour($timestamp) {

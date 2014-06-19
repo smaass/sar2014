@@ -1820,6 +1820,9 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE,
     $new_details[] = array('id' => $new_id, 'room_id' => $booking['room_id']);
     $booking['id'] = $new_id;  // Add in the id now we know it
     
+    error_log("Send email = ALL TRUE:  [".$send_mail .", ". !empty($new_id).', '.((isset($id) && $mail_settings['on_change']) || 
+          (!isset($id) && $mail_settings['on_new']))."]\n", 3, "errors.log");
+
     // Send an email if neccessary, provided that the entry creation was successful
     if ($send_mail && !empty($new_id))
     {

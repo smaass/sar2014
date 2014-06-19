@@ -41,6 +41,8 @@ function getURLParameter(name) {
 		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 }
 
+populateAreas(document.getElementById("area_select"));  
+
 $("#tab1").load("recordatorio.html", onAfterLoad);
 //$("#tab2").load("recordatorio.html", onAfterLoad);
 //$("#tab3").load("recordatorio.html", onAfterLoad);
