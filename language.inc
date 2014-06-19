@@ -621,7 +621,7 @@ function set_mrbs_locale()
     $have_valid_locale = (setlocale(LC_ALL, $locale) !== FALSE);
     if (!$have_valid_locale)
     {
-      $locale_warning = "Server failed to set locale to '$locale'";
+      //$locale_warning = "Server failed to set locale to '$locale'";
     }
   }
 }

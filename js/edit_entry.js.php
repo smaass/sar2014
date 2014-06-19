@@ -897,7 +897,7 @@ function adjustSlotSelectors(form, oldArea, oldAreaStartValue, oldAreaEndValue)
   var maxWidth = Math.max(startWidth, endWidth) + 2;
   $(startId).width(maxWidth);
   $(endId).width(maxWidth);*/
-}<?php // function adjustSlotSelectors()
+}
 
 function showReunion(){
   $('[id*=div_evento_][id!=div_evento_reunion]').css('display','none');

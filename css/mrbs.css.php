@@ -82,10 +82,9 @@ expires_header(60*30); // 30 minute expiry
     .Top {
     	position:relative;
         padding: 5px;
-		border-radius: 8px;
 		box-shadow: 0 0 8px #666;
 		/*background-color:<?php echo $banner_back_color?>;*/
-    background: linear-gradient(to right, #dcedc8, #d1d2d1);
+    	background: linear-gradient(to right, #dcedc8, #d1d2d1);
 	}
 	.Links{
 		position:absolute;
@@ -114,7 +113,7 @@ expires_header(60*30); // 30 minute expiry
 	    text-align: middle;
 	    position:absolute;
 	    right:15px;
-	    bottom:15px;
+	    bottom:10px;
 	}
 	.Search a {
 	    height: 100%;
@@ -448,6 +447,10 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 	z-index:1051;
 	text: center;
 	margin-left:-125px;
+}
+
+#popupContent {
+	padding:15px;
 }
 
 #close-x {
@@ -791,7 +794,7 @@ div:hover.new_booking {background-color: <?php echo $row_highlight_color ?>}
 // inherit would mean that (1) you didn't have to specify the colour again and (2) you needn't use the tbody selector to
 // stop the header links changing colour.
 ?>
-
+.dwm_main tbody a:link {color:#FFF}
 .dwm_main tbody tr:hover a:link,    td.row_labels_hover a:link    {color: <?php echo $anchor_link_color ?>}
 .dwm_main tbody tr:hover a:visited, td.row_labels_hover a:visited {color: <?php echo $anchor_link_color ?>}
 <?php // Disable the highlighting when we're in resize mode ?>
@@ -1200,7 +1203,7 @@ form#add_new_user {margin-left: 1em}
 
 
 /* ------------ FUNCTIONS.INC -------------------*/
-#logon_box {display: block; width: 250px; float: right; position:absolute; right: 270px;top:41px;}
+#logon_box {display: block; width: 250px; float: right; position:absolute; right: 270px;bottom:10px;}
 #logon_box a {width: 65%; margin-right: 5%; margin-top: 5px; float: left; text-align: right;}
 #logon_box form {width: 30%; float: right;}
 table#banner {width: 100%; border-spacing: 0; border-collapse: collapse;
