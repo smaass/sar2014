@@ -87,10 +87,24 @@ $(document).ready(function() {
 
     notificationsCount = 1;
 
-	populateNotificationData($("#tipo_evento")[0].value);
+//	alert(document.getElementsByName("area")[0].value);
+
+    switch($(area)[0]){
+    	case 5:
+		   	populateNotificationData("Oficina");
+    	   	break;
+    	case 4:
+    	   	//TODO
+    	   	break;
+    	case 3:
+    	   	populateNotificationData($("#tipo_evento")[0].value);
     
-    $("#tipo_evento").change(function() {
-    	var area = $("#tipo_evento option:selected").text();
-    	populateNotificationData(area);
-    });
+		    $("#tipo_evento").change(function() {
+		    	var area = $("#tipo_evento option:selected").text();
+		    	populateNotificationData(area);
+		    });
+    	   	break;
+	   	default:
+	   		alert("Error cargando las notificaciones. Seleccione un área válida");
+    }
 });
