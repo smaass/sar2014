@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 18, 2014 at 03:29 AM
--- Server version: 5.5.31
--- PHP Version: 5.4.16
+-- Generation Time: Jun 25, 2014 at 12:23 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `5401_1401_g2`
 --
-CREATE DATABASE IF NOT EXISTS `5401_1401_g2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `5401_1401_g2`;
 
 -- --------------------------------------------------------
 
@@ -107,7 +105,14 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data for table `mrbs_entry`
+--
+
+INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_id`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `ical_recur_id`, `emails`) VALUES
+(33, 1403175600, 1403179200, 0, 0, 27, '2014-06-19 14:47:41', 'admin', 'Clase', 'I', 'Descripcion prueba', 0, NULL, NULL, NULL, NULL, 'MRBS-53a2f80d1cbcf-4766b220@localhost', 0, '', 'ian.alonyon@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -139,6 +144,13 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
   `tipo_evento` varchar(8) NOT NULL,
   PRIMARY KEY (`entry_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `mrbs_entry_salas`
+--
+
+INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
+(33, 'profesor prueba', 'curso prueba', NULL, NULL, NULL, 'Clase');
 
 -- --------------------------------------------------------
 
@@ -256,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
   `email_involucrados` varchar(300) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idxSortKey` (`sort_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `mrbs_room`
@@ -264,8 +276,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
 (21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 1, '', '', '', '', 0, ''),
-(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, '', '', '', '', 0, ''),
-(25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
+(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, 'ian.alonyon@gmail.com', '', '', '', 0, ''),
+(25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, 'admin@as.lc', '', '', '', 0, ''),
 (26, 0, 4, 'Notebook 2', 'Notebook 2', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', 30, 0, '', '', '', '', 0, ''),
 (28, 0, 3, 'Sala de Reuniones 4° piso', 'Sala de Reuniones 4° piso', '', 50, 0, '', '', '', '', 0, ''),
@@ -314,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_zoneinfo` (
 --
 
 INSERT INTO `mrbs_zoneinfo` (`id`, `timezone`, `outlook_compatible`, `vtimezone`, `last_updated`) VALUES
-(1, 'America/Santiago', 1, 'BEGIN:VTIMEZONE\r\nTZID:America/Santiago\r\nTZURL:http://tzurl.org/zoneinfo-outlook/America/Santiago\r\nX-LIC-LOCATION:America/Santiago\r\nBEGIN:STANDARD\r\nTZOFFSETFROM:-0300\r\nTZOFFSETTO:-0400\r\nTZNAME:CLT\r\nDTSTART:19700426T000000\r\nRRULE:FREQ=YEARLY;BYMONTH=4;BYDAY=-1SU\r\nEND:STANDARD\r\nBEGIN:DAYLIGHT\r\nTZOFFSETFROM:-0400\r\nTZOFFSETTO:-0300\r\nTZNAME:CLST\r\nDTSTART:19700906T000000\r\nRRULE:FREQ=YEARLY;BYMONTH=9;BYDAY=1SU\r\nEND:DAYLIGHT\r\nEND:VTIMEZONE', 1401172196);
+(1, 'America/Santiago', 1, 'BEGIN:VTIMEZONE\r\nTZID:America/Santiago\r\nTZURL:http://tzurl.org/zoneinfo-outlook/America/Santiago\r\nX-LIC-LOCATION:America/Santiago\r\nBEGIN:STANDARD\r\nTZOFFSETFROM:-0300\r\nTZOFFSETTO:-0400\r\nTZNAME:CLT\r\nDTSTART:19700426T000000\r\nRRULE:FREQ=YEARLY;BYMONTH=4;BYDAY=-1SU\r\nEND:STANDARD\r\nBEGIN:DAYLIGHT\r\nTZOFFSETFROM:-0400\r\nTZOFFSETTO:-0300\r\nTZNAME:CLST\r\nDTSTART:19700906T000000\r\nRRULE:FREQ=YEARLY;BYMONTH=9;BYDAY=1SU\r\nEND:DAYLIGHT\r\nEND:VTIMEZONE', 1403642229);
 
 -- --------------------------------------------------------
 
@@ -324,10 +336,10 @@ INSERT INTO `mrbs_zoneinfo` (`id`, `timezone`, `outlook_compatible`, `vtimezone`
 
 CREATE TABLE IF NOT EXISTS `notifications_event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_name` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `event_name` varchar(25) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `event_name` (`event_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `notifications_event`
@@ -339,6 +351,7 @@ INSERT INTO `notifications_event` (`id`, `event_name`) VALUES
 (3, 'Defensa'),
 (4, 'Oficina'),
 (6, 'Otro'),
+(7, 'Recurso computacional'),
 (2, 'Reunión');
 
 -- --------------------------------------------------------
@@ -360,7 +373,14 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   KEY `text_id` (`text_id`),
   KEY `notification_datetime` (`notification_datetime`),
   KEY `event_datetime` (`event_datetime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+
+--
+-- Dumping data for table `notifications_registry`
+--
+
+INSERT INTO `notifications_registry` (`id`, `text_id`, `mail_list`, `notification_datetime`, `sent`, `event_id`, `event_datetime`) VALUES
+(35, 1, 'ian.alonyon@gmail.com', '2014-06-18 18:00:00', 1, 33, '2014-06-19 07:00:00');
 
 -- --------------------------------------------------------
 
@@ -377,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `notifications_text` (
   UNIQUE KEY `id_event_2` (`id_event`,`id_type`),
   KEY `id_type` (`id_type`),
   KEY `id_event` (`id_event`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `notifications_text`
@@ -392,7 +412,8 @@ INSERT INTO `notifications_text` (`id`, `id_event`, `id_type`, `text`) VALUES
 (6, 2, 1, 'Estimado,<br>\r\nLa reunión <i>$event</i> se realizará en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
 (7, 3, 1, 'Estimado,<br>\r\nEl día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
 (8, 5, 1, 'Estimado,<br>\r\nEl día $day se realizará la charla <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(9, 4, 2, 'Estimado,<br>\r\nSe le recuerda la reserva de $room para <i>$event</i> el día $day.\r\n<br>\r\n<br>SAR<br>Mensaje auto-generado');
+(9, 4, 2, 'Estimado,<br>\r\nSe le recuerda la reserva de $room para <i>$event</i> el día $day.\r\n<br>\r\n<br>SAR<br>Mensaje auto-generado'),
+(10, 7, 1, 'Estimado,<br>\nSe le ha asignado el recurso <i>$room</i> para $event a las $time.<br>\n<br>\nSAR<br>\nMensaje auto-generado');
 
 -- --------------------------------------------------------
 
@@ -406,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `notifications_time` (
   `offset` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_type` (`event_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `notifications_time`

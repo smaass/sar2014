@@ -87,14 +87,12 @@ $(document).ready(function() {
 
     notificationsCount = 1;
 
-//	alert(document.getElementsByName("area")[0].value);
-
     switch($(area)[0]){
     	case 5:
 		   	populateNotificationData("Oficina");
     	   	break;
     	case 4:
-    	   	//TODO
+    	   	populateNotificationData("Recurso computacional");
     	   	break;
     	case 3:
     	   	populateNotificationData($("#tipo_evento")[0].value);

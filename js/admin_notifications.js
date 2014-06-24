@@ -117,9 +117,7 @@ function saveNotifications() {
 			default:
 				offsets_list.push(this.value);
 		}
-		alert("lista "+offsets_list);
 	});
-	return;
 	$.post('notifications_ajax.php',
 		{
 			fun: "set_notification_data",
