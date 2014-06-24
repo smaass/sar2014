@@ -11,6 +11,7 @@ $description = get_form_var('description', 'string');
 $capacity = get_form_var('capacity', 'int');
 $type = get_form_var('type', 'string');
 $specifications = get_form_var('specifications', 'string');
+$room_admin_email = get_form_var('room_admin_email', 'string');
 $slots = get_form_var('slots', 'int');
 
 // Check the user is authorised for this page
@@ -46,7 +47,7 @@ elseif ($type == "area")
 
 elseif ($type == "room")
 {
-  $room = mrbsAddRoom($name, $area, $error, $description, $capacity, $specifications, $photo, $slots);
+  $room = mrbsAddRoom($name, $area, $error, $description, $capacity, $specifications, $room_admin_email, $slots);
 }
 
 $returl = "admin.php?area=$area" . (!empty($error) ? "&error=$error" : "");

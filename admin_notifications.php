@@ -1,6 +1,5 @@
 <?php
 
-// $Id: admin.php 2338 2012-07-18 10:54:42Z cimorrison $
 require "defaultincludes.inc";
 
 // Get non-standard form variables

@@ -1499,7 +1499,7 @@ function mrbsAddArea($name, &$error)
 
 // Adds a room, returning the new id, or FALSE on failute with the
 // error in $error
-function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $specifications='', $photo='', $slots='1')
+function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $specifications='', $room_admin_email='', $slots='1')
 {
   global $maxlength, $tbl_room;
   
@@ -1516,6 +1516,7 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $spec
   // Add SQL escaping
   $room_name_q = sql_escape($name);
   $description_q = sql_escape($description);
+  $room_admin_email_q = sql_escape($room_admin_email);
   if (empty($capacity))
   {
     $capacity = 0;
@@ -1534,8 +1535,8 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $spec
   }
   // If so, insert the room into the database
   $slots = isset($slots) ? $slots : 1;
-  $sql = "INSERT INTO $tbl_room (room_name, sort_key, area_id, description, capacity, capacity_for_multientry)
-          VALUES ('$room_name_q', '$room_name_q', $area, '$description_q', $capacity, $slots)";
+  $sql = "INSERT INTO $tbl_room (room_name, sort_key, area_id, description, capacity, capacity_for_multientry, room_admin_email)
+          VALUES ('$room_name_q', '$room_name_q', $area, '$description_q', $capacity, $slots, '$room_admin_email_q')";
   echo $sql;
   if (sql_command($sql) < 0)
   {
@@ -1549,8 +1550,7 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $spec
   }
   else if($area == 4) {
       $specifications_q = sql_escape($specifications);
-      $photo_q = sql_escape($photo);
-      $sql = "INSERT INTO recurso_computacional (id, especificaciones, foto) VALUES ($room, '$specifications_q', '$photo_q')";
+      $sql = "INSERT INTO recurso_computacional (id, especificaciones) VALUES ($room, '$specifications_q')";
   }
 //   else if($area == 5) {
 //       $sql = "INSERT INTO oficina_de_trabajo (id, cupo_numero) VALUES ($room, $slots)";

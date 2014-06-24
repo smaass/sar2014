@@ -34,14 +34,28 @@ function populateNotificationData (event_type_name) {
 function populateReminders(reminders) {
 	var list = document.getElementById("notifications");
 	$(list).empty();
-	notificationsCount = 0;
+	notificationsCount = 1;
 	reminders.forEach(function (data) {
+
+		// Siempre llegan segundos y el mínimo son minutos
+		data.offset /= 60;
+		data["selectedUnitIndex"] = 0;
+
+		if(data.offset >= 60 && data.offset % 60 == 0){ // Horas
+			data.offset /= 60;
+			data["selectedUnitIndex"] = 1;
+
+			if(data.offset >= 24 && data.offset % 24 == 0){ // Días
+				data.offset /= 24;
+				data["selectedUnitIndex"] = 2;
+			}
+		}
+
 		list.appendChild(createNotificationItem(data));
 	});
 }
 
 function createNotificationItem(notificationData) {
-	notificationsCount += 1;
 	var item = document.createElement("li");
 	item.id = "notification" + notificationsCount;
 
@@ -49,25 +63,35 @@ function createNotificationItem(notificationData) {
 	var input = document.createElement("input");
 	$(label).html("Notificación " + notificationsCount + ": ");
 	input.type = "number";
-	input.name = notificationData.id;
-	/*input.min = "1";
-	input.max = "60";*/
-	input.value = notificationData.offset / 60;
+	input.name = "number_" + notificationData.id;
+	input.min = "1";
+	input.value = notificationData.offset;
 
 	item.appendChild(label);
 	item.appendChild(input);
+	
+	var select = document.createElement("select");
+   	select.appendChild(new Option("Minutos", "Minutos", "true"));
+   	select.appendChild(new Option("Horas", "Horas"));
+   	select.appendChild(new Option("Días", "Días"));
+	select.id = "select_" + input.name;
+	select.selectedIndex = notificationData.selectedUnitIndex
+	item.appendChild(select);
+
+	notificationsCount++;
+
 	return item;
 }
 
 function addNotification() {
-	var item = createNotificationItem({ id: 0, offset: 15*60 });
+	var item = createNotificationItem({id: notificationsCount, offset: 15 });
 	document.getElementById("notifications").appendChild(item);
 }
 
 function removeNotification() {
 	if(notificationsCount == 0)
 		return;
-	var elem = document.getElementById("notification"+notificationsCount--);
+	var elem = document.getElementById("notification"+ (--notificationsCount));
 	elem.parentNode.removeChild(elem);
 }
 
@@ -78,8 +102,24 @@ function saveNotifications() {
 
 	var offsets_list = Array();
 	$("#notifications").find('input').each(function () {
-		offsets_list.push(this.value * 60);
+		var select = document.getElementById('select_'+this.name);
+		
+		switch (select.selectedOptions[0].value) {
+			case "Días":
+				offsets_list.push(this.value * 3600 * 24);
+				break;
+			case "Horas":
+				offsets_list.push(this.value * 3600);
+				break;
+			case "Minutos":
+				offsets_list.push(this.value * 60);
+				break;
+			default:
+				offsets_list.push(this.value);
+		}
+		alert("lista "+offsets_list);
 	});
+	return;
 	$.post('notifications_ajax.php',
 		{
 			fun: "set_notification_data",
@@ -95,41 +135,12 @@ function saveNotifications() {
 
 function populateTags(){
 	var tags = 	"Tags disponibles:\n\n"+
-				"@event\n"+
-				"@day\n"+
-				"@time\n"+
-				"@room\n";
+				"$event\n"+
+				"$day\n"+
+				"$time\n"+
+				"$room\n";
 
 	$(".tags").html(tags);
-}
-
-function agregarNotificacion(){
-	var list = document.getElementById("notifications");
-	var item = document.createElement("li");
-	item.id = "notification" + ++notificationsCount;
-
-	var label = document.createElement("label");
-	label.innerHTML = "Notificación " + notificationsCount + " ";
-	item.appendChild(label);
-
-	var input = document.createElement("input");
-	input.type = "number";
-	input.id = "value" + notificationsCount;
-	input.name = "value" + notificationsCount;
-	input.max = "60";
-	input.min = "1";
-	input.value = "1";
-	item.appendChild(input);
-
-	var select = document.createElement("select");
-   	select.appendChild(new Option("Minutos", "Minutos", "true"));
-   	select.appendChild(new Option("Horas", "Horas"));
-   	select.appendChild(new Option("Días", "Días"));
-	select.id = "unit" + notificationsCount;
-	select.name = "unit" + notificationsCount;
-	item.appendChild(select);
-
-	list.appendChild(item);
 }
 
 $(document).ready(function() {
@@ -147,7 +158,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    notificationsCount = 0;
+    notificationsCount = 1;
 
     $("#area_select").change(function() {
     	var area = $("#area_select option:selected").text();

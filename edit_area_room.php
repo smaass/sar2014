@@ -767,6 +767,10 @@ if (isset($change_room) && !empty($room))
                     echo "<label for=\"specifications\">" . "Especificaciones" . ":</label>\n";
                     echo "<textarea id=\"specifications\" name=\"specifications\" $disabled>" . htmlspecialchars($row2["especificaciones"]) . "</textarea>\n";
                     echo "</div>\n";
+                    echo "<div>";
+                    echo "<label for='room_admin_email'>Correo administrador</label>";
+                    echo "<input id='room_admin_email' name='room_admin_email' type='email'></input>";
+                    echo "</div>";
                 } else if($area == 5) { // Slots
                     echo "<div>\n";
                     echo "<label for='slots'>" . "Cupos" . ":</label>\n";

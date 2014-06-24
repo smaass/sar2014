@@ -100,7 +100,7 @@ form.form_admin {float: left; clear: left; margin: 2em 0 0 0}
 .form_admin div {float: left; clear: left} 
 .form_admin label {
     display: block; float: left; clear: left; 
-    width: <?php echo $admin_form_label_width ?>em; min-height: 2.0em; text-align: right;
+    width: <?php echo $admin_form_label_width ?>em; min-height: 2.0em; text-align: left;
 }
 .form_admin input {
     display: block; float: left; clear: right;
