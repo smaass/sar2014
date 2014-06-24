@@ -1355,7 +1355,7 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
   global $tbl_room, $tbl_area, $area_list_format, $area_of_trabajo;
   
   $out_html = '';
-  $sql = "SELECT R.id, R.room_name, R.description
+  $sql = "SELECT R.id, R.room_name, R.description, R.capacity
             FROM $tbl_room R, $tbl_area A
            WHERE R.area_id=$area
              AND R.area_id=A.id
@@ -1372,10 +1372,10 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
 				 "function closePopup() { document.getElementById('test').style.display = 'none';}".
 				 "</script>";
 
-	$out_html .="<div id=\"test\" class=\"popup\"><span style=\"color: #0B263B; font-weight: bold;\" id=\"nombreTest\"></span>" .
-			"<table><tr><td>".
-			"<div id=\"fotoTest\"><img></div></td>" .
-			"<td><div id=\"descriptionTest\"></div></td></tr></table></div>";
+  	$out_html .="<div id=\"test\" class=\"popup\"><span style=\"color: #0B263B; font-weight: bold;\" id=\"nombreTest\"></span>" .
+  			"<table><tr><td>".
+  			"<div id=\"fotoTest\"><img></div></td>" .
+  			"<td><div id=\"descriptionTest\"></div></td></tr></table></div>";
     //$out_html .= "<div id=\"dwm_rooms\">\n";
     //$out_html .= "<h3>" . get_vocab("rooms") . "</h3>";
     if ($area_list_format == "select")
@@ -1456,8 +1456,14 @@ function make_room_select_html ($link, $area, $currentArea, $currentRoom, $year,
           	$out_html .= "<span selected class=\"$class_current\"";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
           else
           	$out_html .= "<span";// onMouseOver=\"openPopup(event.clientX, event.clientY-100, '".htmlspecialchars($row['room_name'])."', '".htmlspecialchars($row['description'])."');\" onMouseOut=\"closePopup();\"";
-          $out_html .= " id=".$row['id'] .">";
-          $out_html .= htmlspecialchars($row['room_name']) . "</span>";
+          $out_html .= " id=".$row['id'] .">";          
+          $out_html .= htmlspecialchars($row['room_name']);
+
+          if($area != 4 || $row['capacity'] != '0'){ // Es una sala pública
+            $out_html .=' ('.htmlspecialchars($row['capacity']).')';
+          }
+
+          $out_html .='</span>';
           $out_html .= "</a></li>\n";
         }
   	  }

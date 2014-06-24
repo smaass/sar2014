@@ -511,7 +511,13 @@ function cell_html($cell, $query_strings, $currentDayDate)
       // If the room isn't booked then allow it to be booked
       if (!isset($id))
       {
-        $entry_link = "'edit_entry.php?" . (($enable_periods) ? $query_strings["new_periods"] : $query_strings["new_times"]) . "'" ;
+        if($enable_periods){
+          $link = $query_strings["new_times"];
+        } else {
+          $link = $query_strings["new_times"];
+        }
+        
+        $entry_link = "'edit_entry.php?" . $link . "&quick=true'" ;
         
         $diff = (time()-(60*60*24)) - strtotime($currentDayDate);
         if($diff > 0){
@@ -1479,11 +1485,16 @@ function table_popup_innerhtml()
   	$('#dark_background').hide();
   }
   
-  function showPopup(linkReservaDetallada) {"
-  	.
-  	(authGetUserLevel($user) >= 1 ? "popup.show(linkReservaDetallada);" : ";")
-  	.
-  "};
+  function showPopup(linkReservaDetallada) {";
+  if (authGetUserLevel($user) >= 1) {
+    $html.= "
+    linkReservaDetallada = linkReservaDetallada.substring(0, linkReservaDetallada.lastIndexOf('&'));
+    popup.show(linkReservaDetallada);";
+  } else {
+    $html.= ";";
+  }
+  
+  $html.="};
   
   function hidePopup() {
     popup.hide();

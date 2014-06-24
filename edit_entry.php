@@ -1437,20 +1437,25 @@ echo "<div class=\"MainCell\">";
 }
 
 ?>
+<?php if(!$ajax){ ?>
+<table style="width: 100%;">
+<tr>
+<td>
+<?php } ?>
 
 <form target="_top" class="<?php echo !$ajax? "form_general" : "entry_popup"; ?>" id="main" action="edit_entry_handler.php" method="post">
   <fieldset>
-  <?php
+    <legend>
+      <?php
+      if (!$ajax) {
+        echo get_vocab($token) . ": " . $areas[$area_id]["area_name"] . " - " . $rooms[$room_id]["room_name"]; 
+      } else {
+        echo "Agregar nueva reserva";
+      }      
+      ?>
+    </legend>
   
-    echo "<legend>";
-    if (!$ajax) {
-      echo get_vocab($token) . ": " . $areas[$area_id]["area_name"] . " - " . $rooms[$room_id]["room_name"]; 
-    } else {
-      echo "Agregar nueva reserva";
-    }      
-    echo "</legend>";
   
-  ?>
 
 <?php
 
@@ -1718,12 +1723,31 @@ foreach ($edit_entry_field_order as $key)
   </fieldset>
 </form>
 
+<?php if(!$ajax){ ?>
+</td>
+<td style="vertical-align: middle;">
+  <ul>
+    <li><b>Texto de creación</b></li>
+    <li><textarea id="template_nuevoevento" name="template" cols="60" rows="7" disabled></textarea></li>
+    <li><br><b>Texto de recordatorio</b></li>
+    <li><textarea id="template_recordatorio" name="template" cols="60" rows="7" disabled></textarea></li>
+    <li><br><b>Tiempos de notificaciones previas al comienzo del evento</b></li>
+  </ul>
+  <ul id="notifications"></ul>
+</td>
+</tr>
+</table>
+<?php } ?>
+
 <?php 
 if (! $ajax){ 
   echo "</div>";  
   output_trailer();
 }
 ?>
+
+<script type="text/javascript" src="js/view_notifications.js"></script>
+
 <!--script type="text/javascript" src="js/edit_entry.js.php?area=<?php echo $area; ?>"></script>
 <script type="text/javascript" src="js/functions.js.php?area=<?php echo $area; ?>"></script>
 <script type="text/javascript" src="js/datepicker.js.php?area=<?php echo $area; ?>"></script>
@@ -1746,6 +1770,7 @@ $(function(){
     document.getElementById("tipo_evento").selectedIndex=4;
   }
 });
+
 $( document ).ready(function(){
   $("#start_datepicker").datepicker("option", "minDate", 0);
   $("#end_datepicker").datepicker("option", "minDate", 0);
