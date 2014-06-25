@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 25, 2014 at 12:23 AM
+-- Generation Time: Jun 25, 2014 at 03:16 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -105,14 +105,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
-
---
--- Dumping data for table `mrbs_entry`
---
-
-INSERT INTO `mrbs_entry` (`id`, `start_time`, `end_time`, `entry_type`, `repeat_id`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `ical_recur_id`, `emails`) VALUES
-(33, 1403175600, 1403179200, 0, 0, 27, '2014-06-19 14:47:41', 'admin', 'Clase', 'I', 'Descripcion prueba', 0, NULL, NULL, NULL, NULL, 'MRBS-53a2f80d1cbcf-4766b220@localhost', 0, '', 'ian.alonyon@gmail.com');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 -- --------------------------------------------------------
 
@@ -145,13 +138,6 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry_salas` (
   PRIMARY KEY (`entry_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `mrbs_entry_salas`
---
-
-INSERT INTO `mrbs_entry_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
-(33, 'profesor prueba', 'curso prueba', NULL, NULL, NULL, 'Clase');
-
 -- --------------------------------------------------------
 
 --
@@ -182,15 +168,6 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
   `emails` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
-
---
--- Dumping data for table `mrbs_repeat`
---
-
-INSERT INTO `mrbs_repeat` (`id`, `start_time`, `end_time`, `rep_type`, `end_date`, `rep_opt`, `room_id`, `timestamp`, `create_by`, `name`, `type`, `description`, `rep_num_weeks`, `status`, `reminded`, `info_time`, `info_user`, `info_text`, `ical_uid`, `ical_sequence`, `emails`) VALUES
-(12, 1400256000, 1400256060, 3, 1407254400, '0', 34, '2014-05-06 19:42:41', 'admin', 'asdf789', 'I', 'sdf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53693b311b351-a7854c27@localhost', 0, ''),
-(13, 1400083200, 1400083260, 2, 1400083200, '0001110', 34, '2014-05-06 21:08:29', 'admin', 'asdf123456', 'I', 'adsf', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-53694f4d7d48c-0fa98ba9@localhost', 0, ''),
-(14, 1403015400, 1403019000, 1, 1403101800, '0', 27, '2014-06-15 23:57:23', 'admin', 'LLOLO', 'I', '', NULL, 0, NULL, NULL, NULL, NULL, 'MRBS-539e32995478c-450948f8@localhost', 1, 'sergio.maass@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -234,17 +211,6 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_salas` (
   PRIMARY KEY (`entry_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `mrbs_repeat_salas`
---
-
-INSERT INTO `mrbs_repeat_salas` (`entry_id`, `profesor`, `curso`, `expositor`, `tipo_charla`, `resumen_expositor`, `tipo_evento`) VALUES
-(9, 'Nico Lehmann', 'CC100000', NULL, NULL, NULL, 'Clase'),
-(11, '213312', '12313', NULL, NULL, NULL, 'Clase'),
-(13, NULL, NULL, 'nombre', 'Charla alumno', 'resumen', 'Defensa'),
-(14, '', '', NULL, NULL, NULL, 'Clase'),
-(15, '', '', NULL, NULL, NULL, 'Clase');
-
 -- --------------------------------------------------------
 
 --
@@ -276,8 +242,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
 
 INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `description`, `capacity`, `capacity_for_multientry`, `room_admin_email`, `custom_html`, `expositor_profesor`, `titulo_charla_nombre_curso`, `tipo_presentacion`, `email_involucrados`) VALUES
 (21, 0, 5, 'Oficina 310', 'Oficina 310', 'Oficina dispuesta para alumnos y profesores visitantes.', 0, 1, '', '', '', '', 0, ''),
-(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, 'ian.alonyon@gmail.com', '', '', '', 0, ''),
-(25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, 'admin@as.lc', '', '', '', 0, ''),
+(24, 0, 4, 'Datashow 1', 'Datashow 1', 'Datashow', 0, 0, '', '', '', '', 0, ''),
+(25, 0, 4, 'Notebook 1', 'Notebook 1', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (26, 0, 4, 'Notebook 2', 'Notebook 2', 'Notebook perteneciente al DCC', 0, 0, '', '', '', '', 0, ''),
 (27, 0, 3, 'Auditorio 1', 'Auditorio 1', 'Auditorio tercer piso', 30, 0, '', '', '', '', 0, ''),
 (28, 0, 3, 'Sala de Reuniones 4° piso', 'Sala de Reuniones 4° piso', '', 50, 0, '', '', '', '', 0, ''),
@@ -373,14 +339,7 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   KEY `text_id` (`text_id`),
   KEY `notification_datetime` (`notification_datetime`),
   KEY `event_datetime` (`event_datetime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
-
---
--- Dumping data for table `notifications_registry`
---
-
-INSERT INTO `notifications_registry` (`id`, `text_id`, `mail_list`, `notification_datetime`, `sent`, `event_id`, `event_datetime`) VALUES
-(35, 1, 'ian.alonyon@gmail.com', '2014-06-18 18:00:00', 1, 33, '2014-06-19 07:00:00');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 -- --------------------------------------------------------
 
