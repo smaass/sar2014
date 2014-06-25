@@ -563,7 +563,7 @@ function mrbsCreateEntry($table, $data)
 {
   global $standard_fields, $db_tbl_prefix, $area_of_trabajo, $area_salas;
   
-  error_log("INSERTING INTO " . json_encode($table) . "\n\n", 3, "errors.log");
+  error_log("INSERTING INTO " . print_r(json_encode($table), TRUE) . "\n\n", 3, "errors.log");
   error_log("The DATA" . json_encode($data) . "\n\n", 3, "errors.log");
 
   $sql_col = array();
@@ -670,6 +670,7 @@ function mrbsCreateEntry($table, $data)
   $sql = "INSERT INTO $table (" . implode(', ',$sql_col) . ") VALUES (" . implode(', ',$sql_val) . ")";
 
   error_log("The SQL inicial: " . json_encode($sql) . "\n\n", 3, "errors.log");
+
   if (sql_command($sql) < 0)
   {
     // probably because the table hasn't been created properly
@@ -677,6 +678,8 @@ function mrbsCreateEntry($table, $data)
     fatal_error(TRUE, get_vocab("fatal_db_error"));
   }
   $return_id = sql_insert_id($table, "id");
+
+  error_log("The inserted ID: " . $return_id . "\n\n", 3, "errors.log");
   
   $res = sql_query("SELECT area_id FROM mrbs_room WHERE id = " . $data['room_id']);
   
@@ -704,19 +707,19 @@ function mrbsCreateEntry($table, $data)
   } else if ($row['area_id'] == $area_salas){
   	if ($data['tipo_evento'] == 'Clase'){
 	    $sql_col2[] = 'profesor';
-	    $sql_val2[] = "'" . sql_escape($data['profesor']) . "'";  	
+	    $sql_val2[] = "'" . sql_escape($data['profesor']) . "'";
 	    $sql_col2[] = 'curso';
 	    $sql_val2[] = "'" . sql_escape($data['curso']) . "'";
   	} elseif ($data['tipo_evento'] == 'Charla' || $data['tipo_evento'] == 'Defensa'){
       $sql_col2[] = 'expositor';
-      $sql_val2[] = "'" . sql_escape($data['expositor']) . "'";   
+      $sql_val2[] = "'" . sql_escape($data['expositor']) . "'";
       $sql_col2[] = 'tipo_charla';
       $sql_val2[] = "'" . sql_escape($data['tipo_charla']) . "'";
       $sql_col2[] = 'resumen_expositor';
-      $sql_val2[] = "'" . sql_escape($data['resumen_expositor']) . "'";   
+      $sql_val2[] = "'" . sql_escape($data['resumen_expositor']) . "'";
     }
-	$sql_col2[] = 'tipo_evento';
-	$sql_val2[] = "'" . sql_escape($data['tipo_evento']) . "'";  	
+  	$sql_col2[] = 'tipo_evento';
+  	$sql_val2[] = "'" . sql_escape($data['tipo_evento']) . "'";
     //$return_id = sql_insert_id($table, "id");
     $sql2 = "INSERT INTO " . $table . "_salas (entry_id, " . implode(', ',$sql_col2) . ") VALUES (" . $return_id .",". implode(', ',$sql_val2) . ")";
     error_log("The other SQL inicial: " . json_encode($sql2) . "\n\n", 3, "errors.log");
@@ -729,8 +732,7 @@ function mrbsCreateEntry($table, $data)
 
     return $return_id;
   }
-  error_log("sql_insert_id " . json_encode($sql2) . "\n\n", 3, "/opt/lampp/htdocs/sar2014/errors.log");
-  return sql_insert_id($table, "id");
+  return $return_id;
 }
 
 /** mrbsCreateSingleEntry()
@@ -1810,12 +1812,16 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE,
       $details = mrbsCreateRepeatingEntrys($booking);
       $new_id = $details['id'];
       $is_repeat_table = $details['series'];
+
+      error_log("Creada reserva con repeticion con id = [".$new_id ."]\n", 3, "errors.log");
     }
     else
     {
       // Create the entry:
       $new_id = mrbsCreateSingleEntry($booking);
       $is_repeat_table = FALSE;
+
+      error_log("Creada reserva normal con id = [".$new_id ."]\n", 3, "errors.log");
     }
     $new_details[] = array('id' => $new_id, 'room_id' => $booking['room_id']);
     $booking['id'] = $new_id;  // Add in the id now we know it
@@ -1825,7 +1831,7 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE,
 
     // Send an email if neccessary, provided that the entry creation was successful
     if ($send_mail && !empty($new_id))
-    {
+    {      
       // Only send an email if (a) this is a changed entry and we have to send emails
       // on change or (b) it's a new entry and we have to send emails for new entries
       if ((isset($id) && $mail_settings['on_change']) || 
@@ -1837,7 +1843,7 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE,
         // Ran only if we need details
         if ($mail_settings['details'])
         {
-          $sql = "SELECT R.room_name, A.area_name
+          $sql = "SELECT R.room_name, A.area_name, R.room_admin_email
                     FROM $tbl_room R, $tbl_area A
                    WHERE R.id=${booking['room_id']} AND R.area_id = A.id
                    LIMIT 1";
@@ -1845,6 +1851,12 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE,
           $row = sql_row_keyed($res, 0);
           $booking['room_name'] = $row['room_name'];
           $booking['area_name'] = $row['area_name'];
+
+          // Solo llega algo si es un recurso computacional
+          if($row['room_admin_email']){
+            error_log("Mail del admin del recurso computacional:  [".$row['room_admin_email']."]\n", 3, "errors.log");
+            $booking[emails] = $row['room_admin_email'].';'.$booking[emails];
+          }
         }
         // If this is a modified entry then get the previous entry data
         // so that we can highlight the changes
@@ -1863,6 +1875,7 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE,
         {
           $mail_previous = array();
         }
+
         // Send the email
         notifyAdminOnBooking($booking, $mail_previous, !isset($id), $is_repeat_table);
       }

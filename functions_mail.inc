@@ -204,6 +204,8 @@ function addNotification($text_id, $mail_list, $notification_datetime, $event_id
   $result = sql_query($sql);
   if (!$result) {
     error_log("Error al insertar las notificaciones ".$sql." + ".mysql_error() . "\n", 3 , "errors.log");
+  } else {
+    error_log("Notificaciones insertadas: ".$sql."\n", 3, "errors.log");
   }
   return $result;
 }
@@ -247,6 +249,8 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
 
     error_log("It's a repeat!: Obtained ID: ".$data['id']."\n", 3, "errors.log");
   }
+
+  error_log("There Are Emails: ".$thereAreEmails."\n", 3, "errors.log");
 
   $creationTextId = getTextId($data['tipo_evento'], 1);
   // If there is a creation text for this event, we schedule an immediate notification

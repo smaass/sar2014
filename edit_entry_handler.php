@@ -563,6 +563,7 @@ foreach ($rooms as $room_id)
   sql_free($res_area);
   
   if ($row_area['area_id'] == $area_of_trabajo) {
+    $booking[tipo_evento] = "Oficina";
   	$booking['universidad'] = $universidad;
     $booking['pais'] = $pais;
 //    $booking['correo'] = $correo;
@@ -579,6 +580,8 @@ foreach ($rooms as $room_id)
       $booking['tipo_charla'] = $tipo_defensa;
       $booking['resumen_expositor'] = $resumen_expositor;
     }
+  } else { // Recursos computacionales
+    $booking[tipo_evento] = "Recurso computacional";
   }
   // Set the various bits in the status field as appropriate
   // (Note: the status field is the only one that can differ by room)

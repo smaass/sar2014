@@ -517,7 +517,7 @@ function cell_html($cell, $query_strings, $currentDayDate)
           $link = $query_strings["new_times"];
         }
         
-        $entry_link = "'edit_entry.php?" . $link . "&quick=true'" ;
+        $entry_link = "'edit_entry.php?$link'" ;
         
         $diff = (time()-(60*60*24)) - strtotime($currentDayDate);
         if($diff > 0){
@@ -1485,16 +1485,11 @@ function table_popup_innerhtml()
   	$('#dark_background').hide();
   }
   
-  function showPopup(linkReservaDetallada) {";
-  if (authGetUserLevel($user) >= 1) {
-    $html.= "
-    linkReservaDetallada = linkReservaDetallada.substring(0, linkReservaDetallada.lastIndexOf('&'));
-    popup.show(linkReservaDetallada);";
-  } else {
-    $html.= ";";
-  }
-  
-  $html.="};
+  function showPopup(linkReservaDetallada) {"
+  	.
+  	(authGetUserLevel($user) >= 1 ? "popup.show(linkReservaDetallada);" : ";")
+  	.
+  "};
   
   function hidePopup() {
     popup.hide();

@@ -1728,9 +1728,9 @@ foreach ($edit_entry_field_order as $key)
 <td style="vertical-align: middle;">
   <ul>
     <li><b>Texto de creación</b></li>
-    <li><textarea id="template_nuevoevento" name="template" cols="60" rows="7" disabled></textarea></li>
+    <li><textarea id="template_nuevoevento" name="template" cols="50" rows="7" disabled></textarea></li>
     <li><br><b>Texto de recordatorio</b></li>
-    <li><textarea id="template_recordatorio" name="template" cols="60" rows="7" disabled></textarea></li>
+    <li><textarea id="template_recordatorio" name="template" cols="50" rows="7" disabled></textarea></li>
     <li><br><b>Tiempos de notificaciones previas al comienzo del evento</b></li>
   </ul>
   <ul id="notifications"></ul>
