@@ -450,7 +450,7 @@ table.admin_table {border-spacing: 0px; border-collapse: collapse; border-color:
 }
 
 #popupContent {
-	padding:15px;
+	padding:10px;
 }
 
 #close-x {
@@ -472,7 +472,7 @@ form#main.entry_popup {
 .entry_popup #edit_entry_submit_save
 {
 	float: left;
-	margin-left: 90px;
+	margin-left: 80px;
 }
 
 .entry_popup label
@@ -1134,7 +1134,7 @@ div#conflict_check, div#policy_check {
 	cursor: pointer;
 	font-size: x-large;
 }
-div#conflict_check {margin-right: 40px;}
+div#conflict_check {margin-right: 50px;}
 div.good {color: green}
 div.bad {color: red}
 

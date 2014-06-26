@@ -32,6 +32,8 @@ function createBody($text){
 }
 
 $today = Date('Y-m-d H:i:s');
+$notificationDelayLimit = 3600; // The maximum amount of seconds that a notification can be sent late
+$todayLessNotificationDelayLimit = Date('Y-m-d H:i:s', strtotime($today) - $notificationDelayLimit);
 // We select the notifications that haven't been send and have expired
 $sql = "SELECT reg.id as id,
                reg.mail_list as mail_list,
@@ -46,10 +48,10 @@ $sql = "SELECT reg.id as id,
              $tbl_room as room
         WHERE reg.text_id = inf.id
           AND '{$today}' > reg.notification_datetime
+          AND '{$todayLessNotificationDelayLimit}' < reg.notification_datetime
           AND sent = 0
           AND room.id = entry.room_id
           AND entry.id = reg.event_id";
-          //AND '{$today}' < reg.event_datetime";
 
 error_log('Se consultara con: ' . $sql . "\n", 3, "errors.log");
           
