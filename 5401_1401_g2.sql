@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 25, 2014 at 03:16 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Jun 26, 2014 at 07:52 PM
+-- Server version: 5.5.31
+-- PHP Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `5401_1401_g2`
 --
-
 -- --------------------------------------------------------
 
 --
@@ -105,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_entry` (
   PRIMARY KEY (`id`),
   KEY `idxStartTime` (`start_time`),
   KEY `idxEndTime` (`end_time`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=100 ;
 
 -- --------------------------------------------------------
 
@@ -167,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
   `ical_sequence` smallint(6) NOT NULL DEFAULT '0',
   `emails` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 -- --------------------------------------------------------
 
@@ -182,17 +181,6 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat_opt` (
   `correo` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`entry_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `mrbs_repeat_opt`
---
-
-INSERT INTO `mrbs_repeat_opt` (`entry_id`, `universidad`, `pais`, `correo`) VALUES
-(10, 'Stanford University', 'EEUU', 'knuth@stanford.edu'),
-(11, 'Stanford University', 'asdf', 'a@b.cl'),
-(12, '13212', '132123', '1233132'),
-(13, 'Stanford University', 'asdf', 'a@b.cl'),
-(14, 'Stanford University', 'asdf', 'a@b.cl');
 
 -- --------------------------------------------------------
 
@@ -234,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
   `email_involucrados` varchar(300) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idxSortKey` (`sort_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `mrbs_room`
@@ -334,12 +322,13 @@ CREATE TABLE IF NOT EXISTS `notifications_registry` (
   `sent` tinyint(1) NOT NULL DEFAULT '0',
   `event_id` int(11) NOT NULL,
   `event_datetime` datetime NOT NULL,
+  `extra_field` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   KEY `text_id` (`text_id`),
   KEY `notification_datetime` (`notification_datetime`),
   KEY `event_datetime` (`event_datetime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
 
@@ -356,23 +345,23 @@ CREATE TABLE IF NOT EXISTS `notifications_text` (
   UNIQUE KEY `id_event_2` (`id_event`,`id_type`),
   KEY `id_type` (`id_type`),
   KEY `id_event` (`id_event`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `notifications_text`
 --
 
 INSERT INTO `notifications_text` (`id`, `id_event`, `id_type`, `text`) VALUES
-(1, 1, 2, 'Estimado,<br>\r\nSe le recuerda la clase <i>$event</i> a realizarse en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(2, 2, 2, 'Estimado,<br>\r\nSe le recuerda la reunión <i>$event</i> que se realizará en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(3, 3, 2, 'Estimado,<br>\r\nSe le recuerda que el día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(4, 4, 1, 'Estimado,<br>\r\nSe le informa que se ha realizado la reserva de $room para <i>$event</i> a las $time.<br>\r\n<br>SAR<br>Mensaje auto-generado'),
-(5, 5, 2, 'Estimado,<br>\r\nSe le recuerda que el día $day se realizará la charla <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(6, 2, 1, 'Estimado,<br>\r\nLa reunión <i>$event</i> se realizará en $room a las $time.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(7, 3, 1, 'Estimado,<br>\r\nEl día $day se realizará la defensa <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(8, 5, 1, 'Estimado,<br>\r\nEl día $day se realizará la charla <i>$event</i> a las $time en el $room.<br>\r\n<br>\r\nSAR<br>\r\nMensaje auto-generado'),
-(9, 4, 2, 'Estimado,<br>\r\nSe le recuerda la reserva de $room para <i>$event</i> el día $day.\r\n<br>\r\n<br>SAR<br>Mensaje auto-generado'),
-(10, 7, 1, 'Estimado,<br>\nSe le ha asignado el recurso <i>$room</i> para $event a las $time.<br>\n<br>\nSAR<br>\nMensaje auto-generado');
+(1, 1, 2, 'Estimado,<br>\nSe le recuerda la clase <i>$evento</i> a realizarse en $recurso a las $hora.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
+(2, 2, 2, 'Estimado,<br>\nSe le recuerda la reunión <i>$evento</i> que se realizará en $recurso a las $hora.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
+(3, 3, 2, 'Estimado,<br>\nSe le recuerda que el día $dia se realizará la defensa <i>$evento</i> de $expositor a las $hora en el $recurso.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
+(4, 4, 1, 'Estimado,<br>\nSe le informa que se ha realizado la reserva de $recurso para <i>$evento</i> a las $hora.<br>\n<br>SAR<br>Mensaje auto-generado'),
+(5, 5, 2, 'Estimado,<br>\nSe le recuerda que el día $dia se realizará la charla <i>$evento</i> de $expositor a las $hora en el $recurso.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
+(6, 2, 1, 'Estimado,<br>\nLa reunión <i>$evento</i> se realizará en $recurso a las $hora.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
+(7, 3, 1, 'Estimado,<br>\nEl día $dia se realizará la defensa <i>$evento</i> de $expositor a las $hora en el $recurso.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
+(8, 5, 1, 'Estimado,<br>\nEl día $dia se realizará la charla <i>$evento</i> de $expositor a las $hora en el $recurso.<br>\n<br>\nSAR<br>\nMensaje auto-generado'),
+(9, 4, 2, 'Estimado,<br>\nSe le recuerda la reserva de $recurso para <i>$evento</i> el día $dia.\n<br>\n<br>SAR<br>Mensaje auto-generado'),
+(10, 7, 1, 'Estimado,<br>\nSe le ha asignado el recurso <i>$recurso</i> para $evento a las $hora.<br>\n<br>\nSAR<br>\nMensaje auto-generado');
 
 -- --------------------------------------------------------
 
@@ -386,21 +375,21 @@ CREATE TABLE IF NOT EXISTS `notifications_time` (
   `offset` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_type` (`event_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `notifications_time`
 --
 
 INSERT INTO `notifications_time` (`id`, `event_type`, `offset`) VALUES
-(1, 1, 14400),
-(2, 2, 900),
-(3, 3, 900),
-(4, 4, 172800),
-(5, 5, 900),
-(7, 5, 28800),
-(8, 2, 43200),
-(9, 3, 43200);
+(10, 1, 14400),
+(11, 2, 900),
+(12, 2, 43200),
+(15, 4, 172800),
+(24, 5, 900),
+(25, 5, 28800),
+(28, 3, 900),
+(29, 3, 43200);
 
 -- --------------------------------------------------------
 
@@ -413,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `notifications_type` (
   `type_name` varchar(20) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `type_name` (`type_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `notifications_type`
@@ -421,6 +410,7 @@ CREATE TABLE IF NOT EXISTS `notifications_type` (
 
 INSERT INTO `notifications_type` (`id`, `type_name`) VALUES
 (1, 'Creación'),
+(3, 'Fin'),
 (2, 'Recordatorio');
 
 -- --------------------------------------------------------
