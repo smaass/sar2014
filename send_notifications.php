@@ -39,6 +39,7 @@ $sql = "SELECT reg.id as id,
                reg.mail_list as mail_list,
                reg.notification_datetime as notification_datetime, 
                reg.event_datetime as event_datetime, 
+               reg.extra_field as extra,
                inf.text as text, 
                room.room_name as room_name, 
                entry.name as event_name
@@ -77,6 +78,7 @@ $mail = getPhpMailer();
 foreach ($notifications as $notification) {
   $event = $notification['event_name'];
   $room = $notification['room_name'];
+  $expositor = $notification['extra']; // TRUCO SUCIO DE ULTIMO MOMENTO
   $datetime = new DateTime($notification['event_datetime']);
   $date = $datetime->format('j-m-Y');
   $time = $datetime->format('H:i:s');
@@ -84,10 +86,11 @@ foreach ($notifications as $notification) {
   $text = $notification['text'];
 
   // Replace all the placeholders
-  $text = str_replace('$event', $event, $text);
-  $text = str_replace('$room', $room, $text);
-  $text = str_replace('$day', $date, $text);
-  $text = str_replace('$time', $time, $text);
+  $text = str_replace('$evento', $event, $text);
+  $text = str_replace('$recurso', $room, $text);
+  $text = str_replace('$dia', $date, $text);
+  $text = str_replace('$hora', $time, $text);
+  $text = str_replace('$expositor', $expositor, $text);
   
   $mail_list = explode(";", $notification['mail_list']);
 

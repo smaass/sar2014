@@ -131,12 +131,16 @@ function saveNotifications() {
 	});
 }
 
-function populateTags(){
+function populateTags(area){
 	var tags = 	"Tags disponibles:\n\n"+
-				"$event\n"+
-				"$day\n"+
-				"$time\n"+
-				"$room\n";
+				"$evento\n"+
+				"$dia\n"+
+				"$hora\n"+
+				"$recurso\n";
+
+	if (area == 'Charla' || area == 'Defensa') {
+		tags = tags + "$expositor\n";
+	}
 
 	$(".tags").html(tags);
 }
@@ -160,6 +164,7 @@ $(document).ready(function() {
 
     $("#area_select").change(function() {
     	var area = $("#area_select option:selected").text();
+    	populateTags(area);
     	populateNotificationData(area);
     });
 

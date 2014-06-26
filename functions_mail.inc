@@ -197,9 +197,9 @@ function removeNotifications($event_id) {
   sql_query($sql);
 }
 
-function addNotification($text_id, $mail_list, $notification_datetime, $event_id, $event_datetime) {
-  $sql = "INSERT INTO notifications_registry (text_id, mail_list, notification_datetime, event_id, event_datetime)
-          VALUES ($text_id, '$mail_list', '$notification_datetime', $event_id, '$event_datetime')";
+function addNotification($text_id, $mail_list, $notification_datetime, $event_id, $event_datetime, $extra) {
+  $sql = "INSERT INTO notifications_registry (text_id, mail_list, notification_datetime, event_id, event_datetime, extra_field)
+          VALUES ($text_id, '$mail_list', '$notification_datetime', $event_id, '$event_datetime', '$extra')";
 
   $result = sql_query($sql);
   if (!$result) {
@@ -254,8 +254,12 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
 
   $creationTextId = getTextId($data['tipo_evento'], 1);
   // If there is a creation text for this event, we schedule an immediate notification
+  $extra = '';
+  if ($data['tipo_evento'] == 'Charla' || $data['tipo_evento'] == 'Defensa') {
+    $extra = $data['expositor'];
+  }
   if ($creationTextId && $thereAreEmails) {
-    addNotification($creationTextId, $data[emails], date('Y-m-d H:i:s'), $data[id], $start_time);
+    addNotification($creationTextId, $data[emails], date('Y-m-d H:i:s'), $data[id], $start_time, $extra);
   }
 
   $reminderTextId = getTextId($data['tipo_evento'], 2);
@@ -271,7 +275,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $actio
       else {
         $notification_time = date('Y-m-d H:i:s', $diff_time);
       }
-      addNotification($reminderTextId, $data[emails], $notification_time, $data[id], $start_time);
+      addNotification($reminderTextId, $data[emails], $notification_time, $data[id], $start_time, $extra);
     }
   }
 }
