@@ -1313,7 +1313,7 @@ function mrbsGetBookingInfo($id, $series, $silent=FALSE)
   	        FROM $table T, $tbl_room M, $tbl_area A, mrbs_repeat_salas N
 			      WHERE T.room_id = M.id
       	    AND M.area_id = A.id
-      	    AND N.repeat_id = T.id
+      	    AND N.entry_id = T.id
       	    AND T.id=$id";
     	} else {
         		$sql = "SELECT " . implode(", ",$terms)."
