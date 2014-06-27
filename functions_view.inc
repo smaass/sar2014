@@ -213,7 +213,7 @@ function create_details_body($data, $as_html=FALSE, $keep_private=FALSE, $room_d
     
     $tbody .= create_details_row($label, $value, $as_html, $class);
   }
-  echo "<tr><td>label</td><td>".$label."</td></tr>";
+  //echo "<tr><td>label</td><td>".$label."</td></tr>";
   // Repeat type
   $tbody .= create_details_row(get_vocab("rep_type"), get_vocab("rep_type_" . $data['rep_type']), $as_html);
   // Repeat details

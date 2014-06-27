@@ -182,9 +182,6 @@ function print_theme_header($day, $month, $year, $area, $room)
             PrintLogonBox(); 
             echo "</div>\n";
           }
-          else {
-            echo "<div class=\"Logout\"><a>LOGOUT</a></div>";
-          }
         ?>
       </div>
     </div>
