@@ -13,8 +13,8 @@ function getPhpMailer(){
 
   $mail->SMTPSecure = 'tls';
   $mail->SMTPAuth = true;
-  $mail->Username = 'ian.alonyon@gmail.com';
-  $mail->Password = 'america latina no te llamas';
+  $mail->Username = '';
+  $mail->Password = '';
 
   $mail->IsHTML(true);
   $mail->CharSet = 'UTF-8';
@@ -53,8 +53,6 @@ $sql = "SELECT reg.id as id,
           AND sent = 0
           AND room.id = entry.room_id
           AND entry.id = reg.event_id";
-
-error_log('Se consultara con: ' . $sql . "\n", 3, "errors.log");
           
 $result = sql_query($sql); 
 
